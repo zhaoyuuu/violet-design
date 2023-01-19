@@ -6,7 +6,7 @@ export interface IMenuItemProps {
   style?: React.CSSProperties
   className?: string
   disabled?: boolean
-  index: number
+  index?: string
 }
 
 const MenuItem: React.FC<IMenuItemProps & React.PropsWithChildren> = ({
@@ -19,7 +19,7 @@ const MenuItem: React.FC<IMenuItemProps & React.PropsWithChildren> = ({
   const context = useContext(MenuContext)
 
   const handleClick = () => {
-    if (!disabled && context.onSelect) {
+    if (!disabled && context.onSelect && typeof index === 'string') {
       context.onSelect(index)
     }
   }
@@ -30,7 +30,7 @@ const MenuItem: React.FC<IMenuItemProps & React.PropsWithChildren> = ({
   })
 
   return (
-    <li className={classes} style={style} onClick={handleClick}>
+    <li key={index} className={classes} style={style} onClick={handleClick}>
       {children}
     </li>
   )

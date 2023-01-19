@@ -1,12 +1,16 @@
 .violetMenu {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   cursor: pointer;
+
   &--vertical {
     flex-direction: column;
     .violetMenu__menuItem {
       border-left: 3px solid transparent;
+      border-bottom: 0;
       &--active {
         color: #8b00ff;
         border: 0;
@@ -16,8 +20,10 @@
   }
 
   &__menuItem {
+    font-size: 20px;
     padding: 4px 10px;
     transition: all 100ms ease-out;
+    border-bottom: 3px solid transparent;
     &:hover {
       background: rgb(247, 247, 247);
     }
