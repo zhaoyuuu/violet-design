@@ -1,11 +1,14 @@
 .App {
-  text-align: center;
-  color: #8b00ff;
-  text-shadow: 3px 3px 3px rgba($color: #000000, $alpha: 0.3);
-
+  box-sizing: border-box;
   &__title {
+    text-align: center;
+    color: #8b00ff;
+    text-shadow: 3px 3px 3px rgba($color: #000000, $alpha: 0.3);
   }
 
   &__subtitle {
+    text-align: center;
+    color: #8b00ff;
+    text-shadow: 3px 3px 3px rgba($color: #000000, $alpha: 0.3);
   }
 }

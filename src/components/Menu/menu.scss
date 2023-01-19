@@ -1,0 +1,36 @@
+.violetMenu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  cursor: pointer;
+  &--vertical {
+    flex-direction: column;
+    .violetMenu__menuItem {
+      border-left: 3px solid transparent;
+      &--active {
+        color: #8b00ff;
+        border: 0;
+        border-left: 3px solid #8b00ff;
+      }
+    }
+  }
+
+  &__menuItem {
+    padding: 4px 10px;
+    transition: all 100ms ease-out;
+    &:hover {
+      background: rgb(247, 247, 247);
+    }
+    &--disabled {
+      color: rgb(186, 186, 186);
+      cursor: default;
+      &:hover {
+        background: transparent;
+      }
+    }
+    &--active {
+      color: #8b00ff;
+      border-bottom: 3px solid #8b00ff;
+    }
+  }
+}
