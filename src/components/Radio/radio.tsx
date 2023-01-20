@@ -25,8 +25,8 @@ const Radio: React.FC<RadioProps> = (props) =>{
     const [checked, setChecked] = useState(false);
     const inputEl = useRef(null);
 
-    const classes = classNames('radio', className, {
-        ['radio-${size}']: size,
+    const classes = classNames('violetRadio', className, {
+        ['violetRadio--${size}']: size,
         'disabled': disabled
     })
 
