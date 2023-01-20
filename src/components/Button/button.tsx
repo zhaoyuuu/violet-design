@@ -32,9 +32,9 @@ const Button: React.FC<ButtonProps> = (props) => {
   
   // 拼接 class
   // classNames 里的对象，值为true，则拼接
-  const classes = classNames('btn', className, {
-    [`btn--${btnType}`]: btnType,
-    [`btn--${size}`]: size,
+  const classes = classNames('violetButton', className, {
+    [`violetButton--${btnType}`]: btnType,
+    [`violetButton--${size}`]: size,
     // 对于链接类型，没有disabled属性，因此把disabled加到class里 
     'disabled': btnType === 'link' && disabled
   })
