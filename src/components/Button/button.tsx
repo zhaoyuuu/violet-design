@@ -2,17 +2,9 @@ import React from "react";
 import classNames from "classnames";
 import './button.scss'
 
-export enum ButtonType {
-  Primary = 'primary',
-  Default = 'default',
-  Danger = 'danger',
-  Link = 'link'
-}
+type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
-export enum ButtonSize {
-  Large = 'lg',
-  Small = 'sm',
-}
+type ButtonSize = 'lg' | 'sm'
 
 interface BaseButtonProps {
   btnType?: ButtonType;
@@ -44,9 +36,9 @@ const Button: React.FC<ButtonProps> = (props) => {
     [`btn--${btnType}`]: btnType,
     [`btn--${size}`]: size,
     // 对于链接类型，没有disabled属性，因此把disabled加到class里 
-    'disabled': btnType === ButtonType.Link && disabled
+    'disabled': btnType === 'link' && disabled
   })
-  if(btnType === ButtonType.Link && href) {
+  if(btnType === 'link' && href) {
     return (
       <a className={classes} href={href} {...restProps}>
         {children}
@@ -63,7 +55,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 // props的默认值
 Button.defaultProps = {
-  btnType: ButtonType.Default,
+  btnType: 'default',
   disabled: false
 }
 

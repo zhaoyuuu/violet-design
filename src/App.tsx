@@ -3,7 +3,7 @@ import './App.scss'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
-import Button, { ButtonType, ButtonSize } from './components/Button/button'
+import Button from './components/Button/button'
 
 function App() {
   return (
@@ -22,11 +22,11 @@ function App() {
 
         <MenuItem>third link</MenuItem>
       </Menu>
-      <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>primary按钮</Button>
-      <Button btnType={ButtonType.Danger} size={ButtonSize.Small} disabled>disabled按钮</Button>
-      <Button btnType={ButtonType.Default}>default按钮</Button>
-      <Button btnType={ButtonType.Link} href="https://coding.imooc.com/class/chapter/428.html#Anchor" target="_blank">普通链接</Button>
-      <Button btnType={ButtonType.Link} href="https://coding.imooc.com/class/chapter/428.html#Anchor" disabled={true}>disabled链接</Button>
+      <Button btnType="primary" size="lg">primary按钮</Button>
+      <Button btnType="danger" size="sm" disabled>disabled按钮</Button>
+      <Button btnType="default">default按钮</Button>
+      <Button btnType="link" href="https://coding.imooc.com/class/chapter/428.html#Anchor" target="_blank">普通链接</Button>
+      <Button btnType="link" href="https://coding.imooc.com/class/chapter/428.html#Anchor" disabled={true}>disabled链接</Button>
     </div>
   )
 }
