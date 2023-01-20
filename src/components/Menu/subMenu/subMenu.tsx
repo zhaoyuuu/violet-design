@@ -10,7 +10,7 @@ export interface ISubMenuProps {
   className?: string
 }
 
-const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
+export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
   title,
   className,
   index,

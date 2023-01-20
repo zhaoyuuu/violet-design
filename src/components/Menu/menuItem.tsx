@@ -9,7 +9,7 @@ export interface IMenuItemProps {
   index?: string
 }
 
-const MenuItem: React.FC<IMenuItemProps & React.PropsWithChildren> = ({
+export const MenuItem: React.FC<IMenuItemProps & React.PropsWithChildren> = ({
   style,
   className,
   disabled,

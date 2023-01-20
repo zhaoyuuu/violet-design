@@ -10,7 +10,7 @@ function App() {
       <h1 className="App__title">Hello violetUI !</h1>
 
       <hr />
-      <Menu onSelect={index => console.log(index)} mode="vertical">
+      <Menu onSelect={index => console.log(index)} defaultIndex="0">
         <MenuItem>first link</MenuItem>
         <MenuItem disabled>second link</MenuItem>
 
