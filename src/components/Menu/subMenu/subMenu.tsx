@@ -18,7 +18,9 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
 }) => {
   const context = useContext(MenuContext)
   // 控制 dropdown 的出现
-  const [dropdownShow, setDropdownShow] = useState(true)
+  const [dropdownShow, setDropdownShow] = useState(
+    context.mode === 'horizontal' ? false : true
+  )
   const hoverEvents =
     context.mode === 'horizontal'
       ? {
@@ -42,7 +44,7 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
       : { onClick: handleClick }
 
   const classes = cn(className, 'violetMenu__menuItem violetMenu__subMenu', {
-    'violetMenu__subMenu--active': context.index === index,
+    'violetMenu__subMenu--active': context.index.startsWith(index as string),
     'violetMenu__subMenu--show': dropdownShow,
   })
 
