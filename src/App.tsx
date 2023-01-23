@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import './App.scss'
 import Radio from './components/Radio/radio'
 import InputNumber from './components/InputNumber/inputNumber'
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu/subMenu'
 
 function App() {
   const [value, setValue] = useState('1')
@@ -19,6 +22,19 @@ function App() {
 
       <hr />
 
+      <Menu>
+        <MenuItem>first link</MenuItem>
+        <MenuItem>second link</MenuItem>
+        <MenuItem disabled>third link</MenuItem>
+        <SubMenu title="dropdown">
+          <MenuItem>dropdown 1</MenuItem>
+          <MenuItem>dropdown 2</MenuItem>
+          <MenuItem>dropdown 3</MenuItem>
+        </SubMenu>
+      </Menu>
+
+      <hr />
+
       <InputNumber
         value={value}
         onChange={onChange}
@@ -27,6 +43,8 @@ function App() {
         min={-10}
         onPressEnter={onPressEnter}
       />
+
+      <hr />
     </div>
   )
 }
