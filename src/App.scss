@@ -1,4 +1,5 @@
 .App {
+  padding-left: 10px;
   box-sizing: border-box;
   &__title {
     text-align: center;
@@ -12,6 +13,7 @@
     text-shadow: 3px 3px 3px rgba($color: #000000, $alpha: 0.3);
   }
 }
+
 hr {
   margin: 0;
 }
@@ -19,3 +21,4 @@ hr {
 .my-btn {
   background: burlywood;
 }
+
