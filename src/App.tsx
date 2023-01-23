@@ -1,17 +1,19 @@
 import React from 'react'
 import './App.scss'
-import Radio from './components/Radio/radio'
+
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
-
+import Button from './components/button'
 function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
-      <Radio value="test">Test</Radio>
-
-      <hr />
+      
+      <Button type="primary">click me</Button>
+      <Button></Button>
+      <Button type = "primary" className="violet-btn">primary button</Button>
+      {/* <hr />
       <Menu onSelect={index => console.log(index)} defaultIndex="0">
         <MenuItem>first link</MenuItem>
         <MenuItem disabled>second link</MenuItem>
@@ -22,7 +24,7 @@ function App() {
         </SubMenu>
 
         <MenuItem>third link</MenuItem>
-      </Menu>
+      </Menu> */}
     </div>
   )
 }
