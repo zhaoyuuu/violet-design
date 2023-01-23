@@ -1,28 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.scss'
 import Radio from './components/Radio/radio'
-import Menu from './components/Menu/menu'
-import MenuItem from './components/Menu/menuItem'
-import SubMenu from './components/Menu/subMenu/subMenu'
+import InputNumber from './components/InputNumber/inputNumber'
 
 function App() {
+  const [value, setValue] = useState('1')
+  const onChange = (val: string) => {
+    setValue(val)
+  }
+  const onPressEnter = () => {
+    alert('press enter !')
+  }
+
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
       <Radio value="test">Test</Radio>
 
       <hr />
-      <Menu onSelect={index => console.log(index)} defaultIndex="0">
-        <MenuItem>first link</MenuItem>
-        <MenuItem disabled>second link</MenuItem>
 
-        <SubMenu title="dropdown">
-          <MenuItem>dropdown 1</MenuItem>
-          <MenuItem>dropdown 2</MenuItem>
-        </SubMenu>
-
-        <MenuItem>third link</MenuItem>
-      </Menu>
+      <InputNumber
+        value={value}
+        onChange={onChange}
+        step={2}
+        max={10}
+        min={-10}
+        onPressEnter={onPressEnter}
+      />
     </div>
   )
 }

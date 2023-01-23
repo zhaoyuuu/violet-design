@@ -1,0 +1,94 @@
+@import '../../styles/variables';
+
+.voiletInputNumberWrap {
+  width: fit-content;
+  position: relative;
+  &__inputNumber {
+    // 隐藏上下箭头
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+    // 自定义样式
+    outline: none;
+    width: $number-input-width;
+    box-sizing: border-box;
+    padding: $input-padding-x $input-padding-y;
+    padding-right: 35%;
+    font-size: $font-size-base;
+    font-family: $input-font-family;
+    font-size: $input-font-size;
+    line-height: $input-line-height;
+    background-color: $input-bg;
+    color: $input-color;
+    border: $input-border-width solid $input-border-color;
+    box-shadow: $input-box-shadow;
+    border-radius: $input-border-radius;
+    transition: $input-transition;
+    &:focus {
+      background-color: $input-focus-bg;
+      border-color: $input-focus-border-color;
+      box-shadow: $input-focus-box-shadow;
+    }
+    // size
+    &--small {
+      width: $number-input-width-sm;
+      border-radius: $input-border-radius-sm;
+      font-size: $input-font-size-sm;
+    }
+    &--large {
+      width: $number-input-width-lg;
+      border-radius: $input-border-radius-lg;
+      font-size: $input-font-size-lg;
+    }
+    // status
+    &--success {
+      border-color: $success;
+      &:focus {
+        border-color: $success;
+      }
+    }
+    &--error {
+      border-color: $danger;
+      &:focus {
+        border-color: $danger;
+      }
+    }
+    &--warning {
+      border-color: $warning;
+      &:focus {
+        border-color: $warning;
+      }
+    }
+  }
+
+  &__arrowWrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    border-radius: 0 $input-border-radius $input-border-radius 0;
+    overflow: hidden;
+    flex-direction: column;
+    box-sizing: border-box;
+    &__arrow {
+      padding: 0;
+      height: 50%;
+      background: transparent;
+      border: 0;
+      border-left: $input-border-width solid $input-border-color;
+      cursor: pointer;
+      &:hover {
+        background-color: $input-focus-border-color;
+      }
+      &:first-child {
+        border-bottom: $input-border-width solid $input-border-color;
+      }
+    }
+  }
+}
