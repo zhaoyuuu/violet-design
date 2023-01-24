@@ -1,0 +1,86 @@
+@import '../../styles/variables';
+
+.violetCascaderWrap {
+  width: fit-content;
+  position: relative;
+  &__input {
+    outline: none;
+    box-sizing: border-box;
+    padding: $input-padding-y $input-padding-x;
+    font-size: $input-font-family;
+    line-height: $input-line-height;
+    background-color: $input-bg;
+    color: $input-color;
+    border: $input-border-width solid $input-border-color;
+    box-shadow: $input-box-shadow;
+    border-radius: $input-border-radius;
+    transition: $input-transition;
+    cursor: pointer;
+    &::placeholder,
+    &::-webkit-input-placeholder {
+      color: $input-placeholder-color;
+    }
+    &:focus {
+      background-color: $input-focus-bg;
+      border: $input-border-width solid $input-focus-border-color;
+      // 隐藏光标
+      color: transparent;
+      text-shadow: 0 0 0 $input-focus-color;
+      box-shadow: $input-focus-box-shadow;
+    }
+  }
+  &__downIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 10%;
+    text-align: center;
+    line-height: $input-line-height;
+    padding: $input-padding-y 0;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  &__optionsWrap {
+    position: absolute;
+    top: $cascader-optionsWrap-top;
+    left: 0;
+    display: flex;
+    box-shadow: 0 2px 10px rgba($color: #000000, $alpha: 0.5);
+    border-radius: 0.35rem;
+    overflow: hidden;
+    &__list {
+      padding: 0;
+      margin: 0;
+      height: $cascader-optionList-height;
+      background: #fff;
+      list-style: none;
+      border-left: $cascader-optionList-border-left;
+      &__item {
+        position: relative;
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        padding-right: $cascader-optionItem-padding-right;
+        cursor: pointer;
+        white-space: nowrap;
+        border-radius: $border-radius;
+        font-family: $btn-font-family;
+        font-size: $btn-font-size;
+        color: $input-color;
+        &:hover {
+          background: $cascader-optionItem-hover-color;
+        }
+        &--selected {
+          font-weight: $font-weight-bold;
+        }
+
+        &__iconBox {
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: $menu-item-padding-y 0;
+          padding-right: $cascader-optionItem-icon-padding-right;
+        }
+      }
+    }
+  }
+}

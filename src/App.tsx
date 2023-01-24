@@ -5,8 +5,12 @@ import InputNumber from './components/InputNumber/inputNumber'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
+import Cascader from './components/Cascader/cascader'
+import { Option } from './components/Cascader/cascader'
 
 function App() {
+  // InputNumber
+  //#region
   const [value, setValue] = useState('1')
   const onChange = (val: string) => {
     setValue(val)
@@ -14,6 +18,55 @@ function App() {
   const onPressEnter = () => {
     alert('press enter !')
   }
+  //#endregion
+
+  // Cascader
+  //#region
+  const [cascaderValue, setCascaderValue] = useState<string[] | number[]>([
+    '湖北省',
+    '武汉市',
+    '1037号',
+    '华中科技大学',
+  ])
+  const onCascaderChange = (value: string[] | number[]) => {
+    setCascaderValue(value)
+  }
+  const options: Option[] = [
+    {
+      value: 'zhejiang',
+      label: 'Zhejiang',
+      children: [
+        {
+          value: 'hangzhou',
+          label: 'Hangzhou',
+          children: [
+            {
+              value: 'xihu',
+              label: 'West Lake',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      value: 'jiangsu',
+      label: 'Jiangsu',
+      children: [
+        {
+          value: 'nanjing',
+          label: 'Nanjing',
+          children: [
+            {
+              value: 'zhonghuamen',
+              label: 'Zhong Hua Men',
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  //#endregion
 
   return (
     <div className="App">
@@ -45,6 +98,13 @@ function App() {
       />
 
       <hr />
+
+      <Cascader
+        value={cascaderValue}
+        onChange={onCascaderChange}
+        placeholder="请选择"
+        options={options}
+      />
     </div>
   )
 }
