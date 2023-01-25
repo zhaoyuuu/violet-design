@@ -4,16 +4,17 @@ import './App.scss'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
-import Button from './components/button'
+import Button from './components/Button/button'
+import Radio from './components/Radio/radio'
 function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
-      
+      <Radio value="test">Test</Radio>
       <Button type="primary">click me</Button>
       <Button></Button>
-      <Button type = "primary" className="violet-btn">primary button</Button>
-      {/* <hr />
+      <Button type = "primary" className="violetButton">primary button</Button>
+      <hr />
       <Menu onSelect={index => console.log(index)} defaultIndex="0">
         <MenuItem>first link</MenuItem>
         <MenuItem disabled>second link</MenuItem>
@@ -24,7 +25,7 @@ function App() {
         </SubMenu>
 
         <MenuItem>third link</MenuItem>
-      </Menu> */}
+      </Menu> 
     </div>
   )
 }

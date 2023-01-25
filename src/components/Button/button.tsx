@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import './index.css'
+import './style.scss';
 
 interface buttonProps {
     className?: string;
@@ -13,11 +13,11 @@ const Button = (props: buttonProps) => {
     const {className, type, children} = props;
 
     const cls = classNames({
-        'violet-btn': true,
-        ['violet-btn-${type}']: type,
-        [className as string]: !!className
+        'violetButton': true,
+        [`violetButton--${type}`]: type,
+        //[className as string]: className
 
     })
-    return <button className={cls}>{props.children}</button>
+    return <button className={cls}>{children}</button>
 }
 export default Button
