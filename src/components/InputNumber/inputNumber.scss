@@ -81,13 +81,17 @@
       height: 50%;
       background: transparent;
       border: 0;
-      border-left: $input-border-width solid $input-border-color;
+      border-left: 1px solid $input-border-color;
       cursor: pointer;
+      transition: all 100ms ease-out;
       &:hover {
         background-color: $input-focus-border-color;
       }
+      &:active {
+        opacity: 0.5;
+      }
       &:first-child {
-        border-bottom: $input-border-width solid $input-border-color;
+        border-bottom: 1px solid $input-border-color;
       }
     }
   }
