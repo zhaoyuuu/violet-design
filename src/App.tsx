@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import './App.scss';
-
-
-import Radio from './components/Radio/radio';
-import InputNumber from './components/InputNumber/inputNumber';
-
-import Menu from './components/Menu/menu';
-import MenuItem from './components/Menu/menuItem';
-import SubMenu from './components/Menu/subMenu/subMenu';
-import Button from './components/Button/button';
+import React, { useState } from 'react'
+import './App.scss'
+import Radio from './components/Radio/radio'
+import InputNumber from './components/InputNumber/inputNumber'
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu/subMenu'
+import Button from './components/Button/button'
 
 function App() {
   const [value, setValue] = useState('1')
@@ -22,10 +19,12 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
-      <Radio value="test">Test</Radio>      
+      <Radio value="test">Test</Radio>
       <Button type="primary">click me</Button>
       <Button></Button>
-      <Button type = "primary" className="violetButton">primary button</Button>
+      <Button type="primary" className="violetButton">
+        primary button
+      </Button>
       <hr />
       <Menu>
         <MenuItem>first link</MenuItem>
