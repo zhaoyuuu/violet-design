@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import cn from 'classnames'
 import { MenuContext } from '../menu'
 import { IMenuItemProps } from '../menuItem'
@@ -48,6 +48,10 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
     'violetMenu__subMenu--show': dropdownShow,
   })
 
+  const menuRef = useRef(null)
+  const menuEl = menuRef.current as HTMLLIElement | null
+  const menuHeight = menuEl?.clientHeight as number
+
   const renderChildren = () => {
     const childrenComponents = React.Children.map(children, (child, i) => {
       const childEl = child as React.FunctionComponentElement<IMenuItemProps>
@@ -66,14 +70,17 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
     })
 
     return (
-      <ul className="violetMenu__subMenu__dropDownList">
+      <ul
+        className="violetMenu__subMenu__dropDownList"
+        style={{ top: `${menuHeight + 2}px` }}
+      >
         {childrenComponents}
       </ul>
     )
   }
 
   return (
-    <li key={index} className={classes} {...hoverEvents}>
+    <li key={index} className={classes} {...hoverEvents} ref={menuRef}>
       <div className="violetMenu__subMenu__title" {...clickEvents}>
         {title}
       </div>
