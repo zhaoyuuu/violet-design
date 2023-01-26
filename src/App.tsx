@@ -26,7 +26,7 @@ function App() {
         primary button
       </Button>
       <hr />
-      <Menu>
+      <Menu mode="vertical">
         <MenuItem>first link</MenuItem>
         <MenuItem>second link</MenuItem>
         <MenuItem disabled>third link</MenuItem>
