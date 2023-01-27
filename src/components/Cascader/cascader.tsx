@@ -140,10 +140,11 @@ export const Cascader: React.FC<ICascader> = ({
   const handleSelectOption = (option: Option) => {
     option.isSelected = true
     setRender(!render)
-    console.log(option)
   }
   const [render, setRender] = useState(true)
   const renderOptions = (option: Option, index: number) => {
+    console.log('option: ', option, 'index: ', index)
+
     return (
       <>
         <li

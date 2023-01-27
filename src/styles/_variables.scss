@@ -21,7 +21,7 @@ $pink: #e9d7df !default;
 $red: #a8456b !default;
 $orange: #fbb957 !default;
 $yellow: #f8df70 !default;
-$green: #d2d97a !default;
+$green: rgb(150, 188, 25) !default;
 $teal: #96c24e !default;
 $cyan: #93d5dc !default;
 
@@ -248,8 +248,12 @@ $menu-transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out !defau
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
 $menu-item-active-color: $primary !default;
+$menu-item-mouseDown-color: rgba($primary, 0.5) !default;
 $menu-item-active-border-width: 2px !default;
 $menu-item-disabled-color: $gray-600 !default;
+$menu-item-disabled-cursor: not-allowed !default;
+$menu-item-transition: all 100ms ease-out !default;
+$menu-backgroundColor: $white !default;
 
 // sub-menu
 // submenu
@@ -301,7 +305,7 @@ $input-disabled-border-color: null !default;
 
 $input-color: $gray-700 !default;
 $input-border-color: $gray-400 !default;
-$input-border-width: $border-width !default;
+$input-border-width: 2px !default;
 $input-box-shadow: $box-shadow-inset !default;
 
 $input-border-radius: $border-radius !default;

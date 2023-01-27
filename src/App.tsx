@@ -7,6 +7,7 @@ import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
 import Cascader from './components/Cascader/cascader'
 import { Option } from './components/Cascader/cascader'
+import Button from './components/Button/button'
 
 function App() {
   // InputNumber
@@ -72,10 +73,13 @@ function App() {
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
       <Radio value="test">Test</Radio>
-
-      <hr />
-
-      <Menu>
+      <Button type="primary">click me</Button>
+      <Button></Button>
+      <Button type="primary" className="violetButton">
+        primary button
+      </Button>
+      {/* <hr />
+      <Menu mode="vertical">
         <MenuItem>first link</MenuItem>
         <MenuItem>second link</MenuItem>
         <MenuItem disabled>third link</MenuItem>
@@ -84,10 +88,8 @@ function App() {
           <MenuItem>dropdown 2</MenuItem>
           <MenuItem>dropdown 3</MenuItem>
         </SubMenu>
-      </Menu>
-
-      <hr />
-
+      </Menu> */}
+      {/* <hr />
       <InputNumber
         value={value}
         onChange={onChange}
@@ -95,8 +97,7 @@ function App() {
         max={10}
         min={-10}
         onPressEnter={onPressEnter}
-      />
-
+      /> */}
       <hr />
 
       <Cascader
