@@ -31,7 +31,10 @@ export interface IInputNumberProps {
 }
 
 /**
- * input_number的doc内容
+ * > 通过鼠标或键盘，输入范围内的数值。
+ *
+ * ### 何时使用
+ * 当需要获取标准数值时。
  */
 export const InputNumber: React.FC<IInputNumberProps> = ({
   autoFocus = false,
@@ -48,6 +51,7 @@ export const InputNumber: React.FC<IInputNumberProps> = ({
   onPressEnter,
 }) => {
   const classes = cn('voiletInputNumberWrap__inputNumber', {
+    'voiletInputNumberWrap__inputNumber--disabled': disabled,
     'voiletInputNumberWrap__inputNumber--success': status === 'success',
     'voiletInputNumberWrap__inputNumber--error': status === 'error',
     'voiletInputNumberWrap__inputNumber--warning': status === 'warning',
@@ -84,9 +88,11 @@ export const InputNumber: React.FC<IInputNumberProps> = ({
   const input = useRef(null)
   let inputEl = input.current as HTMLInputElement | null
   const handleAdd = () => {
+    if (disabled) return
     inputEl && inputEl.stepUp()
   }
   const handleReduce = () => {
+    if (disabled) return
     inputEl && inputEl.stepDown()
   }
   useEffect(() => {
