@@ -33,6 +33,10 @@
       border-color: $input-focus-border-color;
       box-shadow: $input-focus-box-shadow;
     }
+    // disabled
+    &--disabled {
+      cursor: not-allowed;
+    }
     // size
     &--small {
       width: $number-input-width-sm;

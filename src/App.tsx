@@ -44,6 +44,7 @@ function App() {
         max={10}
         min={-10}
         onPressEnter={onPressEnter}
+        disabled
       />
       <hr />
     </div>
