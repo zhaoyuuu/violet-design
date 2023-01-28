@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './App.scss'
 import Radio from './components/Radio/radio'
+import RadioGroup from './components/Radio/radioGroup'
 import InputNumber from './components/InputNumber/inputNumber'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
@@ -19,7 +20,15 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
-      <Radio value="test">Test</Radio>
+      <Radio value="test" >Test</Radio>
+      <Radio disabled={true}>Disabled Test</Radio>
+        <br/>
+      <RadioGroup>
+          <Radio>1</Radio>
+          <Radio>2</Radio>
+          <Radio>3</Radio>
+      </RadioGroup>
+        <br/>
       <Button type="primary">click me</Button>
       <Button></Button>
       <Button type="primary" className="violetButton">
