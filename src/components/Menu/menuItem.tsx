@@ -27,6 +27,8 @@ export const MenuItem: React.FC<IMenuItemProps & React.PropsWithChildren> = ({
   const classes = cn(className, 'violetMenu__menuItem', {
     'violetMenu__menuItem--disabled': disabled === true,
     'violetMenu__menuItem--active': context.index === index,
+    'violetMenu__menuItem--activeAsfirstLevelItem':
+      context.index === index && context.index.length === 1,
   })
 
   return (

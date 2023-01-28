@@ -77,7 +77,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "prop-types": "^15.8.1",
-    "ts-jest": "^29.0.5",
     "webpack": "^5.75.0"
   }
 }

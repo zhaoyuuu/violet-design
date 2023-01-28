@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import cn from 'classnames'
 import { MenuContext } from '../menu'
 import { IMenuItemProps } from '../menuItem'
@@ -18,7 +18,9 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
 }) => {
   const context = useContext(MenuContext)
   // 控制 dropdown 的出现
-  const [dropdownShow, setDropdownShow] = useState(true)
+  const [dropdownShow, setDropdownShow] = useState(
+    context.mode === 'horizontal' ? false : true
+  )
   const hoverEvents =
     context.mode === 'horizontal'
       ? {
@@ -42,9 +44,13 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
       : { onClick: handleClick }
 
   const classes = cn(className, 'violetMenu__menuItem violetMenu__subMenu', {
-    'violetMenu__subMenu--active': context.index === index,
+    'violetMenu__subMenu--active': context.index.startsWith(index as string),
     'violetMenu__subMenu--show': dropdownShow,
   })
+
+  const menuRef = useRef(null)
+  const menuEl = menuRef.current as HTMLLIElement | null
+  const menuHeight = menuEl?.clientHeight as number
 
   const renderChildren = () => {
     const childrenComponents = React.Children.map(children, (child, i) => {
@@ -64,14 +70,17 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
     })
 
     return (
-      <ul className="violetMenu__subMenu__dropDownList">
+      <ul
+        className="violetMenu__subMenu__dropDownList"
+        style={{ top: `${menuHeight + 2}px` }}
+      >
         {childrenComponents}
       </ul>
     )
   }
 
   return (
-    <li key={index} className={classes} {...hoverEvents}>
+    <li key={index} className={classes} {...hoverEvents} ref={menuRef}>
       <div className="violetMenu__subMenu__title" {...clickEvents}>
         {title}
       </div>

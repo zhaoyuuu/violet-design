@@ -17,3 +17,12 @@
    - 设想一定使用场景，避免冲突，总之尽量慎重一点，此时的设计是可修改的
 2. 组件实现之后，编写**单元测试**，通过单元测试后再提交`pr`
 3. `code review`：提交代码，需要 lead engineer 代码评审, 再合并到 `master branch` 上
+
+## 🍌 CSS 命名约定
+
+1. 遵循 [`BEM` 约定](http://getbem.com/naming/) + 小驼峰命名法, 以减少 CSS 冲突和覆盖的可能。
+2. 添加组件库统一前缀 `violet`
+   示例：
+
+- `violetSearchBar__input--disabled`
+- `violetModal__footer__confirmButton--show`

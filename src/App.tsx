@@ -23,7 +23,6 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
-
       <hr />
       <Menu mode="vertical">
         <MenuItem>first link</MenuItem>
