@@ -1,65 +1,95 @@
-import React,{ReactNode, useState, useRef} from "react";
-import classNames from "classnames";
+import React, { ReactNode, useState, useRef } from 'react'
+import classNames from 'classnames'
 
-export interface RadioProps{
-    className?: string;
-    value? :string;
-    checked?: boolean;
-    disabled?: boolean;
-    children?: ReactNode;
-    size?: string;
-    onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
+export type RadioSize = 'sm' | 'lg'
+
+export interface RadioProps {
+  /**设置类名*/
+  className?: string
+  value?: string
+  key?: string
+  /**是否选中*/
+  checked?: boolean
+  /**是否禁用*/
+  disabled?: boolean
+  children?: ReactNode
+  /**调整radio大小*/
+  size?: RadioSize
+  /**设置radio的样式*/
+  style?: React.CSSProperties
+  /**添加函数*/
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
-const Radio: React.FC<RadioProps> = (props) =>{
-    const{
-        className,
-        value,
-        disabled,
-        children,
-        size,
-        onChange,
-        ...restProps
-    } = props
+export const Radio: React.FC<RadioProps> = props => {
+  const {
+    className,
+    value,
+    key,
+    disabled,
+    children,
+    size,
+    style,
+    onChange,
+    ...restProps
+  } = props
 
-    const [checked, setChecked] = useState(false);
-    const inputEl = useRef(null);
+  const [checked, setChecked] = useState(false)
 
-    const classes = classNames('violetRadio', className, {
-        ['violetRadio--${size}']: size,
-        'disabled': disabled
-    })
+  const classes = classNames('violetRadio', className, {
+    [`violetRadio--${size}`]: size !== undefined,
+    'violetRadio--disabled': disabled,
+    'violetRadio--checked': checked,
+  })
 
-    const handleClick = (e: any) => {
-        if (disabled || checked) {
-            return;
-        }
+  React.useEffect(() => {
+    if (
+      'checked' in props &&
+      props.checked !== checked &&
+      props.checked != undefined
+    ) {
+      setChecked(props.checked)
+    }
+  }, [props.checked])
 
-        if (!('checked' in props)) {
-            setChecked(true);
-        }
-
+  const handleClick = (e: any) => {
+    if (disabled) {
+      return
     }
 
+    if (!('checked' in props)) {
+      setChecked(true)
+    }
 
-    return(
-        <span onClick={(e) => {handleClick(e)}} >
-            <input type="radio"
-                   className={classes}
-                   disabled={disabled}
-                   value={value}
-            />
-            <span>{props.children}</span>
-        </span>
+    if (checked) {
+      setChecked(false)
+    } else {
+      setChecked(true)
+    }
 
+    if (typeof onChange === 'function') {
+      onChange(e)
+    }
+  }
 
-    )
-
+  return (
+    <span className={classes} onClick={handleClick}>
+      <input
+        type="radio"
+        disabled={disabled}
+        value={value}
+        key={key}
+        checked={checked}
+        style={style}
+      />
+      <span>{props.children}</span>
+    </span>
+  )
 }
 
 Radio.defaultProps = {
-    disabled: false,
-    checked: false
+  disabled: false,
+  checked: false,
 }
 
-export default Radio;
+export default Radio

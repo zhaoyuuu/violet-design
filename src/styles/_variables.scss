@@ -341,3 +341,6 @@ $progress-bar-transition: width 0.6s ease !default;
 $number-input-width: 6rem !default;
 $number-input-width-lg: $number-input-width * 1.25 !default;
 $number-input-width-sm: $number-input-width * 0.875 !default;
+
+// radio
+$radio-disabled-color: $gray-600 !default;
