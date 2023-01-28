@@ -5,6 +5,7 @@ import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
 import Button, {ButtonType, ButtonSize} from './components/Button/button'
+import Input from './components/Input/Input'
 
 function App() {
   const [value, setValue] = useState('1')
@@ -18,6 +19,8 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+      <Input size='sm'/>
+      <Input size='lg'/>
       <Radio value="test">Test</Radio>
       <Button className='custom'>Hello</Button>
       <Button btnType={ButtonType.Primary} disabled>disabled button</Button>
@@ -34,7 +37,7 @@ function App() {
         Large Link
       </Button>
       <hr />
-      <Menu>
+      <Menu mode="vertical">
         <MenuItem>first link</MenuItem>
         <MenuItem>second link</MenuItem>
         <MenuItem disabled>third link</MenuItem>
@@ -52,6 +55,7 @@ function App() {
         max={10}
         min={-10}
         onPressEnter={onPressEnter}
+        disabled
       />
       <hr />
     </div>

@@ -1,8 +1,10 @@
+@import '../../../styles/index.scss';
+
 .violetMenu__subMenu {
   position: relative;
   &--active {
-    color: #8b00ff;
-    border-bottom: 3px solid #8b00ff;
+    color: $menu-item-active-color;
+    border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
   }
   &--show > &__dropDownList {
     display: block;
@@ -12,18 +14,18 @@
     display: none;
     position: absolute;
     list-style: none;
-    top: 38px;
     left: 0;
     padding: 0;
     color: #000;
-    box-shadow: 0 4px 10px rgba($color: #000000, $alpha: 0.2);
+    box-shadow: $submenu-box-shadow;
+    background: $menu-backgroundColor;
 
     &__li {
       width: max-content;
-      padding: 10px 20px;
-      transition: all 100ms ease-out;
-      &:hover {
-        color: #8b00ff;
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      transition: $menu-item-transition;
+      &:active {
+        color: $menu-item-mouseDown-color;
       }
     }
   }
@@ -33,7 +35,7 @@
   .violetMenu__subMenu {
     &--active {
       border-bottom: 0;
-      border-left: 3px solid #8b00ff;
+      border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
 
     &__dropDownList {
@@ -48,10 +50,10 @@
       &__li {
         width: max-content;
         border-left: 0;
-        padding: 10px 20px;
-        transition: all 100ms ease-out;
-        &:hover {
-          color: #8b00ff;
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        transition: $menu-item-transition;
+        &:active {
+          color: $menu-item-mouseDown-color;
         }
       }
     }
