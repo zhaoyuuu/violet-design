@@ -21,12 +21,14 @@ function App() {
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
       <Radio value="test" >Test</Radio>
+        <Radio size="lg">large radio</Radio>
       <Radio disabled={true}>Disabled Test</Radio>
         <br/>
       <RadioGroup>
-          <Radio>1</Radio>
-          <Radio>2</Radio>
-          <Radio>3</Radio>
+          <Radio value={"1"}>1</Radio>
+          <Radio value={"2"}>2</Radio>
+          <Radio value={"3"}>3</Radio>
+          <Radio value={"4"}>4</Radio>
       </RadioGroup>
         <br/>
       <Button type="primary">click me</Button>
