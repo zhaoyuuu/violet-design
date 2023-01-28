@@ -1,0 +1,152 @@
+.VioletSwitch {
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 44px;
+  height: 22px;
+  line-height: 22px;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.VioletSwitch:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+.VioletSwitch-checked:focus {
+  box-shadow: 0 0 0 2px #e6f7ff;
+}
+.VioletSwitch:focus:hover {
+  box-shadow: none;
+}
+.VioletSwitch-checked {
+  background-color: #1890ff;
+}
+.VioletSwitch-loading,
+.VioletSwitch-disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.VioletSwitch-loading *,
+.VioletSwitch-disabled * {
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.VioletSwitch-inner {
+  display: block;
+  margin: 0 7px 0 25px;
+  color: #fff;
+  font-size: 12px;
+  transition: margin 0.2s;
+}
+.VioletSwitch-checked .VioletSwitch-inner {
+  margin: 0 25px 0 7px;
+}
+.VioletSwitch-handle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  transition: all 0.2s ease-in-out;
+}
+.VioletSwitch-handle::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  border-radius: 9px;
+  box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+  transition: all 0.2s ease-in-out;
+  content: '';
+}
+.VioletSwitch-checked .VioletSwitch-handle {
+  left: calc(100% - 18px - 2px);
+}
+.VioletSwitch:not(.VioletSwitch-disabled):active .VioletSwitch-handle::before {
+  right: -30%;
+  left: 0;
+}
+.VioletSwitch:not(.VioletSwitch-disabled):active.VioletSwitch-checked
+  .VioletSwitch-handle::before {
+  right: 0;
+  left: -30%;
+}
+.VioletSwitch-loading-icon.anticon {
+  position: relative;
+  top: 2px;
+  color: rgba(0, 0, 0, 0.65);
+  vertical-align: top;
+}
+.VioletSwitch-checked .VioletSwitch-loading-icon {
+  color: #1890ff;
+}
+.VioletSwitch-small {
+  min-width: 28px;
+  height: 16px;
+  line-height: 16px;
+}
+.VioletSwitch-small .VioletSwitch-inner {
+  margin: 0 5px 0 18px;
+  font-size: 12px;
+}
+.VioletSwitch-small .VioletSwitch-handle {
+  width: 12px;
+  height: 12px;
+}
+.VioletSwitch-small .VioletSwitch-loading-icon {
+  top: 1.5px;
+  font-size: 9px;
+}
+.VioletSwitch-small.VioletSwitch-checked .VioletSwitch-inner {
+  margin: 0 18px 0 5px;
+}
+.VioletSwitch-small.VioletSwitch-checked .VioletSwitch-handle {
+  left: calc(100% - 12px - 2px);
+}
+.VioletSwitch-rtl {
+  direction: rtl;
+}
+.VioletSwitch-rtl .VioletSwitch-inner {
+  margin: 0 25px 0 7px;
+}
+.VioletSwitch-rtl .VioletSwitch-handle {
+  right: 2px;
+  left: auto;
+}
+.VioletSwitch-rtl:not(.VioletSwitch-rtl-disabled):active
+  .VioletSwitch-handle::before {
+  right: 0;
+  left: -30%;
+}
+.VioletSwitch-rtl:not(.VioletSwitch-rtl-disabled):active.VioletSwitch-checked
+  .VioletSwitch-handle::before {
+  right: -30%;
+  left: 0;
+}
+.VioletSwitch-rtl.VioletSwitch-checked .VioletSwitch-inner {
+  margin: 0 7px 0 25px;
+}
+.VioletSwitch-rtl.VioletSwitch-checked .VioletSwitch-handle {
+  right: calc(100% - 18px - 2px);
+}
+.VioletSwitch-rtl.VioletSwitch-small.VioletSwitch-checked .VioletSwitch-handle {
+  right: calc(100% - 12px - 2px);
+}
