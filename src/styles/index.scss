@@ -1,14 +1,16 @@
+// layout
+@import './reboot';
+
+@import './mixin';
+
 // config
-@import 'variables';
+@import './variables';
 
-//layout
-@import 'reboot';
-
-//mixin
-// @import "mixin";
-
-// switch
+//switch
 @import '../components/Switch/style';
+
+//tabs
+@import '../components/Tabs/style';
 
 //icon
 @import '../components/Icon/style';

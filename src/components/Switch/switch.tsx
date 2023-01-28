@@ -1,6 +1,16 @@
 import React, { ReactNode, CSSProperties, useState, useEffect } from 'react'
 import classNames from 'classnames'
 
+export type ThemeProps =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'info'
+  | 'warning'
+  | 'danger'
+  | 'light'
+  | 'dark'
+
 export interface SwitchProps {
   className?: string
   defaultChecked?: boolean
@@ -12,9 +22,10 @@ export interface SwitchProps {
   size?: 'small' | 'medium'
   children?: ReactNode
   style?: CSSProperties
+  theme?: ThemeProps
 }
 
-const Switch = (props: SwitchProps) => {
+export const Switch: React.FC<SwitchProps> = props => {
   const {
     className,
     disabled,
@@ -22,9 +33,11 @@ const Switch = (props: SwitchProps) => {
     checked: pchecked,
     children,
     style,
+    size,
     checkedChildren,
     unCheckedChildren,
     onChange,
+    theme = 'primary',
     ...others
   } = props
 
@@ -45,8 +58,10 @@ const Switch = (props: SwitchProps) => {
   }
   const cls = classNames({
     VioletSwitch: true,
+    'VioletSwitch-small': size === 'small',
     'VioletSwitch-checked': checked,
     'VioletSwitch-disabled': disabled,
+    [`VioletSwitch-${theme}`]: theme,
     [className as string]: !!className,
   })
 

@@ -1,7 +1,5 @@
 // 各种变量以及可配置设置
 
-$violet-prefix: Violet;
-
 // 中性色彩
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
@@ -23,7 +21,7 @@ $pink: #e9d7df !default;
 $red: #a8456b !default;
 $orange: #fbb957 !default;
 $yellow: #f8df70 !default;
-$green: #d2d97a !default;
+$green: rgb(150, 188, 25) !default;
 $teal: #96c24e !default;
 $cyan: #93d5dc !default;
 
@@ -36,9 +34,6 @@ $warning: $yellow !default;
 $danger: $red !default;
 $light: $gray-100 !default;
 $dark: $gray-800 !default;
-
-//组件背景色
-$component-background: #fff;
 
 // 颜色主题
 $theme-colors: (
@@ -253,8 +248,12 @@ $menu-transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out !defau
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
 $menu-item-active-color: $primary !default;
+$menu-item-mouseDown-color: rgba($primary, 0.5) !default;
 $menu-item-active-border-width: 2px !default;
 $menu-item-disabled-color: $gray-600 !default;
+$menu-item-disabled-cursor: not-allowed !default;
+$menu-item-transition: all 100ms ease-out !default;
+$menu-backgroundColor: $white !default;
 
 // sub-menu
 // submenu
@@ -306,7 +305,7 @@ $input-disabled-border-color: null !default;
 
 $input-color: $gray-700 !default;
 $input-border-color: $gray-400 !default;
-$input-border-width: $border-width !default;
+$input-border-width: 2px !default;
 $input-box-shadow: $box-shadow-inset !default;
 
 $input-border-radius: $border-radius !default;
@@ -338,28 +337,23 @@ $progress-border-radius: $border-radius !default;
 $progress-bar-color: $white !default;
 $progress-bar-transition: width 0.6s ease !default;
 
-// Switch
-$switch-height: 22px;
-$switch-sm-height: 16px;
-$switch-min-width: 44px;
-$switch-sm-min-width: 28px;
-// $switch-disabled-opacity: 0.2;
-$switch-color: $primary;
-$switch-bg: $component-background;
-$switch-shadow-color: fade(#00230b, 20%);
-$switch-padding: 2px;
-$switch-inner-margin-min: ceil($switch-height * 0.3);
-$switch-inner-margin-max: ceil($switch-height * 1.1);
-$switch-sm-inner-margin-min: ceil($switch-sm-height * 0.3);
-$switch-sm-inner-margin-max: ceil($switch-sm-height * 1.1);
+// number_input
+$number-input-width: 6rem !default;
+$number-input-width-lg: $number-input-width * 1.25 !default;
+$number-input-width-sm: $number-input-width * 0.875 !default;
 
-$font-size-base: 14px;
-$font-size-sm: 12px;
-$font-variant-base: tabular-nums;
-$text-color: fade($black, 85%);
-$text-color-inverse: $white;
-$disabled-color: fade($black, 15%);
-$line-height-base: 1.5715;
-$font-feature-settings-base: 'tnum';
+// Navs
 
-$iconfont-css-prefix: violetIcon;
+$nav-link-padding-y: 0.5rem !default;
+$nav-link-padding-x: 1rem !default;
+$nav-link-disabled-color: $gray-600 !default;
+
+$nav-tabs-border-color: $gray-300 !default;
+$nav-tabs-border-width: $border-width !default;
+$nav-tabs-border-radius: $border-radius !default;
+$nav-tabs-link-hover-border-color: $gray-200 $gray-200 $nav-tabs-border-color !default;
+$nav-tabs-link-hover-color: $primary !default;
+$nav-tabs-link-active-color: $primary !default;
+$nav-tabs-link-active-bg: $body-bg !default;
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
+$nav-tabs-content-margin: 1rem !default;
