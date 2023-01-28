@@ -4,9 +4,9 @@ import React from 'react'
 
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-const radioGroupMeta: ComponentMeta<typeof Radio> = {
-  title: 'RadioGroup 导航菜单',
-  component: Radio,
+const radioGroupMeta: ComponentMeta<typeof RadioGroup> = {
+  title: 'RadioGroup 单选按钮组',
+  component: RadioGroup,
 }
 
 export default radioGroupMeta
@@ -14,10 +14,9 @@ export default radioGroupMeta
 export const Default: ComponentStory<typeof RadioGroup> = args => (
   <>
     <RadioGroup {...args}>
-      <Radio>1</Radio>
-      <Radio>2</Radio>
-      <Radio>3</Radio>
+      <Radio value={'1'}>1</Radio>
+      <Radio value={'2'}>2</Radio>
+      <Radio value={'3'}>3</Radio>
     </RadioGroup>
   </>
 )
-
