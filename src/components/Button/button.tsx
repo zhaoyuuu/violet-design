@@ -43,7 +43,7 @@ export const Button = (props: ButtonProps) => {
         className, {
         [`violetButton--${btnType}`]: btnType,
         [`violetButton--${size}`]: size,
-        'disabled': (btnType === ButtonType.Link) && disabled,
+        'violetButton--disabled': (btnType === ButtonType.Link) && disabled,
     
         })
     if (btnType === ButtonType.Link && href) {
