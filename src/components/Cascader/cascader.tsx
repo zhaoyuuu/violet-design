@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'classnames'
 import './cascader.scss'
+import produce from 'immer'
 
 export interface Option {
   value: string | number
@@ -71,114 +72,87 @@ export const Cascader: React.FC<ICascader> = ({
   // 控制浮层的出现
   const [isPopupShow, setPopupShow] = useState(false)
 
-  // 浮层的列表内容
-  const content: Array<Option[]> = [],
-    queue = []
-  if (options?.length) {
-    // 把第一级推入队列
-    for (let i = 0; i < options.length; i++) {
-      const processedOption = {
-        ...options[i],
-        isSelected: false,
-        index: i.toString(), // 添加索引
-      } as Option
-      queue.push(processedOption)
+  // 浮层的列表内容  content结构:[[option, option, ..], [..], [..], ..]
+  const [content, setContent] = useState<Array<Option[]>>([])
+  useEffect(() => {
+    const queue = []
+    if (options?.length) {
+      // 把第一级推入队列
+      for (let i = 0; i < options.length; i++) {
+        const processedOption = {
+          ...options[i],
+          isSelected: false,
+          index: i.toString(), // 添加索引
+        } as Option
+        queue.push(processedOption)
+      }
     }
-  }
-  let queueSize = queue.length
-  let curLevel = [] as Option[]
-  for (let i = 0; i < queueSize; i++) {
-    const headItem = queue.shift() as Option
-    const item = { ...headItem }
-    curLevel.push(item)
-    // 如果不是disabled，把children推入队尾
-    if (!headItem.disabled && headItem.children) {
-      for (let i = 0; i < headItem.children.length; i++) {
-        const child = {
-          ...headItem.children[i],
-          index: `${headItem.index}-${i}`, // 注意索引值
+    // 把children推入队列
+    while (queue.length) {
+      const queueSize = queue.length
+      const curLevel = [] as Option[]
+      for (let i = 0; i < queueSize; i++) {
+        const headItem = queue.shift() as Option
+        const item = {
+          value: headItem.value,
+          label: headItem.label,
+          disabled: headItem.disabled,
+          index: headItem.index,
           isSelected: false,
         }
-        queue.push(child)
-      }
-    }
-  }
-  content.push(curLevel)
-
-  while (queue.length) {
-    queueSize = queue.length
-    curLevel = [] as Option[]
-    for (let i = 0; i < queueSize; i++) {
-      const headItem = queue.shift() as Option
-      const item = {
-        value: headItem.value,
-        label: headItem.label,
-        disabled: headItem.disabled,
-        index: headItem.index,
-        isSelected: false,
-      }
-      curLevel.push(item)
-      // 如果不是disabled，把children推入队尾
-      if (!headItem.disabled && headItem.children) {
-        for (let i = 0; i < headItem.children.length; i++) {
-          const item = {
-            value: headItem.children[i].value,
-            label: headItem.children[i].label,
-            disabled: headItem.children[i].disabled,
-            children: headItem.children[i].children,
-            index: `${headItem.index}-${i}`, // 注意索引值
-            isSelected: false,
+        curLevel.push(item)
+        // 如果不是disabled，把children推入队尾
+        if (!headItem.disabled && headItem.children) {
+          for (let i = 0; i < headItem.children.length; i++) {
+            const item = {
+              value: headItem.children[i].value,
+              label: headItem.children[i].label,
+              disabled: headItem.children[i].disabled,
+              children: headItem.children[i].children,
+              index: `${headItem.index}-${i}`, // 注意索引值
+              isSelected: false,
+            }
+            queue.push(item)
           }
-          queue.push(item)
         }
       }
+      content.push(curLevel)
+      // setContent(
+      //   produce(draft => {
+      //     draft.push(curLevel)
+      //   })
+      // )
     }
-    content.push(curLevel)
-  }
+  }, [])
+
+  // let queueSize = queue.length
+  // let curLevel = [] as Option[]
+  // for (let i = 0; i < queueSize; i++) {
+  //   const headItem = queue.shift() as Option
+  //   const item = { ...headItem }
+  //   curLevel.push(item)
+  //   // 如果不是disabled，把children推入队尾
+  //   if (!headItem.disabled && headItem.children) {
+  //     for (let i = 0; i < headItem.children.length; i++) {
+  //       const child = {
+  //         ...headItem.children[i],
+  //         index: `${headItem.index}-${i}`, // 注意索引值
+  //         isSelected: false,
+  //       }
+  //       queue.push(child)
+  //     }
+  //   }
+  // }
+  // content.push(curLevel)
+  // setContent(
+  //   produce(draft => {
+  //     draft.push(curLevel)
+  //   })
+  // )
 
   // select option
   const handleSelectOption = (option: Option) => {
     option.isSelected = true
-    setRender(!render)
-  }
-  const [render, setRender] = useState(true)
-  const renderOptions = (option: Option, index: number) => {
-    console.log('option: ', option, 'index: ', index)
-
-    return (
-      <>
-        <li
-          key={index}
-          className={cn('violetCascaderWrap__optionsWrap__list__item', {
-            'violetCascaderWrap__optionsWrap__list__item--selected':
-              option.isSelected,
-          })}
-          onClick={() => handleSelectOption(option)}
-        >
-          {option.label}
-          {/* icon */}
-          <div className="violetCascaderWrap__optionsWrap__list__item__iconBox">
-            {'>'}
-          </div>
-        </li>
-        {option.isSelected && (
-          <li
-            key={index}
-            className={cn('violetCascaderWrap__optionsWrap__list__item', {
-              'violetCascaderWrap__optionsWrap__list__item--selected':
-                option.isSelected,
-            })}
-            onClick={() => handleSelectOption(option)}
-          >
-            {option.label}
-            {/* icon */}
-            <div className="violetCascaderWrap__optionsWrap__list__item__iconBox">
-              {'>'}
-            </div>
-          </li>
-        )}
-      </>
-    )
   }
 
   return (
@@ -196,10 +170,23 @@ export const Cascader: React.FC<ICascader> = ({
         {content.map((options, index) => (
           // 每个列表
           <ul key={index} className="violetCascaderWrap__optionsWrap__list">
-            {options.map((option, index) =>
+            {options.map((option, index) => (
               // 每一项
-              renderOptions(option, index)
-            )}
+              <li
+                key={index}
+                className={cn('violetCascaderWrap__optionsWrap__list__item', {
+                  'violetCascaderWrap__optionsWrap__list__item--selected':
+                    option.isSelected,
+                })}
+                onClick={() => handleSelectOption(option)}
+              >
+                {option.label}
+                {/* icon */}
+                <div className="violetCascaderWrap__optionsWrap__list__item__iconBox">
+                  {'>'}
+                </div>
+              </li>
+            ))}
           </ul>
         ))}
       </div>
