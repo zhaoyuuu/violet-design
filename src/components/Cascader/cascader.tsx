@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import cn from 'classnames'
 import './cascader.scss'
 import produce from 'immer'
+import { useClickAway } from 'react-use'
 
-export interface Option {
+export interface ProcessedOption {
   value: string | number
   label: React.ReactNode
   index?: string
   isSelected?: boolean
   disabled?: boolean
-  children?: Option[]
+  isFatherSelected?: boolean
+  children?: ProcessedOption[]
+  isLeaf?: boolean // 是否是叶子节点
 }
 
 interface ICascader {
@@ -28,17 +31,15 @@ interface ICascader {
   /** 输入框占位文本 */
   placeholder?: string
   /** 可选项数据源 */
-  options?: Option[]
+  options: ProcessedOption[]
   /** 浮层预设位置 */
   placement?: 'bottomLeft' | 'bottomRight' | 'topLeft' | 'topRight'
-  /** 输入框大小 */
-  size?: 'large' | 'middle' | 'small'
   /** 设置校验状态 */
   status?: 'default' | 'error' | 'success'
   /** 指定选中项 */
-  value: string[] | number[]
+  value: React.ReactNode[]
   /** 选择完成后的回调 */
-  onChange: (value: string[] | number[]) => void
+  onChange: (value: React.ReactNode[]) => void
   /** 自定义下拉框内容 */
   dropdownRender?: (menus: React.ReactNode) => React.ReactNode
 }
@@ -49,17 +50,19 @@ export const Cascader: React.FC<ICascader> = ({
   inputClassName,
   popupClassName,
   expandTrigger = 'click',
-  notFoundContent = 'there is nothing here...',
+  notFoundContent = 'nothing here...',
   placeholder,
   options,
   placement = 'bottomLeft',
-  size = 'middle',
   status = 'default',
   value,
   onChange,
   dropdownRender,
 }) => {
-  const inputClasses = cn('violetCascaderWrap__input', inputClassName)
+  const inputClasses = cn('violetCascaderWrap__input', inputClassName, {
+    'violetCascaderWrap__input--disabled': disabled,
+    [`violetCascaderWrap__input--${status}`]: status !== 'default',
+  })
   const popupClasses = cn(
     'violetCascaderWrap__optionsWrap',
     `violetCascaderWrap__optionsWrap--${placement}`,
@@ -71,9 +74,20 @@ export const Cascader: React.FC<ICascader> = ({
 
   // 控制浮层的出现
   const [isPopupShow, setPopupShow] = useState(false)
+  const handleInputMouseDown = () => {
+    if (!isPopupShow) setPopupShow(true)
+  }
+  const cascaderInput = useRef(null)
+  const popup = useRef(null)
+  useClickAway(popup, e => {
+    if (!(e.target === cascaderInput.current) && isPopupShow) {
+      setPopupShow(false)
+    }
+  })
 
   // 浮层的列表内容  content结构:[[option, option, ..], [..], [..], ..]
-  const [content, setContent] = useState<Array<Option[]>>([])
+  const [content, setContent] = useState<Array<ProcessedOption[]>>([])
+
   useEffect(() => {
     const queue = []
     if (options?.length) {
@@ -82,23 +96,27 @@ export const Cascader: React.FC<ICascader> = ({
         const processedOption = {
           ...options[i],
           isSelected: false,
+          isFatherSelected: true, // 第一级始终显示
           index: i.toString(), // 添加索引
-        } as Option
+          isLeaf: options[i].children ? false : true,
+        } as ProcessedOption
         queue.push(processedOption)
       }
     }
     // 把children推入队列
     while (queue.length) {
       const queueSize = queue.length
-      const curLevel = [] as Option[]
+      const curLevel = [] as ProcessedOption[]
       for (let i = 0; i < queueSize; i++) {
-        const headItem = queue.shift() as Option
+        const headItem = queue.shift() as ProcessedOption
         const item = {
           value: headItem.value,
           label: headItem.label,
           disabled: headItem.disabled,
           index: headItem.index,
           isSelected: false,
+          isFatherSelected: headItem.isFatherSelected,
+          isLeaf: headItem.children ? false : true,
         }
         curLevel.push(item)
         // 如果不是disabled，把children推入队尾
@@ -116,80 +134,149 @@ export const Cascader: React.FC<ICascader> = ({
           }
         }
       }
-      content.push(curLevel)
-      // setContent(
-      //   produce(draft => {
-      //     draft.push(curLevel)
-      //   })
-      // )
+
+      if (curLevel.length) {
+        setContent(
+          produce(draft => {
+            draft.push(curLevel)
+          })
+        )
+      }
     }
   }, [])
 
-  // let queueSize = queue.length
-  // let curLevel = [] as Option[]
-  // for (let i = 0; i < queueSize; i++) {
-  //   const headItem = queue.shift() as Option
-  //   const item = { ...headItem }
-  //   curLevel.push(item)
-  //   // 如果不是disabled，把children推入队尾
-  //   if (!headItem.disabled && headItem.children) {
-  //     for (let i = 0; i < headItem.children.length; i++) {
-  //       const child = {
-  //         ...headItem.children[i],
-  //         index: `${headItem.index}-${i}`, // 注意索引值
-  //         isSelected: false,
-  //       }
-  //       queue.push(child)
-  //     }
-  //   }
-  // }
-  // content.push(curLevel)
-  // setContent(
-  //   produce(draft => {
-  //     draft.push(curLevel)
-  //   })
-  // )
+  // 选择决定的值
+  const [newVal, setNewVal] = useState<React.ReactNode[]>([])
+  useEffect(() => {
+    setNewVal([])
+    content.forEach(options => {
+      options.forEach(option => {
+        if (option.isSelected) {
+          setNewVal(
+            produce(draft => {
+              draft.push(option.label)
+            })
+          )
+        }
+      })
+    })
+  }, [content])
+  // 触发onChange
+  if (changeOnSelect) {
+    onChange(newVal)
+  } else {
+    if (content.length && content.length === newVal.length) {
+      onChange(newVal)
+    }
+  }
 
   // select option
-  const handleSelectOption = (option: Option) => {
-    option.isSelected = true
+  const handleSelectOption = (option: ProcessedOption) => {
+    // 不是叶子节点时
+    if (!option.isLeaf) {
+      setContent(
+        produce(draft => {
+          // 找到option，并修改它的isSelect
+          for (let i = 0; i < content.length; i++) {
+            for (let j = 0; j < content[i].length; j++) {
+              if (content[i][j].index === option.index) {
+                // 同级所有item先变为false
+                for (let x = 0; x < content[i].length; x++) {
+                  draft[i][x].isSelected = false
+                }
+                // 当前item的isSelect变成true
+                draft[i][j].isSelected = true
+                // 修改children的isFatherSelected
+                draft[i + 1].forEach(option => {
+                  if (
+                    option.index?.substring(0, option.index.length - 2) ===
+                    draft[i][j].index
+                  ) {
+                    option.isFatherSelected = true
+                  }
+                })
+              }
+            }
+          }
+        })
+      )
+    } else {
+      // 是叶子节点时
+      setContent(
+        produce(draft => {
+          // 找到option，修改isSelect
+          for (let i = 0; i < content.length; i++) {
+            for (let j = 0; j < content[i].length; j++) {
+              if (content[i][j].index === option.index) {
+                // 同级所有item先变为false
+                for (let x = 0; x < content[i].length; x++) {
+                  draft[i][x].isSelected = false
+                }
+                // 当前item的isSelect变成true
+                draft[i][j].isSelected = true
+              }
+            }
+          }
+        })
+      )
+    }
   }
 
   return (
     <div className="violetCascaderWrap">
       <input
+        ref={cascaderInput}
         type="text"
         className={inputClasses}
         placeholder={placeholder}
         value={displayValue}
+        onChange={() => {
+          return
+        }}
+        onMouseDown={handleInputMouseDown}
+        disabled={disabled}
       />
       {/* 下拉icon */}
       <div className="violetCascaderWrap__downIcon"></div>
       {/* 浮层 */}
-      <div className={popupClasses}>
-        {content.map((options, index) => (
-          // 每个列表
-          <ul key={index} className="violetCascaderWrap__optionsWrap__list">
-            {options.map((option, index) => (
-              // 每一项
-              <li
-                key={index}
-                className={cn('violetCascaderWrap__optionsWrap__list__item', {
-                  'violetCascaderWrap__optionsWrap__list__item--selected':
-                    option.isSelected,
-                })}
-                onClick={() => handleSelectOption(option)}
-              >
-                {option.label}
-                {/* icon */}
-                <div className="violetCascaderWrap__optionsWrap__list__item__iconBox">
-                  {'>'}
-                </div>
-              </li>
-            ))}
-          </ul>
-        ))}
-      </div>
+      {isPopupShow && (
+        <div className={popupClasses} ref={popup}>
+          {content.length ? (
+            content.map((options, index) => (
+              // 每个列表
+              <ul key={index} className="violetCascaderWrap__optionsWrap__list">
+                {options.map(
+                  (option, index) =>
+                    // 每一项
+                    option.isFatherSelected && (
+                      <li
+                        key={index}
+                        className={cn(
+                          'violetCascaderWrap__optionsWrap__list__item',
+                          {
+                            'violetCascaderWrap__optionsWrap__list__item--selected':
+                              option.isSelected,
+                          }
+                        )}
+                        onClick={() => handleSelectOption(option)}
+                      >
+                        {option.label}
+                        {/* icon */}
+                        <div className="violetCascaderWrap__optionsWrap__list__item__iconBox">
+                          {'>'}
+                        </div>
+                      </li>
+                    )
+                )}
+              </ul>
+            ))
+          ) : (
+            <span className="violetCascaderWrap__optionsWrap__notFound">
+              {notFoundContent}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   )
 }
