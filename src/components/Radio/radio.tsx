@@ -58,7 +58,7 @@ export const Radio: React.FC<RadioProps> = props => {
     }
 
     if (!('checked' in props)) {
-      setChecked(true)
+      setChecked(false)
     }
 
     if (checked) {
