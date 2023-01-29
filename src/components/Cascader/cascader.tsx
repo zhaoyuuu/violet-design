@@ -44,6 +44,14 @@ interface ICascader {
   dropdownRender?: (menus: React.ReactNode) => React.ReactNode
 }
 
+/**
+ * > 级联选择框。
+ *
+ * ### 何时使用
+ * - 需要从一组**相关联**的数据集合进行选择，例如省市区，公司层级，事物分类等。
+ * - 从一个**较大的数据集合**中进行选择时，用多级分类进行分隔，方便选择。
+ * - 比起 `Select` 组件，可以在同一个浮层中完成选择，有较好的体验。
+ */
 export const Cascader: React.FC<ICascader> = ({
   disabled = false,
   changeOnSelect = false,
