@@ -73,7 +73,7 @@ export const Radio: React.FC<RadioProps> = props => {
   }
 
   return (
-    <span className={classes} onClick={handleClick}>
+    <span className={classes}>
       <input
         type="radio"
         disabled={disabled}
@@ -81,6 +81,7 @@ export const Radio: React.FC<RadioProps> = props => {
         key={key}
         checked={checked}
         style={style}
+        onChange={handleClick}
       />
       <span>{props.children}</span>
     </span>
