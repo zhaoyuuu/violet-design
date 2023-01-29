@@ -5,10 +5,20 @@ import InputNumber from './components/InputNumber/inputNumber'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
+import Cascader from './components/Cascader/cascader'
 import Button, { ButtonType, ButtonSize } from './components/Button/button'
 import Input from './components/Input/Input'
 
+interface Option {
+  value: string | number
+  label: React.ReactNode
+  disabled?: boolean
+  children?: Option[]
+}
+
 function App() {
+  // InputNumber
+  //#region
   const [value, setValue] = useState('1')
   const onChange = (val: string) => {
     setValue(val)
@@ -16,10 +26,57 @@ function App() {
   const onPressEnter = () => {
     alert('press enter !')
   }
+  //#endregion
+
+  // Cascader
+  //#region
+  const [cascaderValue, setCascaderValue] = useState<React.ReactNode[]>([])
+  const onCascaderChange = (value: React.ReactNode[]) => {
+    setCascaderValue(value)
+  }
+  const options: Option[] = [
+    {
+      value: 'zhejiang',
+      label: 'Zhejiang',
+      children: [
+        {
+          value: 'hangzhou',
+          label: 'Hangzhou',
+          children: [
+            {
+              value: 'xihu',
+              label: 'West Lake',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      value: 'jiangsu',
+      label: 'Jiangsu',
+      children: [
+        {
+          value: 'nanjing',
+          label: 'Nanjing',
+          children: [
+            {
+              value: 'zhonghuamen',
+              label: 'Zhong Hua Men',
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  //#endregion
 
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+      <Input size="sm" />
+      <Input size="lg" />
+      {/* <Radio value="test">Test</Radio>
 
       <Radio value="test">Test</Radio>
       <Radio size="lg">large radio</Radio>
@@ -30,17 +87,8 @@ function App() {
         <Radio value={'2'}>2</Radio>
         <Radio value={'3'}>3</Radio>
         <Radio value={'4'}>4</Radio>
-      </RadioGroup>
+      </RadioGroup> */}
       <br />
-
-      <Button type="primary">click me</Button>
-      <Button></Button>
-      <Button type="primary" className="violetButton">
-        primary button
-      </Button>
-      <Input size="sm" />
-      <Input size="lg" />
-      <Radio value="test">Test</Radio>
       <Button className="custom">Hello</Button>
       <Button btnType={ButtonType.Primary} disabled>
         disabled button
@@ -75,7 +123,7 @@ function App() {
       >
         Large Link
       </Button>
-      <hr />
+      {/* <hr />
       <Menu mode="vertical">
         <MenuItem>first link</MenuItem>
         <MenuItem>second link</MenuItem>
@@ -85,8 +133,8 @@ function App() {
           <MenuItem>dropdown 2</MenuItem>
           <MenuItem>dropdown 3</MenuItem>
         </SubMenu>
-      </Menu>
-      <hr />
+      </Menu> */}
+      {/* <hr />
       <InputNumber
         value={value}
         onChange={onChange}
@@ -94,9 +142,18 @@ function App() {
         max={10}
         min={-10}
         onPressEnter={onPressEnter}
-        disabled
-      />
+      /> */}
       <hr />
+
+      <Cascader
+        value={cascaderValue}
+        onChange={onCascaderChange}
+        placeholder="请选择"
+        options={options}
+        // disabled={true}
+        // changeOnSelect={true}
+        // status="success"
+      />
     </div>
   )
 }

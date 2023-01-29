@@ -342,5 +342,13 @@ $number-input-width: 6rem !default;
 $number-input-width-lg: $number-input-width * 1.25 !default;
 $number-input-width-sm: $number-input-width * 0.875 !default;
 
+// cascader
+$cascader-optionList-border-left: 1px solid $gray-400 !default;
+$cascader-optionItem-padding-right: 1.8rem !default;
+$cascader-optionList-height: 12rem !default;
+$cascader-optionsWrap-top: $input-line-height + 1rem !default;
+$cascader-optionItem-hover-color: $gray-200 !default;
+$cascader-optionItem-icon-padding-right: 0.5rem !default;
+
 // radio
 $radio-disabled-color: $gray-600 !default;
