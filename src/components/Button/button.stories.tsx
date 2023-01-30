@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Button, { ButtonType, ButtonSize } from './button'
+import Button from './button'
 
 
 export default {
@@ -26,34 +26,34 @@ Default.args = {
 //Large Button
 export const Large = Template.bind({});
 Large.args = {
-    size: ButtonSize.Large,
+    size: 'lg',
     children: 'Large Button',
 }
 //small Button
 export const Small = Template.bind({});
 Small.args = {
-    size: ButtonSize.Small,
+    size: 'sm',
     children: 'Small Button',
 }
 
 //primary Button
 export const Primary = Template.bind({});
 Primary.args = {
-    btnType: ButtonType.Primary,
+    btnType: 'primary',
     children: 'Primary Button',
 }
 
 //danger Button
 export const Danger = Template.bind({});
 Danger.args = {
-    btnType: ButtonType.Danger,
+    btnType: 'danger',
     children: 'Danger Button',
 }
 
 //link Button
 export const Link = Template.bind({});
 Link.args = {
-    btnType: ButtonType.Link,
+    btnType: 'link',
     children: 'Link Button',
     href: 'https://google.com'
 }

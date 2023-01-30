@@ -35,7 +35,7 @@ export const BasicForm = () => {
                 <Input placeholder="no-label"/>
             </FormItem>
             <div className="violet-form-submit-area">
-                <Button type="submit" btnType={ButtonType.Primary}>sign in</Button>
+                <Button type="submit" btnType='primary'>sign in</Button>
             </div>
         </Form>
     )
