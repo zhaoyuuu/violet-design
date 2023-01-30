@@ -26,15 +26,15 @@
       box-shadow: none;
     }
   }
-  &:not(.VioletSwitch-disabled):active {
-    .VioletSwitch-handle {
+  &:not(.VioletSwitch--disabled):active {
+    .VioletSwitch_handle {
       &::before {
         right: -30%;
         left: 0;
       }
     }
-    &.VioletSwitch-checked {
-      .VioletSwitch-handle {
+    &.VioletSwitch--checked {
+      .VioletSwitch_handle {
         &::before {
           right: 0;
           left: -30%;
@@ -45,36 +45,37 @@
 }
 
 @each $key, $val in $theme-colors {
-  .VioletSwitch-checked.VioletSwitch-#{$key} {
+  .VioletSwitch--checked.VioletSwitch--#{$key} {
     background-color: $val;
     &:focus {
       box-shadow: 0 0 0 2px #e6f7ff;
     }
-    .VioletSwitch-inner {
+    .VioletSwitch_inner {
       margin: 0 25px 0 7px;
     }
-    .VioletSwitch-handle {
+    .VioletSwitch_handle {
       left: calc(100% - 18px - 2px);
     }
-    .VioletSwitch-loading-icon {
+    .VioletSwitch_loadingIcon {
       color: #1890ff;
     }
   }
 }
 
-.VioletSwitch-loading,
-.VioletSwitch-disabled {
+.VioletSwitch--loading,
+.VioletSwitch--disabled {
   cursor: not-allowed;
   opacity: 0.4;
 }
 
-.VioletSwitch-loading *,
-.VioletSwitch-disabled * {
+.VioletSwitch--loading *,
+.VioletSwitch--disabled * {
   box-shadow: none;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
-.VioletSwitch-inner {
+.VioletSwitch_inner {
   display: block;
   margin: 0 7px 0 25px;
   color: #fff;
@@ -82,7 +83,7 @@
   transition: margin 0.2s;
 }
 
-.VioletSwitch-handle {
+.VioletSwitch_handle {
   position: absolute;
   top: 2px;
   left: 2px;
@@ -102,7 +103,7 @@
     content: '';
   }
 }
-.VioletSwitch-loading-icon {
+.VioletSwitch_loadingIcon {
   &.anticon {
     position: relative;
     top: 2px;
@@ -110,27 +111,27 @@
     vertical-align: top;
   }
 }
-.VioletSwitch-small {
+.VioletSwitch--small {
   min-width: 28px;
   height: 16px;
   line-height: 16px;
-  .VioletSwitch-inner {
+  .VioletSwitch_inner {
     margin: 0 5px 0 18px;
     font-size: 12px;
   }
-  .VioletSwitch-handle {
+  .VioletSwitch_handle {
     width: 12px;
     height: 12px;
   }
-  .VioletSwitch-loading-icon {
+  .VioletSwitch_loadingIcon {
     top: 1.5px;
     font-size: 9px;
   }
-  &.VioletSwitch-checked {
-    .VioletSwitch-inner {
+  &.VioletSwitch--checked {
+    .VioletSwitch_inner {
       margin: 0 18px 0 5px;
     }
-    .VioletSwitch-handle {
+    .VioletSwitch_handle {
       left: calc(100% - 12px - 2px);
     }
   }

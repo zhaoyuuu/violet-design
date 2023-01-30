@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import Switch, { ThemeProps } from './switch'
+import Switch, { ThemeProps } from './switcher'
 
 describe('Switch', () => {
   it('render correctly', () => {
@@ -17,19 +17,19 @@ describe('Switch', () => {
   it('render small size', () => {
     const { getByRole } = render(<Switch size="small" />)
     const switchBtn = getByRole('Switch')
-    expect(switchBtn).toHaveClass('VioletSwitch-small')
+    expect(switchBtn).toHaveClass('VioletSwitch--small')
   })
 
   it('render checked', () => {
     const { getByRole } = render(<Switch checked />)
     const switchBtn = getByRole('Switch')
-    expect(switchBtn).toHaveClass('VioletSwitch-checked')
+    expect(switchBtn).toHaveClass('VioletSwitch--checked')
   })
 
   it('render disabled', () => {
     const { getByRole } = render(<Switch disabled />)
     const switchBtn = getByRole('Switch')
-    expect(switchBtn).toHaveClass('VioletSwitch-disabled')
+    expect(switchBtn).toHaveClass('VioletSwitch--disabled')
   })
 
   it('render with different theme', () => {

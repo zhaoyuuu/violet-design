@@ -40,16 +40,16 @@ export const Tabs: FC<TabsProps> = props => {
   }
 
   const tabsClass = classNames({
-    'violetTabs-horizontal': mode !== 'vertical' && mode !== null,
-    'violetTabs-vertical': mode === 'vertical',
+    'violetTabs--horizontal': mode !== 'vertical' && mode !== null,
+    'violetTabs--vertical': mode === 'vertical',
   })
 
   const contentClass = classNames({
-    'violetTabs-content-horizontal': mode !== 'vertical' && mode !== null,
-    'violetTabs-content-vertical': mode === 'vertical',
+    'violetTabs_content--horizontal': mode !== 'vertical' && mode !== null,
+    'violetTabs_content--vertical': mode === 'vertical',
   })
 
-  const navClass = classNames('violetTabs-nav', {
+  const navClass = classNames('violetTabs_nav', {
     'nav-line': type === 'line',
     'nav-card': type === 'card',
     'nav-vertical': mode === 'vertical' && type === 'line',
@@ -59,14 +59,14 @@ export const Tabs: FC<TabsProps> = props => {
     return React.Children.map(children, (child, index) => {
       const childElement = child as FunctionComponentElement<TabItemProps>
       const { label, disabled } = childElement.props
-      const classes = classNames('violetTabs-nav-item', {
-        'is-active': activeIndex === index,
+      const classes = classNames('violetTabs_navItem', {
+        isActive: activeIndex === index,
         disabled: disabled,
       })
       return (
         <li
           className={classes}
-          key={`nav-item-${index}`}
+          key={`navItem-${index}`}
           onClick={e => {
             handleClick(e, index, disabled)
           }}
@@ -88,7 +88,7 @@ export const Tabs: FC<TabsProps> = props => {
   return (
     <div className={`violetTabs ${className} ${tabsClass}`}>
       <ul className={navClass}>{renderNavLinks()}</ul>
-      <div className={`violetTabs-content ${contentClass}`}>
+      <div className={`violetTabs_content ${contentClass}`}>
         {renderContent()}
       </div>
     </div>

@@ -6,7 +6,7 @@ import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
 import Icon from './components/Icon'
-import Switch from './components/Switch'
+import Switch from './components/Switcher'
 import Tabs from './components/Tabs/tabs'
 import TabItem from './components/Tabs/tabItem'
 import Cascader from './components/Cascader/cascader'
@@ -17,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+      <Switch disabled></Switch>
       <Input size="sm" />
       <Input size="lg" />
       {/* <Radio value="test">Test</Radio>

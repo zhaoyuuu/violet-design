@@ -31,8 +31,6 @@ export const Switch: React.FC<SwitchProps> = props => {
     disabled,
     defaultChecked,
     checked: pchecked,
-    children,
-    style,
     size,
     checkedChildren,
     unCheckedChildren,
@@ -47,21 +45,22 @@ export const Switch: React.FC<SwitchProps> = props => {
     if ('checked' in props && pchecked !== undefined) {
       setChecked(pchecked)
     }
-  }, [pchecked])
-
+  }, [pchecked, props])
   const handleClick = () => {
-    if (!('checked' in props)) {
-      setChecked(!checked)
-    }
+    if (!disabled) {
+      if (!('checked' in props)) {
+        setChecked(!checked)
+      }
 
-    onChange?.(!checked)
+      onChange?.(!checked)
+    }
   }
   const cls = classNames({
     VioletSwitch: true,
-    'VioletSwitch-small': size === 'small',
-    'VioletSwitch-checked': checked,
-    'VioletSwitch-disabled': disabled,
-    [`VioletSwitch-${theme}`]: theme,
+    'VioletSwitch--small': size === 'small',
+    'VioletSwitch--checked': checked,
+    'VioletSwitch--disabled': disabled,
+    [`VioletSwitch--${theme}`]: theme,
     [className as string]: !!className,
   })
 
@@ -74,8 +73,8 @@ export const Switch: React.FC<SwitchProps> = props => {
       className={cls}
       onClick={handleClick}
     >
-      <div className="VioletSwitch-handle"></div>
-      <span className="VioletSwitch-inner">
+      <div className="VioletSwitch_handle"></div>
+      <span className="VioletSwitch_inner">
         {checked ? checkedChildren : unCheckedChildren}
       </span>
     </button>

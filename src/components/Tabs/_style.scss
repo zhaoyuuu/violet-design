@@ -1,4 +1,4 @@
-.violetTabs-nav {
+.violetTabs__nav {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -7,7 +7,7 @@
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
   flex-direction: row; /* 默认水平 */
 }
-.violetTabs-nav-item {
+.violetTabs__navItem {
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
   cursor: pointer;
@@ -16,20 +16,20 @@
     color: $nav-tabs-link-hover-color;
   }
   // Disabled state lightens text
-  &.disabled {
+  &.--disabled {
     color: $nav-link-disabled-color;
     pointer-events: none;
     cursor: default;
     background-color: transparent;
     border-color: transparent;
   }
-  &.is-active {
+  &.isActive {
     color: $nav-tabs-link-active-color;
   }
 }
 .nav-line {
-  .violetTabs-nav-item {
-    &.is-active {
+  .violetTabs__navItem {
+    &.isActive {
       border-bottom: $nav-tabs-border-width * 2 solid
         $nav-tabs-link-active-color;
     }
@@ -37,10 +37,10 @@
 }
 
 .nav-card {
-  .violetTabs-nav-item {
+  .violetTabs__navItem {
     border: $nav-tabs-border-width solid transparent;
     margin-bottom: -$nav-tabs-border-width;
-    &.is-active {
+    &.isActive {
       @include border-top-radius($nav-tabs-border-radius);
       background-color: $nav-tabs-link-active-bg;
       border-color: $nav-tabs-link-active-border-color;
@@ -48,7 +48,7 @@
   }
 }
 
-.nav-vertical {
+.nav--vertical {
   width: fit-content;
   box-sizing: border-box;
   display: flex;
@@ -56,29 +56,29 @@
   border-bottom: 0px;
   margin: 0;
   border-right: $nav-tabs-border-width solid $nav-tabs-border-color;
-  > .violetTabs-nav-item {
+  > .violetTabs__navItem {
     border-left: $menu-item-active-border-width solid transparent;
-    &.is-active {
+    &.isActive {
       border-bottom: 0px;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
   }
 }
 
-.violetTabs-content-horizontal {
+.violetTabs__content--horizontal {
   display: flex;
   flex-wrap: nowrap;
   align-items: stretch;
 }
 
-.violetTabs-vertical {
+.violetTabs--vertical {
   display: flex;
 }
 
-.violetTabs-content-vertical {
+.violetTabs__content--vertical {
   margin-left: $nav-tabs-content-margin;
 }
 
-.violetTabs-content-horizontal {
+.violetTabs-content--horizontal {
   margin-top: $nav-tabs-content-margin;
 }
