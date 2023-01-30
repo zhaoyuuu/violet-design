@@ -357,3 +357,13 @@ $nav-tabs-link-active-color: $primary !default;
 $nav-tabs-link-active-bg: $body-bg !default;
 $nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
 $nav-tabs-content-margin: 1rem !default;
+// cascader
+$cascader-optionList-border-left: 1px solid $gray-400 !default;
+$cascader-optionItem-padding-right: 1.8rem !default;
+$cascader-optionList-height: 12rem !default;
+$cascader-optionsWrap-top: $input-line-height + 1rem !default;
+$cascader-optionItem-hover-color: $gray-200 !default;
+$cascader-optionItem-icon-padding-right: 0.5rem !default;
+
+// radio
+$radio-disabled-color: $gray-600 !default;

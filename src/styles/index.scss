@@ -6,6 +6,7 @@
 // config
 @import './variables';
 
+<<<<<<< HEAD
 //switch
 @import '../components/Switch/style';
 
@@ -14,3 +15,10 @@
 
 //icon
 @import '../components/Icon/style';
+=======
+// button
+@import '../components/Button/style';
+
+//mixin
+@import 'mixin';
+>>>>>>> 820e99ea165795818a954e1e69f507a8719cf526
