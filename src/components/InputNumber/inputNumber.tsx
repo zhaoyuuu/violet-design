@@ -4,6 +4,7 @@ import './inputNumber.scss'
 
 type Status = 'default' | 'error' | 'warning' | 'success'
 export interface IInputNumberProps {
+  placeholder?: string
   /** 自动获取焦点 */
   autoFocus?: boolean
   /** 是否显示增减按钮 */
@@ -37,6 +38,7 @@ export interface IInputNumberProps {
  * 当需要获取标准数值时。
  */
 export const InputNumber: React.FC<IInputNumberProps> = ({
+  placeholder,
   autoFocus = false,
   controls = true,
   disabled = false,
@@ -113,6 +115,7 @@ export const InputNumber: React.FC<IInputNumberProps> = ({
         max={max}
         onKeyDown={handleKeyDown}
         disabled={disabled}
+        placeholder={placeholder}
       />
       {/* 上下箭头 */}
       {controls && (
