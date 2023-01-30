@@ -73,8 +73,8 @@ export const Switch: React.FC<SwitchProps> = props => {
       className={cls}
       onClick={handleClick}
     >
-      <div className="VioletSwitch_handle"></div>
-      <span className="VioletSwitch_inner">
+      <div className="VioletSwitch__handle"></div>
+      <span className="VioletSwitch__inner">
         {checked ? checkedChildren : unCheckedChildren}
       </span>
     </button>

@@ -27,14 +27,14 @@
     }
   }
   &:not(.VioletSwitch--disabled):active {
-    .VioletSwitch_handle {
+    .VioletSwitch__handle {
       &::before {
         right: -30%;
         left: 0;
       }
     }
     &.VioletSwitch--checked {
-      .VioletSwitch_handle {
+      .VioletSwitch__handle {
         &::before {
           right: 0;
           left: -30%;
@@ -50,13 +50,13 @@
     &:focus {
       box-shadow: 0 0 0 2px #e6f7ff;
     }
-    .VioletSwitch_inner {
+    .VioletSwitch__inner {
       margin: 0 25px 0 7px;
     }
-    .VioletSwitch_handle {
+    .VioletSwitch__handle {
       left: calc(100% - 18px - 2px);
     }
-    .VioletSwitch_loadingIcon {
+    .VioletSwitch__loadingIcon {
       color: #1890ff;
     }
   }
@@ -75,7 +75,7 @@
   pointer-events: none;
 }
 
-.VioletSwitch_inner {
+.VioletSwitch__inner {
   display: block;
   margin: 0 7px 0 25px;
   color: #fff;
@@ -83,7 +83,7 @@
   transition: margin 0.2s;
 }
 
-.VioletSwitch_handle {
+.VioletSwitch__handle {
   position: absolute;
   top: 2px;
   left: 2px;
@@ -103,7 +103,7 @@
     content: '';
   }
 }
-.VioletSwitch_loadingIcon {
+.VioletSwitch__loadingIcon {
   &.anticon {
     position: relative;
     top: 2px;
@@ -115,23 +115,23 @@
   min-width: 28px;
   height: 16px;
   line-height: 16px;
-  .VioletSwitch_inner {
+  .VioletSwitch__inner {
     margin: 0 5px 0 18px;
     font-size: 12px;
   }
-  .VioletSwitch_handle {
+  .VioletSwitch__handle {
     width: 12px;
     height: 12px;
   }
-  .VioletSwitch_loadingIcon {
+  .VioletSwitch__loadingIcon {
     top: 1.5px;
     font-size: 9px;
   }
   &.VioletSwitch--checked {
-    .VioletSwitch_inner {
+    .VioletSwitch__inner {
       margin: 0 18px 0 5px;
     }
-    .VioletSwitch_handle {
+    .VioletSwitch__handle {
       left: calc(100% - 12px - 2px);
     }
   }

@@ -45,8 +45,8 @@ export const Tabs: FC<TabsProps> = props => {
   })
 
   const contentClass = classNames({
-    'violetTabs_content--horizontal': mode !== 'vertical' && mode !== null,
-    'violetTabs_content--vertical': mode === 'vertical',
+    'violetTabs__content--horizontal': mode !== 'vertical' && mode !== null,
+    'violetTabs__content--vertical': mode === 'vertical',
   })
 
   const navClass = classNames('violetTabs_nav', {
@@ -88,7 +88,7 @@ export const Tabs: FC<TabsProps> = props => {
   return (
     <div className={`violetTabs ${className} ${tabsClass}`}>
       <ul className={navClass}>{renderNavLinks()}</ul>
-      <div className={`violetTabs_content ${contentClass}`}>
+      <div className={`violetTabs__content ${contentClass}`}>
         {renderContent()}
       </div>
     </div>

@@ -8,10 +8,10 @@ describe('Switch', () => {
     const switchBtn = getByRole('Switch')
     expect(switchBtn).toBeInTheDocument()
     expect(switchBtn).toHaveClass('VioletSwitch')
-    expect(switchBtn).toHaveClass('VioletSwitch-primary')
-    expect(switchBtn).not.toHaveClass('VioletSwitch-small')
-    expect(switchBtn).not.toHaveClass('VioletSwitch-checked')
-    expect(switchBtn).not.toHaveClass('VioletSwitch-disabled')
+    expect(switchBtn).toHaveClass('VioletSwitch--primary')
+    expect(switchBtn).not.toHaveClass('VioletSwitch--small')
+    expect(switchBtn).not.toHaveClass('VioletSwitch--checked')
+    expect(switchBtn).not.toHaveClass('VioletSwitch--disabled')
   })
 
   it('render small size', () => {
@@ -36,7 +36,7 @@ describe('Switch', () => {
     const theme: ThemeProps = 'danger'
     const { getByRole } = render(<Switch theme={theme} />)
     const switchBtn = getByRole('Switch')
-    const className = `VioletSwitch-${theme}`
+    const className = `VioletSwitch--${theme}`
     expect(switchBtn).toHaveClass(className)
   })
 
