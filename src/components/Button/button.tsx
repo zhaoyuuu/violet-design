@@ -2,17 +2,19 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import './style.scss';
 
-export enum ButtonSize {
-    Large = 'lg',
-    Small = 'sm'
-}
+// export enum ButtonSize {
+//     Large = 'lg',
+//     Small = 'sm'
+// }
+export type ButtonSize = 'lg' | 'sm'
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
-export enum ButtonType {
-    Primary = 'primary',
-    Default = 'default',
-    Danger = 'danger',
-    Link = 'link'
-}
+// export enum ButtonType {
+//     Primary = 'primary',
+//     Default = 'default',
+//     Danger = 'danger',
+//     Link = 'link'
+// }
 
 interface BaseButtonProps {
     className?: string;
@@ -43,10 +45,10 @@ export const Button = (props: ButtonProps) => {
         className, {
         [`violetButton--${btnType}`]: btnType,
         [`violetButton--${size}`]: size,
-        'violetButton--disabled': (btnType === ButtonType.Link) && disabled,
+        'violetButton--disabled': (btnType === 'link') && disabled,
     
         })
-    if (btnType === ButtonType.Link && href) {
+    if (btnType === 'link' && href) {
         return (
             <a
             className={cls}
@@ -65,7 +67,7 @@ export const Button = (props: ButtonProps) => {
 
 Button.defaultProps = {
     disabled: false,
-    btnType: ButtonType.Default
+    btnType: 'default'
 }
 
 export default Button

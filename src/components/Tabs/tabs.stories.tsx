@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import Tabs from './tabs'
 import TabItem from './tabItem'
-import Icon from '../Icon'
+import Icon from '../Icon/Icon'
 export default {
   title: 'Tabs',
   id: 'Tabs',

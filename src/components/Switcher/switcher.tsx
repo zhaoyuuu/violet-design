@@ -56,11 +56,11 @@ export const Switch: React.FC<SwitchProps> = props => {
     }
   }
   const cls = classNames({
-    VioletSwitch: true,
-    'VioletSwitch--small': size === 'small',
-    'VioletSwitch--checked': checked,
-    'VioletSwitch--disabled': disabled,
-    [`VioletSwitch--${theme}`]: theme,
+    violetSwitch: true,
+    'violetSwitch--small': size === 'small',
+    'violetSwitch--checked': checked,
+    'violetSwitch--disabled': disabled,
+    [`violetSwitch--${theme}`]: theme,
     [className as string]: !!className,
   })
 
@@ -73,8 +73,8 @@ export const Switch: React.FC<SwitchProps> = props => {
       className={cls}
       onClick={handleClick}
     >
-      <div className="VioletSwitch__handle"></div>
-      <span className="VioletSwitch__inner">
+      <div className="violetSwitch__handle"></div>
+      <span className="violetSwitch__inner">
         {checked ? checkedChildren : unCheckedChildren}
       </span>
     </button>
