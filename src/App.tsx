@@ -39,34 +39,21 @@ function App() {
       <Button btnType="primary" disabled>
         disabled button
       </Button>
-      <Button
-        size='lg'
-        btnType="primary"
-        className="violetButton"
-      >
+      <Button size="lg" btnType="primary" className="violetButton">
         Large Primary
       </Button>
-      <Button
-        size='sm'
-        btnType="danger"
-        className="violetButton"
-      >
+      <Button size="sm" btnType="danger" className="violetButton">
         Small Danger
       </Button>
       <Button
-        size='lg'
+        size="lg"
         btnType="link"
         href="http://www.baidu.com"
         className="violetButton"
       >
         Large Link
       </Button>
-      <Button
-        size='lg'
-        btnType="link"
-        disabled
-        className="violetButton"
-      >
+      <Button size="lg" btnType="link" disabled className="violetButton">
         Large Link
       </Button>
     </div>
