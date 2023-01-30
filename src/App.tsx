@@ -10,7 +10,7 @@ import Switch from './components/Switcher'
 import Tabs from './components/Tabs/tabs'
 import TabItem from './components/Tabs/tabItem'
 import Cascader from './components/Cascader/cascader'
-import Button, { ButtonType, ButtonSize } from './components/Button/button'
+import Button from './components/Button/button'
 import Input from './components/Input/Input'
 
 function App() {
