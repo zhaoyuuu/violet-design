@@ -40,20 +40,11 @@
   border-color: $border;
 }
 
-<<<<<<< HEAD
-=======
-}
-
->>>>>>> 8b822eb18172725900b67760d3b4e45a24dcd2f0
 @mixin zoom-animation(
   $direction: 'top',
   $scaleStart: scaleY(0),
   $scaleEnd: scaleY(1),
-<<<<<<< HEAD
-  $origin: center top
-=======
   $origin: center top,
->>>>>>> 8b822eb18172725900b67760d3b4e45a24dcd2f0
 ) {
   .zoom-in-#{$direction}-enter {
     opacity: 0;
@@ -62,14 +53,9 @@
   .zoom-in-#{$direction}-enter-active {
     opacity: 1;
     transform: $scaleEnd;
-<<<<<<< HEAD
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
       opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
     transform-origin: $origin;
-=======
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-    transform-origin: $origin
->>>>>>> 8b822eb18172725900b67760d3b4e45a24dcd2f0
   }
   .zoom-in-#{$direction}-exit {
     opacity: 1;
@@ -77,7 +63,6 @@
   .zoom-in-#{$direction}-exit-active {
     opacity: 0;
     transform: $scaleStart;
-<<<<<<< HEAD
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
       opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
     transform-origin: $origin;
@@ -98,9 +83,3 @@
   border-top-left-radius: $raduis;
   border-top-right-radius: $raduis;
 }
-=======
-    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
-    transform-origin: $origin;
-  }
-}
->>>>>>> 8b822eb18172725900b67760d3b4e45a24dcd2f0
