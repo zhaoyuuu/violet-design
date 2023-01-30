@@ -90,34 +90,34 @@ function App() {
       </RadioGroup> */}
       <br />
       <Button className="custom">Hello</Button>
-      <Button btnType={ButtonType.Primary} disabled>
+      <Button btnType="primary" disabled>
         disabled button
       </Button>
       <Button
-        size={ButtonSize.Large}
-        btnType={ButtonType.Primary}
+        size='lg'
+        btnType="primary"
         className="violetButton"
       >
         Large Primary
       </Button>
       <Button
-        size={ButtonSize.Small}
-        btnType={ButtonType.Danger}
+        size='sm'
+        btnType="danger"
         className="violetButton"
       >
         Small Danger
       </Button>
       <Button
-        size={ButtonSize.Large}
-        btnType={ButtonType.Link}
+        size='lg'
+        btnType="link"
         href="http://www.baidu.com"
         className="violetButton"
       >
         Large Link
       </Button>
       <Button
-        size={ButtonSize.Large}
-        btnType={ButtonType.Link}
+        size='lg'
+        btnType="link"
         disabled
         className="violetButton"
       >
