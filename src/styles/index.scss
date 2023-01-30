@@ -1,9 +1,19 @@
 // layout
 @import './reboot';
 
+@import './mixin';
+
 // config
 @import './variables';
 
+//switch
+@import '../components/Switcher/style';
+
+//tabs
+@import '../components/Tabs/style';
+
+//icon
+@import '../components/Icon/style';
 // button
 //@import '../components/Button/style';
 

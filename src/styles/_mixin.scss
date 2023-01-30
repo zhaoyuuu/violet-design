@@ -1,16 +1,16 @@
-@mixin button-size($padding-x, $padding-y, $font-size, $border-raduis) {
+@mixin button-size($padding-y, $padding-x, $font-size, $border-raduis) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
-  border: $border-raduis;
+  border-radius: $border-raduis;
 }
 
 @mixin button-style(
   $background,
   $border,
   $color,
-  $hover-background:lighten($background, 7.5%),
-  $hover-border:lighten($background, 10%),
-  $hover-color: $color,
+  $hover-background: lighten($background, 7.5%),
+  $hover-border: lighten($border, 10%),
+  $hover-color: $color
 ) {
   color: $color;
   background: $background;
@@ -19,27 +19,41 @@
     color: $hover-color;
     background: $hover-background;
     border-color: $hover-border;
-}
+  }
   &:focus,
-  &:focus {
+  &.focus {
     color: $hover-color;
     background: $hover-background;
     border-color: $hover-border;
+  }
+  &:disabled,
+  &.disabled {
+    color: $color;
+    background: $background;
+    border-color: $border;
+  }
 }
-&:disabled,
-&:disabled {
+
+@mixin alert-style($background, $border, $color) {
   color: $color;
   background: $background;
   border-color: $border;
 }
 
+<<<<<<< HEAD
+=======
 }
 
+>>>>>>> 8b822eb18172725900b67760d3b4e45a24dcd2f0
 @mixin zoom-animation(
   $direction: 'top',
   $scaleStart: scaleY(0),
   $scaleEnd: scaleY(1),
+<<<<<<< HEAD
+  $origin: center top
+=======
   $origin: center top,
+>>>>>>> 8b822eb18172725900b67760d3b4e45a24dcd2f0
 ) {
   .zoom-in-#{$direction}-enter {
     opacity: 0;
@@ -48,8 +62,14 @@
   .zoom-in-#{$direction}-enter-active {
     opacity: 1;
     transform: $scaleEnd;
+<<<<<<< HEAD
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
+=======
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
     transform-origin: $origin
+>>>>>>> 8b822eb18172725900b67760d3b4e45a24dcd2f0
   }
   .zoom-in-#{$direction}-exit {
     opacity: 1;
@@ -57,7 +77,30 @@
   .zoom-in-#{$direction}-exit-active {
     opacity: 0;
     transform: $scaleStart;
+<<<<<<< HEAD
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
+  }
+}
+
+@mixin border-right-radius($raduis) {
+  border-top-right-radius: $raduis;
+  border-bottom-right-radius: $raduis;
+}
+
+@mixin border-left-radius($raduis) {
+  border-top-left-radius: $raduis;
+  border-bottom-left-radius: $raduis;
+}
+
+@mixin border-top-radius($raduis) {
+  border-top-left-radius: $raduis;
+  border-top-right-radius: $raduis;
+}
+=======
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
     transform-origin: $origin;
   }
 }
+>>>>>>> 8b822eb18172725900b67760d3b4e45a24dcd2f0

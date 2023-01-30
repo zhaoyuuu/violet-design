@@ -342,6 +342,21 @@ $number-input-width: 6rem !default;
 $number-input-width-lg: $number-input-width * 1.25 !default;
 $number-input-width-sm: $number-input-width * 0.875 !default;
 
+// Navs
+
+$nav-link-padding-y: 0.5rem !default;
+$nav-link-padding-x: 1rem !default;
+$nav-link-disabled-color: $gray-600 !default;
+
+$nav-tabs-border-color: $gray-300 !default;
+$nav-tabs-border-width: $border-width !default;
+$nav-tabs-border-radius: $border-radius !default;
+$nav-tabs-link-hover-border-color: $gray-200 $gray-200 $nav-tabs-border-color !default;
+$nav-tabs-link-hover-color: $primary !default;
+$nav-tabs-link-active-color: $primary !default;
+$nav-tabs-link-active-bg: $body-bg !default;
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
+$nav-tabs-content-margin: 1rem !default;
 // cascader
 $cascader-optionList-border-left: 1px solid $gray-400 !default;
 $cascader-optionItem-padding-right: 1.8rem !default;
