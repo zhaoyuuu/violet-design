@@ -1,7 +1,6 @@
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import Icon, { IconProps } from './Icon'
-import exp from 'constants'
 
 const defaultProps: IconProps = {
   icon: 'check',
@@ -24,6 +23,6 @@ describe('test Icon component', () => {
   it('theme icon', () => {
     const wrapper = render(<Icon {...themeProps} data-testid="theme-icon" />)
     const element = wrapper.getByTestId('theme-icon')
-    expect(element).toHaveClass('icon-success')
+    expect(element).toHaveClass('icon--success')
   })
 })
