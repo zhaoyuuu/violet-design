@@ -1,6 +1,5 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, ReactNode } from 'react'
 import cn from 'classnames'
-import './menu.scss'
 import { IMenuItemProps } from './menuItem'
 
 type selectCallback = (selectIndex: string) => void
@@ -16,6 +15,7 @@ export interface IMenuProps {
   defaultIndex?: string
   /** 横向 or 纵向 */
   mode?: Mode
+  children?: ReactNode
 }
 export interface IMenuContext {
   index: string
@@ -39,7 +39,7 @@ export const MenuContext = createContext<IMenuContext>({
  * ### 开发者注意事项
  * Menu组件的使用，需搭配 `MenuItem`/`SubMenu` 作为子组件来进行开发
  */
-export const Menu: React.FC<IMenuProps & React.PropsWithChildren> = ({
+export const Menu: React.FC<IMenuProps> = ({
   className,
   onSelect,
   style,
@@ -49,6 +49,8 @@ export const Menu: React.FC<IMenuProps & React.PropsWithChildren> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
   function handleClick(index: string) {
+    console.log(index)
+
     setActiveIndex(index)
     onSelect && onSelect(index)
   }
