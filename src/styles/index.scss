@@ -1,6 +1,7 @@
 // layout
 @import './reboot';
 
+// mixin
 @import './mixin';
 
 // config
@@ -12,10 +13,21 @@
 //tabs
 @import '../components/Tabs/style';
 
-//icon
-@import '../components/Icon/style';
-// button
-//@import '../components/Button/style';
 
-//mixin
-@import 'mixin';
+@import '../components/Icon/style';
+
+
+// button
+@import '../components/Button/style';
+
+//form
+@import '../components/Form/style';
+
+// input-number
+@import '../components/InputNumber/style';
+
+// menu
+@import '../components/Menu/style';
+
+// cascader
+@import '../components/Cascader/style';

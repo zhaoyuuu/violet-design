@@ -25,17 +25,30 @@ export default meta
 export const BasicForm = () => {
   return (
     <Form>
-      <FormItem label="user">
+
+      <FormItem label="用户名" name="username">
         <Input />
       </FormItem>
-      <FormItem label="PASSWORD">
+      <FormItem label="密码" name="password">
         <Input type="password" />
       </FormItem>
-      <FormItem>
-        <Input placeholder="no-label" />
-      </FormItem>
-      <div className="violet-form-submit-area">
-        <Button type="submit" btnType="primary">
+      <div
+        className="agreement-section"
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
+        <FormItem
+          name="agreement"
+          valuePropName="checked"
+          getValueFromEvent={e => e.target.checked}
+        >
+          <input type="checkbox" />
+        </FormItem>
+        <span className="agree-text">
+          注册即代表同意<a href="#">用户协议</a>
+        </span>
+      </div>
+      <div className="violetForm--submit_area">
+        <Button type="submit" btnType="primary" size="sm">
           sign in
         </Button>
       </div>

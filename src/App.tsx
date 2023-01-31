@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import Radio from './components/Radio/radio'
 import RadioGroup from './components/Radio/radioGroup'
 import InputNumber from './components/InputNumber/inputNumber'
-import Menu from './components/Menu/menu'
-import MenuItem from './components/Menu/menuItem'
-import SubMenu from './components/Menu/subMenu/subMenu'
-import Icon from './components/Icon/Icon'
-import Switch from './components/Switcher'
-import Tabs from './components/Tabs/tabs'
-import TabItem from './components/Tabs/tabItem'
+import Menu from './components/Menu'
 import Cascader from './components/Cascader/cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
+import Switch from './components/Switcher'
 
 // eslint-disable-next-line react/display-name
 function App() {
-  // const buttonMessage = <p>https://</p>
+
+=======
+  const [value, setValue] = useState('0')
+  const handleChange = (value: string) => {
+    setValue(value)
+  }
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
@@ -24,6 +24,8 @@ function App() {
       <Input size="lg" append=".com" />
       <Input size="sm" prepend="https://" />
       <Radio value="test">Test</Radio>
+      <InputNumber onChange={handleChange} value={value} />
+      {/* <Radio value="test">Test</Radio>
 
       <Radio value="test">Test</Radio>
       <Radio size="lg">large radio</Radio>
