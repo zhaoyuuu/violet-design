@@ -14,7 +14,7 @@ $gray-900: #212529 !default;
 $black: #000000 !default;
 
 // 基础色板
-$xunzi: #815c94 !default;
+$violet: #815c94 !default;
 $indigo: #61649f !default;
 $purple: #8076a3 !default;
 $pink: #e9d7df !default;
@@ -26,7 +26,7 @@ $teal: #96c24e !default;
 $cyan: #93d5dc !default;
 
 // 系统色板
-$primary: $xunzi !default;
+$primary: $violet !default;
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -94,13 +94,6 @@ $body-text-align: null !default;
 
 // Spacing
 $spacer: 1rem !default;
-
-$headings-margin-bottom: $spacer / 2 !default;
-$headings-font-family: null !default;
-$headings-font-style: null !default;
-$headings-font-weight: 500 !default;
-$headings-line-height: 1.2 !default;
-$headings-color: null !default;
 
 // Paragraphs
 $paragraph-margin-bottom: 1rem !default;
