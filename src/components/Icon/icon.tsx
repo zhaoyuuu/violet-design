@@ -5,10 +5,6 @@ import {
   FontAwesomeIconProps,
 } from '@fortawesome/react-fontawesome'
 import './Icon.scss'
-// 下面三行是引入字体文件，不然图标无法显示
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-library.add(fas)
 
 export type ThemeProps =
   | 'primary'
