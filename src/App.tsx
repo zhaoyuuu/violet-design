@@ -10,9 +10,10 @@ import Switch from './components/Switcher'
 
 function App() {
   const [value, setValue] = useState('0')
-  const handleChange = (val: string) => {
-    setValue(val)
+  const handleChange = (value: string) => {
+    setValue(value)
   }
+
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>

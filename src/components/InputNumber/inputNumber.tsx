@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, ChangeEvent } from 'react'
 import cn from 'classnames'
-import './inputNumber.scss'
 
 type Status = 'default' | 'error' | 'warning' | 'success'
 export interface IInputNumberProps {
@@ -61,19 +60,30 @@ export const InputNumber: React.FC<IInputNumberProps> = ({
     'voiletInputNumberWrap__inputNumber--large': size === 'large',
   })
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const value = e.currentTarget.value
+  const handleChange = () => {
+    const value = inputEl?.value as string
     if (Number(value) > max || Number(value) < min) return
     onChange(value)
   }
 
   // 键盘事件
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement> & ChangeEvent<HTMLInputElement>
+  ) => {
     switch (e.key) {
       case 'ArrowDown':
+        if (!keyboard) {
+          e.preventDefault()
+        } else {
+          handleChange()
+        }
+        break
+
       case 'ArrowUp':
         if (!keyboard) {
           e.preventDefault()
+        } else {
+          handleChange()
         }
         break
 
@@ -92,10 +102,12 @@ export const InputNumber: React.FC<IInputNumberProps> = ({
   const handleAdd = () => {
     if (disabled) return
     inputEl && inputEl.stepUp()
+    handleChange()
   }
   const handleReduce = () => {
     if (disabled) return
     inputEl && inputEl.stepDown()
+    handleChange()
   }
   useEffect(() => {
     inputEl = input.current
