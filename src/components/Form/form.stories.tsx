@@ -2,8 +2,9 @@ import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 import Form from './form'
 import FormItem from './formItem'
-import Input from '../Input/Input'
+import Input from '../Input/input'
 import Button, { ButtonType } from '../Button/button'
+import exp from 'constants'
 
 const meta: ComponentMeta<typeof Form> = {
   title: 'Form 组件',
@@ -23,11 +24,11 @@ export default meta
 
 export const BasicForm = () => {
   return (
-    <Form initialValues={{ username: 'violetUI', agreement: true }}>
+    <Form>
       <FormItem
         label="用户名"
         name="username"
-        rules={[{ type: 'email', required: true }]}
+        rules={[{ type: 'string', required: true, min: 3 }]}
       >
         <Input />
       </FormItem>
