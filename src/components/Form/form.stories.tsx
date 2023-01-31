@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 import Form from './form'
 import FormItem from './formItem'
-import Input from '../Input/input'
+import Input from '../Input/Input'
 import Button, { ButtonType } from '../Button/button'
 import exp from 'constants'
 
@@ -25,7 +25,6 @@ export default meta
 export const BasicForm = () => {
   return (
     <Form>
-
       <FormItem label="用户名" name="username">
         <Input />
       </FormItem>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Input } from './input'
+import { Input } from './Input'
 export default {
   title: 'Input 组件',
   id: 'Input',

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Icon, { IconProps } from './Icon'
+import Icon, { IconProps } from './icon'
 
 const defaultProps: IconProps = {
   icon: 'check',
