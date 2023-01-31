@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import InputNumber from './inputNumber'
 
 import { ComponentMeta, ComponentStory } from '@storybook/react'
@@ -14,8 +14,8 @@ export default InputNumberMeta
 // 页面
 const Template: ComponentStory<typeof InputNumber> = args => {
   const [value, setValue] = useState('0')
-  const onChange = (val: string) => {
-    setValue(val)
+  const onChange = (value: string) => {
+    setValue(value)
   }
   return <InputNumber {...args} value={value} onChange={onChange} />
 }

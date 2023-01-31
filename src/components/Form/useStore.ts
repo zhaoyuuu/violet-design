@@ -1,6 +1,5 @@
 import { useState, useReducer } from 'react'
-
-// import Schema, { RuleItem, ValidateError } from 'async-validator';
+import Schema, { RuleItem, ValidateError } from 'async-validator';
 // import mapValues from 'lodash-es/mapValues'
 // import each from 'lodash-es/each'
 
@@ -9,9 +8,9 @@ import { useState, useReducer } from 'react'
 export interface FieldDetail {
   name: string;
   value: string;
-  rules: any[];
+  rules: RuleItem[];
   isValid: boolean;
-  errors: any[];
+  errors: ValidateError[];
 }
 
 export interface FieldsState {
@@ -30,30 +29,38 @@ export interface FormState {
 //   errors: Record<string, ValidateError[]>
 }
 export interface FieldsAction {
-  type: 'addField' | 'updateValue' ;
+  type: 'addField' | 'updateValue' | 'updateValidateResult';
   name: string;
   value: any;
 }
 function fieldsReducer(state: FieldsState, action: FieldsAction): FieldsState {
   switch (action.type) {
-    case 'addField':
+    case 'addField': {
       return {
         ...state,
         [action.name]: { ...action.value }
       }
-    case 'updateValue':
+    }
+
+    case 'updateValue':{
       return {
         ...state,
         [action.name]: { ...state[action.name], value: action.value }
       }
-    // case 'updateValidateResult':
-    //   const { isValid, errors } = action.value
-    //   return {
-    //     ...state,
-    //     [action.name]: { ...state[action.name], isValid, errors }
-    //   }
-    default:
+
+    }
+      
+    case 'updateValidateResult': {
+      const { isValid, errors } = action.value
+      return {
+        ...state,
+        [action.name]: { ...state[action.name], isValid, errors }
+      }
+    }
+    default:{
       return state;
+    }
+      
   }
 }
 // * react hooks
@@ -93,31 +100,31 @@ function useStore(initialValues?: Record<string, any>) {
 //       }
 //     })
 //   }
-//   const validateField = async (name: string) => {
-//     const { value, rules } = fields[name]
-//     const afterRules = transfromRules(rules)
-//     const descriptor = {
-//       [name]: afterRules
-//     }
-//     const valueMap = {
-//       [name]: value
-//     }
-//     const validator = new Schema(descriptor)
-//     let isValid = true
-//     let errors: ValidateError[] = []
-//     try {
-//       await validator.validate(valueMap)
-//     } catch (e) {
-//       isValid = false
-//       const err = e as any
-//       console.log('e', err.errors)
-//       console.log('fields', err.fields)
-//       errors = err.errors
-//     } finally {
-//       console.log('errors', isValid)
-//       dispatch({ type: 'updateValidateResult', name, value: { isValid, errors }})
-//     }
-//   }
+  const validateField = async (name: string) => {
+    const { value, rules } = fields[name]
+    // const afterRules = transfromRules(rules)
+    const descriptor = {
+      [name]: rules
+    }
+    const valueMap = {
+      [name]: value
+    }
+    const validator = new Schema(descriptor)
+    let isValid = true
+    let errors: ValidateError[] = []
+    try {
+      await validator.validate(valueMap)
+    } catch (e) {
+      isValid = false
+      const err = e as any
+      console.log('e', err.errors)
+      console.log('fields', err.fields)
+      errors = err.errors
+    } finally {
+      console.log('errors', isValid)
+      dispatch({ type: 'updateValidateResult', name, value: { isValid, errors }})
+    }
+  }
 //   const validateAllFields = async () => {
 //     let isValid = true
 //     let errors: Record<string, ValidateError[]> = {}
@@ -155,7 +162,7 @@ function useStore(initialValues?: Record<string, any>) {
     fields,
     dispatch,
     form,
-    // validateField,
+    validateField,
     // getFieldValue,
     // validateAllFields,
     // getFieldsValue,

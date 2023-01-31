@@ -1,6 +1,3 @@
-@import '../../styles/variables';
-@import '../../styles/mixin';
-
 
 .violetForm {
     .violetRow { 
@@ -17,37 +14,37 @@
         >label {
           margin-bottom: 0;
         }
-        // >label.violet-form-item-required:before {
-        //   display: inline-block;
-        //   margin-right: 4px;
-        //   color: $danger;
-        //   font-size: 14px;
-        //   font-family: SimSun,sans-serif;
-        //   line-height: 1;
-        //   content: "*";
-        // }
+        >label.violetForm--item__required:before {
+          display: inline-block;
+          margin-right: 4px;
+          color: $danger;
+          font-size: 14px;
+          font-family: SimSun,sans-serif;
+          line-height: 1;
+          content: "*";
+        }
       }
       .violetForm--item { 
         flex-basis: 70%;
-        .violetForm--input__wrapper {
+        position: relative;
+        .input-warpper {
           margin-bottom: 0;
         }
-        // .violet-form-item-has-error.violet-form-item-control {
-        //   .violet-input-inner {
-        //     border: 1px solid $danger;
-        //     &:focus {
-        //       box-shadow: $input-focus-box-shadow-error;
-        //     }
-        //   }  
-        // }
-        // .violet-form-item-explain {
-        //   position: absolute;
-        //   bottom: -25px;
-        //   left: 0;
-        //   line-height: 25px;
-        //   color: $danger;
-        //   min-width: 100px;
-        // }
+        .violetForm--item__has__error.violetForm--item__control {
+          .input-inner {
+            border: 1px solid $danger;
+            &:focus {
+              box-shadow: $input-focus-box-shadow-error;
+            }
+          }  
+        }
+        .violetForm--item__explain {
+          position: absolute;
+          bottom: -25px;
+          left: 0;
+          line-height: 25px;
+          color: $danger;
+        }
       }
     }
     .violetForm--submit_area { 

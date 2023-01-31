@@ -23,11 +23,19 @@ export default meta
 
 export const BasicForm = () => {
   return (
-    <Form>
-      <FormItem label="用户名" name="username">
+    <Form initialValues={{ username: 'violetUI', agreement: true }}>
+      <FormItem
+        label="用户名"
+        name="username"
+        rules={[{ type: 'email', required: true }]}
+      >
         <Input />
       </FormItem>
-      <FormItem label="密码" name="password">
+      <FormItem
+        label="密码"
+        name="password"
+        rules={[{ type: 'string', required: true, min: 3, max: 8 }]}
+      >
         <Input type="password" />
       </FormItem>
       <div
