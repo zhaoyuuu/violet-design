@@ -53,4 +53,4 @@ export const RadioGroup: React.FC<RadioGroupProps> = props => {
   return <span className={classes}>{newChildren}</span>
 }
 
-export default RadioGroup;
+export default RadioGroup

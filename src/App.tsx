@@ -10,8 +10,6 @@ import Switch from './components/Switcher'
 
 // eslint-disable-next-line react/display-name
 function App() {
-
-=======
   const [value, setValue] = useState('0')
   const handleChange = (value: string) => {
     setValue(value)
@@ -25,7 +23,7 @@ function App() {
       <Input size="sm" prepend="https://" />
       <Radio value="test">Test</Radio>
       <InputNumber onChange={handleChange} value={value} />
-      {/* <Radio value="test">Test</Radio>
+      <Radio value="test">Test</Radio>
 
       <Radio value="test">Test</Radio>
       <Radio size="lg">large radio</Radio>
