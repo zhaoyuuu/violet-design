@@ -9,7 +9,7 @@ import Input from './components/Input/input'
 import Switch from './components/Switcher'
 
 // eslint-disable-next-line react/display-name
-function App() {
+function App(): JSX.Element {
   const [value, setValue] = useState('0')
   const handleChange = (value: string) => {
     setValue(value)
