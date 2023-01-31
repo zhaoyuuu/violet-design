@@ -5,21 +5,25 @@ import InputNumber from './components/InputNumber/inputNumber'
 import Menu from './components/Menu'
 import Cascader from './components/Cascader/cascader'
 import Button from './components/Button/button'
-import Input from './components/Input/Input'
+import Input from './components/Input/input'
 import Switch from './components/Switcher'
 
+// eslint-disable-next-line react/display-name
 function App() {
+
+=======
   const [value, setValue] = useState('0')
   const handleChange = (value: string) => {
     setValue(value)
   }
-
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
       <Switch disabled></Switch>
-      <Input size="sm" />
-      <Input size="lg" />
+      <Input size="sm" icon="search" />
+      <Input size="lg" append=".com" />
+      <Input size="sm" prepend="https://" />
+      <Radio value="test">Test</Radio>
       <InputNumber onChange={handleChange} value={value} />
       {/* <Radio value="test">Test</Radio>
 
@@ -32,7 +36,7 @@ function App() {
         <Radio value={'2'}>2</Radio>
         <Radio value={'3'}>3</Radio>
         <Radio value={'4'}>4</Radio>
-      </RadioGroup> */}
+      </RadioGroup>
       <br />
       <Button className="custom">Hello</Button>
       <Button btnType="primary" disabled>
