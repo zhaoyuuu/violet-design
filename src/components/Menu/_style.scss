@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+@import './subMenu/style';
 
 .violetMenu {
   margin: 0;
@@ -6,7 +6,6 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  width: fit-content;
   cursor: pointer;
   background: $menu-backgroundColor;
   border: $menu-border-width solid $menu-border-color;
@@ -20,7 +19,8 @@
       border-bottom: 0;
       &--active {
         color: $menu-item-active-color;
-        border: 0;
+      }
+      &--activeAsfirstLevelItem {
         border-left: $menu-item-active-border-width solid
           $menu-item-active-color;
       }
@@ -37,6 +37,9 @@
     &--disabled {
       color: $menu-item-disabled-color;
       cursor: $menu-item-disabled-cursor;
+      &:active {
+        color: $menu-item-disabled-color;
+      }
     }
     &--active {
       color: $menu-item-active-color;

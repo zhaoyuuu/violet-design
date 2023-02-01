@@ -44,7 +44,11 @@
   $direction: 'top',
   $scaleStart: scaleY(0),
   $scaleEnd: scaleY(1),
+<<<<<<< HEAD
   $origin: center top
+=======
+  $origin: center top,
+>>>>>>> cfa06bb30f3916d5fc293d8e5c43f2dfe36bfbaa
 ) {
   .zoom-in-#{$direction}-enter {
     opacity: 0;

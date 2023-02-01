@@ -1,13 +1,14 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState, useRef, ReactNode } from 'react'
 import cn from 'classnames'
 import { MenuContext } from '../menu'
 import { IMenuItemProps } from '../menuItem'
-import './subMenu.scss'
+import Icon from '../../Icon'
 
 export interface ISubMenuProps {
   index?: string
   title: string
   className?: string
+  children?: ReactNode
 }
 
 export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
@@ -43,9 +44,13 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
         }
       : { onClick: handleClick }
 
-  const classes = cn(className, 'violetMenu__menuItem violetMenu__subMenu', {
+  const classes = cn(className, 'violetMenu__subMenu', {
     'violetMenu__subMenu--active': context.index.startsWith(index as string),
-    'violetMenu__subMenu--show': dropdownShow,
+    'violetMenu__menuItem--activeAsfirstLevelItem':
+      context.index.startsWith(index as string) && index?.length === 1,
+  })
+  const dropdownIconClasses = cn('violetMenu__subMenu__title__icon', {
+    'violetMenu__subMenu__title__icon--arrowUp': dropdownShow,
   })
 
   const menuRef = useRef(null)
@@ -83,8 +88,9 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
     <li key={index} className={classes} {...hoverEvents} ref={menuRef}>
       <div className="violetMenu__subMenu__title" {...clickEvents}>
         {title}
+        <Icon icon="angle-down" className={dropdownIconClasses} />
       </div>
-      {renderChildren()}
+      {dropdownShow && renderChildren()}
     </li>
   )
 }

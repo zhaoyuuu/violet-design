@@ -1,7 +1,10 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
 .input-wrapper {
   display: flex;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   position: relative;
   .icon-wrapper {
     position: absolute;
@@ -18,7 +21,7 @@
     }
   }
 }
-.icon-wrapper+.input-inner {
+.icon-wrapper + .input-inner {
   padding-right: 35px;
 }
 .input-inner {
@@ -65,9 +68,10 @@
   display: flex;
   align-items: center;
   padding: $input-padding-y $input-padding-x;
-  margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
+  margin-bottom: 10; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $input-font-size; // Match inputs
-  font-weight: $font-weight-normal;
+  //   font-weight: $font-weight-normal;
+  font-weight: 100;
   line-height: $input-line-height;
   color: $input-group-addon-color;
   text-align: center;

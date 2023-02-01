@@ -1,6 +1,5 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, ReactNode } from 'react'
 import cn from 'classnames'
-import './menu.scss'
 import { IMenuItemProps } from './menuItem'
 
 type selectCallback = (selectIndex: string) => void
@@ -16,6 +15,7 @@ export interface IMenuProps {
   defaultIndex?: string
   /** 横向 or 纵向 */
   mode?: Mode
+  children?: ReactNode
 }
 export interface IMenuContext {
   index: string
@@ -37,9 +37,9 @@ export const MenuContext = createContext<IMenuContext>({
  * 一般分为**顶部导航**和**侧边导航**，顶部导航提供全局性的类目和功能，侧边导航提供多级结构来收纳和排列网站架构。
  *
  * ### 开发者注意事项
- * Menu组件的使用，需搭配 `MenuItem`/`SubMenu` 作为子组件来进行开发
+ * Menu组件的使用，需搭配 `Menu.Item`/`Menu.SubMenu` 作为子组件来进行开发
  */
-export const Menu: React.FC<IMenuProps & React.PropsWithChildren> = ({
+export const Menu: React.FC<IMenuProps> = ({
   className,
   onSelect,
   style,
@@ -78,7 +78,7 @@ export const Menu: React.FC<IMenuProps & React.PropsWithChildren> = ({
   })
 
   return (
-    <ul className={classes} style={style}>
+    <ul className={classes} style={style} data-testid="test-menu">
       <MenuContext.Provider value={passContext}>
         {renderChildren()}
       </MenuContext.Provider>

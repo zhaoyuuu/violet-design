@@ -1,10 +1,11 @@
 // layout
 @import './reboot';
 
-@import './mixin';
-
 // config
 @import './variables';
+
+//mixin
+@import 'mixin';
 
 //switch
 @import '../components/Switcher/style';
@@ -13,9 +14,31 @@
 @import '../components/Tabs/style';
 
 //icon
+<<<<<<< HEAD
 @import '../components/Icon/Icon.scss';
 // button
 //@import '../components/Button/style';
+=======
+@import '../components/Icon/style';
+>>>>>>> cfa06bb30f3916d5fc293d8e5c43f2dfe36bfbaa
 
-//mixin
-@import 'mixin';
+// button
+@import '../components/Button/style';
+
+//form
+@import '../components/Form/style';
+
+// input-number
+@import '../components/InputNumber/style';
+
+// menu
+@import '../components/Menu/style';
+
+// cascader
+@import '../components/Cascader/style';
+
+// select
+@import '../components/Select/style';
+
+//progress
+@import '../components/Progress/style';
