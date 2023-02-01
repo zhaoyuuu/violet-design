@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
 import cn from 'classnames'
-import './cascader.scss'
 import produce from 'immer'
 import { useClickAway } from 'react-use'
 

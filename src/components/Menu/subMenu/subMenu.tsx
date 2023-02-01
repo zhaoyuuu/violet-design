@@ -1,13 +1,13 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState, useRef, ReactNode } from 'react'
 import cn from 'classnames'
 import { MenuContext } from '../menu'
 import { IMenuItemProps } from '../menuItem'
-import './subMenu.scss'
 
 export interface ISubMenuProps {
   index?: string
   title: string
   className?: string
+  children?: ReactNode
 }
 
 export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
@@ -46,6 +46,8 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
   const classes = cn(className, 'violetMenu__menuItem violetMenu__subMenu', {
     'violetMenu__subMenu--active': context.index.startsWith(index as string),
     'violetMenu__subMenu--show': dropdownShow,
+    'violetMenu__menuItem--activeAsfirstLevelItem':
+      context.index === index && context.index.length === 1,
   })
 
   const menuRef = useRef(null)
