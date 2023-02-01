@@ -1,9 +1,6 @@
 // layout
 @import './reboot';
 
-// mixin
-@import './mixin';
-
 // config
 @import './variables';
 
@@ -15,7 +12,6 @@
 
 //icon
 @import '../components/Icon/style';
-
 
 // button
 @import '../components/Button/style';
@@ -35,3 +31,9 @@
 // select
 @import '../components/Select/style';
 
+//mixin
+@import 'mixin';
+
+
+//progress
+@import '../components/Progress/style';
