@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, ReactNode } from 'react'
 import cn from 'classnames'
 import { MenuContext } from './menu'
 
@@ -7,9 +7,10 @@ export interface IMenuItemProps {
   className?: string
   disabled?: boolean
   index?: string
+  children?: ReactNode
 }
 
-export const MenuItem: React.FC<IMenuItemProps & React.PropsWithChildren> = ({
+export const MenuItem: React.FC<IMenuItemProps> = ({
   style,
   className,
   disabled,

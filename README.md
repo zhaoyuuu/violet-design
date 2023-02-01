@@ -3,11 +3,11 @@
 ## 🍇 git 流程
 
 1. 将需求拆分至**更小**的模块, 同时也尽可能不损失清晰的语义, 避免多人提交代码时的冲突
-2. 在 `local repository` 中通过 `git checkout -b <BRANCHNAME> origion/master` 创建分支, 并将需求提交至分支
+2. 在 `local repository` 中通过 `git checkout -b <BRANCHNAME> origin/master` 创建分支, 并将需求提交至分支
 3. `git commit` 提交代码, commit 信息尽量遵循 [conventioanl commits](https://www.conventionalcommits.org/en/v1.0.0/), 如果有 `lint` 错误, 修复之后进行下一步
-4. `git push origion <BRANCHNAME>` 提交代码至远程仓库
+4. `git push origin <BRANCHNAME>` 提交代码至远程仓库
 5. 在 github 上发起 `pull request` , 将当前 branch 合并至 **`master`** 分支
-6. 一般的，提交完代码之后删除分支（除非该分支之后还要使用）。删除远程分支：`git push origion --delete remoteBranchName`(origion 即 https://github.com/zhaoyuuu/violetUI.git)
+6. 一般的，提交完代码之后删除分支（除非该分支之后还要使用）。删除远程分支：`git push origin --delete remoteBranchName`(origion 即 https://github.com/zhaoyuuu/violetUI.git)
 
 ## 🍸 组件录入流程
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentMeta } from '@storybook/react'
-import Icon from './Icon'
+import Icon from './icon'
 import Button from '../Button/button'
 
 export default {
