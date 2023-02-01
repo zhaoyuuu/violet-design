@@ -1,0 +1,16 @@
+@import '../../styles/index.scss';
+.violetRadio{
+  &--disabled{
+    cursor: not-allowed;
+    color: $radio-disabled-color
+  }
+
+  &--lg{
+    font-size: $font-size-lg;
+  }
+
+  &--sm{
+    font-size: $font-size-sm;
+  }
+}
+

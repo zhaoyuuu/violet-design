@@ -14,7 +14,7 @@ $gray-900: #212529 !default;
 $black: #000000 !default;
 
 // 基础色板
-$xunzi: #815c94 !default;
+$violet: #815c94 !default;
 $indigo: #61649f !default;
 $purple: #8076a3 !default;
 $pink: #e9d7df !default;
@@ -26,7 +26,7 @@ $teal: #96c24e !default;
 $cyan: #93d5dc !default;
 
 // 系统色板
-$primary: $xunzi !default;
+$primary: $violet !default;
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -94,13 +94,6 @@ $body-text-align: null !default;
 
 // Spacing
 $spacer: 1rem !default;
-
-$headings-margin-bottom: $spacer / 2 !default;
-$headings-font-family: null !default;
-$headings-font-style: null !default;
-$headings-font-weight: 500 !default;
-$headings-line-height: 1.2 !default;
-$headings-color: null !default;
 
 // Paragraphs
 $paragraph-margin-bottom: 1rem !default;
@@ -317,8 +310,9 @@ $input-focus-border-color: lighten($primary, 25%) !default;
 $input-focus-width: 0.2rem !default;
 $input-focus-color: $input-color !default;
 $input-focus-shadow-color: rgba($primary, 0.25) !default;
+$input-focus-shadow-error-color: rgba($danger, 0.5) !default;
 $input-focus-box-shadow: 0 0 0 $input-focus-width $input-focus-shadow-color !default;
-
+$input-focus-box-shadow-error: 0 0 0 $input-focus-width $input-focus-shadow-error-color !default;
 $input-placeholder-color: $gray-600 !default;
 $input-plaintext-color: $body-color !default;
 
@@ -341,3 +335,29 @@ $progress-bar-transition: width 0.6s ease !default;
 $number-input-width: 6rem !default;
 $number-input-width-lg: $number-input-width * 1.25 !default;
 $number-input-width-sm: $number-input-width * 0.875 !default;
+
+// Navs
+
+$nav-link-padding-y: 0.5rem !default;
+$nav-link-padding-x: 1rem !default;
+$nav-link-disabled-color: $gray-600 !default;
+
+$nav-tabs-border-color: $gray-300 !default;
+$nav-tabs-border-width: $border-width !default;
+$nav-tabs-border-radius: $border-radius !default;
+$nav-tabs-link-hover-border-color: $gray-200 $gray-200 $nav-tabs-border-color !default;
+$nav-tabs-link-hover-color: $primary !default;
+$nav-tabs-link-active-color: $primary !default;
+$nav-tabs-link-active-bg: $body-bg !default;
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
+$nav-tabs-content-margin: 1rem !default;
+// cascader
+$cascader-optionList-border-left: 1px solid $gray-400 !default;
+$cascader-optionItem-padding-right: 1.8rem !default;
+$cascader-optionList-height: 12rem !default;
+$cascader-optionsWrap-top: $input-line-height + 1rem !default;
+$cascader-optionItem-hover-color: $gray-200 !default;
+$cascader-optionItem-icon-padding-right: 0.5rem !default;
+
+// radio
+$radio-disabled-color: $gray-600 !default;

@@ -1,51 +1,62 @@
 import React, { useState } from 'react'
-import './App.scss'
 import Radio from './components/Radio/radio'
+import RadioGroup from './components/Radio/radioGroup'
 import InputNumber from './components/InputNumber/inputNumber'
-import Menu from './components/Menu/menu'
-import MenuItem from './components/Menu/menuItem'
-import SubMenu from './components/Menu/subMenu/subMenu'
+import Menu from './components/Menu'
+import Cascader from './components/Cascader/cascader'
 import Button from './components/Button/button'
+import Input from './components/Input/input'
+import Switch from './components/Switcher'
 
-function App() {
-  const [value, setValue] = useState('1')
-  const onChange = (val: string) => {
-    setValue(val)
+// eslint-disable-next-line react/display-name
+function App(): JSX.Element {
+  const [value, setValue] = useState('0')
+  const handleChange = (value: string) => {
+    setValue(value)
   }
-  const onPressEnter = () => {
-    alert('press enter !')
-  }
-
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+      <Switch disabled></Switch>
+      <Input size="sm" icon="search" />
+      <Input size="lg" append=".com" />
+      <Input size="sm" prepend="https://" />
       <Radio value="test">Test</Radio>
-      <Button type="primary">click me</Button>
-      <Button></Button>
-      <Button type="primary" className="violetButton">
-        primary button
+      <InputNumber onChange={handleChange} value={value} />
+      <Radio value="test">Test</Radio>
+
+      <Radio value="test">Test</Radio>
+      <Radio size="lg">large radio</Radio>
+      <Radio disabled={true}>Disabled Test</Radio>
+      <br />
+      <RadioGroup>
+        <Radio value={'1'}>1</Radio>
+        <Radio value={'2'}>2</Radio>
+        <Radio value={'3'}>3</Radio>
+        <Radio value={'4'}>4</Radio>
+      </RadioGroup>
+      <br />
+      <Button className="custom">Hello</Button>
+      <Button btnType="primary" disabled>
+        disabled button
       </Button>
-      <hr />
-      <Menu mode="vertical">
-        <MenuItem>first link</MenuItem>
-        <MenuItem>second link</MenuItem>
-        <MenuItem disabled>third link</MenuItem>
-        <SubMenu title="dropdown">
-          <MenuItem>dropdown 1</MenuItem>
-          <MenuItem>dropdown 2</MenuItem>
-          <MenuItem>dropdown 3</MenuItem>
-        </SubMenu>
-      </Menu>
-      <hr />
-      <InputNumber
-        value={value}
-        onChange={onChange}
-        step={2}
-        max={10}
-        min={-10}
-        onPressEnter={onPressEnter}
-      />
-      <hr />
+      <Button size="lg" btnType="primary" className="violetButton">
+        Large Primary
+      </Button>
+      <Button size="sm" btnType="danger" className="violetButton">
+        Small Danger
+      </Button>
+      <Button
+        size="lg"
+        btnType="link"
+        href="http://www.baidu.com"
+        className="violetButton"
+      >
+        Large Link
+      </Button>
+      <Button size="lg" btnType="link" disabled className="violetButton">
+        Large Link
+      </Button>
     </div>
   )
 }
