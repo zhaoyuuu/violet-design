@@ -30,6 +30,18 @@ export const BCardTabs: ComponentStory<typeof Tabs> = args => (
 )
 BCardTabs.storyName = '选项卡样式的Tabs'
 export const CCustomTabs: ComponentStory<typeof Tabs> = args => (
+  <Tabs {...args} mode="vertical">
+    <TabItem label="card1">this is card one</TabItem>
+    <TabItem label="card2">this is content two</TabItem>
+    <TabItem label="disabled" disabled>
+      this is content three
+    </TabItem>
+    <TabItem label="tab2">this is content two</TabItem>
+  </Tabs>
+)
+CCustomTabs.storyName = 'vertical tabs'
+
+export const DCustomTabs: ComponentStory<typeof Tabs> = args => (
   <Tabs {...args} type="card">
     <TabItem
       label={
@@ -43,4 +55,4 @@ export const CCustomTabs: ComponentStory<typeof Tabs> = args => (
     <TabItem label="tab2">this is content two</TabItem>
   </Tabs>
 )
-CCustomTabs.storyName = '自定义选项卡样式'
+DCustomTabs.storyName = '自定义选项卡样式'

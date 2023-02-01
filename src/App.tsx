@@ -5,7 +5,7 @@ import InputNumber from './components/InputNumber/inputNumber'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu/subMenu'
-import Icon from './components/Icon'
+// import Icon from './components/Icon'
 import Switch from './components/Switcher'
 import Tabs from './components/Tabs/tabs'
 import TabItem from './components/Tabs/tabItem'
@@ -17,6 +17,11 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+      <Tabs mode="vertical">
+        <TabItem label="选项卡一">this is content one</TabItem>
+        <TabItem label="选项卡二">this is content two</TabItem>
+        <TabItem label="用户管理">this is content three</TabItem>
+      </Tabs>
       <Switch disabled></Switch>
       <Input size="sm" />
       <Input size="lg" />
