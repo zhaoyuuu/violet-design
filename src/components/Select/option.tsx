@@ -30,8 +30,8 @@ export const Option: FC<SelectOptionProps> = props => {
   }
   // 拼接class
   const className = classNames('violetSelect__item', {
-    'is-disabled': disabled,
-    'is-selected': isSelected,
+    'violetSelectItem--disabled': disabled,
+    'violetSelectItem--selected': isSelected,
   })
   return (
     // 有children，则显示children；否则，有label，显示label，否则显示 value

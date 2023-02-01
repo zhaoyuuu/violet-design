@@ -45,6 +45,17 @@ export const SelectContext = createContext<IselectContext>({
   selectedValues: [],
 })
 
+/**
+ * 下拉选择器。
+ * 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。
+ * ### 引用方法
+ *
+ * ~~~js
+ * import { Select } from 'vikingship'
+ * // 然后可以使用 <Select> 和 <Select.Option>
+ * ~~~
+ */
+
 export const Select: FC<SelectProps> = props => {
   // 取出props
   const {
@@ -178,9 +189,9 @@ export const Select: FC<SelectProps> = props => {
   }
   // 类名拼接
   const className = classNames('violetSelect', {
-    'menu-is-open': menuOpen,
-    'is-disabled': disabled,
-    'is-multiple': multiple,
+    'violetSelect--menuOpen': menuOpen,
+    'violetSelect--disabled': disabled,
+    'violetSelect--multiple': multiple,
   })
   return (
     // input上的图标的动画是css写的
