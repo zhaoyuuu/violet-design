@@ -1,5 +1,23 @@
 .violetMenu__subMenu {
   position: relative;
+  border-bottom: $menu-item-active-border-width solid transparent;
+  &__title {
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    transition: $menu-item-transition;
+    border-bottom: $menu-item-active-border-width solid transparent;
+    &:active {
+      color: $menu-item-mouseDown-color;
+    }
+    &__icon {
+      margin-left: 6px;
+      width: 12px;
+      height: 12px;
+      transition: all 200ms ease-out;
+      &--arrowUp {
+        transform: rotate(180deg);
+      }
+    }
+  }
   &--active {
     color: $menu-item-active-color;
     border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
@@ -13,6 +31,16 @@
     color: #000;
     box-shadow: $submenu-box-shadow;
     background: $menu-backgroundColor;
+    opacity: 0;
+    animation: dropdownListShow 600ms ease-out forwards;
+    @keyframes dropdownListShow {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
     &__li {
       width: max-content;
@@ -27,16 +55,16 @@
 
 .violetMenu--vertical {
   .violetMenu__subMenu {
+    border-left: $menu-item-active-border-width solid transparent;
     &--active {
       border-bottom: 0;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
 
     &__dropDownList {
+      margin-left: $submenu-dropdown-margin-left;
       position: static;
       list-style: none;
-      top: 50px;
-      left: 0;
       padding: 0;
       color: #000;
       box-shadow: 0 0;
