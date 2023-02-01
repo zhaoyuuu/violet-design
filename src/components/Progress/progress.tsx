@@ -50,73 +50,87 @@ export const Progress: React.FC<ProgressProps> = props => {
     [`violetProgress--${type}`]: type !== undefined,
   })
 
-  if ('type' in props && type === 'circle') {
-    if (('success' in props && success == true) || percent >= 100) {
+  if (percent !== undefined) {
+    if ('type' in props && type === 'circle') {
+      if (('success' in props && success == true) || percent >= 100) {
+        return (
+          <div className={classes}>
+            <div
+              className="violetProgress__circle"
+              style={{
+                background: `conic-gradient(#96c24e 0deg, #96c24e 360deg)`,
+              }}
+            >
+              <div
+                className="violetProgress__circle__percent"
+                style={{ background: innerColor }}
+              >
+                {showInfo ? <label>√</label> : null}
+              </div>
+            </div>
+          </div>
+        )
+      }
+
       return (
         <div className={classes}>
           <div
             className="violetProgress__circle"
             style={{
-              background: `conic-gradient(#96c24e 0deg, #96c24e 360deg)`,
+              background: `conic-gradient(#8076a3 0deg, #8076a3 ${
+                percent * 3.6
+              }deg, #e9d7df ${percent * 3.6}deg, #e9d7df 360deg)`,
             }}
           >
             <div
               className="violetProgress__circle__percent"
               style={{ background: innerColor }}
             >
-              {showInfo ? <label>√</label> : null}
+              {showInfo ? <label> {percent}%</label> : null}
             </div>
           </div>
         </div>
       )
     }
 
-    return (
-      <div className={classes}>
-        <div
-          className="violetProgress__circle"
-          style={{
-            background: `conic-gradient(#8076a3 0deg, #8076a3 ${
-              percent * 3.6
-            }deg, #e9d7df ${percent * 3.6}deg, #e9d7df 360deg)`,
-          }}
-        >
-          <div
-            className="violetProgress__circle__percent"
-            style={{ background: innerColor }}
-          >
-            {showInfo ? <label> {percent}%</label> : null}
+    if (percent >= 100 || ('success' in props && success == true)) {
+      return (
+        <div className={classes}>
+          <div className="violetProgress__line__container">
+            <div
+              className="violetProgress__line__progress"
+              style={{ width: 240, background: '#96c24e' }}
+            ></div>
           </div>
+          {showInfo ? <label> √</label> : null}
         </div>
-      </div>
-    )
-  }
+      )
+    }
 
-  if (percent >= 100 || ('success' in props && success == true)) {
     return (
       <div className={classes}>
         <div className="violetProgress__line__container">
           <div
             className="violetProgress__line__progress"
-            style={{ width: 240, background: '#96c24e' }}
+            style={{ width: ((percent * 1.0) / 100) * 240 }}
           ></div>
         </div>
-        {showInfo ? <label> √</label> : null}
+        {showInfo ? <label> {percent}%</label> : null}
+      </div>
+    )
+  } else {
+    return (
+      <div className={classes}>
+        <div className="violetProgress__line__container">
+          <div
+            className="violetProgress__line__progress"
+            style={{ width: 0 }}
+          ></div>
+        </div>
+        {showInfo ? <label> 0%</label> : null}
       </div>
     )
   }
-
-  return (
-    <div className={classes}>
-      <div className="violetProgress__line__container">
-        <div
-          className="violetProgress__line__progress"
-          style={{ width: ((percent * 1.0) / 100) * 240 }}
-        ></div>
-      </div>
-      {showInfo ? <label> {percent}%</label> : null}
-    </div>
-  )
 }
 
 export default Progress
