@@ -1,0 +1,37 @@
+@import '../../styles/_variables.scss';
+
+.violetProgress--sm {
+  height: 20px;
+}
+
+.violetProgress--line--container {
+  width: 240px;
+  height: 25px;
+  border-radius: 25px;
+  background: #eee;
+  display: inline-block;
+}
+
+.violetProgress--line--progress {
+  height: inherit;
+  border-radius: 25px;
+  background: $primary;
+}
+
+.violetProgress--circle {
+  font-size: 50px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  mask: radial-gradient(transparent, transparent 50%, #000 51%, #000 0);
+  background: conic-gradient($purple 0deg, $purple 50deg, $pink 50deg,  $pink 360deg);
+
+
+}
+
+.violetProgress--circle--percent{
+  font-size: 50px;
+  justify-content: center;
+  text-align: center;
+}
+

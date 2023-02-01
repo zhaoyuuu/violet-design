@@ -20,18 +20,6 @@ function App() {
       <Switch disabled></Switch>
       <Input size="sm" />
       <Input size="lg" />
-      {/* <Radio value="test">Test</Radio>
-
-      <Radio value="test">Test</Radio>
-      <Radio size="lg">large radio</Radio>
-      <Radio disabled={true}>Disabled Test</Radio>
-      <br />
-      <RadioGroup>
-        <Radio value={'1'}>1</Radio>
-        <Radio value={'2'}>2</Radio>
-        <Radio value={'3'}>3</Radio>
-        <Radio value={'4'}>4</Radio>
-      </RadioGroup> */}
       <br />
       <Button className="custom">Hello</Button>
       <Button btnType="primary" disabled>
