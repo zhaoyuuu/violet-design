@@ -17,6 +17,15 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+      <Menu mode="vertical">
+        <Menu.Item>active</Menu.Item>
+        <Menu.Item disabled>disabled</Menu.Item>
+        <Menu.Item>xyz</Menu.Item>
+        <Menu.SubMenu title="dropdown">
+          <Menu.Item>drop1</Menu.Item>
+        </Menu.SubMenu>
+      </Menu>
+
       <Switch disabled></Switch>
       <Input size="sm" icon="search" />
       <Input size="lg" append=".com" />
