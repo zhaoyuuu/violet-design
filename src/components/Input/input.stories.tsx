@@ -1,18 +1,27 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Input } from './input'
+import Input from './input'
+// export default {
+//   title: 'Input 组件',
+//   id: 'Input',
+//   component: Input,
+//   decorators: [
+//     Story => (
+//       <div style={{ width: '350px' }}>
+//         <Story />
+//       </div>
+//     ),
+//   ],
+// } as ComponentMeta<typeof Input>
+
 export default {
-  title: 'Input 组件',
-  id: 'Input',
+  title: 'Input',
+  id: 'input',
   component: Input,
-  decorators: [
-    Story => (
-      <div style={{ width: '350px' }}>
-        <Story />
-      </div>
-    ),
-  ],
-} as ComponentMeta<typeof Input>
+  argTypes: {
+    style: { type: 'default' },
+  },
+}
 
 const Template: ComponentStory<typeof Input> = args => <Input {...args} />
 export const ADefault = Template.bind({})
