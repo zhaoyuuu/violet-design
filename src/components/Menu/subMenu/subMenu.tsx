@@ -45,9 +45,8 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
 
   const classes = cn(className, 'violetMenu__menuItem violetMenu__subMenu', {
     'violetMenu__subMenu--active': context.index.startsWith(index as string),
-    'violetMenu__subMenu--show': dropdownShow,
     'violetMenu__menuItem--activeAsfirstLevelItem':
-      context.index === index && context.index.length === 1,
+      context.index.startsWith(index as string) && context.index.length === 1,
   })
 
   const menuRef = useRef(null)
@@ -86,7 +85,7 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
       <div className="violetMenu__subMenu__title" {...clickEvents}>
         {title}
       </div>
-      {renderChildren()}
+      {dropdownShow && renderChildren()}
     </li>
   )
 }

@@ -4,12 +4,8 @@
     color: $menu-item-active-color;
     border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
   }
-  &--show > &__dropDownList {
-    display: block;
-  }
 
   &__dropDownList {
-    display: none;
     position: absolute;
     list-style: none;
     left: 0;

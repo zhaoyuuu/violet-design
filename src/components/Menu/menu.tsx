@@ -49,8 +49,6 @@ export const Menu: React.FC<IMenuProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
   function handleClick(index: string) {
-    console.log(index)
-
     setActiveIndex(index)
     onSelect && onSelect(index)
   }
