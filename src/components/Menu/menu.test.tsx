@@ -19,24 +19,11 @@ const generateMenu = (props: IMenuProps) => {
       <Menu.Item>xyz</Menu.Item>
       <Menu.SubMenu title="dropdown">
         <Menu.Item>drop1</Menu.Item>
+        <Menu.Item>drop2</Menu.Item>
+        <Menu.Item>drop3</Menu.Item>
       </Menu.SubMenu>
     </Menu>
   )
-}
-// 坑人的css
-const createStyleFile = () => {
-  const cssFile = `
-    .violetMenu__subMenu {
-      display: none;
-    }
-    .violetMenu__subMenu--show {
-      display:block;
-    }
-  `
-  const style = document.createElement('style')
-  style.type = 'text/css'
-  style.innerHTML = cssFile
-  return style
 }
 
 let wrapper: RenderResult,
@@ -47,7 +34,6 @@ let wrapper: RenderResult,
 describe('test menu component in default(horizontal) mode', () => {
   beforeEach(() => {
     wrapper = render(generateMenu(testProps))
-    wrapper.container.append(createStyleFile())
     menuElement = wrapper.getByTestId('test-menu')
     activeElement = wrapper.getByText('active')
     disabledElement = wrapper.getByText('disabled')
@@ -75,31 +61,28 @@ describe('test menu component in default(horizontal) mode', () => {
     expect(testProps.onSelect).not.toHaveBeenCalledWith('1')
   })
 
-  it('should show dropdown items when hover on subMenu', async () => {
-    expect(wrapper.queryByText('drop1')).not.toBeVisible()
+  it('should show dropdown items when hover on subMenu', () => {
+    expect(wrapper.queryByText('drop1')).not.toBeInTheDocument()
     const dropdownElement = wrapper.getByText('dropdown')
     fireEvent.mouseEnter(dropdownElement)
-    // await waitFor(() => {
     expect(wrapper.queryByText('drop1')).toBeVisible()
-    // })
     fireEvent.click(wrapper.getByText('drop1'))
     expect(testProps.onSelect).toHaveBeenCalledWith('3-0')
     fireEvent.mouseLeave(dropdownElement)
-    // await waitFor(() => {
-    expect(wrapper.queryByText('drop1')).not.toBeVisible()
-    // })
+    expect(wrapper.queryByText('drop1')).not.toBeInTheDocument()
   })
 })
 
 describe('test Menu component in vertical mode', () => {
   beforeEach(() => {
     wrapper2 = render(generateMenu(testVerProps))
-    wrapper2.container.append(createStyleFile())
   })
+
   it('should render vertical mode when mode is set to vertical', () => {
     const menuElement = wrapper2.getByTestId('test-menu')
     expect(menuElement).toHaveClass('violetMenu--vertical')
   })
+
   it('should show dropdown items when click on subMenu for vertical mode', () => {
     const dropDownItem = wrapper2.queryByText('drop1')
     expect(dropDownItem).toBeVisible()

@@ -4,6 +4,9 @@
 // config
 @import './variables';
 
+//mixin
+@import 'mixin';
+
 //switch
 @import '../components/Switcher/style';
 
@@ -30,10 +33,6 @@
 
 // select
 @import '../components/Select/style';
-
-//mixin
-@import 'mixin';
-
 
 //progress
 @import '../components/Progress/style';

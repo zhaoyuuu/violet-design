@@ -1,7 +1,5 @@
 import React from 'react'
-import Menu from './menu'
-import MenuItem from './menuItem'
-import SubMenu from './subMenu/subMenu'
+import Menu from './index'
 
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
@@ -9,10 +7,6 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 const menuMeta: ComponentMeta<typeof Menu> = {
   title: 'Menu 导航菜单',
   component: Menu,
-  subcomponents: {
-    SubMenu: SubMenu,
-    MenuItem: MenuItem,
-  },
 }
 
 export default menuMeta
@@ -20,14 +14,14 @@ export default menuMeta
 // 页面
 const Template: ComponentStory<typeof Menu> = args => (
   <Menu {...args}>
-    <MenuItem>first link</MenuItem>
-    <MenuItem>second link</MenuItem>
-    <MenuItem disabled>third link</MenuItem>
-    <SubMenu title="dropdown">
-      <MenuItem>dropdown 1</MenuItem>
-      <MenuItem>dropdown 2</MenuItem>
-      <MenuItem>dropdown 3</MenuItem>
-    </SubMenu>
+    <Menu.Item>active</Menu.Item>
+    <Menu.Item disabled>disabled</Menu.Item>
+    <Menu.Item>xyz</Menu.Item>
+    <Menu.SubMenu title="dropdown">
+      <Menu.Item>drop1</Menu.Item>
+      <Menu.Item>drop2</Menu.Item>
+      <Menu.Item>drop3</Menu.Item>
+    </Menu.SubMenu>
   </Menu>
 )
 
@@ -45,14 +39,14 @@ horizontalMenu.parameters = {
     source: {
       code: `
 <Menu>
-  <MenuItem>first link</MenuItem>
-  <MenuItem>second link</MenuItem>
-  <MenuItem disabled>third link</MenuItem>
-  <SubMenu title="dropdown">
-    <MenuItem>dropdown 1</MenuItem>
-    <MenuItem>dropdown 2</MenuItem>
-    <MenuItem>dropdown 3</MenuItem>
-  </SubMenu>
+  <Menu.Item>active</Menu.Item>
+  <Menu.Item disabled>disabled</Menu.Item>
+  <Menu.Item>xyz</Menu.Item>
+  <Menu.SubMenu title="dropdown">
+    <Menu.Item>drop1</Menu.Item>
+    <Menu.Item>drop2</Menu.Item>
+    <Menu.Item>drop3</Menu.Item>
+  </Menu.SubMenu>
 </Menu>
       `,
       language: 'jsx',
@@ -79,14 +73,14 @@ verticalMenu.parameters = {
     source: {
       code: `
 <Menu defaultIndex={1} mode='vertical'>
-  <MenuItem>first link</MenuItem>
-  <MenuItem>second link</MenuItem>
-  <MenuItem disabled>third link</MenuItem>
-  <SubMenu title="dropdown">
-    <MenuItem>dropdown 1</MenuItem>
-    <MenuItem>dropdown 2</MenuItem>
-    <MenuItem>dropdown 3</MenuItem>
-  </SubMenu>
+  <Menu.Item>active</Menu.Item>
+  <Menu.Item disabled>disabled</Menu.Item>
+  <Menu.Item>xyz</Menu.Item>
+  <Menu.SubMenu title="dropdown">
+    <Menu.Item>drop1</Menu.Item>
+    <Menu.Item>drop2</Menu.Item>
+    <Menu.Item>drop3</Menu.Item>
+  </Menu.SubMenu>
 </Menu>
       `,
       language: 'jsx',
