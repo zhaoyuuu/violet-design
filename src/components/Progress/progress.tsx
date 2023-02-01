@@ -1,7 +1,7 @@
 import React, { ReactNode, useState, useRef } from 'react'
 import classNames from 'classnames'
 
-export type ProgressType = 'line' | 'circle' | 'dashboard'
+export type ProgressType = 'line' | 'circle'
 export type ProgressStatus = 'success' | 'exception' | 'normal' | 'active'
 export type ProgressSize = 'lg' | 'md' | 'sm'
 
@@ -18,8 +18,8 @@ export interface ProgressProps {
   strokeLinecap?: string
   /**是否已经完成（达到100%）*/
   success?: boolean
-  /**未填充部分的颜色*/
-  trailColor?: string
+  /**圆环特有属性：内部圆环颜色*/
+  innerColor?: string
   /**进度条样式*/
   type?: ProgressType
   /**大小*/
@@ -37,7 +37,7 @@ export const Progress: React.FC<ProgressProps> = props => {
     strokeColor,
     strokeLinecap,
     success,
-    trailColor,
+    innerColor,
     type,
     className,
     children,
@@ -51,34 +51,66 @@ export const Progress: React.FC<ProgressProps> = props => {
   })
 
   if ('type' in props && type === 'circle') {
+    if (('success' in props && success == true) || percent >= 100) {
+      return (
+        <div className={classes}>
+          <div
+            className="violetProgress__circle"
+            style={{
+              background: `conic-gradient(#96c24e 0deg, #96c24e 360deg)`,
+            }}
+          >
+            <div
+              className="violetProgress__circle__percent"
+              style={{ background: innerColor }}
+            >
+              {showInfo ? <label>√</label> : null}
+            </div>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className={classes}>
         <div
-          className="violetProgress--circle"
+          className="violetProgress__circle"
           style={{
             background: `conic-gradient(#8076a3 0deg, #8076a3 ${
               percent * 3.6
             }deg, #e9d7df ${percent * 3.6}deg, #e9d7df 360deg)`,
           }}
         >
-          {percent}
+          <div
+            className="violetProgress__circle__percent"
+            style={{ background: innerColor }}
+          >
+            {showInfo ? <label> {percent}%</label> : null}
+          </div>
         </div>
       </div>
     )
-  } else if ('type' in props && type === 'dashboard') {
+  }
+
+  if (percent >= 100 || ('success' in props && success == true)) {
     return (
-      <div>
-        <progress value={(percent * 1.0) / 100}></progress>
-        {showInfo ? <label> {percent}%</label> : null}
+      <div className={classes}>
+        <div className="violetProgress__line__container">
+          <div
+            className="violetProgress__line__progress"
+            style={{ width: 240, background: '#96c24e' }}
+          ></div>
+        </div>
+        {showInfo ? <label> √</label> : null}
       </div>
     )
   }
 
   return (
     <div className={classes}>
-      <div className="violetProgress--line--container">
+      <div className="violetProgress__line__container">
         <div
-          className="violetProgress--line--progress"
+          className="violetProgress__line__progress"
           style={{ width: ((percent * 1.0) / 100) * 240 }}
         ></div>
       </div>
