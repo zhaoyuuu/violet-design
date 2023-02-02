@@ -15,7 +15,7 @@ import Input from './input'
 // } as ComponentMeta<typeof Input>
 
 export default {
-  title: 'Input',
+  title: 'Input 组件',
   id: 'input',
   component: Input,
   argTypes: {
