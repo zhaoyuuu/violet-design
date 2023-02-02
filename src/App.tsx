@@ -10,46 +10,16 @@ import Cascader from './components/Cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
 
-interface Option {
-  value: React.ReactNode
-  disabled?: boolean
-  children?: Option[]
-}
+// interface Option {
+//   value: React.ReactNode
+//   disabled?: boolean
+//   children?: Option[]
+// }
 function App() {
-  const [value, setValue] = useState<React.ReactNode[]>([])
-  const onChange = (value: React.ReactNode[]) => {
-    setValue(value)
-  }
-  const options: Option[] = [
-    {
-      value: 'zhejiang',
-      children: [
-        {
-          value: 'hangzhou',
-        },
-      ],
-    },
-    {
-      value: 'jiangsu',
-      children: [
-        {
-          value: 'nanjing',
-          children: [
-            {
-              value: 'zhonghuamen',
-            },
-          ],
-        },
-      ],
-    },
-  ]
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
 
-      <Switch disabled></Switch>
-      <Input size="sm" />
-      <Input size="lg" />
       {/* <Cascader
         value={value}
         onChange={onChange}
