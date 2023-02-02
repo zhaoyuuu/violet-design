@@ -59,7 +59,7 @@
       color: $menu-item-active-color ;
       font-weight: $font-weight-bold;
     }
-    &.violetSelectItem--selected {
+    &.violetSelectItem--disabled {
       color: $menu-item-disabled-color;
       pointer-events: none;
       cursor: default;
