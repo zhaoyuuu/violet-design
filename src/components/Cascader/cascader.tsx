@@ -14,7 +14,7 @@ export interface ProcessedOption {
   isLeaf?: boolean // 是否是叶子节点
 }
 
-interface ICascader {
+export interface ICascader {
   /** 禁用 */
   disabled?: boolean
   /** 当此项为 true 时，点选每级菜单选项值都会发生变化 */
@@ -155,7 +155,6 @@ export const Cascader: React.FC<ICascader> = ({
 
   // 选择决定的值 newVal
   const [newVal, setNewVal] = useState<React.ReactNode[]>([])
-  console.log(newVal)
   // 更新newVal
   useEffect(() => {
     setNewVal([])
