@@ -27,7 +27,8 @@
     color: $nav-tabs-link-active-color;
   }
 }
-.nav-line {
+
+.violetTabs__nav--line {
   .violetTabs__navItem {
     &.isActive {
       border-bottom: $nav-tabs-border-width * 2 solid
@@ -36,7 +37,7 @@
   }
 }
 
-.nav-card {
+.violetTabs__nav--card {
   .violetTabs__navItem {
     border: $nav-tabs-border-width solid transparent;
     margin-bottom: -$nav-tabs-border-width;

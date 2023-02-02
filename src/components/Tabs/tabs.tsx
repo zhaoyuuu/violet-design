@@ -50,8 +50,8 @@ export const Tabs: FC<TabsProps> = props => {
   })
 
   const navClass = classNames('violetTabs__nav', {
-    'nav-line': type === 'line',
-    'nav-card': type === 'card',
+    'violetTabs__nav--line': type === 'line',
+    'violetTabs__nav--card': type === 'card',
     'nav--vertical': mode === 'vertical' && type === 'line',
   })
 
