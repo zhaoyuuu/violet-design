@@ -24,6 +24,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     'no-undef': 'off',
     '@typescript-eslint/ban-types': 'warn',
+    'no-unsafe-finally': 'warn'
   },
   settings: {
     react: {
