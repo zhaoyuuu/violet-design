@@ -36,7 +36,6 @@ function App() {
       <Radio value="test">Test</Radio>
 
       <Radio value="test">Test</Radio>
-      <Radio size="lg">large radio</Radio>
       <Radio disabled={true}>Disabled Test</Radio>
       <br />
       <RadioGroup>
