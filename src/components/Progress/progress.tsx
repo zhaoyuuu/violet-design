@@ -118,6 +118,38 @@ export const Progress: React.FC<ProgressProps> = props => {
         {showInfo ? <label> {percent}%</label> : null}
       </div>
     )
+  } else if ('success' in props && success === true) {
+    if (type === 'circle') {
+      return (
+        <div className={classes}>
+          <div
+            className="violetProgress__circle"
+            style={{
+              background: `conic-gradient(#96c24e 0deg, #96c24e 360deg)`,
+            }}
+          >
+            <div
+              className="violetProgress__circle__percent"
+              style={{ background: innerColor }}
+            >
+              {showInfo ? <label>√</label> : null}
+            </div>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className={classes}>
+          <div className="violetProgress__line__container">
+            <div
+              className="violetProgress__line__progress"
+              style={{ width: 240, background: '#96c24e' }}
+            ></div>
+          </div>
+          {showInfo ? <label> √</label> : null}
+        </div>
+      )
+    }
   } else {
     return (
       <div className={classes}>
