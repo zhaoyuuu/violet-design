@@ -2,14 +2,7 @@ import React, { useState } from 'react'
 import Radio from './components/Radio/radio'
 import RadioGroup from './components/Radio/radioGroup'
 import InputNumber from './components/InputNumber/inputNumber'
-<<<<<<< HEAD
-import Menu from './components/Menu/menu'
-import MenuItem from './components/Menu/menuItem'
-import SubMenu from './components/Menu/subMenu/subMenu'
-// import Icon from './components/Icon'
-=======
 import Menu from './components/Menu'
->>>>>>> cfa06bb30f3916d5fc293d8e5c43f2dfe36bfbaa
 import Switch from './components/Switcher'
 import Tabs from './components/Tabs/tabs'
 import TabItem from './components/Tabs/tabItem'
@@ -21,15 +14,6 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
-<<<<<<< HEAD
-      <Tabs mode="vertical">
-        <TabItem label="选项卡一">this is content one</TabItem>
-        <TabItem label="选项卡二">this is content two</TabItem>
-        <TabItem label="用户管理">this is content three</TabItem>
-      </Tabs>
-=======
-
->>>>>>> cfa06bb30f3916d5fc293d8e5c43f2dfe36bfbaa
       <Switch disabled></Switch>
       <Input size="sm" />
       <Input size="lg" />

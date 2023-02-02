@@ -44,11 +44,7 @@
   $direction: 'top',
   $scaleStart: scaleY(0),
   $scaleEnd: scaleY(1),
-<<<<<<< HEAD
   $origin: center top
-=======
-  $origin: center top,
->>>>>>> cfa06bb30f3916d5fc293d8e5c43f2dfe36bfbaa
 ) {
   .zoom-in-#{$direction}-enter {
     opacity: 0;
@@ -58,7 +54,7 @@
     opacity: 1;
     transform: $scaleEnd;
     transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
-      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+      opacity 300ms cubic-bezier(0.2s3, 1, 0.32, 1) 100ms;
     transform-origin: $origin;
   }
   .zoom-in-#{$direction}-exit {
