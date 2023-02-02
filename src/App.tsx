@@ -46,6 +46,10 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+
+      <Switch disabled></Switch>
+      <Input size="sm" />
+      <Input size="lg" />
       {/* <Cascader
         value={value}
         onChange={onChange}
