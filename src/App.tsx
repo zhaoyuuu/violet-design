@@ -46,16 +46,16 @@ function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
-      <Cascader
+      {/* <Cascader
         value={value}
         onChange={onChange}
         placeholder="请选择"
         options={options}
         changeOnSelect
         // disabled
-      />
+      /> */}
 
-      {/* <Switch disabled></Switch>
+      <Switch disabled></Switch>
       <Input size="sm" icon="search" />
       <Input size="lg" append=".com" />
       <Input size="sm" prepend="https://" />
@@ -92,7 +92,7 @@ function App() {
       </Button>
       <Button size="lg" btnType="link" disabled className="violetButton">
         Large Link
-      </Button> */}
+      </Button>
     </div>
   )
 }
