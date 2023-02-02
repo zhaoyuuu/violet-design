@@ -13,22 +13,19 @@ export default radioGroupMeta
 
 export const DefaultRadio: ComponentStory<typeof Radio> = args => (
   <>
-    <Radio {...args}>Default radio</Radio>
+    <Radio {...args}>Default Radio</Radio>
   </>
 )
 
 DefaultRadio.storyName = '默认单选按钮'
 
-export const DifferentSizeRadio: ComponentStory<typeof Radio> = args => (
+export const ButtonRadio: ComponentStory<typeof Radio> = args => (
   <>
-    <Radio size="sm">Small Radio</Radio>
-    <br />
-    <Radio>Middle Radio</Radio>
-    <br />
-    <Radio size="lg">Large Radio</Radio>
+    <Radio type="button">Button Radio</Radio>
   </>
 )
-DifferentSizeRadio.storyName = '不同大小的按钮'
+
+ButtonRadio.storyName = '按钮式单选按钮'
 
 export const DefaultGroup: ComponentStory<typeof RadioGroup> = args => (
   <>
@@ -41,3 +38,15 @@ export const DefaultGroup: ComponentStory<typeof RadioGroup> = args => (
 )
 
 DefaultGroup.storyName = '默认单选按钮组'
+
+export const ButtonGroup: ComponentStory<typeof RadioGroup> = args => (
+  <>
+    <RadioGroup {...args} type={'button'}>
+      <Radio value={'1'}>1</Radio>
+      <Radio value={'2'}>2</Radio>
+      <Radio value={'3'}>3</Radio>
+    </RadioGroup>
+  </>
+)
+
+ButtonGroup.storyName = '按钮式单选按钮组'

@@ -12,5 +12,108 @@
   &--sm{
     font-size: $font-size-sm;
   }
+
+  &__dot{
+    position: relative;
+    display: inline-block;
+    margin-right: 12px;
+  }
+
+  &__dot input{
+    z-index: 1;
+    vertical-align: middle;
+    width: 17px;
+    height: 17px;
+    appearance: none;
+    -webkit-appearance: none;
+    opacity: 0;
+    outline: none;
+  }
+
+  &__dot label{
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    /*注意层级关系，如果不把label层级设为最低，会遮挡住input而不能单选*/
+    width: 15px;
+    height: 15px;
+    border: 1px solid $primary;
+    border-radius: 100%;
+  }
+
+  &__dot input[type="radio"]:checked + label{
+    background: $primary;
+  }
+
+  &__dot input[type="radio"]:checked + label::after{
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    width: 5px;
+    height: 12px;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transform: rotate(45deg);
+  }
+
+  &__dot span{
+    vertical-align: middle;
+    padding-left: 3px;
+  }
+
+  &__button{
+    display: inline-block;
+    position: relative;
+    padding: 1px;
+  }
+
+  &__button input[type="radio"]{
+    appearance: none; /*清楚默认样式*/
+    -webkit-appearance: none;
+    /* opacity: 0; */
+    outline: none;
+    position: absolute;
+    z-index: 2;
+    width: 6px;
+    height: 6px;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    background: #b4b4b4;
+  }
+
+  &__button label{
+    display: inline-block;
+    min-width: 50px;
+    height: 24px;
+    line-height:24px;
+    text-align: center;
+    padding-right: 10px;
+    border-radius: 5px;
+    padding-left: 25px;
+    color: #fff;
+    background-color: $gray-400;
+  }
+
+  &__button input[type="radio"]:checked{
+    opacity: 0;
+  }
+  &__button input[type="radio"]:checked + label {
+    color: #fff;
+    background-color: $primary;
+  }
+  &__button input[type="radio"]:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 5px;
+    width: 5px;
+    height: 12px;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transform: rotate(45deg);
+  }
 }
 

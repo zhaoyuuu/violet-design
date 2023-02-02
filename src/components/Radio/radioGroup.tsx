@@ -6,6 +6,8 @@ import Radio from './radio'
 import './radio.scss'
 import { clickOptions } from '@testing-library/user-event/dist/click'
 
+export type RadioGroupType = 'button' | 'dot'
+
 export interface RadioGroupProps {
   /**设置类名*/
   className?: string
@@ -19,13 +21,23 @@ export interface RadioGroupProps {
   size?: string
   /**设置radio的样式*/
   style?: React.CSSProperties
+  /**设置radio的类型*/
+  type?: RadioGroupType
   /**添加函数*/
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void
 }
 
 export const RadioGroup: React.FC<RadioGroupProps> = props => {
-  const { className, disabled, children, size, style, onChange, ...restProps } =
-    props
+  const {
+    className,
+    disabled,
+    children,
+    size,
+    style,
+    type,
+    onChange,
+    ...restProps
+  } = props
 
   const [value, setValue] = useState(props.defaultValue || props.value)
 
@@ -42,6 +54,14 @@ export const RadioGroup: React.FC<RadioGroupProps> = props => {
   const newChildren = React.Children.map(children, (child: any) => {
     if (child.type !== Radio) {
       return null
+    }
+    if ('type' in props && type == 'button') {
+      return React.cloneElement(child, {
+        checked: child.props.value === value,
+        disabled: disabled,
+        onChange: handleClick,
+        type: 'button',
+      })
     }
     return React.cloneElement(child, {
       checked: child.props.value === value,
