@@ -252,6 +252,7 @@ $menu-backgroundColor: $white !default;
 // submenu
 $submenu-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12),
   0 0 6px 0 rgba(0, 0, 0, 0.04);
+$submenu-dropdown-margin-left: 0.8rem !default;
 
 // tabs
 $tabs-border-width: $border-width !default;
@@ -312,7 +313,8 @@ $input-focus-color: $input-color !default;
 $input-focus-shadow-color: rgba($primary, 0.25) !default;
 $input-focus-shadow-error-color: rgba($danger, 0.5) !default;
 $input-focus-box-shadow: 0 0 0 $input-focus-width $input-focus-shadow-color !default;
-$input-focus-box-shadow-error: 0 0 0 $input-focus-width $input-focus-shadow-error-color !default;
+$input-focus-box-shadow-error: 0 0 0 $input-focus-width
+  $input-focus-shadow-error-color !default;
 $input-placeholder-color: $gray-600 !default;
 $input-plaintext-color: $body-color !default;
 

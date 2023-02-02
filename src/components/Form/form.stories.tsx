@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 import Form from './form'
 import FormItem from './formItem'
-import Input from '../Input/Input'
+import Input from '../Input/input'
 import Button, { ButtonType } from '../Button/button'
 import exp from 'constants'
 

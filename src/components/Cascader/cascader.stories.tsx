@@ -12,8 +12,7 @@ const cascaderMeta: ComponentMeta<typeof Cascader> = {
 export default cascaderMeta
 
 interface Option {
-  value: string | number
-  label: React.ReactNode
+  value: React.ReactNode
   disabled?: boolean
   children?: Option[]
 }
@@ -26,15 +25,12 @@ const Template: ComponentStory<typeof Cascader> = args => {
   const options: Option[] = [
     {
       value: 'zhejiang',
-      label: 'Zhejiang',
       children: [
         {
           value: 'hangzhou',
-          label: 'Hangzhou',
           children: [
             {
               value: 'xihu',
-              label: 'West Lake',
             },
           ],
         },
@@ -42,15 +38,12 @@ const Template: ComponentStory<typeof Cascader> = args => {
     },
     {
       value: 'jiangsu',
-      label: 'Jiangsu',
       children: [
         {
           value: 'nanjing',
-          label: 'Nanjing',
           children: [
             {
               value: 'zhonghuamen',
-              label: 'Zhong Hua Men',
             },
           ],
         },

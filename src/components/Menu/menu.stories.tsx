@@ -14,13 +14,13 @@ export default menuMeta
 // 页面
 const Template: ComponentStory<typeof Menu> = args => (
   <Menu {...args}>
-    <Menu.Item>first link</Menu.Item>
-    <Menu.Item>second link</Menu.Item>
-    <Menu.Item disabled>third link</Menu.Item>
+    <Menu.Item>active</Menu.Item>
+    <Menu.Item disabled>disabled</Menu.Item>
+    <Menu.Item>xyz</Menu.Item>
     <Menu.SubMenu title="dropdown">
-      <Menu.Item>dropdown 1</Menu.Item>
-      <Menu.Item>dropdown 2</Menu.Item>
-      <Menu.Item>dropdown 3</Menu.Item>
+      <Menu.Item>drop1</Menu.Item>
+      <Menu.Item>drop2</Menu.Item>
+      <Menu.Item>drop3</Menu.Item>
     </Menu.SubMenu>
   </Menu>
 )
@@ -39,13 +39,13 @@ horizontalMenu.parameters = {
     source: {
       code: `
 <Menu>
-  <Menu.Item>first link</Menu.Item>
-  <Menu.Item>second link</Menu.Item>
-  <Menu.Item disabled>third link</Menu.Item>
+  <Menu.Item>active</Menu.Item>
+  <Menu.Item disabled>disabled</Menu.Item>
+  <Menu.Item>xyz</Menu.Item>
   <Menu.SubMenu title="dropdown">
-    <Menu.Item>dropdown 1</Menu.Item>
-    <Menu.Item>dropdown 2</Menu.Item>
-    <Menu.Item>dropdown 3</Menu.Item>
+    <Menu.Item>drop1</Menu.Item>
+    <Menu.Item>drop2</Menu.Item>
+    <Menu.Item>drop3</Menu.Item>
   </Menu.SubMenu>
 </Menu>
       `,
@@ -73,13 +73,13 @@ verticalMenu.parameters = {
     source: {
       code: `
 <Menu defaultIndex={1} mode='vertical'>
-  <Menu.Item>first link</Menu.Item>
-  <Menu.Item>second link</Menu.Item>
-  <Menu.Item disabled>third link</Menu.Item>
+  <Menu.Item>active</Menu.Item>
+  <Menu.Item disabled>disabled</Menu.Item>
+  <Menu.Item>xyz</Menu.Item>
   <Menu.SubMenu title="dropdown">
-    <Menu.Item>dropdown 1</Menu.Item>
-    <Menu.Item>dropdown 2</Menu.Item>
-    <Menu.Item>dropdown 3</Menu.Item>
+    <Menu.Item>drop1</Menu.Item>
+    <Menu.Item>drop2</Menu.Item>
+    <Menu.Item>drop3</Menu.Item>
   </Menu.SubMenu>
 </Menu>
       `,

@@ -3,26 +3,59 @@ import Radio from './components/Radio/radio'
 import RadioGroup from './components/Radio/radioGroup'
 import InputNumber from './components/InputNumber/inputNumber'
 import Menu from './components/Menu'
-import Cascader from './components/Cascader/cascader'
+import Switch from './components/Switcher'
+import Tabs from './components/Tabs/tabs'
+import TabItem from './components/Tabs/tabItem'
+import Cascader from './components/Cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
-import Switch from './components/Switcher'
 
-// eslint-disable-next-line react/display-name
+interface Option {
+  value: React.ReactNode
+  disabled?: boolean
+  children?: Option[]
+}
 function App() {
+  const [value, setValue] = useState<React.ReactNode[]>([])
+  const onChange = (value: React.ReactNode[]) => {
+    setValue(value)
+  }
+  const options: Option[] = [
+    {
+      value: 'zhejiang',
+      children: [
+        {
+          value: 'hangzhou',
+        },
+      ],
+    },
+    {
+      value: 'jiangsu',
+      children: [
+        {
+          value: 'nanjing',
+          children: [
+            {
+              value: 'zhonghuamen',
+            },
+          ],
+        },
+      ],
+    },
+  ]
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
-      <Menu mode="vertical">
-        <Menu.Item>active</Menu.Item>
-        <Menu.Item disabled>disabled</Menu.Item>
-        <Menu.Item>xyz</Menu.Item>
-        <Menu.SubMenu title="dropdown">
-          <Menu.Item>drop1</Menu.Item>
-        </Menu.SubMenu>
-      </Menu>
+      <Cascader
+        value={value}
+        onChange={onChange}
+        placeholder="请选择"
+        options={options}
+        changeOnSelect
+        // disabled
+      />
 
-      <Switch disabled></Switch>
+      {/* <Switch disabled></Switch>
       <Input size="sm" icon="search" />
       <Input size="lg" append=".com" />
       <Input size="sm" prepend="https://" />
@@ -59,7 +92,7 @@ function App() {
       </Button>
       <Button size="lg" btnType="link" disabled className="violetButton">
         Large Link
-      </Button>
+      </Button> */}
     </div>
   )
 }

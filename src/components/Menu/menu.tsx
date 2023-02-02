@@ -37,7 +37,7 @@ export const MenuContext = createContext<IMenuContext>({
  * 一般分为**顶部导航**和**侧边导航**，顶部导航提供全局性的类目和功能，侧边导航提供多级结构来收纳和排列网站架构。
  *
  * ### 开发者注意事项
- * Menu组件的使用，需搭配 `MenuItem`/`SubMenu` 作为子组件来进行开发
+ * Menu组件的使用，需搭配 `Menu.Item`/`Menu.SubMenu` 作为子组件来进行开发
  */
 export const Menu: React.FC<IMenuProps> = ({
   className,
@@ -49,8 +49,6 @@ export const Menu: React.FC<IMenuProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
   function handleClick(index: string) {
-    console.log(index)
-
     setActiveIndex(index)
     onSelect && onSelect(index)
   }
