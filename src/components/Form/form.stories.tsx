@@ -28,61 +28,71 @@ const confirmRules: CustomRule[] = [
     asyncValidator(rule, value) {
       console.log('the value', getFieldValue('password'))
       console.log(value)
-      if (value !== getFieldValue('password')) {
-        return Promise.reject('两次输入的密码不匹配!')
-      }
+      // if (value !== getFieldValue('password')) {
+      //   return Promise.reject('两次输入的密码不匹配!')
+      // }
+<<<<<<< HEAD
+      // return Promise.resolve()
+=======
       return Promise.resolve()
-      // return new Promise((resolve, reject) => {
-      //   if (value !== getFieldValue('password')) {
-      //     reject('The two passwords that you entered do not match!')
-      //   }
-      //   setTimeout(() => {
-      //     resolve()
-      //   }, 1000)
-      // })
+>>>>>>> 47be4a77cd0d274bc1d57d284ef0015281ef450f
+      return new Promise((resolve, reject) => {
+        if (value !== getFieldValue('password')) {
+          reject('The two passwords that you entered do not match!')
+        }
+        setTimeout(() => {
+          resolve()
+        }, 1000)
+      })
     },
   }),
 ]
 export const BasicForm = (args: any) => {
   return (
-    <Form initialValues={{ username: 'violetUI', agreement: true }} {...args}>
-      <FormItem
-        label="用户名"
-        name="username"
-        rules={[{ type: 'string', required: true, min: 3 }]}
-      >
-        <Input />
-      </FormItem>
-      <FormItem
-        label="密码"
-        name="password"
-        rules={[{ type: 'string', required: true, min: 3, max: 8 }]}
-      >
-        <Input type="password" />
-      </FormItem>
-      <FormItem label="重复密码" name="confirmPwd" rules={confirmRules}>
-        <Input type="password" />
-      </FormItem>
-      <div
-        className="agreement-section"
-        style={{ display: 'flex', justifyContent: 'center' }}
-      >
-        <FormItem
-          name="agreement"
-          valuePropName="checked"
-          getValueFromEvent={e => e.target.checked}
-        >
-          <input type="checkbox" />
-        </FormItem>
-        <span className="agree-text">
-          注册即代表同意<a href="#">用户协议</a>
-        </span>
-      </div>
-      <div className="violetForm--submit_area">
-        <Button type="submit" btnType="primary" size="sm">
-          sign in
-        </Button>
-      </div>
+    <Form initialValues={{ username: 'violetUI', agreement: false }} {...args}>
+      {({ isValid, isSubmitting }) => (
+        <>
+          <FormItem
+            label="用户名"
+            name="username"
+            rules={[{ type: 'string', required: true, min: 3 }]}
+          >
+            <Input />
+          </FormItem>
+          <FormItem
+            label="密码"
+            name="password"
+            rules={[{ type: 'string', required: true, min: 3, max: 8 }]}
+          >
+            <Input type="password" />
+          </FormItem>
+          <FormItem label="重复密码" name="confirmPwd" rules={confirmRules}>
+            <Input type="password" />
+          </FormItem>
+          <div
+            className="agreement-section"
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <FormItem
+              name="agreement"
+              valuePropName="checked"
+              getValueFromEvent={e => e.target.checked}
+              rules={[{ type: 'enum', enum: [true], message: '请同意协议' }]}
+            >
+              <input type="checkbox" />
+            </FormItem>
+            <span className="agree-text">
+              注册即代表同意<a href="#">用户协议</a>
+            </span>
+          </div>
+          <div className="violetForm--submit_area">
+            <Button type="submit" btnType="primary" size="sm">
+              sign in {isSubmitting ? '验证中' : '验证完毕'}
+              {isValid ? '  通过' : '  未通过'}
+            </Button>
+          </div>
+        </>
+      )}
     </Form>
   )
 }
