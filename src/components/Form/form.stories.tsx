@@ -3,8 +3,10 @@ import { ComponentMeta } from '@storybook/react'
 import Form from './form'
 import FormItem from './formItem'
 import Input from '../Input/input'
-import Button from '../Button/button'
+import Button, { ButtonType } from '../Button/button'
+import exp from 'constants'
 import { CustomRule } from './useStore'
+
 const meta: ComponentMeta<typeof Form> = {
   title: 'Form 组件',
   id: 'Form',
@@ -26,20 +28,24 @@ const confirmRules: CustomRule[] = [
     asyncValidator(rule, value) {
       console.log('the value', getFieldValue('password'))
       console.log(value)
-      return new Promise((resolve, reject) => {
-        if (value !== getFieldValue('password')) {
-          reject('The two passwords that you entered do not match!')
-        }
-        setTimeout(() => {
-          resolve()
-        }, 1000)
-      })
+      if (value !== getFieldValue('password')) {
+        return Promise.reject('两次输入的密码不匹配!')
+      }
+      return Promise.resolve()
+      // return new Promise((resolve, reject) => {
+      //   if (value !== getFieldValue('password')) {
+      //     reject('The two passwords that you entered do not match!')
+      //   }
+      //   setTimeout(() => {
+      //     resolve()
+      //   }, 1000)
+      // })
     },
   }),
 ]
-export const BasicForm = () => {
+export const BasicForm = (args: any) => {
   return (
-    <Form>
+    <Form initialValues={{ username: 'violetUI', agreement: true }} {...args}>
       <FormItem
         label="用户名"
         name="username"

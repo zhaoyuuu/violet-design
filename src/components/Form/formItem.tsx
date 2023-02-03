@@ -42,7 +42,7 @@ const FormItem: FC<FormItemProps> = props => {
     dispatch({
       type: 'addField',
       name,
-      value: { label, name, value, rules: [], error: [], isValid: true },
+      value: { label, name, value, rules: rules || [], errors: [] },
     })
   }, [])
   //获取store对应的value
@@ -50,7 +50,7 @@ const FormItem: FC<FormItemProps> = props => {
   const value = fieldState && fieldState.value
   const errors = fieldState && fieldState.errors
   const isRequired = rules?.some(
-    rules => typeof rules !== 'function' && rules.required
+    rule => typeof rule !== 'function' && rule.required
   )
   const hasError = errors && errors.length > 0
 

@@ -3,30 +3,39 @@ import Radio from './components/Radio/radio'
 import RadioGroup from './components/Radio/radioGroup'
 import InputNumber from './components/InputNumber/inputNumber'
 import Menu from './components/Menu'
-import Cascader from './components/Cascader/cascader'
+import Switch from './components/Switcher'
+import Tabs from './components/Tabs/tabs'
+import TabItem from './components/Tabs/tabItem'
+import Cascader from './components/Cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
-import Switch from './components/Switcher'
 
-// eslint-disable-next-line react/display-name
-function App(): JSX.Element {
-  const [value, setValue] = useState('0')
-  const handleChange = (value: string) => {
-    setValue(value)
-  }
+// interface Option {
+//   value: React.ReactNode
+//   disabled?: boolean
+//   children?: Option[]
+// }
+function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+
+      {/* <Cascader
+        value={value}
+        onChange={onChange}
+        placeholder="请选择"
+        options={options}
+        changeOnSelect
+        // disabled
+      /> */}
+
       <Switch disabled></Switch>
       <Input size="sm" icon="search" />
       <Input size="lg" append=".com" />
       <Input size="sm" prepend="https://" />
       <Radio value="test">Test</Radio>
-      <InputNumber onChange={handleChange} value={value} />
-      <Radio value="test">Test</Radio>
 
       <Radio value="test">Test</Radio>
-      <Radio size="lg">large radio</Radio>
       <Radio disabled={true}>Disabled Test</Radio>
       <br />
       <RadioGroup>

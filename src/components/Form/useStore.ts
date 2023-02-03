@@ -1,10 +1,12 @@
 import { useState, useReducer } from 'react'
 import Schema, { RuleItem, ValidateError } from 'async-validator';
-import { string } from 'prop-types';
-import {mapValues,each} from 'lodash-es'
+import { getField } from '@storybook/store';
+import mapValues from 'lodash-es/mapValues'
+import each from "lodash-es/mapValues"
 // import each from 'lodash-es/each'
 
-export type CustomRuleFunc = (getFieldValue:any) => RuleItem
+// export type CustomRuleFunc = (getFieldValue) => RuleItem
+export type CustomRuleFunc = (getFieldValue: any | string) => RuleItem
 export type CustomRule = RuleItem | CustomRuleFunc
 export interface FieldDetail {
   name: string;
@@ -69,7 +71,7 @@ function fieldsReducer(state: FieldsState, action: FieldsAction): FieldsState {
 
 function useStore(initialValues?: Record<string, any>) {
   // form state
-  const [ form, setForm ] = useState<FormState>({ isValid: true, isSubmitting:false, errors:{}})
+  const [ form, setForm ] = useState<FormState>({ isValid: true, isSubmitting: false, errors: {}})
   const [ fields, dispatch ] = useReducer(fieldsReducer, {})
   const getFieldValue = (key: string) => {
     return fields[key] && fields[key].value
@@ -94,7 +96,7 @@ function useStore(initialValues?: Record<string, any>) {
   const transfromRules = (rules: CustomRule[]) => {
     return rules.map(rule => {
       if (typeof rule === 'function') {
-        const calledRule = rule({getFieldValue})
+        const calledRule = rule({ getFieldValue })
         return calledRule
       } else {
         return rule
