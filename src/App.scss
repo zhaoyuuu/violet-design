@@ -1,7 +1,7 @@
 @import './styles/index.scss';
 
 .App {
-  padding-left: 10px;
+  height: 200vh;
   &__title {
     text-align: center;
     color: $primary;
@@ -9,6 +9,6 @@
   }
 }
 
-.my-btn {
-  background: burlywood;
+.affix {
+  z-index: 10;
 }
