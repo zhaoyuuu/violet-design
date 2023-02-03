@@ -5,6 +5,7 @@ import FormItem from './formItem'
 import Input from '../Input/input'
 import Button, { ButtonType } from '../Button/button'
 import exp from 'constants'
+import { CustomRule } from './useStore'
 
 const meta: ComponentMeta<typeof Form> = {
   title: 'Form 组件',
@@ -21,10 +22,30 @@ const meta: ComponentMeta<typeof Form> = {
 }
 
 export default meta
-
-export const BasicForm = () => {
+const confirmRules: CustomRule[] = [
+  { type: 'string', required: true, min: 3, max: 8 },
+  ({ getFieldValue }) => ({
+    asyncValidator(rule, value) {
+      console.log('the value', getFieldValue('password'))
+      console.log(value)
+      if (value !== getFieldValue('password')) {
+        return Promise.reject('两次输入的密码不匹配!')
+      }
+      return Promise.resolve()
+      // return new Promise((resolve, reject) => {
+      //   if (value !== getFieldValue('password')) {
+      //     reject('The two passwords that you entered do not match!')
+      //   }
+      //   setTimeout(() => {
+      //     resolve()
+      //   }, 1000)
+      // })
+    },
+  }),
+]
+export const BasicForm = (args: any) => {
   return (
-    <Form>
+    <Form initialValues={{ username: 'violetUI', agreement: true }} {...args}>
       <FormItem
         label="用户名"
         name="username"
@@ -37,6 +58,9 @@ export const BasicForm = () => {
         name="password"
         rules={[{ type: 'string', required: true, min: 3, max: 8 }]}
       >
+        <Input type="password" />
+      </FormItem>
+      <FormItem label="重复密码" name="confirmPwd" rules={confirmRules}>
         <Input type="password" />
       </FormItem>
       <div
