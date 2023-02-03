@@ -2,8 +2,7 @@ import { useState, useReducer } from 'react'
 import Schema, { RuleItem, ValidateError } from 'async-validator';
 import { getField } from '@storybook/store';
 import mapValues from 'lodash-es/mapValues'
-import each from "lodash-es/mapValues"
-// import each from 'lodash-es/each'
+import each from 'lodash-es/each'
 
 // export type CustomRuleFunc = (getFieldValue) => RuleItem
 export type CustomRuleFunc = (getFieldValue: any | string) => RuleItem
@@ -76,23 +75,23 @@ function useStore(initialValues?: Record<string, any>) {
   const getFieldValue = (key: string) => {
     return fields[key] && fields[key].value
   }
-//   const getFieldsValue = () => {
-//     return mapValues(fields, item => item.value)
-//   }
-//   const setFieldValue = (name: string, value: any) => {
-//     if (fields[name]) {
-//       dispatch({ type: 'updateValue', name, value })
-//     }
-//   }
-//   const resetFields = () => {
-//     if (initialValues) {
-//       each(initialValues, (value, name) => {
-//         if (fields[name]) {
-//           dispatch({ type: 'updateValue', name, value})
-//         }
-//       })
-//     }
-//   }
+  const getFieldsValue = () => {
+    return mapValues(fields, item => item.value)
+  }
+  const setFieldValue = (name: string, value: any) => {
+    if (fields[name]) {
+      dispatch({ type: 'updateValue', name, value })
+    }
+  }
+  const resetFields = () => {
+    if (initialValues) {
+      each(initialValues, (value, name) => {
+        if (fields[name]) {
+          dispatch({ type: 'updateValue', name, value})
+        }
+      })
+    }
+  }
   const transfromRules = (rules: CustomRule[]) => {
     return rules.map(rule => {
       if (typeof rule === 'function') {
@@ -168,9 +167,9 @@ function useStore(initialValues?: Record<string, any>) {
     validateField,
     getFieldValue,
     validateAllFields,
-    // getFieldsValue,
-    // setFieldValue,
-    // resetFields,
+    getFieldsValue,
+    setFieldValue,
+    resetFields,
   }
 }
 

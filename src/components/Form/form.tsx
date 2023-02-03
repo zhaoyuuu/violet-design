@@ -18,6 +18,11 @@ export type IFormContext = Pick<
   'dispatch' | 'fields' | 'validateField'
 > &
   Pick<FormProps, 'initialValues'>
+
+export type IFormRef = Omit<
+  ReturnType<typeof useStore>,
+  'fields' | 'dispatch' | 'form'
+>
 export const FormContext = createContext<IFormContext>({} as IFormContext)
 
 export const Form: FC<FormProps> = props => {
