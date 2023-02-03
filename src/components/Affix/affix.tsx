@@ -1,5 +1,6 @@
 import React, { useState, ReactNode, useCallback } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
+import cn from 'classnames'
 
 export interface IAffixProps extends React.HTMLAttributes<HTMLDivElement> {
   offsetTop?: number
@@ -58,7 +59,7 @@ export const Affix: React.FC<IAffixProps> = ({
       {isAffixed && <div style={substituteStyle as React.CSSProperties}></div>}
       {/* children */}
       <div
-        className={className}
+        className={cn(className, 'violetAffix__content')}
         style={
           isAffixed
             ? {

@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
 
-      <Affix offsetTop={40} className="affix">
+      <Affix offsetTop={40}>
         <Button btnType="primary">affix button</Button>
       </Affix>
 
