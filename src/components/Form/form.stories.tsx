@@ -3,9 +3,8 @@ import { ComponentMeta } from '@storybook/react'
 import Form from './form'
 import FormItem from './formItem'
 import Input from '../Input/input'
-import Button, { ButtonType } from '../Button/button'
-import exp from 'constants'
-
+import Button from '../Button/button'
+import { CustomRule } from './useStore'
 const meta: ComponentMeta<typeof Form> = {
   title: 'Form 组件',
   id: 'Form',
@@ -21,7 +20,23 @@ const meta: ComponentMeta<typeof Form> = {
 }
 
 export default meta
-
+const confirmRules: CustomRule[] = [
+  { type: 'string', required: true, min: 3, max: 8 },
+  ({ getFieldValue }) => ({
+    asyncValidator(rule, value) {
+      console.log('the value', getFieldValue('password'))
+      console.log(value)
+      return new Promise((resolve, reject) => {
+        if (value !== getFieldValue('password')) {
+          reject('The two passwords that you entered do not match!')
+        }
+        setTimeout(() => {
+          resolve()
+        }, 1000)
+      })
+    },
+  }),
+]
 export const BasicForm = () => {
   return (
     <Form>
@@ -37,6 +52,9 @@ export const BasicForm = () => {
         name="password"
         rules={[{ type: 'string', required: true, min: 3, max: 8 }]}
       >
+        <Input type="password" />
+      </FormItem>
+      <FormItem label="重复密码" name="confirmPwd" rules={confirmRules}>
         <Input type="password" />
       </FormItem>
       <div

@@ -2,7 +2,7 @@ import React, { FC, ReactNode, useContext, useEffect } from 'react'
 import classNames from 'classnames'
 import { RuleItem } from 'async-validator'
 import { FormContext } from './form'
-
+import { CustomRule } from './useStore'
 export type SomeRequired<T, K extends keyof T> = Required<Pick<T, K>> &
   Omit<T, K>
 
@@ -13,7 +13,7 @@ export interface FormItemProps {
   valuePropName?: string
   trigger?: string
   getValueFromEvent?: (event: any) => any
-  rules?: RuleItem[]
+  rules?: CustomRule[]
   validateTrigger?: string
 }
 
@@ -39,13 +39,19 @@ const FormItem: FC<FormItemProps> = props => {
 
   useEffect(() => {
     const value = (initialValues && initialValues[name]) || ''
-    dispatch({ type: 'addField', name, value: { label, name, value, rules } })
+    dispatch({
+      type: 'addField',
+      name,
+      value: { label, name, value, rules: [], error: [], isValid: true },
+    })
   }, [])
   //获取store对应的value
   const fieldState = fields[name]
   const value = fieldState && fieldState.value
   const errors = fieldState && fieldState.errors
-  const isRequired = rules?.some(rules => rules.required)
+  const isRequired = rules?.some(
+    rules => typeof rules !== 'function' && rules.required
+  )
   const hasError = errors && errors.length > 0
 
   const labelClass = classNames({
