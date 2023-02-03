@@ -45,7 +45,7 @@ const confirmRules: CustomRule[] = [
 ]
 export const BasicForm = (args: any) => {
   return (
-    <Form initialValues={{ username: 'violetUI', agreement: true }} {...args}>
+    <Form initialValues={{ username: 'violetUI', agreement: false }} {...args}>
       <FormItem
         label="用户名"
         name="username"
@@ -71,6 +71,7 @@ export const BasicForm = (args: any) => {
           name="agreement"
           valuePropName="checked"
           getValueFromEvent={e => e.target.checked}
+          rules={[{ type: 'enum', enum: [true], message: '请同意协议' }]}
         >
           <input type="checkbox" />
         </FormItem>
