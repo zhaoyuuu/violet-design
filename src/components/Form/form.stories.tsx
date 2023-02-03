@@ -31,7 +31,11 @@ const confirmRules: CustomRule[] = [
       // if (value !== getFieldValue('password')) {
       //   return Promise.reject('两次输入的密码不匹配!')
       // }
+<<<<<<< HEAD
       // return Promise.resolve()
+=======
+      return Promise.resolve()
+>>>>>>> 47be4a77cd0d274bc1d57d284ef0015281ef450f
       return new Promise((resolve, reject) => {
         if (value !== getFieldValue('password')) {
           reject('The two passwords that you entered do not match!')
