@@ -3,7 +3,6 @@ import classNames from 'classnames'
 
 import Radio from './radio'
 
-import './radio.scss'
 import { clickOptions } from '@testing-library/user-event/dist/click'
 
 export type RadioGroupType = 'button' | 'dot'
