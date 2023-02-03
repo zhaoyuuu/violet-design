@@ -84,6 +84,7 @@
     "husky": "^8.0.3",
     "prettier": "^2.8.3",
     "prop-types": "^15.8.1",
+    "resize-observer-polyfill": "^1.5.1",
     "webpack": "^5.75.0"
   }
 }
