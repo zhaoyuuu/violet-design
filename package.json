@@ -27,6 +27,11 @@
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!lodash)"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -86,4 +91,5 @@
     "prop-types": "^15.8.1",
     "webpack": "^5.75.0"
   }
+  
 }
