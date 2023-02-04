@@ -11,6 +11,7 @@ import Cascader from './components/Cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
 import Affix from './components/Affix'
+import CheckBox from './components/CheckBox/Checkbox'
 
 function App() {
   return (
@@ -76,6 +77,12 @@ function App() {
           <Menu.Item>drop3</Menu.Item>
         </Menu.SubMenu>
       </Menu>
+      <p>
+      <CheckBox label='checkbox1' name='type'></CheckBox>
+      <CheckBox label='checkbox2' name='type'></CheckBox>
+      <CheckBox checked = {true} label='Checked Checkbox' name='type'></CheckBox>
+      <CheckBox disabled = {true} label='checkbox disabled' name='type'></CheckBox>
+      </p>
     </div>
   )
 }

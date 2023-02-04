@@ -1,0 +1,157 @@
+@import '../../styles/_variables.scss';
+
+
+$type:('success', 'primary', 'danger', 'warning', 'info', 'default');
+
+@function typeFunction($t) {
+  @if $t==success {
+    @return $success
+  }
+
+  @else if $t==primary {
+    @return $primary
+  }
+
+  @else if $t==info {
+    @return $info
+  }
+
+  @else if $t==danger {
+    @return $danger
+  }
+
+  @else if $t==warning {
+    @return $warning
+  }
+
+  @return $primary
+}
+
+@function typeDisabledFunction($t) {
+  @if $t==success {
+    @return $color-success-light2
+  }
+
+  @else if $t==primary {
+    @return $color-primary-light2
+  }
+
+  @else if $t==info {
+    @return $color-info-light2
+  }
+
+  @else if $t==danger {
+    @return $color-danger-light2
+  }
+
+  @else if $t==warning {
+    @return $color-warning-light2
+  }
+
+  @return $color-primary-light2
+}
+
+.tb-checkbox {
+  display: inline-block;
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+@each $t in $type {
+  .checkbox-type_#{$t} {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: baseline;
+    // line-height: 1.54rem;
+    position: relative;
+    outline: none;
+    -webkit-appearance: checkbox;
+    border: 1px solid #fff;
+    -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    background: #fff;
+    margin-right: 3px;
+  }
+
+  .checkbox-type_#{$t}:checked+span {
+    color: typeFunction($t);
+    cursor: pointer;
+  }
+
+  .checkbox-type_#{$t}::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 75%;
+    height: 75%;
+    border: 1px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .checkbox-type_#{$t}:checked::before {
+    content: "\2713";
+    background-color: typeFunction($t);
+    border: 1px solid typeFunction($t);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  //   .checkbox-type_#{$t}.is-indeterminate::before {
+  //     background-color: typeFunction($t);
+  //     // border: 1px solid typeFunction($t);
+  //     width: 75%;
+  //     padding: 10px;
+  //     box-sizing: border-box;
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     color: #fff;
+  //     cursor: pointer;
+  //   }
+
+  .checkbox-type_#{$t}.is-indeterminate:after {
+    content: "";
+    width: 45%;
+    height: 45%;
+    text-align: center;
+    background-color: typeFunction($t);
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    cursor: pointer;
+  }
+
+
+
+  .checkbox-type_#{$t}.is-disabled:checked::before {
+    content: "\2713";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    cursor: pointer;
+  }
+
+  .checkbox-type_#{$t}.is-disabled:before {
+    cursor: not-allowed;
+  }
+
+  .checkbox-type_#{$t}.is-disabled+span {
+    cursor: not-allowed;
+  }
+
+}
