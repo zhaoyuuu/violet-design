@@ -12,44 +12,7 @@ import Button from './components/Button/button'
 import Input from './components/Input/input'
 import Affix from './components/Affix'
 
-interface Option {
-  value: React.ReactNode
-  disabled?: boolean
-  children?: Option[]
-}
 function App() {
-  const [value, setValue] = useState<React.ReactNode[]>([])
-  const onChange = (value: React.ReactNode[]) => {
-    setValue(value)
-  }
-  const options: Option[] = [
-    {
-      value: 'zhejiang',
-      children: [
-        {
-          value: 'hangzhou',
-          children: [
-            {
-              value: 'xihu',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      value: 'jiangsu',
-      children: [
-        {
-          value: 'nanjing',
-          children: [
-            {
-              value: 'zhonghuamen',
-            },
-          ],
-        },
-      ],
-    },
-  ]
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
@@ -58,15 +21,15 @@ function App() {
         <Button btnType="primary">affix button</Button>
       </Affix>
 
-      <Cascader
+      {/* <Cascader
         value={value}
         onChange={onChange}
         placeholder="请选择"
         options={options}
         // changeOnSelect
-      />
+      /> */}
 
-      {/* <Switch disabled></Switch>
+      <Switch disabled></Switch>
       <Input size="sm" icon="search" />
       <Input size="lg" append=".com" />
       <Input size="sm" prepend="https://" />
@@ -101,7 +64,7 @@ function App() {
       </Button>
       <Button size="lg" btnType="link" disabled className="violetButton">
         Large Link
-      </Button> */}
+      </Button>
     </div>
   )
 }
