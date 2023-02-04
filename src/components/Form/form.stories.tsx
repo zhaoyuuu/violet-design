@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { ComponentMeta } from '@storybook/react'
-import Form from './form'
+import Form, { IFormRef } from './form'
 import FormItem from './formItem'
 import Input from '../Input/input'
 import Button, { ButtonType } from '../Button/button'
@@ -44,8 +44,18 @@ const confirmRules: CustomRule[] = [
   }),
 ]
 export const BasicForm = (args: any) => {
+  const ref = useRef<IFormRef>()
+  const resetAll = () => {
+    console.log('form ref', ref.current)
+    console.log('get value', ref.current?.getFieldValue('username'))
+    ref.current?.resetFields()
+  }
   return (
-    <Form initialValues={{ username: 'violetUI', agreement: false }} {...args}>
+    <Form
+      initialValues={{ username: 'violetUI', agreement: false }}
+      {...args}
+      ref={ref}
+    >
       {({ isValid, isSubmitting }) => (
         <>
           <FormItem
@@ -83,8 +93,16 @@ export const BasicForm = (args: any) => {
           </div>
           <div className="violetForm--submit_area">
             <Button type="submit" btnType="primary" size="sm">
-              sign in {isSubmitting ? '验证中' : '验证完毕'}
-              {isValid ? '  通过' : '  未通过'}
+              sign in {isSubmitting ? '验证中' : '验证完毕'}{' '}
+              {isValid ? '通过' : '没通过'}
+            </Button>
+            <Button
+              type="button"
+              btnType="primary"
+              size="sm"
+              onClick={resetAll}
+            >
+              重置
             </Button>
           </div>
         </>
