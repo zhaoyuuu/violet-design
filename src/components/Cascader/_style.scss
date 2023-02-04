@@ -5,6 +5,7 @@
     outline: none;
     box-sizing: border-box;
     padding: $input-padding-y $input-padding-x;
+    padding-right: 1.6rem;
     font-size: $input-font-family;
     line-height: $input-line-height;
     background-color: $input-bg;
@@ -41,15 +42,26 @@
   }
   &__downIcon {
     position: absolute;
+    z-index: 0;
     top: 0;
     right: 0;
     height: 100%;
-    width: 10%;
+    width: 1.6rem;
     text-align: center;
     line-height: $input-line-height;
     padding: $input-padding-y 0;
     box-sizing: border-box;
     cursor: pointer;
+    color: $input-placeholder-color;
+    &__icon {
+      transition: transform 200ms ease-out;
+      &--arrowUp {
+        transform: rotate(180deg);
+      }
+      &--disabled {
+        cursor: not-allowed;
+      }
+    }
   }
   &__optionsWrap {
     position: absolute;
@@ -82,6 +94,7 @@
         }
         &--selected {
           font-weight: $font-weight-bold;
+          background: $cascader-optionItem-hover-color;
         }
 
         &__iconBox {
@@ -90,6 +103,9 @@
           right: 0;
           padding: $menu-item-padding-y 0;
           padding-right: $cascader-optionItem-icon-padding-right;
+          &__icon {
+            width: 8px;
+          }
         }
       }
     }

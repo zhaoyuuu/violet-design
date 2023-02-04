@@ -1,0 +1,119 @@
+
+.violetRadio{
+  &--disabled{
+    cursor: not-allowed;
+    color: $radio-disabled-color
+  }
+
+  &--lg{
+    font-size: $font-size-lg;
+  }
+
+  &--sm{
+    font-size: $font-size-sm;
+  }
+
+  &__dot{
+    position: relative;
+    display: inline-block;
+    margin-right: $radio-dot-margin-right;
+  }
+
+  &__dot input{
+    z-index: 1;
+    vertical-align: middle;
+    width: $radio-dot-input-width;
+    height: $radio-dot-input-height;
+    appearance: none;
+    -webkit-appearance: none;
+    opacity: 0;
+    outline: none;
+  }
+
+  &__dot label{
+    /*注意层级关系，如果不把label层级设为最低，会遮挡住input而不能单选*/
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: $radio-dot-label-width;
+    height: $radio-dot-label-height;
+    border: 1px solid $primary;
+    border-radius: 100%;
+  }
+
+  &__dot input[type="radio"]:checked + label{
+    background: $primary;
+  }
+
+  &__dot input[type="radio"]:checked + label::after{
+    content: "";
+    position: absolute;
+    left: $radio-dot-input-after-left;
+    top: $radio-dot-input-after-top;
+    width: $radio-dot-input-after-width;
+    height: $radio-dot-input-after-height;
+    border-right: $radio-dot-input-after-border-right solid #fff;
+    border-bottom: $radio-dot-input-after-border-bottom solid #fff;
+    transform: rotate(45deg);
+  }
+
+  &__dot span{
+    vertical-align: middle;
+    padding-left: $radio-dot-span-padding-left;
+  }
+
+  &__button{
+    display: inline-block;
+    position: relative;
+    padding: $radio-dot-button-padding;
+  }
+
+  &__button input[type="radio"]{
+    appearance: none; /*清楚默认样式*/
+    -webkit-appearance: none;
+    /* opacity: 0; */
+    outline: none;
+    position: absolute;
+    z-index: 2;
+    width: $radio-button-input-width;
+    height: $radio-button-input-height;
+    top: $radio-button-input-top;
+    left: $radio-button-input-left;
+    border-radius: 50%;
+    background: $radio-button-input-background;
+  }
+
+  &__button label{
+    display: inline-block;
+    min-width: $radio-button-label-min-height;
+    height: $radio-button-label-height;
+    line-height: $radio-button-label-line-height;
+    text-align: center;
+    padding-right: $radio-button-label-padding-right;
+    border-radius: $radio-button-label-border-radius;
+    padding-left: $radio-button-label-padding-left;
+    color: #fff;
+    background-color: $gray-400;
+  }
+
+  &__button input[type="radio"]:checked{
+    opacity: 0;
+  }
+  &__button input[type="radio"]:checked + label {
+    color: #fff;
+    background-color: $primary;
+  }
+  &__button input[type="radio"]:checked + label::after {
+    content: "";
+    position: absolute;
+    left: $radio-button-input-after-left;
+    top: $radio-button-input-after-top;
+    width: $radio-button-input-after-width;
+    height: $radio-button-input-after-height;
+    border-right: $radio-button-input-after-border-right solid #fff;
+    border-bottom: $radio-button-input-after-border-bottom solid #fff;
+    transform: rotate(45deg);
+  }
+}
+

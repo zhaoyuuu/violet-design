@@ -29,7 +29,7 @@ export const MenuItem: React.FC<IMenuItemProps> = ({
     'violetMenu__menuItem--disabled': disabled === true,
     'violetMenu__menuItem--active': context.index === index,
     'violetMenu__menuItem--activeAsfirstLevelItem':
-      context.index === index && context.index.length === 1,
+      context.index === index && index.length === 1,
   })
 
   return (

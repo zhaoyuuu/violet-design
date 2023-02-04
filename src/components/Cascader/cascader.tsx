@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import cn from 'classnames'
 import produce from 'immer'
-import { useClickAway } from 'react-use'
+import useClickOutside from '../../hooks/useClickOutside'
+import Icon from '../Icon'
 
 export interface ProcessedOption {
-  value: string | number
-  label: React.ReactNode
+  value: React.ReactNode
   index?: string
   isSelected?: boolean
   disabled?: boolean
@@ -14,7 +14,7 @@ export interface ProcessedOption {
   isLeaf?: boolean // 是否是叶子节点
 }
 
-interface ICascader {
+export interface ICascader {
   /** 禁用 */
   disabled?: boolean
   /** 当此项为 true 时，点选每级菜单选项值都会发生变化 */
@@ -23,8 +23,6 @@ interface ICascader {
   inputClassName?: string
   /** 自定义浮层类名 */
   popupClassName?: string
-  /** 次级菜单的展开方式，可选 'click' 和 'hover' */
-  expandTrigger?: string
   /** 当下拉列表为空时显示的内容 */
   notFoundContent?: string
   /** 输入框占位文本 */
@@ -39,8 +37,6 @@ interface ICascader {
   value: React.ReactNode[]
   /** 选择完成后的回调 */
   onChange: (value: React.ReactNode[]) => void
-  /** 自定义下拉框内容 */
-  dropdownRender?: (menus: React.ReactNode) => React.ReactNode
 }
 
 /**
@@ -56,7 +52,6 @@ export const Cascader: React.FC<ICascader> = ({
   changeOnSelect = false,
   inputClassName,
   popupClassName,
-  expandTrigger = 'click',
   notFoundContent = 'nothing here...',
   placeholder,
   options,
@@ -64,7 +59,6 @@ export const Cascader: React.FC<ICascader> = ({
   status = 'default',
   value,
   onChange,
-  dropdownRender,
 }) => {
   const inputClasses = cn('violetCascaderWrap__input', inputClassName, {
     'violetCascaderWrap__input--disabled': disabled,
@@ -81,13 +75,22 @@ export const Cascader: React.FC<ICascader> = ({
 
   // 控制浮层的出现
   const [isPopupShow, setPopupShow] = useState(false)
+
   const handleInputMouseDown = () => {
-    if (!isPopupShow) setPopupShow(true)
+    if (!disabled && !isPopupShow) setPopupShow(true)
   }
   const cascaderInput = useRef(null)
   const popup = useRef(null)
-  useClickAway(popup, e => {
-    if (!(e.target === cascaderInput.current) && isPopupShow) {
+  useClickOutside(popup, (e: MouseEvent) => {
+    if (
+      !(
+        e.target === cascaderInput.current ||
+        document
+          .querySelector('.violetCascaderWrap__downIcon')
+          ?.contains(e.target as Node)
+      ) &&
+      isPopupShow
+    ) {
       setPopupShow(false)
     }
   })
@@ -118,7 +121,6 @@ export const Cascader: React.FC<ICascader> = ({
         const headItem = queue.shift() as ProcessedOption
         const item = {
           value: headItem.value,
-          label: headItem.label,
           disabled: headItem.disabled,
           index: headItem.index,
           isSelected: false,
@@ -131,7 +133,6 @@ export const Cascader: React.FC<ICascader> = ({
           for (let i = 0; i < headItem.children.length; i++) {
             const item = {
               value: headItem.children[i].value,
-              label: headItem.children[i].label,
               disabled: headItem.children[i].disabled,
               children: headItem.children[i].children,
               index: `${headItem.index}-${i}`, // 注意索引值
@@ -152,8 +153,9 @@ export const Cascader: React.FC<ICascader> = ({
     }
   }, [])
 
-  // 选择决定的值
+  // 选择决定的值 newVal
   const [newVal, setNewVal] = useState<React.ReactNode[]>([])
+  // 更新newVal
   useEffect(() => {
     setNewVal([])
     content.forEach(options => {
@@ -161,9 +163,12 @@ export const Cascader: React.FC<ICascader> = ({
         if (option.isSelected) {
           setNewVal(
             produce(draft => {
-              draft.push(option.label)
+              draft.push(option.value)
             })
           )
+          if (option.isLeaf) {
+            onChange(newVal)
+          }
         }
       })
     })
@@ -171,10 +176,6 @@ export const Cascader: React.FC<ICascader> = ({
   // 触发onChange
   if (changeOnSelect) {
     onChange(newVal)
-  } else {
-    if (content.length && content.length === newVal.length) {
-      onChange(newVal)
-    }
   }
 
   // select option
@@ -187,13 +188,21 @@ export const Cascader: React.FC<ICascader> = ({
           for (let i = 0; i < content.length; i++) {
             for (let j = 0; j < content[i].length; j++) {
               if (content[i][j].index === option.index) {
-                // 同级所有item先变为false
+                // 同级所有isSelect先变为false
                 for (let x = 0; x < content[i].length; x++) {
                   draft[i][x].isSelected = false
                 }
                 // 当前item的isSelect变成true
                 draft[i][j].isSelected = true
-                // 修改children的isFatherSelected
+                // 之后所有层级的 isFatherSelect isSelect变为false
+                let lv = i + 1
+                for (lv; lv < content.length; lv++) {
+                  for (let k = 0; k < content[lv].length; k++) {
+                    draft[lv][k].isFatherSelected = false
+                    draft[lv][k].isSelected = false
+                  }
+                }
+                // children的isFatherSelected变为true
                 draft[i + 1].forEach(option => {
                   if (
                     option.index?.substring(0, option.index.length - 2) ===
@@ -215,7 +224,7 @@ export const Cascader: React.FC<ICascader> = ({
           for (let i = 0; i < content.length; i++) {
             for (let j = 0; j < content[i].length; j++) {
               if (content[i][j].index === option.index) {
-                // 同级所有item先变为false
+                // 同级所有isSelect先变为false
                 for (let x = 0; x < content[i].length; x++) {
                   draft[i][x].isSelected = false
                 }
@@ -226,6 +235,14 @@ export const Cascader: React.FC<ICascader> = ({
           }
         })
       )
+      //改变value，关闭popup
+      // setTimeout(() => {
+      //   console.log('content', content)
+
+      //   console.log('newVal', newVal)
+      //   onChange(newVal)
+      //   setPopupShow(false)
+      // }, 100)
     }
   }
 
@@ -244,7 +261,21 @@ export const Cascader: React.FC<ICascader> = ({
         disabled={disabled}
       />
       {/* 下拉icon */}
-      <div className="violetCascaderWrap__downIcon"></div>
+      <div
+        className={cn(
+          'violetCascaderWrap__downIcon',
+          disabled && 'violetCascaderWrap__downIcon__icon--disabled'
+        )}
+        onMouseDown={handleInputMouseDown}
+      >
+        <Icon
+          icon="angle-down"
+          className={cn(
+            'violetCascaderWrap__downIcon__icon',
+            isPopupShow && 'violetCascaderWrap__downIcon__icon--arrowUp'
+          )}
+        />
+      </div>
       {/* 浮层 */}
       {isPopupShow && (
         <div className={popupClasses} ref={popup}>
@@ -267,11 +298,16 @@ export const Cascader: React.FC<ICascader> = ({
                         )}
                         onClick={() => handleSelectOption(option)}
                       >
-                        {option.label}
+                        {option.value}
                         {/* icon */}
-                        <div className="violetCascaderWrap__optionsWrap__list__item__iconBox">
-                          {'>'}
-                        </div>
+                        {!option.isLeaf && (
+                          <div className="violetCascaderWrap__optionsWrap__list__item__iconBox">
+                            <Icon
+                              icon="angle-right"
+                              className="violetCascaderWrap__optionsWrap__list__item__iconBox__icon"
+                            />
+                          </div>
+                        )}
                       </li>
                     )
                 )}

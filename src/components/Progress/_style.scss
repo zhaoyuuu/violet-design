@@ -1,0 +1,44 @@
+@import '../../styles/_variables.scss';
+
+.violetProgress--sm {
+  height: $progress-sm-height;
+}
+
+.violetProgress__line__container {
+  width: $progress-line-container-width;
+  height: $progress-line-container-height;
+  border-radius: $progress-line-container-border-radius;
+  background: $progress-line-container-background;
+  display: inline-block;
+}
+
+.violetProgress__line__progress {
+  height: inherit;
+  border-radius: $progress-line-progress-border-radius;
+  background: $primary;
+}
+
+.violetProgress__circle {
+  font-size: $progress-circle-font-size;
+  width: $progress-circle-width;
+  height: $progress-circle-height;
+  border-radius: 50%;
+  background: conic-gradient($primary 0deg, $primary 50deg, $pink 50deg,  $pink 360deg);
+  position: relative;
+
+}
+
+.violetProgress__circle__percent{
+  position: absolute;
+  top: $progress-circle-percent-top;
+  left: $progress-circle-percent-left;
+  width: $progress-circle-percent-width;
+  height: $progress-circle-percent-height;
+  border-radius: 50%;
+  background-color: $progress-circle-percent-background-color;
+  color: $indigo;
+  font-size: $progress-circle-percent-font-size;
+  justify-content: center;
+  text-align: center;
+}
+

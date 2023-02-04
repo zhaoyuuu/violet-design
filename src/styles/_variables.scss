@@ -252,6 +252,7 @@ $menu-backgroundColor: $white !default;
 // submenu
 $submenu-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12),
   0 0 6px 0 rgba(0, 0, 0, 0.04);
+$submenu-dropdown-margin-left: 0.8rem !default;
 
 // tabs
 $tabs-border-width: $border-width !default;
@@ -312,7 +313,8 @@ $input-focus-color: $input-color !default;
 $input-focus-shadow-color: rgba($primary, 0.25) !default;
 $input-focus-shadow-error-color: rgba($danger, 0.5) !default;
 $input-focus-box-shadow: 0 0 0 $input-focus-width $input-focus-shadow-color !default;
-$input-focus-box-shadow-error: 0 0 0 $input-focus-width $input-focus-shadow-error-color !default;
+$input-focus-box-shadow-error: 0 0 0 $input-focus-width
+  $input-focus-shadow-error-color !default;
 $input-placeholder-color: $gray-600 !default;
 $input-plaintext-color: $body-color !default;
 
@@ -361,3 +363,50 @@ $cascader-optionItem-icon-padding-right: 0.5rem !default;
 
 // radio
 $radio-disabled-color: $gray-600 !default;
+$radio-dot-margin-right: 12px;
+$radio-dot-input-width: 17px;
+$radio-dot-input-height: 17px;
+$radio-dot-label-width: 15px;
+$radio-dot-label-height: 15px;
+$radio-dot-input-after-left: 7px;
+$radio-dot-input-after-top: 2px;
+$radio-dot-input-after-width: 5px;
+$radio-dot-input-after-height: 12px;
+$radio-dot-input-after-border-right: 1px;
+$radio-dot-input-after-border-bottom: 1px;
+$radio-dot-span-padding-left: 3px;
+$radio-dot-button-padding: 1px;
+$radio-button-input-width: 6px;
+$radio-button-input-height: 6px;
+$radio-button-input-top: 10px;
+$radio-button-input-left: 10px;
+$radio-button-input-background: #b4b4b4;
+$radio-button-label-min-height: 50px;
+$radio-button-label-height: 24px;
+$radio-button-label-line-height: 24px;
+$radio-button-label-padding-right: 10px;
+$radio-button-label-border-radius: 5px;
+$radio-button-label-padding-left: 25px;
+$radio-button-input-after-left: 12px;
+$radio-button-input-after-top: 5px;
+$radio-button-input-after-width: 5px;
+$radio-button-input-after-height: 12px;
+$radio-button-input-after-border-right: 1px;
+$radio-button-input-after-border-bottom: 1px;
+
+//progress
+$progress-sm-height: 20px;
+$progress-line-container-width: 240px;
+$progress-line-container-height: 25px;
+$progress-line-container-border-radius: 25px;
+$progress-line-container-background: #eee;
+$progress-line-progress-border-radius: 25px;
+$progress-circle-font-size: 50px;
+$progress-circle-width: 160px;
+$progress-circle-height: 160px;
+$progress-circle-percent-top: 15px;
+$progress-circle-percent-left: 15px;
+$progress-circle-percent-width: 130px;
+$progress-circle-percent-height: 130px;
+$progress-circle-percent-background-color: #fff;
+$progress-circle-percent-font-size: 30px;

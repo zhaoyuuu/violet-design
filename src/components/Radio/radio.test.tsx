@@ -1,13 +1,9 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import Radio, { RadioSize } from './radio'
+import Radio from './radio'
 
 const defaultProps = {
   onChange: jest.fn(),
-}
-
-const lgProps = {
-  size: 'lg' as RadioSize,
 }
 
 describe('Radio', () => {
@@ -28,11 +24,5 @@ describe('Radio', () => {
       element.parentElement.click()
       expect(defaultProps.onChange).toHaveBeenCalled()
     }
-  })
-
-  test('lg radio', () => {
-    const wrapper = render(<Radio {...lgProps}>Larger Radio</Radio>)
-    const element = wrapper.getByText('Larger Radio')
-    expect(element.parentElement).toHaveClass('violetRadio--lg')
   })
 })

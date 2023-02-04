@@ -1,11 +1,17 @@
-
 .violetForm {
-    .violetRow { 
-      display: flex;
-      align-items: center;
-      margin-bottom: 25px;
-      &.violetRow--no__label {
-        flex-direction: row-reverse;
+  .violetRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    &.violetRow--no__label {
+      flex-direction: row-reverse;
+    }
+    .violetForm--item__label {
+      flex-basis: 30%;
+      text-align: right;
+      padding-right: 20px;
+      > label {
+        margin-bottom: 0;
       }
       .violetForm--item__label {
         flex-basis: 30%;
@@ -44,13 +50,37 @@
           left: 0;
           line-height: 25px;
           color: $danger;
+          min-width: 100px;
         }
       }
     }
-    .violetForm--submit_area { 
-      display: flex;
-      align-items: center;
-      justify-content: center;  
+    .violetForm--item {
+      flex-basis: 70%;
+      position: relative;
+      .input-wrapper {
+        margin-bottom: 0;
+      }
+      .violetForm--item__has__error.violetForm--item__control {
+        .input-inner {
+          border: 1px solid $danger;
+          &:focus {
+            box-shadow: $input-focus-box-shadow-error;
+          }
+        }
+      }
+      .violetForm--item__explain {
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        line-height: 25px;
+        color: $danger;
+        min-width: 100px;
+      }
     }
-  
   }
+  .violetForm--submit_area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

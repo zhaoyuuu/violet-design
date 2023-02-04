@@ -49,17 +49,17 @@ export const Tabs: FC<TabsProps> = props => {
     'violetTabs__content--vertical': mode === 'vertical',
   })
 
-  const navClass = classNames('violetTabs_nav', {
-    'nav-line': type === 'line',
-    'nav-card': type === 'card',
-    'nav-vertical': mode === 'vertical' && type === 'line',
+  const navClass = classNames('violetTabs__nav', {
+    'violetTabs__nav--line': type === 'line',
+    'violetTabs__nav--card': type === 'card',
+    'nav--vertical': mode === 'vertical' && type === 'line',
   })
 
   const renderNavLinks = () => {
     return React.Children.map(children, (child, index) => {
       const childElement = child as FunctionComponentElement<TabItemProps>
       const { label, disabled } = childElement.props
-      const classes = classNames('violetTabs_navItem', {
+      const classes = classNames('violetTabs__navItem', {
         isActive: activeIndex === index,
         disabled: disabled,
       })
@@ -86,7 +86,7 @@ export const Tabs: FC<TabsProps> = props => {
   }
 
   return (
-    <div className={`violetTabs ${className} ${tabsClass}`}>
+    <div className={`violetTabs ${className}  ${tabsClass}`}>
       <ul className={navClass}>{renderNavLinks()}</ul>
       <div className={`violetTabs__content ${contentClass}`}>
         {renderContent()}
