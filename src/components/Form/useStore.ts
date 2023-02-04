@@ -2,8 +2,7 @@ import { useState, useReducer } from 'react'
 import Schema, { RuleItem, ValidateError } from 'async-validator';
 import { getField } from '@storybook/store';
 import mapValues from 'lodash-es/mapValues'
-import each from "lodash-es/mapValues"
-// import each from 'lodash-es/each'
+import each from 'lodash-es/each'
 
 // export type CustomRuleFunc = (getFieldValue) => RuleItem
 export type CustomRuleFunc = (getFieldValue: any | string) => RuleItem
