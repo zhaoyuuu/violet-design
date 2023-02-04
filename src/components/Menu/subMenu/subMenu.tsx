@@ -3,6 +3,7 @@ import cn from 'classnames'
 import { MenuContext } from '../menu'
 import { IMenuItemProps } from '../menuItem'
 import Icon from '../../Icon'
+import Transition from '../../Transition/transition'
 
 export interface ISubMenuProps {
   index?: string
@@ -90,7 +91,10 @@ export const SubMenu: React.FC<ISubMenuProps & React.PropsWithChildren> = ({
         {title}
         <Icon icon="angle-down" className={dropdownIconClasses} />
       </div>
-      {dropdownShow && renderChildren()}
+      {/* dropdown */}
+      <Transition in={dropdownShow} animation="zoom-in-top" timeout={300}>
+        {renderChildren()}
+      </Transition>
     </li>
   )
 }

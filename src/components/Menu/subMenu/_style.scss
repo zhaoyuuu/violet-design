@@ -8,6 +8,9 @@
     &:active {
       color: $menu-item-mouseDown-color;
     }
+    &:hover {
+      background: $menu-item-hover-color;
+    }
     &__icon {
       margin-left: 6px;
       width: 12px;
@@ -31,19 +34,9 @@
     color: #000;
     box-shadow: $submenu-box-shadow;
     background: $menu-backgroundColor;
-    opacity: 0;
-    animation: dropdownListShow 600ms ease-out forwards;
-    @keyframes dropdownListShow {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
 
     &__li {
-      width: max-content;
+      // width: max-content;
       padding: $menu-item-padding-y $menu-item-padding-x;
       transition: $menu-item-transition;
       &:active {
@@ -70,7 +63,7 @@
       box-shadow: 0 0;
 
       &__li {
-        width: max-content;
+        // width: max-content;
         border-left: 0;
         padding: $menu-item-padding-y $menu-item-padding-x;
         transition: $menu-item-transition;

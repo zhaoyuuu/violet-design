@@ -34,6 +34,9 @@
     &:active {
       color: $menu-item-mouseDown-color;
     }
+    &:hover {
+      background: $menu-item-hover-color;
+    }
     &--disabled {
       color: $menu-item-disabled-color;
       cursor: $menu-item-disabled-cursor;

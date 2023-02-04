@@ -65,6 +65,17 @@ function App() {
       <Button size="lg" btnType="link" disabled className="violetButton">
         Large Link
       </Button>
+
+      <Menu>
+        <Menu.Item>active</Menu.Item>
+        <Menu.Item disabled>disabled</Menu.Item>
+        <Menu.Item>xyz</Menu.Item>
+        <Menu.SubMenu title="dropdown">
+          <Menu.Item>drop1</Menu.Item>
+          <Menu.Item>drop2</Menu.Item>
+          <Menu.Item>drop3</Menu.Item>
+        </Menu.SubMenu>
+      </Menu>
     </div>
   )
 }
