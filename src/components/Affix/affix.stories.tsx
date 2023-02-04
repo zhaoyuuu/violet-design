@@ -1,6 +1,8 @@
 import React from 'react'
 import Affix from './affix'
 import Button from '../Button/button'
+import Tabs from '../Tabs/tabs'
+import TabItem from '../Tabs/tabItem'
 
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
@@ -13,34 +15,61 @@ const affixMeta: ComponentMeta<typeof Affix> = {
 export default affixMeta
 
 // 页面
-const Template: ComponentStory<typeof Affix> = args => {
+export const AffixButton: ComponentStory<typeof Affix> = args => {
   return (
     <Affix {...args}>
       <Button btnType="primary">affix button</Button>
     </Affix>
   )
 }
-
-export const Default = Template.bind({})
-Default.storyName = '基本'
-Default.args = {
-  offsetTop: 250,
+AffixButton.storyName = '示例1'
+AffixButton.args = {
+  offsetTop: 100,
 }
 
-// export const Disabled = Template.bind({})
-// Disabled.storyName = '禁用'
-// Disabled.args = {
-//   disabled: true,
-// }
-
-// export const ChangeonSelect = Template.bind({})
-// ChangeonSelect.storyName = '选择即改变'
-// ChangeonSelect.args = {
-//   changeOnSelect: true,
-// }
-
-// export const Status = Template.bind({})
-// Status.storyName = '状态设置'
-// Status.args = {
-//   status: 'success',
-// }
+export const AffixTab: ComponentStory<typeof Affix> = args => {
+  return (
+    <Affix {...args}>
+      <Tabs type="card">
+        <TabItem label="card1">this is card one</TabItem>
+        <TabItem label="card2">this is content two</TabItem>
+        <TabItem label="disabled" disabled>
+          this is content three
+        </TabItem>
+      </Tabs>
+    </Affix>
+  )
+}
+AffixTab.storyName = '示例2'
+AffixTab.decorators = [
+  Story => (
+    <div style={{ marginBottom: '500px' }}>
+      <Story />
+    </div>
+  ),
+]
+AffixTab.parameters = {
+  docs: {
+    source: {
+      code: `
+<Affix offsetTop={250}>
+  // children -- Tabs
+  <Tabs type="card">
+    <TabItem label="card1">
+      this is card one
+    </TabItem>
+    <TabItem label="card2">
+      this is content two
+    </TabItem>
+    <TabItem
+      disabled
+      label="disabled"
+    >
+      this is content three
+    </TabItem>
+  </Tabs>
+</Affix>
+      `,
+    },
+  },
+}
