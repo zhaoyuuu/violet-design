@@ -62,22 +62,27 @@ describe('test Cascader component', () => {
 
   it('popup show & hide correctly', async () => {
     fireEvent.mouseDown(input)
-    await waitFor(() => {
+    waitFor(() => {
       expect(
         wrapper.container.querySelector('.violetCascaderWrap__optionsWrap')
       ).toBeInTheDocument()
     })
     // click outside
     fireEvent.click(document)
-    expect(
-      wrapper.container.querySelector('.violetCascaderWrap__optionsWrap')
-    ).not.toBeInTheDocument()
+    waitFor(() => {
+      expect(
+        wrapper.container.querySelector('.violetCascaderWrap__optionsWrap')
+      ).not.toBeInTheDocument()
+    })
   })
 
-  // it('change the input value by selecting options', async () => {
-  //   fireEvent.mouseDown(input)
-  //   await waitFor(() => {
-
-  //   })
-  // })
+  it('change the input value by selecting options', async () => {
+    fireEvent.mouseDown(input)
+    waitFor(() => {
+      fireEvent.click(wrapper.getByText('zhejiang'))
+      fireEvent.click(wrapper.getByText('hangzhou'))
+      fireEvent.click(wrapper.getByText('xihu'))
+      expect(input.value).toEqual('zhejiang / hangzhou / xihu')
+    })
+  })
 })

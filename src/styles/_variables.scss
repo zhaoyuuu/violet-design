@@ -240,6 +240,7 @@ $menu-transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out !defau
 // menu-item
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
+$menu-item-hover-color: $gray-200 !default;
 $menu-item-active-color: $primary !default;
 $menu-item-mouseDown-color: rgba($primary, 0.5) !default;
 $menu-item-active-border-width: 2px !default;

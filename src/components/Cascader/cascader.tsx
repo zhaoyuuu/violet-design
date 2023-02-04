@@ -263,12 +263,7 @@ export const Cascader: React.FC<ICascader> = ({
           )}
         />
       </div>
-      <Transition
-        in={isPopupShow}
-        animation="zoom-in-top"
-        appear={true}
-        timeout={300}
-      >
+      <Transition in={isPopupShow} animation="zoom-in-top" timeout={300}>
         {/* 浮层 */}
         <div className={popupClasses} ref={popup}>
           {content.length ? (
