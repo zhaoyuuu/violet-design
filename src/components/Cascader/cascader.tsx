@@ -3,6 +3,7 @@ import cn from 'classnames'
 import produce from 'immer'
 import useClickOutside from '../../hooks/useClickOutside'
 import Icon from '../Icon'
+import Transition from '../Transition/transition'
 
 export interface ProcessedOption {
   value: React.ReactNode
@@ -153,30 +154,22 @@ export const Cascader: React.FC<ICascader> = ({
     }
   }, [])
 
-  // 选择决定的值 newVal
-  const [newVal, setNewVal] = useState<React.ReactNode[]>([])
-  // 更新newVal
+  // 触发 onChange
   useEffect(() => {
-    setNewVal([])
+    const selectedValue = [] as React.ReactNode[]
     content.forEach(options => {
       options.forEach(option => {
         if (option.isSelected) {
-          setNewVal(
-            produce(draft => {
-              draft.push(option.value)
-            })
-          )
-          if (option.isLeaf) {
-            onChange(newVal)
+          selectedValue.push(option.value)
+          if (changeOnSelect) {
+            onChange(selectedValue)
+          } else if (option.isLeaf) {
+            onChange(selectedValue)
           }
         }
       })
     })
   }, [content])
-  // 触发onChange
-  if (changeOnSelect) {
-    onChange(newVal)
-  }
 
   // select option
   const handleSelectOption = (option: ProcessedOption) => {
@@ -236,13 +229,7 @@ export const Cascader: React.FC<ICascader> = ({
         })
       )
       //改变value，关闭popup
-      // setTimeout(() => {
-      //   console.log('content', content)
-
-      //   console.log('newVal', newVal)
-      //   onChange(newVal)
-      //   setPopupShow(false)
-      // }, 100)
+      setPopupShow(false)
     }
   }
 
@@ -276,8 +263,13 @@ export const Cascader: React.FC<ICascader> = ({
           )}
         />
       </div>
-      {/* 浮层 */}
-      {isPopupShow && (
+      <Transition
+        in={isPopupShow}
+        animation="zoom-in-top"
+        appear={true}
+        timeout={300}
+      >
+        {/* 浮层 */}
         <div className={popupClasses} ref={popup}>
           {content.length ? (
             content.map((options, index) => (
@@ -319,7 +311,7 @@ export const Cascader: React.FC<ICascader> = ({
             </span>
           )}
         </div>
-      )}
+      </Transition>
     </div>
   )
 }

@@ -357,9 +357,14 @@ $nav-tabs-content-margin: 1rem !default;
 $cascader-optionList-border-left: 1px solid $gray-400 !default;
 $cascader-optionItem-padding-right: 1.8rem !default;
 $cascader-optionList-height: 12rem !default;
-$cascader-optionsWrap-top: $input-line-height + 1rem !default;
+$cascader-optionsWrap-top: $input-line-height + 1.2rem !default;
 $cascader-optionItem-hover-color: $gray-200 !default;
 $cascader-optionItem-icon-padding-right: 0.5rem !default;
+$cascader-optionsBox-shadow: 0 4px 10px
+  rgba(
+    $color: #000000,
+    $alpha: 0.4,
+  ) !default;
 
 // radio
 $radio-disabled-color: $gray-600 !default;

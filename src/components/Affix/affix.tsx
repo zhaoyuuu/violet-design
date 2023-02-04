@@ -31,7 +31,6 @@ export const Affix: React.FC<IAffixProps> = ({
 
     function updatePosition() {
       const { width, height, top } = node.getBoundingClientRect()
-      console.log(width, height, top)
 
       if (top < offsetTop && !isAffixed) {
         // affix
