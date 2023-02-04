@@ -26,8 +26,7 @@ function App() {
         onChange={onChange}
         placeholder="请选择"
         options={options}
-        changeOnSelect
-        // disabled
+        // changeOnSelect
       /> */}
 
       <Switch disabled></Switch>
