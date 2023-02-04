@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './App.scss'
 import Radio from './components/Radio/radio'
 import RadioGroup from './components/Radio/radioGroup'
 import InputNumber from './components/InputNumber/inputNumber'
@@ -9,16 +10,16 @@ import TabItem from './components/Tabs/tabItem'
 import Cascader from './components/Cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
+import Affix from './components/Affix'
 
-// interface Option {
-//   value: React.ReactNode
-//   disabled?: boolean
-//   children?: Option[]
-// }
 function App() {
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
+
+      <Affix offsetTop={40}>
+        <Button btnType="primary">affix button</Button>
+      </Affix>
 
       {/* <Cascader
         value={value}
@@ -33,7 +34,6 @@ function App() {
       <Input size="sm" icon="search" />
       <Input size="lg" append=".com" />
       <Input size="sm" prepend="https://" />
-      <Radio value="test">Test</Radio>
 
       <Radio value="test">Test</Radio>
       <Radio disabled={true}>Disabled Test</Radio>

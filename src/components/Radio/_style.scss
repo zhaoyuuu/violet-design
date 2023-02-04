@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+
 .violetRadio{
   &--disabled{
     cursor: not-allowed;
@@ -16,14 +16,14 @@
   &__dot{
     position: relative;
     display: inline-block;
-    margin-right: 12px;
+    margin-right: $radio-dot-margin-right;
   }
 
   &__dot input{
     z-index: 1;
     vertical-align: middle;
-    width: 17px;
-    height: 17px;
+    width: $radio-dot-input-width;
+    height: $radio-dot-input-height;
     appearance: none;
     -webkit-appearance: none;
     opacity: 0;
@@ -31,13 +31,13 @@
   }
 
   &__dot label{
+    /*注意层级关系，如果不把label层级设为最低，会遮挡住input而不能单选*/
     z-index: -1;
     position: absolute;
     left: 0;
     top: 5px;
-    /*注意层级关系，如果不把label层级设为最低，会遮挡住input而不能单选*/
-    width: 15px;
-    height: 15px;
+    width: $radio-dot-label-width;
+    height: $radio-dot-label-height;
     border: 1px solid $primary;
     border-radius: 100%;
   }
@@ -49,24 +49,24 @@
   &__dot input[type="radio"]:checked + label::after{
     content: "";
     position: absolute;
-    left: 7px;
-    top: 2px;
-    width: 5px;
-    height: 12px;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+    left: $radio-dot-input-after-left;
+    top: $radio-dot-input-after-top;
+    width: $radio-dot-input-after-width;
+    height: $radio-dot-input-after-height;
+    border-right: $radio-dot-input-after-border-right solid #fff;
+    border-bottom: $radio-dot-input-after-border-bottom solid #fff;
     transform: rotate(45deg);
   }
 
   &__dot span{
     vertical-align: middle;
-    padding-left: 3px;
+    padding-left: $radio-dot-span-padding-left;
   }
 
   &__button{
     display: inline-block;
     position: relative;
-    padding: 1px;
+    padding: $radio-dot-button-padding;
   }
 
   &__button input[type="radio"]{
@@ -76,23 +76,23 @@
     outline: none;
     position: absolute;
     z-index: 2;
-    width: 6px;
-    height: 6px;
-    top: 10px;
-    left: 10px;
+    width: $radio-button-input-width;
+    height: $radio-button-input-height;
+    top: $radio-button-input-top;
+    left: $radio-button-input-left;
     border-radius: 50%;
-    background: #b4b4b4;
+    background: $radio-button-input-background;
   }
 
   &__button label{
     display: inline-block;
-    min-width: 50px;
-    height: 24px;
-    line-height:24px;
+    min-width: $radio-button-label-min-height;
+    height: $radio-button-label-height;
+    line-height: $radio-button-label-line-height;
     text-align: center;
-    padding-right: 10px;
-    border-radius: 5px;
-    padding-left: 25px;
+    padding-right: $radio-button-label-padding-right;
+    border-radius: $radio-button-label-border-radius;
+    padding-left: $radio-button-label-padding-left;
     color: #fff;
     background-color: $gray-400;
   }
@@ -107,12 +107,12 @@
   &__button input[type="radio"]:checked + label::after {
     content: "";
     position: absolute;
-    left: 12px;
-    top: 5px;
-    width: 5px;
-    height: 12px;
-    border-right: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+    left: $radio-button-input-after-left;
+    top: $radio-button-input-after-top;
+    width: $radio-button-input-after-width;
+    height: $radio-button-input-after-height;
+    border-right: $radio-button-input-after-border-right solid #fff;
+    border-bottom: $radio-button-input-after-border-bottom solid #fff;
     transform: rotate(45deg);
   }
 }

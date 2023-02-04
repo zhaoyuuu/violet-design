@@ -74,8 +74,15 @@ export const ABasicForm = (args: any) => {
 ABasicForm.storyName = '登陆表单'
 
 export const BasicForm = (args: any) => {
+  const ref = useRef<IFormRef>()
+  const resetAll = () => {
+    console.log('form ref', ref.current)
+    console.log('get value', ref.current?.getFieldValue('username'))
+    ref.current?.resetFields()
+  }
   return (
     <Form initialValues={{ username: '', agreement: false }} {...args}>
+
       {({ isValid, isSubmitting }) => (
         <>
           <FormItem
@@ -113,8 +120,16 @@ export const BasicForm = (args: any) => {
           </div>
           <div className="violetForm--submit_area">
             <Button type="submit" btnType="primary" size="sm">
-              sign in {isSubmitting ? '验证中' : '验证完毕'}
-              {isValid ? '  通过' : '  未通过'}
+              sign in {isSubmitting ? '验证中' : '验证完毕'}{' '}
+              {isValid ? '通过' : '没通过'}
+            </Button>
+            <Button
+              type="button"
+              btnType="primary"
+              size="sm"
+              onClick={resetAll}
+            >
+              重置
             </Button>
           </div>
         </>
