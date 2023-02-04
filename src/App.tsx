@@ -11,7 +11,7 @@ import Cascader from './components/Cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
 import Affix from './components/Affix'
-import CheckBox from './components/CheckBox/Checkbox'
+import CheckBox from './components/CheckBox/CheckBox'
 
 function App() {
   return (

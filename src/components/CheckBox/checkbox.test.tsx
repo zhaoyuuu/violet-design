@@ -1,6 +1,6 @@
 import React from 'react'
 import { fireEvent,render, screen } from '@testing-library/react'
-import CheckBox from './Checkbox'
+import CheckBox from './CheckBox'
 
 const disabledProps = {
     disabled: true,

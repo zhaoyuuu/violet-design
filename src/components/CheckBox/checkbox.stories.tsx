@@ -1,5 +1,5 @@
 import React from 'react'
-import CheckBox from './Checkbox'
+import CheckBox from './CheckBox'
 
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
