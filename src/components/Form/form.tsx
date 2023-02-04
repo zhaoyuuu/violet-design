@@ -58,14 +58,12 @@ export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
       onFinishFailed(values, errors)
     }
   }
-
   let childrenNode: ReactNode
   if (typeof children === 'function') {
     childrenNode = children(form)
   } else {
     childrenNode = children
   }
-
   return (
     <>
       <form name={name} className="violetForm" onSubmit={submitForm}>
