@@ -47,6 +47,9 @@
   @include button-style($white, $gray-400, $body-color, $white, $primary, $primary)
 }
 
+.violetButton--text{
+  @include button-style($white, $gray-400, $body-color, $white, $primary, $primary)
+}
 .violetButton--link {
   font-weight: $font-weight-normal;
   color: $btn-link-color;
