@@ -51,7 +51,7 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
   @return $color-primary-light2
 }
 
-.tb-checkbox {
+.tb-violetCheckBox {
   display: inline-block;
 
   label {
@@ -62,7 +62,7 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
 }
 
 @each $t in $type {
-  .checkbox-type_#{$t} {
+  .violetCheckBox-type_#{$t} {
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -71,7 +71,7 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     // line-height: 1.54rem;
     position: relative;
     outline: none;
-    -webkit-appearance: checkbox;
+    -webkit-appearance: violetCheckBox;
     border: 1px solid #fff;
     -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
     color: #fff;
@@ -79,12 +79,12 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     margin-right: 3px;
   }
 
-  .checkbox-type_#{$t}:checked+span {
+  .violetCheckBox-type_#{$t}:checked+span {
     color: typeFunction($t);
     cursor: pointer;
   }
 
-  .checkbox-type_#{$t}::before {
+  .violetCheckBox-type_#{$t}::before {
     content: "";
     position: absolute;
     top: 0;
@@ -97,7 +97,7 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     cursor: pointer;
   }
 
-  .checkbox-type_#{$t}:checked::before {
+  .violetCheckBox-type_#{$t}:checked::before {
     content: "\2713";
     background-color: typeFunction($t);
     border: 1px solid typeFunction($t);
@@ -109,7 +109,7 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     cursor: pointer;
   }
 
-  //   .checkbox-type_#{$t}.is-indeterminate::before {
+  //   .violetCheckBox-type_#{$t}.is-indeterminate::before {
   //     background-color: typeFunction($t);
   //     // border: 1px solid typeFunction($t);
   //     width: 75%;
@@ -122,7 +122,7 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
   //     cursor: pointer;
   //   }
 
-  .checkbox-type_#{$t}.is-indeterminate:after {
+  .violetCheckBox-type_#{$t}.is--indeterminate:after {
     content: "";
     width: 45%;
     height: 45%;
@@ -137,7 +137,7 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
 
 
 
-  .checkbox-type_#{$t}.is-disabled:checked::before {
+  .violetCheckBox-type_#{$t}.is--disabled:checked::before {
     content: "\2713";
     position: absolute;
     top: 0;
@@ -146,11 +146,11 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     cursor: pointer;
   }
 
-  .checkbox-type_#{$t}.is-disabled:before {
+  .violetCheckBox-type_#{$t}.is-disabled:before {
     cursor: not-allowed;
   }
 
-  .checkbox-type_#{$t}.is-disabled+span {
+  .violetCheckBox-type_#{$t}.is-disabled+span {
     cursor: not-allowed;
   }
 
