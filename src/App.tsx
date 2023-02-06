@@ -47,18 +47,18 @@ function App() {
     { value: 'howard', number: 39 },
     { value: 'kuzma', number: 0 },
   ]
-  // const handleFetch = (query: string) => {
-  //   return lakersWithNumber.filter(p => p.value.includes(query))
-  // }
   const handleFetch = (query: string) => {
-    return fetch(`https://api.github.com/search/users?q=${query}`)
-      .then(res => res.json())
-      .then(({ items }) => {
-        return items
-          .slice(0, 10)
-          .map((item: any) => ({ value: item.login, ...item }))
-      })
+    return lakersWithNumber.filter(p => p.value.includes(query))
   }
+  // const handleFetch = (query: string) => {
+  //   return fetch(`https://api.github.com/search/users?q=${query}`)
+  //     .then(res => res.json())
+  //     .then(({ items }) => {
+  //       return items
+  //         .slice(0, 10)
+  //         .map((item: any) => ({ value: item.login, ...item }))
+  //     })
+  // }
   const renderOption = (item: DataSourceType) => {
     const itemWithNumber = item as DataSourceType<LakerPlayerProps>
     return (
@@ -134,7 +134,7 @@ function App() {
       </Menu>
 
       <AutoComplete
-        fetchSeggestions={handleFetch}
+        fetchSuggestions={handleFetch}
         // renderOption={renderOption}
       />
     </div>

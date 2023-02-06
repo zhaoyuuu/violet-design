@@ -18,22 +18,38 @@ interface DataSourceObject {
 }
 export type DataSourceType<T = {}> = T & DataSourceObject
 
-export interface IAutoCompleteProps extends Omit<InputProps, 'onSelect'> {
-  fetchSeggestions: (
+export interface IAutoCompleteProps
+  extends Omit<InputProps, 'onSelect' | 'onChange'> {
+  /**
+   * 返回输入建议的方法，可以拿到当前的输入，然后返回同步的数组或者是异步的 Promise
+   * type DataSourceType<T = {}> = T & DataSourceObject
+   */
+  fetchSuggestions: (
     str: string
   ) => DataSourceType[] | Promise<DataSourceType[]>
+  /** 文本框发生改变的时候触发的事件*/
+  onChange: (value: string) => void
+  /** 点击选中建议项时触发的回调*/
   onSelect?: (item: DataSourceType) => void
+  /**支持自定义渲染下拉项，返回 ReactElement */
   renderOption?: (item: DataSourceType) => ReactElement
 }
 
 /**
- * > 通过鼠标或键盘，输入范围内的数值。
+ * > 输入框自动完成功能。
  *
  * ### 何时使用
- * 当需要获取标准数值时。
+ * - 需要一个输入框而不是选择器。
+ * - 需要输入建议/辅助提示。
+ *
+ * 和 `Select` 的区别是：
+ *
+ * - `AutoComplete` 是一个带提示的文本输入框，用户可以自由输入，关键词是辅助输入。
+ * - `Select` 是在限定的可选项中进行选择，关键词是选择。
  */
 export const AutoComplete: React.FC<IAutoCompleteProps> = ({
-  fetchSeggestions,
+  fetchSuggestions,
+  onChange,
   onSelect,
   value,
   renderOption,
@@ -53,7 +69,7 @@ export const AutoComplete: React.FC<IAutoCompleteProps> = ({
   // 生成suggestion（防抖）
   useEffect(() => {
     if (debouncedValue && triggerSearch.current) {
-      const res = fetchSeggestions(debouncedValue)
+      const res = fetchSuggestions(debouncedValue)
       if (res instanceof Promise) {
         setLoading(true)
         res.then(data => {
@@ -74,7 +90,6 @@ export const AutoComplete: React.FC<IAutoCompleteProps> = ({
   const highlight = (index: number) => {
     if (index < 0) index = 0
     if (index >= suggestions.length) index = suggestions.length - 1
-    console.log(index)
     setHighlightIndex(index)
   }
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -101,7 +116,11 @@ export const AutoComplete: React.FC<IAutoCompleteProps> = ({
   // onChange
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value.trim()
+    console.log(value)
     setInputValue(value)
+    if (onChange) {
+      onChange(value)
+    }
     setSuggestions([])
     triggerSearch.current = true
   }
