@@ -28,11 +28,13 @@ export interface IAutoCompleteProps
     str: string
   ) => DataSourceType[] | Promise<DataSourceType[]>
   /** 文本框发生改变的时候触发的事件*/
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
   /** 点击选中建议项时触发的回调*/
   onSelect?: (item: DataSourceType) => void
-  /**支持自定义渲染下拉项，返回 ReactElement */
+  /** 支持自定义渲染下拉项，返回 ReactElement */
   renderOption?: (item: DataSourceType) => ReactElement
+  /** 自定义类名 */
+  className?: string
 }
 
 /**
@@ -53,6 +55,7 @@ export const AutoComplete: React.FC<IAutoCompleteProps> = ({
   onSelect,
   value,
   renderOption,
+  className,
   ...restProps
 }) => {
   const [inputValue, setInputValue] = useState(value as string)
@@ -157,7 +160,7 @@ export const AutoComplete: React.FC<IAutoCompleteProps> = ({
   }
 
   return (
-    <div className="violetAutoComplete" ref={autoComplete}>
+    <div className={cn('violetAutoComplete', className)} ref={autoComplete}>
       <Input
         value={inputValue}
         onChange={handleChange}
