@@ -1,0 +1,76 @@
+.violetUpload__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.violetUpload__dragger {
+  background: $gray-100;
+  border: 1px dashed $gray-300;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 20px;
+  width: 360px;
+  height: 180px;
+  text-align: center;
+  box-sizing: border-box;
+  &:hover {
+    border: 1px dashed $primary;
+  }
+  &.violetUpload__dragger--dragover {
+    border: 2px dashed $primary;
+    background: rgba($primary, .2);
+  }
+}
+
+.violetUpload__list__item {
+  transition: all .5s cubic-bezier(.55,0,.1,1);
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  min-width: 200px;
+  position: relative;
+  &:first-child {
+    margin-top: 10px;
+  }
+  .fileName {
+    margin-left: 5px;
+    margin-right: 40px;
+    svg {
+      margin-right: 5px;
+      color: $gray-500;
+    }
+  }
+  .fileName--error {
+    color: $danger;
+    svg {
+      color: $danger;
+    }
+  }
+  .fileStatus {
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    line-height: inherit;
+  }
+  .fileActions {
+    display: none;
+    position: absolute;
+    right: 7px;
+    top: 0;
+    line-height: inherit;
+    cursor: pointer;
+  }
+  &:hover {
+    background-color: $gray-200;
+    .fileStatus {
+      display: none;
+    }
+    .fileActions {
+      display: block;
+    }
+  }
+}
+
