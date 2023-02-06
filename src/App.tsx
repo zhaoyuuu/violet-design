@@ -11,8 +11,21 @@ import Cascader from './components/Cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
 import Affix from './components/Affix'
+import AutoComplete, {
+  DataSourceType,
+} from './components/AutoComplete/autoComplete'
 
 function App() {
+  const handleFetch = (query: string) => {
+    return fetch(`https://api.github.com/search/users?q=${query}`)
+      .then(res => res.json())
+      .then(({ items }) => {
+        return items
+          .slice(0, 10)
+          .map((item: any) => ({ value: item.login, ...item }))
+      })
+  }
+
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
@@ -20,14 +33,6 @@ function App() {
       <Affix offsetTop={40}>
         <Button btnType="primary">affix button</Button>
       </Affix>
-
-      {/* <Cascader
-        value={value}
-        onChange={onChange}
-        placeholder="请选择"
-        options={options}
-        // changeOnSelect
-      /> */}
 
       <Switch disabled></Switch>
       <Input size="sm" icon="search" />
@@ -76,6 +81,8 @@ function App() {
           <Menu.Item>drop3</Menu.Item>
         </Menu.SubMenu>
       </Menu>
+
+      <AutoComplete fetchSuggestions={handleFetch} />
     </div>
   )
 }
