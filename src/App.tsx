@@ -11,8 +11,64 @@ import Cascader from './components/Cascader'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
 import Affix from './components/Affix'
+import AutoComplete, {
+  DataSourceType,
+} from './components/AutoComplete/autoComplete'
+
+interface LakerPlayerProps {
+  value: string
+  number: number
+}
 
 function App() {
+  const lakers = [
+    'bradley',
+    'pope',
+    'caruso',
+    'cook',
+    'cousins',
+    'james',
+    'AD',
+    'green',
+    'howard',
+    'kuzma',
+    'McGee',
+    'rando',
+  ]
+  const lakersWithNumber = [
+    { value: 'bradley', number: 11 },
+    { value: 'pope', number: 1 },
+    { value: 'caruso', number: 4 },
+    { value: 'cook', number: 2 },
+    { value: 'cousins', number: 15 },
+    { value: 'james', number: 23 },
+    { value: 'AD', number: 3 },
+    { value: 'green', number: 14 },
+    { value: 'howard', number: 39 },
+    { value: 'kuzma', number: 0 },
+  ]
+  // const handleFetch = (query: string) => {
+  //   return lakersWithNumber.filter(p => p.value.includes(query))
+  // }
+  const handleFetch = (query: string) => {
+    return fetch(`https://api.github.com/search/users?q=${query}`)
+      .then(res => res.json())
+      .then(({ items }) => {
+        return items
+          .slice(0, 10)
+          .map((item: any) => ({ value: item.login, ...item }))
+      })
+  }
+  const renderOption = (item: DataSourceType) => {
+    const itemWithNumber = item as DataSourceType<LakerPlayerProps>
+    return (
+      <>
+        <h2>name: {itemWithNumber.value}</h2>
+        <p>number: {itemWithNumber.number}</p>
+      </>
+    )
+  }
+
   return (
     <div className="App">
       <h1 className="App__title">Hello violetUI !</h1>
@@ -76,6 +132,11 @@ function App() {
           <Menu.Item>drop3</Menu.Item>
         </Menu.SubMenu>
       </Menu>
+
+      <AutoComplete
+        fetchSeggestions={handleFetch}
+        // renderOption={renderOption}
+      />
     </div>
   )
 }

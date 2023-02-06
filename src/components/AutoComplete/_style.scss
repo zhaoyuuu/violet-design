@@ -1,0 +1,38 @@
+.violetAutoComplete {
+  position: relative;
+
+  &__loading {
+    text-align: center;
+  }
+
+  &__dropdown {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    top: $autoComplete-suggestions-top;
+    left: 0;
+    box-shadow: $cascader-optionsBox-shadow;
+    border-radius: 0.35rem;
+    background: #fff;
+    list-style: none;
+
+    &__item {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      cursor: pointer;
+      border-radius: $border-radius;
+      color: $input-color;
+      transition: opacity 100ms ease-out;
+      &:hover {
+        background: $primary;
+        color: white;
+      }
+      &:active {
+        opacity: 0.5;
+      }
+      &--highlight {
+        background: $cascader-optionItem-hover-color;
+      }
+    }
+  }
+}

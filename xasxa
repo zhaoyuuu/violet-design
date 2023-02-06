@@ -1,0 +1,550 @@
+[33mcommit 6661c17d69ab771e4adcdd7794febf5ec65762ad[m[33m ([m[1;36mHEAD -> [m[1;32mautoComplete[m[33m, [m[1;31morigion/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 7ea5eb8 79f3f6c
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Sat Feb 4 18:03:07 2023 +0800
+
+    Merge pull request #76 from zhaoyuuu/menu_component
+    
+    fix: menu test & cascader test
+
+[33mcommit 79f3f6cb2e09e811115fd57743b91ff2e90a1f51[m[33m ([m[1;32mmenu_component[m[33m)[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Sat Feb 4 18:01:44 2023 +0800
+
+    fix: menu test & cascader test
+
+[33mcommit 7ea5eb843e97d47cbf6db30a9986fddcb1b7aa07[m
+Merge: af77c3e f582223
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Sat Feb 4 15:48:18 2023 +0800
+
+    Merge pull request #75 from wyuhuiNJU/master
+    
+    feat: add test for Form-component
+
+[33mcommit f58222332f24ce90f2693cf5ddf8169a3eaa76af[m
+Merge: ebfe023 af77c3e
+Author: wyuhuiNJU <mf21230110@smail.nju.edu.cn>
+Date:   Sat Feb 4 15:21:51 2023 +0800
+
+    Merge branch 'zhaoyuuu:master' into master
+
+[33mcommit ebfe023e2eb94ffece33fb12c96b2fe797f1dcc7[m
+Merge: 9f2f540 50bd551
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Sat Feb 4 15:20:36 2023 +0800
+
+    Merge branch 'master' of github.com:wyuhuiNJU/violetUI
+
+[33mcommit 9f2f5405721b99990173b9626a5b0f55de52f1cd[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Sat Feb 4 15:20:17 2023 +0800
+
+    feat: add test for form component
+
+[33mcommit af77c3e348c5c1a74733c361a2fb49c313950672[m
+Author: 666laoyang <97347727+666laoyang@users.noreply.github.com>
+Date:   Sat Feb 4 14:42:58 2023 +0800
+
+    fix: modify animation
+
+[33mcommit 5bd080fb2980e49e577df793cb23b9c617dbeb02[m
+Merge: 1695b52 901bfcb
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Sat Feb 4 14:29:02 2023 +0800
+
+    Merge pull request #74 from zhaoyuuu/cascader
+    
+    Cascader
+
+[33mcommit 1695b5233f45f18c276f5ab01a4fdda36f7a6ff5[m
+Merge: 51348c1 50bd551
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Sat Feb 4 14:28:42 2023 +0800
+
+    Merge pull request #73 from wyuhuiNJU/master
+    
+    feat: add form-stroy
+
+[33mcommit 50bd551b4323ef486c7648f4971c3618a7b56c9f[m
+Merge: c2c63b8 51348c1
+Author: wyuhuiNJU <mf21230110@smail.nju.edu.cn>
+Date:   Sat Feb 4 14:27:37 2023 +0800
+
+    Merge branch 'master' into master
+
+[33mcommit 901bfcbfd9a82de149fe1c4b85b8eb9386ef1066[m[33m ([m[1;32mcascader[m[33m)[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Sat Feb 4 14:25:46 2023 +0800
+
+    fix: affix story
+
+[33mcommit 5ae697a481b13667acc6da32a9f797ee1a12cf41[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Sat Feb 4 14:02:35 2023 +0800
+
+    fix: debug cascader onChange
+
+[33mcommit c7c4d8511548b44395925eef997d85e3a5f5e18f[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Sat Feb 4 14:01:00 2023 +0800
+
+    fix: conflict
+
+[33mcommit 51348c1e5a9fc51fa88c0f6b8988dbe894bb2989[m
+Author: 666laoyang <97347727+666laoyang@users.noreply.github.com>
+Date:   Sat Feb 4 12:58:57 2023 +0800
+
+    fix: update index.scss
+
+[33mcommit 7a04c2813bb841f6da0f9f4633e02113d700d023[m
+Merge: 59bcbf1 d5eb389
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Sat Feb 4 12:52:09 2023 +0800
+
+    Merge pull request #72 from zhaoyuuu/select_component
+    
+    fix: import animation.scss
+
+[33mcommit d5eb389787c013ce41001b6e5842dda39c964d51[m
+Merge: 97aaa24 59bcbf1
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Sat Feb 4 12:51:30 2023 +0800
+
+    Merge branch 'master' into select_component
+
+[33mcommit 59bcbf18a7ffe035c822b343860eb758de376217[m
+Author: 666laoyang <97347727+666laoyang@users.noreply.github.com>
+Date:   Sat Feb 4 12:44:11 2023 +0800
+
+    fix: modify mixin to ./mixin
+
+[33mcommit 97aaa243aeb0d632db9ed91474bd1039a2d1154e[m
+Author: 666laoyang <1071941886@qq.com>
+Date:   Sat Feb 4 12:35:55 2023 +0800
+
+    fix: import animation.scss
+
+[33mcommit 2a3ca185a93872128b0195265a16a28625709c14[m
+Merge: 80b103c 72130ba
+Author: violetwzj <94945818+violetwzj@users.noreply.github.com>
+Date:   Sat Feb 4 11:41:36 2023 +0800
+
+    Merge pull request #71 from violetwzj/master
+    
+    添加重置方法
+
+[33mcommit 72130bab3bcda2ffa500536a97bff1a10527a24a[m
+Merge: 92190fd 80b103c
+Author: violetwzj <809133018@qq.com>
+Date:   Sat Feb 4 11:35:02 2023 +0800
+
+    feat!: fix confict
+
+[33mcommit 92190fd223d1e24d9e41be7b5fb023e555df3557[m
+Author: violetwzj <809133018@qq.com>
+Date:   Sat Feb 4 11:30:41 2023 +0800
+
+    feat!: Add Form component instance method
+
+[33mcommit c2c63b8a362daa741af677ecbd3696fa79c4d2f3[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Fri Feb 3 22:12:09 2023 +0800
+
+    feat: add form-stroy
+
+[33mcommit 80b103c9979161f3d43e966f9aed523f2101f433[m
+Merge: f3439f0 eeb3c4d
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Fri Feb 3 21:42:09 2023 +0800
+
+    Merge pull request #70 from zhaoyuuu/affix-component
+    
+    Affix component
+
+[33mcommit eeb3c4dd708842794a154d094ec3a19da4587f9c[m[33m ([m[1;32maffix-component[m[33m)[m
+Merge: 1828419 f3439f0
+Author: yuhang <zyh200286@qq.com>
+Date:   Fri Feb 3 21:41:40 2023 +0800
+
+    fix: conflict
+
+[33mcommit 18284197506d992d178dc2e41f8761f2fd9e7df7[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Fri Feb 3 21:37:08 2023 +0800
+
+    feat: add affix test
+
+[33mcommit 2bb75ad4e02a6b346ee0480d47cec85531711a4a[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Fri Feb 3 21:30:31 2023 +0800
+
+    feat: add affix story
+
+[33mcommit 5a8157d7b0833e2b49ad4cf5b4e73e9caa2544c0[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Fri Feb 3 21:14:19 2023 +0800
+
+    feat: add affix component
+
+[33mcommit f3439f064b96d7c2316b1e5a7795375108cd85ae[m
+Merge: a6e1aa4 24c0035
+Author: 666laoyang <97347727+666laoyang@users.noreply.github.com>
+Date:   Fri Feb 3 20:09:46 2023 +0800
+
+    Merge pull request #69 from zhaoyuuu/select_component
+    
+    fix: modify annotation
+
+[33mcommit 24c0035484c2e9d33f6f555c4c413466d8ff8f48[m[33m ([m[1;31morigion/select_component[m[33m)[m
+Author: 666laoyang <1071941886@qq.com>
+Date:   Fri Feb 3 20:08:07 2023 +0800
+
+    fix: modify annotation
+
+[33mcommit a6e1aa42015f4b6b6cef715ddae122c44db17076[m
+Merge: 6de1872 47b6323
+Author: wyuhuiNJU <mf21230110@smail.nju.edu.cn>
+Date:   Fri Feb 3 19:10:57 2023 +0800
+
+    Merge pull request #68 from wyuhuiNJU/master
+    
+    feat: form component: add sign-in-confirm features
+
+[33mcommit 47b6323a0b3d6f12f429e02f8e4e990dd670358c[m
+Merge: d010893 47be4a7
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Fri Feb 3 19:04:38 2023 +0800
+
+    Merge branches 'master' and 'master' of github.com:wyuhuiNJU/violetUI
+
+[33mcommit 095bc884504d601b8623087679ebda2a4ad4a34e[m
+Author: violetwzj <809133018@qq.com>
+Date:   Fri Feb 3 19:04:27 2023 +0800
+
+    feat!: add overall validation to Form
+
+[33mcommit d0108936c48cda11c69c9c8639fd448aa68631c4[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Fri Feb 3 19:00:47 2023 +0800
+
+    feat: form component : add sigin-in-confirm features
+
+[33mcommit 47be4a77cd0d274bc1d57d284ef0015281ef450f[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Fri Feb 3 19:00:47 2023 +0800
+
+    feat: form component : add sigin-in-confirm features
+
+[33mcommit 6de1872736eaa1da0e7359afb0c702dd84b392d3[m
+Merge: 154361a 9def006
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Fri Feb 3 18:36:10 2023 +0800
+
+    Merge pull request #67 from quas-modo/master
+    
+    fix：scss add
+
+[33mcommit 9def006387e35780e701f22500980409209db299[m
+Author: quas-modo <211250106@smail.nju.edu.cn>
+Date:   Fri Feb 3 17:59:59 2023 +0800
+
+    feat: progress test
+
+[33mcommit bdcc709dddc79c016898f083b447d2c50a6a3693[m
+Author: quas-modo <211250106@smail.nju.edu.cn>
+Date:   Fri Feb 3 17:59:42 2023 +0800
+
+    fix: scss fix
+
+[33mcommit 154361ae90e3b5a0093af5d24648fd9cc8e865e4[m[33m ([m[1;32mmessage-component[m[33m)[m
+Merge: ae5b52f 2b259fc
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Fri Feb 3 12:31:36 2023 +0800
+
+    Merge pull request #66 from wyuhuiNJU/form-dev
+    
+    Form dev
+
+[33mcommit ae5b52f94b0dc2cd3c9afd171248fc715292cb3d[m
+Merge: ce39ce8 6c1a7ec
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Thu Feb 2 23:30:29 2023 +0800
+
+    Merge pull request #65 from quas-modo/master
+    
+    fix: radio size bug
+
+[33mcommit 6c1a7ecf69c5fd8e607e624203985eea84e4890d[m
+Merge: 1e8be21 ce39ce8
+Author: quasdo <91517920+quas-modo@users.noreply.github.com>
+Date:   Thu Feb 2 23:28:11 2023 +0800
+
+    Merge branch 'zhaoyuuu:master' into master
+
+[33mcommit 1e8be214fb56059bb29e6c56507a3882f28d83c0[m
+Author: quas-modo <211250106@smail.nju.edu.cn>
+Date:   Thu Feb 2 23:24:39 2023 +0800
+
+    fix: radio size bug
+
+[33mcommit ce39ce88f86f3c1196298f5b8725da713a102d8b[m
+Merge: f2a1ca8 22f9b64
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Thu Feb 2 23:19:05 2023 +0800
+
+    Merge pull request #64 from quas-modo/master
+    
+    feature: radio style update fix: progress success bug
+
+[33mcommit 22f9b644bd571b4609b3ac38d315d3fe6dfd8281[m
+Author: quas-modo <211250106@smail.nju.edu.cn>
+Date:   Thu Feb 2 23:02:02 2023 +0800
+
+    feature: radio style update
+    fix: progress success bug
+
+[33mcommit 2b259fcf450ebf16214a96a5a09bf3e7146bc91f[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Thu Feb 2 21:42:20 2023 +0800
+
+    fix: elint setting
+
+[33mcommit bc4c6b301b85df54811f8e746d6fd1986fda1ccf[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Thu Feb 2 21:27:12 2023 +0800
+
+    feat: form component basic functions
+
+[33mcommit f2a1ca85cfa42f45a2e9eda98a8431597dc441e1[m
+Merge: 53a1335 10c08c8
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Thu Feb 2 20:40:35 2023 +0800
+
+    Merge pull request #62 from zhaoyuuu/cascader
+    
+    feat: add cascader test
+
+[33mcommit 10c08c8b7717b344dcb418e00bdc0ce620634daf[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Thu Feb 2 20:39:41 2023 +0800
+
+    feat: add cascader test
+
+[33mcommit f10531a1fafee6e0d4707b94b436bd5ea7b02304[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Thu Feb 2 20:24:59 2023 +0800
+
+    feat: add lodash-es package
+
+[33mcommit 53a1335156e0d426115fec7e6ceff77543641cac[m
+Merge: 5528620 8d251e6
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Thu Feb 2 20:15:07 2023 +0800
+
+    Merge pull request #60 from 5liwei/LiWei
+    
+    Li wei
+
+[33mcommit 8d251e6fd91a20d52fb3701f615663bc3333b7c4[m
+Author: 李玮 <505805473@qq.com>
+Date:   Thu Feb 2 20:13:21 2023 +0800
+
+    fix:correct tab style
+
+[33mcommit 969bcfc682584dd2a8ee57ced19dd70d78e5b2e9[m
+Merge: 30abc0f 5528620
+Author: 5liwei <90241046+5liwei@users.noreply.github.com>
+Date:   Thu Feb 2 20:12:09 2023 +0800
+
+    Merge branch 'zhaoyuuu:master' into LiWei
+
+[33mcommit 5528620912d5ace40872dbd0e3c9a11397d91a6f[m
+Merge: e13a0d8 9521013
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Thu Feb 2 19:48:02 2023 +0800
+
+    Merge pull request #61 from zhaoyuuu/select_component
+    
+    feat: add select.test.tsx
+
+[33mcommit 95210139a53e26092f4083fcc1fc6cdaab17f2ec[m
+Author: 666laoyang <1071941886@qq.com>
+Date:   Thu Feb 2 15:40:03 2023 +0800
+
+    feat: add select.test.tsx
+
+[33mcommit 367760d4a93242acc26ff1271786f9809520b7c1[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Thu Feb 2 13:22:04 2023 +0800
+
+    feat: add input-test, input-index
+
+[33mcommit 30abc0fc2d0db821688d9c9e834b6e8f53e982ea[m
+Merge: e67f39b e13a0d8
+Author: 李玮 <505805473@qq.com>
+Date:   Thu Feb 2 12:43:16 2023 +0800
+
+    fix:fix conflict
+
+[33mcommit e13a0d894bf691eb4c19723e16ec4e4b0db04ec8[m
+Merge: 4c5dd44 d31acd1
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Thu Feb 2 12:38:57 2023 +0800
+
+    Merge pull request #59 from zhaoyuuu/cascader
+    
+    fix: App display
+
+[33mcommit d31acd128b6a6fa760238c06dc899e442c51ee27[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Thu Feb 2 12:38:26 2023 +0800
+
+    fix: App display
+
+[33mcommit e67f39bdde4c20cec3abbe34b697994b5ebc2eea[m
+Merge: b654f80 4c5dd44
+Author: 李玮 <505805473@qq.com>
+Date:   Thu Feb 2 12:37:43 2023 +0800
+
+    fix: fix confilct
+
+[33mcommit b654f8046c2a0a238f61ecc6afd102204b825db5[m
+Author: 李玮 <505805473@qq.com>
+Date:   Thu Feb 2 12:35:09 2023 +0800
+
+    fix: fix confilct
+
+[33mcommit 4c5dd44695ab931da84337361efb5e9f31cb9d2a[m
+Merge: 014b0ff cfa06bb
+Author: yuhang <zyh200286@qq.com>
+Date:   Thu Feb 2 12:33:10 2023 +0800
+
+    fix: optimize cascader style & debug
+
+[33mcommit 52c8934f49b7c219099caf1ca0dfddc54fdccd03[m
+Merge: dd86f06 cfa06bb
+Author: 李玮 <505805473@qq.com>
+Date:   Wed Feb 1 20:57:59 2023 +0800
+
+    fix:correct tab.tsx
+
+[33mcommit dd86f06861b460bf3ed4cc997515afba82c3c109[m
+Author: 李玮 <505805473@qq.com>
+Date:   Wed Feb 1 20:54:55 2023 +0800
+
+    fix:correct tab.tsx
+
+[33mcommit cfa06bb30f3916d5fc293d8e5c43f2dfe36bfbaa[m
+Merge: 062cb2e 043a33e
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Wed Feb 1 20:16:52 2023 +0800
+
+    Merge pull request #57 from zhaoyuuu/menu_component
+    
+    Menu component
+
+[33mcommit 043a33eaee843b79e76ad9e89f2a8b44c4b215ef[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Wed Feb 1 20:15:22 2023 +0800
+
+    feat: optimize menu style
+
+[33mcommit 22c2ccaba7dc27cecf036e00e1afdd3abe37b60e[m
+Merge: dceb31c 062cb2e
+Author: yuhang <zyh200286@qq.com>
+Date:   Wed Feb 1 19:49:19 2023 +0800
+
+    Merge branch 'master' of https://github.com/zhaoyuuu/violetUI into menu_component
+
+[33mcommit 062cb2efd9bfdf13b2b00ba8c4fd46ed258bbc9d[m
+Merge: 0d50173 01ebd6f
+Author: wyuhuiNJU <mf21230110@smail.nju.edu.cn>
+Date:   Wed Feb 1 19:26:53 2023 +0800
+
+    Merge pull request #56 from quas-modo/master
+    
+    fix: progress's percent error
+
+[33mcommit 01ebd6fa816c6df4b10df6d1eab4afc8edf1afd7[m
+Author: quas-modo <211250106@smail.nju.edu.cn>
+Date:   Wed Feb 1 19:19:27 2023 +0800
+
+    fix: progress's percent error
+
+[33mcommit 0d50173b33ffcc32a43a546e9f087e9db91d6e0f[m
+Merge: 5be1cac 0ce167b
+Author: wyuhuiNJU <mf21230110@smail.nju.edu.cn>
+Date:   Wed Feb 1 18:46:51 2023 +0800
+
+    Merge pull request #55 from wyuhuiNJU/input-component
+    
+    fix: debug input-story
+
+[33mcommit 0ce167b1ef88559ff22948b9288698ff08d876c5[m
+Author: wyuhui <neo_van@smail.nju.edu.cn>
+Date:   Wed Feb 1 18:41:40 2023 +0800
+
+    fix: debug input-story
+
+[33mcommit dceb31c080428fc91ca736a95f13f1baa9da5d73[m
+Merge: c178918 5be1cac
+Author: yuhang <zyh200286@qq.com>
+Date:   Wed Feb 1 17:10:08 2023 +0800
+
+    Merge branch 'master' of https://github.com/zhaoyuuu/violetUI into menu_component
+
+[33mcommit c1789181044dc06b365d5a15b564b75b77decaee[m
+Merge: add2de3 7b98b97
+Author: yuhang <zyh200286@qq.com>
+Date:   Wed Feb 1 17:10:03 2023 +0800
+
+    feat: pull
+
+[33mcommit 5be1caca694ce1c2958370a9aa3a64639844b60f[m
+Merge: 7b98b97 32130a2
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Wed Feb 1 17:09:36 2023 +0800
+
+    Merge pull request #54 from zhaoyuuu/select_component
+    
+    fix: modify 'show code' in storybook
+
+[33mcommit 32130a2c3931c75dc7717982accab0fdad8a319d[m
+Author: 666laoyang <1071941886@qq.com>
+Date:   Wed Feb 1 17:05:56 2023 +0800
+
+    fix: modify 'show code' in storybook
+
+[33mcommit add2de36751f78800a0453cce629dd6773ebf8c3[m
+Author: yuhang <zyh200286@qq.com>
+Date:   Wed Feb 1 16:46:48 2023 +0800
+
+    feat: pull
+
+[33mcommit 7b98b97aaa484f2d6d59efbf2e1fae7219974cd1[m
+Merge: c854c7e 31376d0
+Author: zhaoyuuu <97675495+zhaoyuuu@users.noreply.github.com>
+Date:   Wed Feb 1 16:45:42 2023 +0800
+
+    Merge pull request #53 from quas-modo/master
+    
+    fix: radio storybook optimize
+
+[33mcommit 31376d0047c4bd257c19b3f121af7769ffb18a32[m
+Author: quas-modo <211250106@smail.nju.edu.cn>
+Date:   Wed Feb 1 16:43:35 2023 +0800
+
+    feat: progress and progress storybook
+
+[33mcommit 35ad85869a7c1645f4640165267065dbc2f28056[m
+Author: quasdo <91517920+quas-modo@users.noreply.github.com>
+Date:   Wed Feb 1 16:21:50 2023 +0800
+
+    Update index.scss
+
+[33mcommit 4e82bf67faaf7c072c4d76a6e0f6ee992a650c94[m
+Author: quasdo <91517920+quas-modo@users.noreply.github.com>
+Date:   Wed Feb 1 16:18:25 2023 +0800
+
+    Update index.scss
