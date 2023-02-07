@@ -14,9 +14,7 @@ describe('RadioGroup', () => {
     )
     const element = wrapper.getByText('1')
     if (element && element.parentElement) {
-      expect(element.parentElement.parentElement).toHaveClass(
-        'violetRadioGroup'
-      )
+      expect(element.parentElement.parentElement).toHaveClass('violetRadio')
     }
   })
 })
