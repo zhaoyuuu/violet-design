@@ -1,6 +1,6 @@
 {
   "name": "violet-design",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "main": "build/index.js",
   "module": "build/index.js",
