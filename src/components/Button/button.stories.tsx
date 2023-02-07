@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Button from './button'
+import Icon from '../Icon'
 
 export default {
   title: 'Button',
@@ -60,6 +61,13 @@ Text.args = {
   btnType: 'text',
   children: 'Text Button',
 }
+//icon button
+export const IconButton = (args: any) => (
+  <Button size="sm" btnType="primary">
+    <Icon icon="upload" /> Icon Button
+  </Button>
+)
+IconButton.storyName = 'ICON Button'
 
 // const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
