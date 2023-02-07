@@ -14,7 +14,11 @@ export { default as Input } from './components/Input'
 export { default as InputNumber } from './components/InputNumber'
 export { default as Menu } from './components/Menu'
 // progress
+export { default as Progress } from './components/Progress'
 // radio
+export { default as RadioGroup } from './components/Radio'
+export { default as Radio } from './components/Radio'
+
 export { default as Select } from './components/Select'
 export { default as Switcher } from './components/Switcher'
 export { default as Tabs } from './components/Tabs'
