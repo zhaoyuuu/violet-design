@@ -7,7 +7,6 @@ import React, {
 import classNames from 'classnames'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import Icon from '../Icon'
-import './_style.scss'
 
 type InputSize = 'lg' | 'sm'
 export interface InputProps
