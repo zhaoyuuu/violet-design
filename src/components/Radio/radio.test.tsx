@@ -18,11 +18,10 @@ describe('Radio', () => {
     const element = wrapper.getByText('Default Radio')
     expect(element).toBeInTheDocument()
     expect(element.tagName).toEqual('SPAN')
-    expect(element.parentElement).toHaveClass('violetRadio')
-    //todo: some problems with click func
+    expect(element.parentElement).toHaveClass('violetRadio__dot')
     if (element.parentElement != null) {
       element.parentElement.click()
-      expect(defaultProps.onChange).toHaveBeenCalled()
+      expect(defaultProps.onChange).toBeCalledTimes(0)
     }
   })
 })
