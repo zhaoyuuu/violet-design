@@ -14,6 +14,7 @@
     "classnames": "^2.3.2",
     "immer": "^9.0.19",
     "lodash-es": "^4.17.21",
+    "resize-observer-polyfill": "^1.5.1",
     "react-transition-group": "^4.4.5"
   },
   "peerDependencies": {
@@ -101,7 +102,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^4.1.2",
     "sass": "^1.58.0",
     "typescript": "^4.9.4",
