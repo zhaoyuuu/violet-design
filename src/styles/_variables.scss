@@ -240,6 +240,7 @@ $menu-transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out !defau
 // menu-item
 $menu-item-padding-y: 0.5rem !default;
 $menu-item-padding-x: 1rem !default;
+$menu-item-hover-color: $gray-200 !default;
 $menu-item-active-color: $primary !default;
 $menu-item-mouseDown-color: rgba($primary, 0.5) !default;
 $menu-item-active-border-width: 2px !default;
@@ -357,9 +358,64 @@ $nav-tabs-content-margin: 1rem !default;
 $cascader-optionList-border-left: 1px solid $gray-400 !default;
 $cascader-optionItem-padding-right: 1.8rem !default;
 $cascader-optionList-height: 12rem !default;
-$cascader-optionsWrap-top: $input-line-height + 1rem !default;
+$cascader-optionsWrap-top: $input-line-height + 1.2rem !default;
 $cascader-optionItem-hover-color: $gray-200 !default;
 $cascader-optionItem-icon-padding-right: 0.5rem !default;
+$cascader-optionsBox-shadow: 0 4px 10px
+  rgba(
+    $color: #000000,
+    $alpha: 0.4,
+  ) !default;
 
 // radio
 $radio-disabled-color: $gray-600 !default;
+$radio-dot-margin-right: 12px;
+$radio-dot-input-width: 17px;
+$radio-dot-input-height: 17px;
+$radio-dot-label-width: 15px;
+$radio-dot-label-height: 15px;
+$radio-dot-input-after-left: 7px;
+$radio-dot-input-after-top: 2px;
+$radio-dot-input-after-width: 5px;
+$radio-dot-input-after-height: 12px;
+$radio-dot-input-after-border-right: 1px;
+$radio-dot-input-after-border-bottom: 1px;
+$radio-dot-span-padding-left: 3px;
+$radio-dot-button-padding: 1px;
+$radio-button-input-width: 6px;
+$radio-button-input-height: 6px;
+$radio-button-input-top: 10px;
+$radio-button-input-left: 10px;
+$radio-button-input-background: #b4b4b4;
+$radio-button-label-min-height: 50px;
+$radio-button-label-height: 24px;
+$radio-button-label-line-height: 24px;
+$radio-button-label-padding-right: 10px;
+$radio-button-label-border-radius: 5px;
+$radio-button-label-padding-left: 25px;
+$radio-button-input-after-left: 12px;
+$radio-button-input-after-top: 5px;
+$radio-button-input-after-width: 5px;
+$radio-button-input-after-height: 12px;
+$radio-button-input-after-border-right: 1px;
+$radio-button-input-after-border-bottom: 1px;
+
+//progress
+$progress-sm-height: 20px;
+$progress-line-container-width: 240px;
+$progress-line-container-height: 25px;
+$progress-line-container-border-radius: 25px;
+$progress-line-container-background: #eee;
+$progress-line-progress-border-radius: 25px;
+$progress-circle-font-size: 50px;
+$progress-circle-width: 160px;
+$progress-circle-height: 160px;
+$progress-circle-percent-top: 15px;
+$progress-circle-percent-left: 15px;
+$progress-circle-percent-width: 130px;
+$progress-circle-percent-height: 130px;
+$progress-circle-percent-background-color: #fff;
+$progress-circle-percent-font-size: 30px;
+
+// auto-complete
+$autoComplete-suggestions-top: $input-line-height + 1.4rem !default;

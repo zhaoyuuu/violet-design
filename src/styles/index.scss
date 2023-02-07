@@ -5,7 +5,10 @@
 @import './variables';
 
 //mixin
-@import 'mixin';
+@import './mixin';
+
+// animation
+@import './animation';
 
 //switch
 @import '../components/Switcher/style';
@@ -15,14 +18,15 @@
 
 //icon
 @import '../components/Icon/style';
-// button
-//@import '../components/Button/style';
 
 // button
 @import '../components/Button/style';
 
 //form
 @import '../components/Form/style';
+
+// input
+@import '../components/Input/style';
 
 // input-number
 @import '../components/InputNumber/style';
@@ -38,3 +42,15 @@
 
 //progress
 @import '../components/Progress/style';
+
+// affix
+@import '../components/Affix/style';
+
+// radio
+@import '../components/Radio/style';
+
+// autoComplete
+@import '../components/AutoComplete/style';
+
+// upload
+@import '../components/Upload/style'

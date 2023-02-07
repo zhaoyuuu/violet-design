@@ -51,7 +51,7 @@ export const SelectContext = createContext<IselectContext>({
  * ### 引用方法
  *
  * ~~~js
- * import { Select } from 'vikingship'
+ * import { Select } from 'violetUI'
  * // 然后可以使用 <Select> 和 <Select.Option>
  * ~~~
  */
