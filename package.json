@@ -2,9 +2,10 @@
   "name": "violet-design",
   "version": "0.1.2",
   "private": false,
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
@@ -28,10 +29,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "clean": "rimraf ./build",
-    "build": "npm run clean && npm run build-ts && npm run build-css",
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && npm run build-es && npm run build-umd",
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "node-sass ./src/styles/index.scss ./build/index.css",
+    "build-es": "rollup --config rollup/rollup.esm.config.js",
+    "build-umd": "rollup --config rollup/rollup.umd.config.js",
     "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true react-scripts test",
     "lint": "eslint --ext js,ts,tsx src",
@@ -69,6 +72,10 @@
     ]
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addon-interactions": "^6.5.15",
@@ -103,8 +110,13 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "rimraf": "^4.1.2",
+    "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.23",
+    "rollup-plugin-sass": "^1.12.17",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.34.1",
     "sass": "^1.58.0",
-    "typescript": "^4.9.4",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5",
     "webpack": "^5.75.0"
   }
 }
