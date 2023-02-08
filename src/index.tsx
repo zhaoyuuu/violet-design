@@ -13,9 +13,7 @@ export { default as Icon } from './components/Icon'
 export { default as Input } from './components/Input'
 export { default as InputNumber } from './components/InputNumber'
 export { default as Menu } from './components/Menu'
-// progress
 export { default as Progress } from './components/Progress'
-// radio
 export { default as RadioGroup } from './components/Radio'
 export { default as Radio } from './components/Radio'
 
