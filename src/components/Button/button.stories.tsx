@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Button from './button'
+import Icon from '../Icon'
 
 export default {
   title: 'Button',
@@ -17,6 +18,7 @@ const Template: ComponentStory<typeof Button> = args => (
 export const Default = Template.bind({})
 Default.args = {
   children: 'Default Button',
+  onClick: () => console.log(123),
 }
 
 //Large Button
@@ -60,25 +62,12 @@ Text.args = {
   btnType: 'text',
   children: 'Text Button',
 }
+//icon button
+export const IconButton = (args: any) => (
+  <Button size="sm" btnType="primary">
+    <Icon icon="upload" /> Icon Button
+  </Button>
+)
+IconButton.storyName = 'Icon'
 
-// const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-// export const Primary = Template.bind({});
-
-// Primary.args = {
-//     btnType: ButtonType.Primary,
-//     children: 'Button'
-// }
-
-// const style = {
-//     marginLeft: 8
-// }
-
-// export const Basic = () => {
-//     return <>
-//         <Button btnType={ButtonType.Primary}>Primary Button</Button>
-//         <Button style={style}>Default Button</Button>
-//         <Button btnType={ButtonType.Danger}>Danger Button</Button>
-//         <Button btnType={ButtonType.Link}>Link Button</Button>
-//     </>
-//   };
+//export const
