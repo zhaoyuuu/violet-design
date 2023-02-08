@@ -8,7 +8,7 @@ export { default as Affix } from './components/Affix'
 export { default as AutoComplete } from './components/AutoComplete'
 export { default as Button } from './components/Button'
 export { default as Cascader } from './components/Cascader'
-// form
+export { default as Form } from './components/Form'
 export { default as Icon } from './components/Icon'
 export { default as Input } from './components/Input'
 export { default as InputNumber } from './components/InputNumber'
