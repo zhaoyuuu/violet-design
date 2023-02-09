@@ -3,10 +3,9 @@ import { ComponentMeta } from '@storybook/react'
 
 import Select from './index'
 export default {
-  title: 'Select组件',
+  title: 'Select 选择器',
   component: Select,
   id: 'Select',
-  // subcomponents: { Option: Select.Option },
   // 让整个story包在width:350px的div内
   decorators: [
     Story => (
@@ -25,7 +24,7 @@ const options = [
 export const DefaultSelect = (args: any) => (
   <Select {...args} placeholder="请选择" options={options} />
 )
-DefaultSelect.storyName = '默认的Select'
+DefaultSelect.storyName = '默认的选择器'
 DefaultSelect.parameters = {
   docs: {
     source: {
@@ -42,7 +41,7 @@ DefaultSelect.parameters = {
 export const MultipleSelect = (args: any) => (
   <Select {...args} placeholder="多选框" multiple options={options} />
 )
-MultipleSelect.storyName = '支持多选的Select'
+MultipleSelect.storyName = '支持多选的选择器'
 MultipleSelect.parameters = {
   docs: {
     source: {
@@ -59,7 +58,7 @@ MultipleSelect.parameters = {
 export const DisabledSelect = (args: any) => (
   <Select {...args} placeholder="禁选框" disabled options={options} />
 )
-DisabledSelect.storyName = '被禁用的 Select'
+DisabledSelect.storyName = '被禁用的选择器'
 DisabledSelect.parameters = {
   docs: {
     source: {
