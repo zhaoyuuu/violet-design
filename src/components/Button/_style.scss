@@ -59,10 +59,9 @@
     color: $btn-link-hover-color;
     text-decoration: $link-hover-decoration;
 }
-  &:focus,
-  &:focus {
-    text-decoration: $link-hover-decoration;
-    box-shadow: none;
+  &:active,
+  &:active {
+    opacity: 0.5;
   }
   &:disabled,
   &:disabled {
