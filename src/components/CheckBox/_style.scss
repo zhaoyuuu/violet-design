@@ -62,16 +62,16 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
 }
 
 @each $t in $type {
-  .violetCheckBox-type_#{$t} {
+  .violetCheckBox#{$t} {
     width: 20px;
     height: 20px;
     display: inline-block;
     text-align: center;
     vertical-align: baseline;
-    // line-height: 1.54rem;
+    //line-height: 1.54rem;
     position: relative;
     outline: none;
-    -webkit-appearance: violetCheckBox;
+    //-webkit-appearance: violetCheckBox;
     border: 1px solid #fff;
     -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
     color: #fff;
@@ -79,12 +79,12 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     margin-right: 3px;
   }
 
-  .violetCheckBox-type_#{$t}:checked+span {
+  .violetCheckBox#{$t}:checked+span {
     color: typeFunction($t);
     cursor: pointer;
   }
 
-  .violetCheckBox-type_#{$t}::before {
+  .violetCheckBox#{$t}::before {
     content: "";
     position: absolute;
     top: 0;
@@ -97,10 +97,10 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     cursor: pointer;
   }
 
-  .violetCheckBox-type_#{$t}:checked::before {
+  .violetCheckBox#{$t}:checked::before {
     content: "\2713";
     background-color: typeFunction($t);
-    border: 1px solid typeFunction($t);
+    border: 2px solid typeFunction($t);
     position: absolute;
     top: 0;
     left: 0;
@@ -109,20 +109,20 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     cursor: pointer;
   }
 
-  //   .violetCheckBox-type_#{$t}.is-indeterminate::before {
-  //     background-color: typeFunction($t);
-  //     // border: 1px solid typeFunction($t);
-  //     width: 75%;
-  //     padding: 10px;
-  //     box-sizing: border-box;
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     color: #fff;
-  //     cursor: pointer;
-  //   }
+    .violetCheckBox#{$t}.--indeterminate::before {
+      background-color: typeFunction($t);
+      // border: 1px solid typeFunction($t);
+      width: 75%;
+      padding: 10px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #fff;
+      cursor: pointer;
+    }
 
-  .violetCheckBox-type_#{$t}.is--indeterminate:after {
+  .violetCheckBox#{$t}.--indeterminate:after {
     content: "";
     width: 45%;
     height: 45%;
@@ -137,7 +137,7 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
 
 
 
-  .violetCheckBox-type_#{$t}.is--disabled:checked::before {
+  .violetCheckBox#{$t}.--disabled:checked::before {
     content: "\2713";
     position: absolute;
     top: 0;
@@ -146,11 +146,11 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     cursor: pointer;
   }
 
-  .violetCheckBox-type_#{$t}.is-disabled:before {
+  .violetCheckBox#{$t}.--disabled:before {
     cursor: not-allowed;
   }
 
-  .violetCheckBox-type_#{$t}.is-disabled+span {
+  .violetCheckBox#{$t}.--disabled+span {
     cursor: not-allowed;
   }
 

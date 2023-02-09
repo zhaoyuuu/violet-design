@@ -10,23 +10,28 @@ const checkboxMeta: ComponentMeta<typeof CheckBox> = {
 
 export default checkboxMeta
 
-export const Default: ComponentStory<typeof CheckBox> = () => (
-    <CheckBox>Default CheckBox</CheckBox>
-)
+const Template: ComponentStory<typeof CheckBox> = args => (
+    <CheckBox {...args}></CheckBox>
+  )
+export const Default = Template.bind({})
+Default.args = {
+    children: 'Default CheckBox'
+}
+// export const Default: ComponentStory<typeof CheckBox> = (args) => (
+//     <CheckBox {...args}>Default CheckBox</CheckBox>
+// )
 Default.storyName = '默认checkbox样式'
 
-export const CheckBoxDisabled: ComponentStory<typeof CheckBox> = () => (
-    <>
-    <CheckBox disabled = {true}> Disabled Checkbox</CheckBox>
-    <CheckBox disabled = {false}> Enabled Checkbox</CheckBox>
-    </>
-)
-CheckBoxDisabled.storyName = '是否禁用checkbox样式'
+export const Disabled = Template.bind({})
+Disabled.args = {
+    disabled: true,
+    children: 'Disabled CheckBox'
+}
+Disabled.storyName = '禁用checkbox样式'
 
-export const CheckBoxChecked: ComponentStory<typeof CheckBox> = () => (
-    <>
-    <CheckBox checked = {true}> Checked Checkbox</CheckBox>
-    <CheckBox checked = {false}> Unchecked Checkbox</CheckBox>
-    </>
-)
-CheckBoxChecked.storyName = '是否勾选checkbox样式'
+export const Checked = Template.bind({})
+Checked.args = {
+    checked: true,
+    children: 'Checked CheckBox'
+}
+Checked.storyName = '勾选checkbox样式'

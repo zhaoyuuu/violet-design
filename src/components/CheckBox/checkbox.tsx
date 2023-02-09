@@ -56,17 +56,17 @@ export const CheckBox: FC<CheckBoxProps> = (props) => {
     >
       <label>
         <input
-          type='CheckBox'
+          type='checkbox'
           checked={checkBoxChecked}
           name={name}
           disabled={disabled}
           onChange={handleChange}
           value={value || label}
           className={[
-            `violetCheckBox-type_${type}`,
+            `violetCheckBox${type}`,
             classnames({
-              'violetCheckBox--disabled':disabled,
-              'violetCheckBox--indeterminate': isIndeterminate
+              '--disabled':disabled,
+              '--indeterminate': isIndeterminate
             })
           ].join(' ')}
         />
