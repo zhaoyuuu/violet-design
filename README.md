@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/zhaoyuuu/violetUI/1f1e0f433ded4d35d4944db427cd991355f8a6bf/assets/readme-logo.svg?sanitize=true" width="400px">
+<img src="https://raw.githubusercontent.com/zhaoyuuu/violetUI/a07bdb12ce19fcc8d8c5bc760434035981dd9633/assets/solid-readme-logo.svg?sanitize=true" width="500px">
 
 `violet-design` 是基于 React 框架的 UI 组件库。
 
