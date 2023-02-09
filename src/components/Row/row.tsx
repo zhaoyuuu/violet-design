@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react'
 
 interface RowProps {
-  justify: string // 水平排列方式
-  align: string // 垂直排列方式
-  gutter: number // 栅格间隔
+  justify: string
+  align: string 
+  gutter: number 
   children?: React.ReactNode;
 }
 
@@ -16,7 +16,6 @@ export const Row: FC<RowProps> = ({ justify, align, children }) => {
     palign()
   }, [])
 
-  // 判断
   function pjustify() {
     if (justify === 'start') {
       setTbjustify({
@@ -42,8 +41,6 @@ export const Row: FC<RowProps> = ({ justify, align, children }) => {
       setTbjustify({})
     }
   }
-
-  // 判断布局
   function palign() {
     if (align === 'top') {
       setTbalign({
