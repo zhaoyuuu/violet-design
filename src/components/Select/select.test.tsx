@@ -27,11 +27,14 @@ const multipleProps = {
 describe('test Select component', () => {
   it('default select', () => {
     const wrapper = render(
-      <Select {...defaultProps}>
-        <Select.Option value="nihao" />
-        <Select.Option value="nihao2" />
-        <Select.Option value="nihao3" disabled />
-      </Select>
+      <Select
+        {...defaultProps}
+        options={[
+          { value: 'nihao' },
+          { value: 'nihao2' },
+          { value: 'nihao3', disabled: true },
+        ]}
+      />
     )
     const { getByPlaceholderText, getByText } = wrapper
     const element = getByPlaceholderText('test') as HTMLInputElement
@@ -55,11 +58,10 @@ describe('test Select component', () => {
   })
   it('multiple select', () => {
     const wrapper = render(
-      <Select {...multipleProps}>
-        <Select.Option value="nihao" />
-        <Select.Option value="nihao2" />
-        <Select.Option value="nihao3" />
-      </Select>
+      <Select
+        {...multipleProps}
+        options={[{ value: 'nihao' }, { value: 'nihao2' }, { value: 'nihao3' }]}
+      />
     )
     const { getByPlaceholderText, getByText, container } = wrapper
     const element = getByPlaceholderText('test') as HTMLInputElement
