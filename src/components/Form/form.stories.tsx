@@ -82,7 +82,6 @@ export const BasicForm = (args: any) => {
   }
   return (
     <Form initialValues={{ username: '', agreement: false }} {...args}>
-
       {({ isValid, isSubmitting }) => (
         <>
           <FormItem
@@ -166,10 +165,10 @@ export const BRegForm = (args: any) => {
         getValueFromEvent={e => e}
         valuePropName="defaultValue"
       >
-        <Select placeholder="请选择性别">
-          <Select.Option value="男" />
-          <Select.Option value="女" />
-        </Select>
+        <Select
+          placeholder="请选择性别"
+          options={[{ value: '男' }, { value: '女' }]}
+        />
       </FormItem>
       <div
         className="agreement-section"

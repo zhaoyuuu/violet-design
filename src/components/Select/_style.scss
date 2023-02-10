@@ -65,7 +65,8 @@
       cursor: default;
     }
     &:hover {
-      background-color: rgba($primary, .1);
+      background: $primary;
+      color: white;
     }
   }
 }
