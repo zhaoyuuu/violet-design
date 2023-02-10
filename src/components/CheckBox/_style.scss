@@ -1,7 +1,7 @@
 @import '../../styles/_variables.scss';
 
 
-$type:('success', 'primary', 'danger', 'warning', 'info', 'default');
+$type:('success', 'primary', 'danger', 'default');
 
 @function typeFunction($t) {
   @if $t==success {
@@ -12,16 +12,8 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     @return $primary
   }
 
-  @else if $t==info {
-    @return $info
-  }
-
   @else if $t==danger {
     @return $danger
-  }
-
-  @else if $t==warning {
-    @return $warning
   }
 
   @return $primary
@@ -36,22 +28,14 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     @return $color-primary-light2
   }
 
-  @else if $t==info {
-    @return $color-info-light2
-  }
-
   @else if $t==danger {
     @return $color-danger-light2
-  }
-
-  @else if $t==warning {
-    @return $color-warning-light2
   }
 
   @return $color-primary-light2
 }
 
-.tb-violetCheckBox {
+.violetCheckBox {
   display: inline-block;
 
   label {
@@ -68,10 +52,8 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
     display: inline-block;
     text-align: center;
     vertical-align: baseline;
-    //line-height: 1.54rem;
     position: relative;
     outline: none;
-    //-webkit-appearance: violetCheckBox;
     border: 1px solid #fff;
     -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
     color: #fff;
@@ -111,7 +93,6 @@ $type:('success', 'primary', 'danger', 'warning', 'info', 'default');
 
     .violetCheckBox#{$t}.--indeterminate::before {
       background-color: typeFunction($t);
-      // border: 1px solid typeFunction($t);
       width: 75%;
       padding: 10px;
       box-sizing: border-box;
