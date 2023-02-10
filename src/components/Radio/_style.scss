@@ -1,5 +1,5 @@
-
 .violetRadio{
+  transition: all 200ms ease-out;
   &--disabled{
     cursor: not-allowed;
     color: $radio-disabled-color
@@ -69,6 +69,7 @@
     padding: $radio-dot-button-padding;
   }
 
+
   &__button input[type="radio"]{
     appearance: none; /*清楚默认样式*/
     -webkit-appearance: none;
@@ -84,6 +85,14 @@
     background: $radio-button-input-background;
   }
 
+  &__button input:hover{
+    background: $primary;
+  }
+
+  &__button input[type="radio"]:hover + label{
+    color: $primary;
+  }
+
   &__button label{
     display: inline-block;
     min-width: $radio-button-label-min-height;
@@ -94,16 +103,20 @@
     border-radius: $radio-button-label-border-radius;
     padding-left: $radio-button-label-padding-left;
     color: #fff;
-    background-color: $gray-400;
+    background-color: $gray-300;
+
   }
+
 
   &__button input[type="radio"]:checked{
     opacity: 0;
   }
+
   &__button input[type="radio"]:checked + label {
     color: #fff;
     background-color: $primary;
   }
+
   &__button input[type="radio"]:checked + label::after {
     content: "";
     position: absolute;
