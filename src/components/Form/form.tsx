@@ -32,6 +32,14 @@ export type IFormRef = Omit<
 >
 export const FormContext = createContext<IFormContext>({} as IFormContext)
 
+/**
+ * >高性能表单控件，自带数据域管理。包含数据录入、校验以及对应样式。
+ *
+ * ### 何时使用
+ * - 用于创建一个实体或收集信息。
+ * - 需要对输入的数据类型进行校验时。
+ */
+
 /* eslint-disable react/display-name */
 export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
   const { name, children, initialValues, onFinish, onFinishFailed } = props
