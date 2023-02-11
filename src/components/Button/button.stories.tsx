@@ -4,7 +4,7 @@ import Button from './button'
 import Icon from '../Icon'
 
 export default {
-  title: 'Button',
+  title: 'Button 按钮',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
@@ -19,19 +19,6 @@ export const Default = Template.bind({})
 Default.args = {
   children: 'Default Button',
   onClick: () => console.log(123),
-}
-
-//Large Button
-export const Large = Template.bind({})
-Large.args = {
-  size: 'lg',
-  children: 'Large Button',
-}
-//small Button
-export const Small = Template.bind({})
-Small.args = {
-  size: 'sm',
-  children: 'Small Button',
 }
 
 //primary Button
@@ -64,10 +51,29 @@ Text.args = {
 }
 //icon button
 export const IconButton = (args: any) => (
-  <Button size="sm" btnType="primary">
+  <Button btnType="primary">
     <Icon icon="upload" /> Icon Button
   </Button>
 )
 IconButton.storyName = 'Icon'
 
 //export const
+//icon button
+
+export const DashButton = (args: any) => (
+  <Button btnType="dash">Dashed Button</Button>
+)
+DashButton.storyName = 'Dash'
+
+//Large Button
+export const Large = Template.bind({})
+Large.args = {
+  size: 'lg',
+  children: 'Large Button',
+}
+//small Button
+export const Small = Template.bind({})
+Small.args = {
+  size: 'sm',
+  children: 'Small Button',
+}
