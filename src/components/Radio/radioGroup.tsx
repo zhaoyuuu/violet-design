@@ -70,11 +70,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = props => {
     })
   })
 
-  return (
-    <span className={classes} onChange={onChange}>
-      {newChildren}
-    </span>
-  )
+  return <span className={classes}>{newChildren}</span>
 }
 
 export default RadioGroup
