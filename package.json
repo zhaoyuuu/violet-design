@@ -1,9 +1,9 @@
 {
   "name": "violet-design",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/index.es.js",
+  "module": "dist/index.es.js",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "dependencies": {

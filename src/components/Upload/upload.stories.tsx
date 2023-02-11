@@ -6,7 +6,7 @@ import Icon from '../Icon'
 import Button from '../Button/button'
 
 export default {
-  title: 'Upload组件',
+  title: 'Upload 上传',
   component: Upload,
   id: 'Upload',
 } as ComponentMeta<typeof Upload>
@@ -35,7 +35,7 @@ export const SimpleUpload = (args: any) => (
     </Button>
   </Upload>
 )
-SimpleUpload.storyName = '普通的 Upload 组件'
+SimpleUpload.storyName = '普通的上传'
 
 export const CheckUpload = (args: any) => (
   <Upload
@@ -49,7 +49,7 @@ export const CheckUpload = (args: any) => (
     </Button>
   </Upload>
 )
-CheckUpload.storyName = '限制文件大小的 Upload 组件'
+CheckUpload.storyName = '限制文件大小的上传'
 
 export const DragUpload = (args: any) => (
   <Upload
@@ -63,4 +63,4 @@ export const DragUpload = (args: any) => (
     <p>点击或者拖动到此区域进行上传</p>
   </Upload>
 )
-DragUpload.storyName = '可拖动上传的 Upload 组件'
+DragUpload.storyName = '可拖动的上传'

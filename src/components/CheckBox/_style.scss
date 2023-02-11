@@ -1,0 +1,138 @@
+@import '../../styles/_variables.scss';
+
+
+$type:('success', 'primary', 'danger', 'default');
+
+@function typeFunction($t) {
+  @if $t==success {
+    @return $success
+  }
+
+  @else if $t==primary {
+    @return $primary
+  }
+
+  @else if $t==danger {
+    @return $danger
+  }
+
+  @return $primary
+}
+
+@function typeDisabledFunction($t) {
+  @if $t==success {
+    @return $color-success-light2
+  }
+
+  @else if $t==primary {
+    @return $color-primary-light2
+  }
+
+  @else if $t==danger {
+    @return $color-danger-light2
+  }
+
+  @return $color-primary-light2
+}
+
+.violetCheckBox {
+  display: inline-block;
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+@each $t in $type {
+  .violetCheckBox#{$t} {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: baseline;
+    position: relative;
+    outline: none;
+    border: 1px solid #fff;
+    -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    background: #fff;
+    margin-right: 3px;
+  }
+
+  .violetCheckBox#{$t}:checked+span {
+    color: typeFunction($t);
+    cursor: pointer;
+  }
+
+  .violetCheckBox#{$t}::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 75%;
+    height: 75%;
+    border: 1px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .violetCheckBox#{$t}:checked::before {
+    content: "\2713";
+    background-color: typeFunction($t);
+    border: 2px solid typeFunction($t);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    color: #fff;
+    cursor: pointer;
+  }
+
+    .violetCheckBox#{$t}.--indeterminate::before {
+      background-color: typeFunction($t);
+      width: 75%;
+      padding: 10px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #fff;
+      cursor: pointer;
+    }
+
+  .violetCheckBox#{$t}.--indeterminate:after {
+    content: "";
+    width: 45%;
+    height: 45%;
+    text-align: center;
+    background-color: typeFunction($t);
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    cursor: pointer;
+  }
+
+
+
+  .violetCheckBox#{$t}.--disabled:checked::before {
+    content: "\2713";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    cursor: pointer;
+  }
+
+  .violetCheckBox#{$t}.--disabled:before {
+    cursor: not-allowed;
+  }
+
+  .violetCheckBox#{$t}.--disabled+span {
+    cursor: not-allowed;
+  }
+
+}

@@ -11,7 +11,7 @@ import React, {
 } from 'react'
 import Transition from '../Transition/transition'
 import Input from '../Input/input'
-import { SelectOptionProps } from './option'
+import Option, { SelectOptionProps } from './option'
 import Icon from '../Icon'
 
 export interface SelectProps {
@@ -30,6 +30,7 @@ export interface SelectProps {
   /**下拉框出现/隐藏时触发 */
   onVisibleChange?: (visible: boolean) => void
   children?: ReactNode
+  options: SelectOptionProps[]
 }
 
 /** 下拉框 */
@@ -67,6 +68,7 @@ export const Select: FC<SelectProps> = props => {
     onChange,
     onVisibleChange,
     children,
+    options,
   } = props
 
   // 通过useRef定义个input变量，在input 元素上定义ref={input},这样通过input.current就可以获取到input Dom 元素
@@ -171,20 +173,18 @@ export const Select: FC<SelectProps> = props => {
   }
   // 生成下拉框各选项
   const generateOptions = () => {
-    // React.Children.map(children,function(child, index){})
-    // 在Select组件中对其children（props取出来）进行遍历，并执行函数
+    // 在Select组件中对options进行遍历，并执行函数
     // 在这里，即对select 中的每一个option进行处理，生成li元素
-    return React.Children.map(children, function (child, index) {
-      // child 是 option组件return的元素，即FunctionComponentElement
-      const childElement = child as FunctionComponentElement<SelectOptionProps>
-      if (childElement.type.displayName === 'Option') {
-        // 克隆option组件生成的li元素，并添加第二个参数(做key用），增加props
-        return React.cloneElement(childElement, { index: `select-${index}` })
-      } else {
-        console.error(
-          'Warning: Select has a child which is not a Option component'
-        )
-      }
+    return options.map(function (item, index) {
+      return (
+        <Option
+          // value={item.value}
+          // label={item.label}
+          index={`select-${index}`}
+          key={index}
+          {...item}
+        ></Option>
+      )
     })
   }
   // 类名拼接
