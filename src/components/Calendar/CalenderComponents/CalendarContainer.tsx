@@ -79,7 +79,7 @@ export class CalendarContainer extends React.Component<Props, State> {
     const { current } = this.props
     const year = dayjs(current).year()
     return {
-      [IDatePicker.ViewMode.YEAR]: `${year - 4} - ${year + 5}`,
+      [IDatePicker.ViewMode.YEAR]: `${year - 4} - ${year + 4}`,
       [IDatePicker.ViewMode.MONTH]: `${year}`,
       [IDatePicker.ViewMode.DAY]: dayjs(current).format('YYYY.MM'),
     }[this.state.viewMode]
@@ -144,7 +144,7 @@ export class CalendarContainer extends React.Component<Props, State> {
     const date: any = dayjs(base)
     if (viewMode === IDatePicker.ViewMode.YEAR) {
       //基准日期修改为过去或未来 10 年
-      setBase(date[method](10, 'year'))
+      setBase(date[method](9, 'year'))
     } else if (viewMode === IDatePicker.ViewMode.MONTH) {
       //将基准日期修改为过去或未来 1 年
       setBase(date[method](1, 'year'))
