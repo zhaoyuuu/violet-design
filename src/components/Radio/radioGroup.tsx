@@ -46,8 +46,9 @@ export const RadioGroup: React.FC<RadioGroupProps> = props => {
   })
 
   const handleClick = (e: any) => {
-    const value = e.target.value
-    setValue(value)
+    const newValue = e.target.value
+    setValue(newValue)
+    onChange && onChange(e)
   }
 
   const newChildren = React.Children.map(children, (child: any) => {
@@ -69,7 +70,11 @@ export const RadioGroup: React.FC<RadioGroupProps> = props => {
     })
   })
 
-  return <span className={classes}>{newChildren}</span>
+  return (
+    <span className={classes} onChange={onChange}>
+      {newChildren}
+    </span>
+  )
 }
 
 export default RadioGroup

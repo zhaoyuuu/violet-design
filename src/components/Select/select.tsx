@@ -3,14 +3,12 @@ import React, {
   ReactNode,
   FC,
   createContext,
-  FunctionComponentElement,
-  cloneElement,
   useState,
   useRef,
   useEffect,
 } from 'react'
 import Transition from '../Transition/transition'
-import Input from '../Input/input'
+import Input, { InputSize } from '../Input/input'
 import Option, { SelectOptionProps } from './option'
 import Icon from '../Icon'
 
@@ -25,12 +23,15 @@ export interface SelectProps {
   multiple?: boolean
   /** select input 的 name 属性 */
   name?: string
-  /**选中值发生变化时触发 */
+  /** 选中值发生变化时触发 */
   onChange?: (selectedValue: string, selectedValues: string[]) => void
-  /**下拉框出现/隐藏时触发 */
+  /** 下拉框出现/隐藏时触发 */
   onVisibleChange?: (visible: boolean) => void
   children?: ReactNode
+  /** 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能 */
   options: SelectOptionProps[]
+  /** 选择框大小 */
+  size?: InputSize
 }
 
 /** 下拉框 */
@@ -69,6 +70,7 @@ export const Select: FC<SelectProps> = props => {
     onVisibleChange,
     children,
     options,
+    size,
   } = props
 
   // 通过useRef定义个input变量，在input 元素上定义ref={input},这样通过input.current就可以获取到input Dom 元素
@@ -129,6 +131,12 @@ export const Select: FC<SelectProps> = props => {
       containerWidth.current =
         containerRef.current.getBoundingClientRect().width
     }
+    // 接下来设置tag的line-height，使得其文字垂直居中
+    const tag = document.querySelector(
+      '.violetSelected__tags__tag'
+    ) as HTMLElement
+    const h = tag?.clientHeight - 4
+    h && (tag.style.lineHeight = h + 'px')
   })
   // 鼠标点击select框外面时，关闭下拉框
   useEffect(() => {
@@ -193,6 +201,7 @@ export const Select: FC<SelectProps> = props => {
     'violetSelect--disabled': disabled,
     'violetSelect--multiple': multiple,
   })
+
   return (
     // input上的图标的动画是css写的
     <div className={className} ref={containerRef}>
@@ -205,6 +214,7 @@ export const Select: FC<SelectProps> = props => {
           name={name}
           readOnly
           icon="angle-down"
+          size={size}
         />
       </div>
       <SelectContext.Provider value={passedContext}>

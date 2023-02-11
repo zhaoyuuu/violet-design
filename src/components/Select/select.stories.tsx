@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 
 import Select from './index'
+import RadioComponent from '../Radio'
+const { Radio, RadioGroup } = RadioComponent
 export default {
   title: 'Select 选择器',
   component: Select,
@@ -68,6 +70,66 @@ DisabledSelect.parameters = {
   { value: 'nihao2' },
   { value: 'nihao3' },
   { value: 'nihao4', disabled: true }]} />`,
+    },
+  },
+}
+
+export const SizeSelect = (args: any) => {
+  const [size, setSize] = useState('md')
+  const handleSizeChange = (e: any) => {
+    setSize(e.target.value)
+  }
+
+  return (
+    <>
+      <RadioGroup type={'button'} value={size} onChange={handleSizeChange}>
+        <Radio value={'lg'}>large</Radio>
+        <Radio value={'md'}>middle</Radio>
+        <Radio value={'sm'}>small</Radio>
+      </RadioGroup>
+      <br />
+      <br />
+      <Select {...args} placeholder="请选择" options={options} size={size} />
+      <Select
+        {...args}
+        placeholder="多选框"
+        multiple
+        options={options}
+        size={size}
+      />
+    </>
+  )
+}
+SizeSelect.storyName = '三种大小的选择器'
+SizeSelect.parameters = {
+  docs: {
+    source: {
+      code: `
+const [size, setSize] = useState('md')
+const handleSizeChange = (e: any) => {
+  setSize(e.target.value)
+}
+const options = [
+  { value: 'nihao' },
+  { value: 'nihao2' },
+  { value: 'nihao3' },
+  { value: 'nihao4', disabled: true },
+]
+<RadioGroup type={'button'} value={size} onChange={handleSizeChange}>
+  <Radio value={'lg'}>large</Radio>
+  <Radio value={'md'}>middle</Radio>
+  <Radio value={'sm'}>small</Radio>
+</RadioGroup>
+<br />
+<br />
+<Select {...args} placeholder="请选择" options={options} size={size} />
+<Select
+  {...args}
+  placeholder="多选框"
+  multiple
+  options={options}
+  size={size}
+/>`,
     },
   },
 }
