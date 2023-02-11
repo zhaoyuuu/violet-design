@@ -71,6 +71,18 @@
 
 }
 
+
+.violetButton--dash {
+  @include button-style($white, $gray-400, $body-color, $white, $primary, $primary);
+  border: dashed;
+  &:hover {
+    color: $btn-link-hover-color;
+}
+
+
+}
+
+
 // .violetButton > .anticon {
 //   line-height: 1;
 // }
