@@ -17,9 +17,6 @@
     .violetMenu__menuItem {
       border-left: $menu-item-active-border-width solid transparent;
       border-bottom: 0;
-      &--active {
-        color: $menu-item-active-color;
-      }
       &--activeAsfirstLevelItem {
         border-left: $menu-item-active-border-width solid
           $menu-item-active-color;
@@ -29,22 +26,23 @@
 
   &__menuItem {
     padding: $menu-item-padding-y $menu-item-padding-x;
-    transition: $menu-item-transition;
     border-bottom: $menu-item-active-border-width solid transparent;
-    &:active {
-      color: $menu-item-mouseDown-color;
-    }
-    &:hover {
-      background: $menu-item-hover-color;
-    }
+    @include dropdownItemStyle;
+
     &--disabled {
       color: $menu-item-disabled-color;
       cursor: $menu-item-disabled-cursor;
+      &:hover {
+        color: $menu-item-disabled-color;
+        background: #fff;
+      }
       &:active {
+        opacity: 1;
         color: $menu-item-disabled-color;
       }
     }
     &--active {
+      font-weight: bold;
       color: $menu-item-active-color;
     }
     &--activeAsfirstLevelItem {
