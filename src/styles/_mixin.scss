@@ -15,10 +15,12 @@
   color: $color;
   background: $background;
   border-color: $border;
-  &:hover {
+  &:active
+  &:active {
     color: $hover-color;
     background: $hover-background;
     border-color: $hover-border;
+ 
   }
   &:focus,
   &.focus {
