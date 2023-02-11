@@ -61,7 +61,11 @@ export const Cascader: React.FC<ICascader> = ({
   value,
   onChange,
 }) => {
+  // 控制浮层的出现
+  const [isPopupShow, setPopupShow] = useState(false)
+
   const inputClasses = cn('violetCascaderWrap__input', inputClassName, {
+    'violetCascaderWrap__input--focus': isPopupShow,
     'violetCascaderWrap__input--disabled': disabled,
     [`violetCascaderWrap__input--${status}`]: status !== 'default',
   })
@@ -74,11 +78,10 @@ export const Cascader: React.FC<ICascader> = ({
   // 输入框显示的值
   const displayValue = value.join(' / ')
 
-  // 控制浮层的出现
-  const [isPopupShow, setPopupShow] = useState(false)
-
   const handleInputMouseDown = () => {
-    if (!disabled && !isPopupShow) setPopupShow(true)
+    if (!disabled && !isPopupShow) {
+      setPopupShow(true)
+    }
   }
   const cascaderInput = useRef(null)
   const popup = useRef(null)

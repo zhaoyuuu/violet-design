@@ -26,7 +26,12 @@
     box-shadow: $input-box-shadow;
     border-radius: $input-border-radius;
     transition: $input-transition;
+    &:hover {
+      color: $primary;
+      border-color: $primary;
+    }
     &:focus {
+      color: #000;
       background-color: $input-focus-bg;
       border-color: $input-focus-border-color;
       box-shadow: $input-focus-box-shadow;

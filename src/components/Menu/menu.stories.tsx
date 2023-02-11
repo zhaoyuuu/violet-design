@@ -57,7 +57,7 @@ horizontalMenu.parameters = {
 
 export const verticalMenu = Template.bind({})
 verticalMenu.args = {
-  defaultIndex: '1',
+  defaultIndex: '2',
   mode: 'vertical',
 }
 verticalMenu.storyName = '纵向菜单'
@@ -72,7 +72,7 @@ verticalMenu.parameters = {
   docs: {
     source: {
       code: `
-<Menu defaultIndex={1} mode='vertical'>
+<Menu defaultIndex={2} mode='vertical'>
   <Menu.Item>active</Menu.Item>
   <Menu.Item disabled>disabled</Menu.Item>
   <Menu.Item>xyz</Menu.Item>

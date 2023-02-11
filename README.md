@@ -10,7 +10,19 @@
 
 ### 浏览器引入
 
-在浏览器中使用 `script` 和 `link` 标签直接引入文件，并使用全局变量 `violet-design`。
+在浏览器中使用 `script` 和 `link` 标签直接引入文件，并使用全局变量 `VioletDesign`。
+
+引入 css：
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/violet-design/dist/index.css">
+```
+
+引入 js:
+
+```html
+<script src="https://unpkg.com/violet-design/dist/index.umd.js"></script>
+```
 
 ## 🔨 示例
 

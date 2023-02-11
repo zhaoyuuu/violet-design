@@ -19,7 +19,7 @@
     &::-webkit-input-placeholder {
       color: $input-placeholder-color;
     }
-    &:focus {
+    &--focus {
       background-color: $input-focus-bg;
       border: $input-border-width solid $input-focus-border-color;
       // 隐藏光标
@@ -29,6 +29,8 @@
     }
 
     &--disabled {
+      background-color: $input-disabled-bg;
+      border-color: $input-disabled-border-color;
       cursor: not-allowed;
     }
 
@@ -89,12 +91,12 @@
         font-family: $btn-font-family;
         font-size: $btn-font-size;
         color: $input-color;
-        &:hover {
-          background: $cascader-optionItem-hover-color;
-        }
+        @include dropdownItemStyle;
+
         &--selected {
           font-weight: $font-weight-bold;
-          background: $cascader-optionItem-hover-color;
+          background: $primary;
+          color: white;
         }
 
         &__iconBox {
