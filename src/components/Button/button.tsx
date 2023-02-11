@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
-import _ from 'lodash'
 
 export type ButtonSize = 'lg' | 'sm'
 export type ButtonType =
@@ -24,9 +23,9 @@ interface BaseButtonProps {
   /**点击跳转的地址，指定此属性 button 的行为和 a 链接一致 */
   href?: string
   /**点击按钮时的回调 */
-  onClick?: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void | undefined
+  // onClick?: (
+  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  // ) => void | undefined
 }
 
 type NativeButtonProps = BaseButtonProps &
@@ -59,14 +58,14 @@ export const Button = (props: ButtonProps) => {
   const { btnType, className, disabled, size, children, href, ...restProps } =
     props
 
-  const debounceClick = () => {
-    console.log('enter handler')
-    console.log([props.onClick], '--onclick')
-    if (!props.onClick) return
-    return _.throttle(props.onClick, 2000)
-  }
+  // const debounceClick = () => {
+  //   console.log('enter handler')
+  //   console.log([props.onClick], '--onclick')
+  //   if (!props.onClick) return
+  //   return _.throttle(props.onClick, 2000)
+  // }
 
-  const debouncedClick = debounceClick()
+  // const debouncedClick = debounceClick()
 
   //violetButton,violetButton-lg,violetButton-primary,
   const cls = classNames('violetButton', className, {
@@ -86,11 +85,11 @@ export const Button = (props: ButtonProps) => {
         className={cls}
         disabled={disabled}
         {...restProps}
-        onClick={e => {
-          if (debouncedClick) {
-            debouncedClick(e)
-          }
-        }}
+        // onClick={e => {
+        //   if (debouncedClick) {
+        //     debouncedClick(e)
+        //   }
+        //}}
       >
         {children}
       </button>
