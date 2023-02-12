@@ -19,22 +19,6 @@ $type:('success', 'primary', 'danger', 'default');
   @return $primary
 }
 
-@function typeDisabledFunction($t) {
-  @if $t==success {
-    @return $color-success-light2
-  }
-
-  @else if $t==primary {
-    @return $color-primary-light2
-  }
-
-  @else if $t==danger {
-    @return $color-danger-light2
-  }
-
-  @return $color-primary-light2
-}
-
 .violetCheckBox {
   display: inline-block;
 
@@ -58,7 +42,7 @@ $type:('success', 'primary', 'danger', 'default');
     -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
     color: #fff;
     background: #fff;
-    margin-right: 3px;
+    margin-right: 5px;
   }
 
   .violetCheckBox#{$t}:checked+span {
@@ -71,11 +55,11 @@ $type:('success', 'primary', 'danger', 'default');
     position: absolute;
     top: 0;
     left: 0;
-    background: #fff;
+    background: transparent;
     width: 75%;
     height: 75%;
     border: 1px;
-    color: #fff;
+    color: transparent;
     cursor: pointer;
   }
 
@@ -84,46 +68,20 @@ $type:('success', 'primary', 'danger', 'default');
     background-color: typeFunction($t);
     border: 2px solid typeFunction($t);
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 75%;
-    color: #fff;
+    top: 2px;
+    left: 2.5px;
+    width: 70%;
+    height: 70%;
+    color: #ffffff;
     cursor: pointer;
   }
-
-    .violetCheckBox#{$t}.--indeterminate::before {
-      background-color: typeFunction($t);
-      width: 75%;
-      padding: 10px;
-      box-sizing: border-box;
-      position: absolute;
-      top: 0;
-      left: 0;
-      color: #fff;
-      cursor: pointer;
-    }
-
-  .violetCheckBox#{$t}.--indeterminate:after {
-    content: "";
-    width: 45%;
-    height: 45%;
-    text-align: center;
-    background-color: typeFunction($t);
-    display: block;
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    cursor: pointer;
-  }
-
-
 
   .violetCheckBox#{$t}.--disabled:checked::before {
     content: "\2713";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 75%;
+    top: 2px;
+    left: 2.5px;
+    width: 70%;
     cursor: pointer;
   }
 
@@ -133,6 +91,7 @@ $type:('success', 'primary', 'danger', 'default');
 
   .violetCheckBox#{$t}.--disabled+span {
     cursor: not-allowed;
+    color: gray;
   }
 
 }
