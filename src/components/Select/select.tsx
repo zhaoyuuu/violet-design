@@ -78,7 +78,6 @@ export const Select: FC<SelectProps> = props => {
     name,
     onChange,
     onVisibleChange,
-    children,
     options,
     size,
     showSearch,
@@ -86,7 +85,6 @@ export const Select: FC<SelectProps> = props => {
     onSearch,
   } = props
   let { multiple } = props
-
   // 通过useRef定义个input变量，在input 元素上定义ref={input},这样通过input.current就可以获取到input Dom 元素
   const input = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLInputElement>(null)
@@ -185,13 +183,10 @@ export const Select: FC<SelectProps> = props => {
     if (!disabled && !menuOpen) {
       setOpen(true)
       // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
-      if (onVisibleChange) {
-        onVisibleChange(true)
-      }
+      onVisibleChange && onVisibleChange(true)
     }
     if (value !== defaultValue) {
       setReClick(true)
-      console.log(reClick)
     }
   }
   // input框change的处理函数
