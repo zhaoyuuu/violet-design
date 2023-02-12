@@ -85,12 +85,17 @@
     background: $radio-button-input-background;
   }
 
-  &__button input:hover{
+  &__button:hover{
     background: $primary;
+    border-radius: 6px;
   }
 
-  &__button input[type="radio"]:hover + label{
+  &__button:hover > label{
     color: $primary;
+  }
+
+  &__button:hover > input{
+    background: $primary;
   }
 
   &__button label{
