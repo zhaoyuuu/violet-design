@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 const progressMeta: ComponentMeta<typeof Progress> = {
-  title: 'Progress 进度条',
+  title: '组件/反馈/Progress 进度条',
   component: Progress,
 }
 

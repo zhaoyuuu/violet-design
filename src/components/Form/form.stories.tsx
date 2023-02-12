@@ -9,7 +9,7 @@ import { CustomRule } from './useStore'
 import Select from '../Select/index'
 
 const meta: ComponentMeta<typeof Form> = {
-  title: 'Form 表单',
+  title: '组件/数据录入/Form 表单',
   id: 'Form',
   component: Form,
   subcomponents: { Item: FormItem },

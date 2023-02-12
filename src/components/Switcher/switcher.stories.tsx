@@ -3,7 +3,7 @@ import { ComponentMeta } from '@storybook/react'
 import Switch from './switcher'
 
 export default {
-  title: 'Switch',
+  title: '组件/数据录入/Switch 开关',
   id: 'Switch',
   component: Switch,
 } as ComponentMeta<typeof Switch>

@@ -5,7 +5,7 @@ import Tabs from './tabs'
 import TabItem from './tabItem'
 import Icon from '../Icon/icon'
 export default {
-  title: 'Tabs',
+  title: '组件/数据展示/Tabs 标签页',
   id: 'Tabs',
   component: Tabs,
   subcomponents: { TabItem: TabItem },

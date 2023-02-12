@@ -5,7 +5,7 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 const radioGroupMeta: ComponentMeta<typeof RadioGroup> = {
-  title: 'RadioGroup 单选按钮组',
+  title: '组件/数据录入/RadioGroup 单选按钮组',
   component: RadioGroup,
 }
 

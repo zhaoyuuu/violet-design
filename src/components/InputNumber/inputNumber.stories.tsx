@@ -5,7 +5,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 // 大标题
 const InputNumberMeta: ComponentMeta<typeof InputNumber> = {
-  title: 'InputNumber 数字输入框',
+  title: '组件/数据录入/InputNumber 数字输入框',
   component: InputNumber,
 }
 

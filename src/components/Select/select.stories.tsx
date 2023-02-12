@@ -5,7 +5,7 @@ import Select from './index'
 import RadioComponent from '../Radio'
 const { Radio, RadioGroup } = RadioComponent
 export default {
-  title: 'Select 选择器',
+  title: '组件/数据录入/Select 选择器',
   component: Select,
   id: 'Select',
   // 让整个story包在width:350px的div内

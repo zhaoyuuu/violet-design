@@ -5,7 +5,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 // 大标题
 const cascaderMeta: ComponentMeta<typeof Cascader> = {
-  title: 'Cascader 级联选择',
+  title: '组件/数据录入/Cascader 级联选择',
   component: Cascader,
 }
 
