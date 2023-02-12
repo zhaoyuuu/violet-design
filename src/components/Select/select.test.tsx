@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import { config } from 'react-transition-group'
 import Select from './index'
 // 将动画关闭，否则判断点击option后option选项不在页面上，会出错。
@@ -23,7 +23,11 @@ const multipleProps = {
   ...defaultProps,
   multiple: true,
 }
-
+const searchProps = {
+  ...defaultProps,
+  onSearch: jest.fn(),
+  showSearch: true,
+}
 describe('test Select component', () => {
   it('default select', () => {
     const wrapper = render(
@@ -110,5 +114,26 @@ describe('test Select component', () => {
     ).toEqual(0)
     // 4.3 至此已没有选中的选项，placeholder恢复为test
     expect(element.placeholder).toEqual('test')
+  })
+  it('search select', async () => {
+    const wrapper = render(
+      <Select
+        {...searchProps}
+        options={[{ value: 'a11' }, { value: 'b12' }, { value: 'c13' }]}
+      />
+    )
+    const { getByPlaceholderText, getByText, queryByText, container } = wrapper
+    const inputEl = getByPlaceholderText('test') as HTMLInputElement
+    // 在input中输入b
+    fireEvent.click(inputEl)
+    fireEvent.change(inputEl, { target: { value: 'b' } })
+    expect(searchProps.onSearch).toBeCalledWith('b')
+    await waitFor(() => {
+      expect(container.querySelectorAll('.violetSelect__item').length).toBe(1)
+      expect(getByText('b12')).toBeInTheDocument()
+    })
+    fireEvent.click(inputEl)
+    // 输入框有值后，再次点击，options为最初options，不是selectOptions
+    expect(container.querySelectorAll('.violetSelect__item').length).toBe(3)
   })
 })
