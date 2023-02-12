@@ -8,7 +8,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 // 大标题
 const affixMeta: ComponentMeta<typeof Affix> = {
-  title: 'Affix 固钉',
+  title: '组件/其他/Affix 固钉',
   component: Affix,
 }
 

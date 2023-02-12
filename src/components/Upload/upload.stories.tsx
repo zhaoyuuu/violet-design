@@ -6,7 +6,7 @@ import Icon from '../Icon'
 import Button from '../Button/button'
 
 export default {
-  title: 'Upload 上传',
+  title: '组件/数据录入/Upload 上传',
   component: Upload,
   id: 'Upload',
 } as ComponentMeta<typeof Upload>

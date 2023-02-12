@@ -148,11 +148,6 @@ var Affix = function (_a) {
  * 支持 react-fontawesome的所有属性 可以在这里查询 https://github.com/FortAwesome/react-fontawesome#basic
  *
  * 支持 fontawesome 所有 free-solid-icons，可以在这里查看所有图标 https://fontawesome.com/icons?d=gallery&s=solid&m=free
- * ### 引用方法
- *
- * ~~~js
- * import { Icon } from 'vikingship'
- * ~~~
  */
 var Icon = function (props) {
     var _a;
@@ -17546,6 +17541,25 @@ var lodash = {
 
 var _ = lodashExports;
 
+/**
+ * >按钮用于开始一个即时操作。
+ *
+ * ### 何时使用
+ * 标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
+ * 在violetUI我们提供了7种按钮
+ * - 主按钮：用于主行动点，一个操作区域只能有一个主按钮。
+ * - 默认按钮：用于没有主次之分的一组行动点。
+ * - 文本按钮：用于最次级的行动点。
+ * - 链接按钮：一般用于链接，即导航至某位置。
+ * - 虚线按钮：常用于添加操作。
+ * - 危险按钮：删除/移动/修改权限等危险操作，一般需要二次确认。
+ * - 禁用按钮：行动点不可用的时候，一般需要文案解释。
+ * - 图标按钮：可以通过Icon组件，为按钮提供各式各样的图标选择。
+ *
+ * 除了默认按钮尺寸，还提供了两种尺寸配合使用
+ * - Large Button
+ * - Samll Button
+ */
 var Button = function (props) {
     var _a;
     var btnType = props.btnType, className = props.className, disabled = props.disabled, size = props.size, children = props.children, href = props.href, restProps = __rest(props, ["btnType", "className", "disabled", "size", "children", "href"]);
@@ -17590,7 +17604,10 @@ Button.defaultProps = {
 var Cascader = function (_a) {
     var _b;
     var _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.changeOnSelect, changeOnSelect = _d === void 0 ? false : _d, inputClassName = _a.inputClassName, popupClassName = _a.popupClassName, _e = _a.notFoundContent, notFoundContent = _e === void 0 ? 'nothing here...' : _e, placeholder = _a.placeholder, options = _a.options, _f = _a.placement, placement = _f === void 0 ? 'bottomLeft' : _f, _g = _a.status, status = _g === void 0 ? 'default' : _g, value = _a.value, onChange = _a.onChange;
+    // 控制浮层的出现
+    var _h = useState(false), isPopupShow = _h[0], setPopupShow = _h[1];
     var inputClasses = cn('violetCascaderWrap__input', inputClassName, (_b = {
+            'violetCascaderWrap__input--focus': isPopupShow,
             'violetCascaderWrap__input--disabled': disabled
         },
         _b["violetCascaderWrap__input--".concat(status)] = status !== 'default',
@@ -17598,11 +17615,10 @@ var Cascader = function (_a) {
     var popupClasses = cn('violetCascaderWrap__optionsWrap', "violetCascaderWrap__optionsWrap--".concat(placement), popupClassName);
     // 输入框显示的值
     var displayValue = value.join(' / ');
-    // 控制浮层的出现
-    var _h = useState(false), isPopupShow = _h[0], setPopupShow = _h[1];
     var handleInputMouseDown = function () {
-        if (!disabled && !isPopupShow)
+        if (!disabled && !isPopupShow) {
             setPopupShow(true);
+        }
     };
     var cascaderInput = useRef(null);
     var popup = useRef(null);
@@ -17913,7 +17929,14 @@ function useStore(initialValues) {
 }
 
 var FormContext = createContext({});
-/* eslint-disable react/display-name */
+// /* eslint-disable react/display-name */
+/**
+ * > 表单控件, 带数据与管理功能, 包含数据录入、校验等
+ *
+ * ### 何时使用
+ * - 用于创建一个实体或收集信息。
+ * - 需要对输入的数据类型进行校验时。
+ */
 var Form = forwardRef(function (props, ref) {
     var name = props.name, children = props.children, initialValues = props.initialValues, onFinish = props.onFinish, onFinishFailed = props.onFinishFailed;
     var _a = useStore(initialValues), form = _a.form, fields = _a.fields, dispatch = _a.dispatch, restProps = __rest(_a, ["form", "fields", "dispatch"]);
@@ -17954,11 +17977,12 @@ var Form = forwardRef(function (props, ref) {
     else {
         childrenNode = children;
     }
-    return (jsxs(Fragment, { children: [jsx("form", __assign({ name: name, className: "violetForm", onSubmit: submitForm }, { children: jsx(FormContext.Provider, __assign({ value: passedContext }, { children: childrenNode })) })), jsxs("div", { children: [jsx("pre", __assign({ style: { whiteSpace: 'pre-wrap' } }, { children: JSON.stringify(fields) })), jsx("pre", __assign({ style: { whiteSpace: 'pre-wrap' } }, { children: JSON.stringify(form) }))] })] }));
+    return (jsx(Fragment, { children: jsx("form", __assign({ name: name, className: "violetForm", onSubmit: submitForm }, { children: jsx(FormContext.Provider, __assign({ value: passedContext }, { children: childrenNode })) })) }));
 });
 Form.defaultProps = {
     name: 'violet_form',
 };
+Form.displayName = 'Form';
 
 /**
  * > 通过鼠标或键盘，输入范围内的数值。
@@ -18215,7 +18239,7 @@ var Radio = function (props) {
         }
     };
     if ('type' in props && type == 'button') {
-        return (jsx("span", __assign({ className: classes }, { children: jsxs("div", __assign({ className: "violetRadio__button" }, { children: [jsx("input", { type: 'radio', disabled: disabled, value: value, checked: checked, style: style, onChange: handleClick }, key), jsx("label", { children: children })] })) })));
+        return (jsx("span", __assign({ className: classes }, { children: jsxs("div", __assign({ className: "violetRadio__button", onClick: handleClick, onChange: handleClick }, { children: [jsx("input", { type: 'radio', disabled: disabled, value: value, checked: checked, style: style }, key), jsx("label", { children: children })] })) })));
     }
     return (jsx("span", __assign({ className: classes }, { children: jsxs("div", __assign({ className: "violetRadio__dot" }, { children: [jsx("input", { type: "radio", disabled: disabled, value: value, checked: checked, style: style, onChange: handleClick }, key), jsx("label", {}), jsx("span", { children: props.children })] })) })));
 };
@@ -18226,15 +18250,16 @@ Radio.defaultProps = {
 
 var RadioGroup = function (props) {
     var _a;
-    var className = props.className, disabled = props.disabled, children = props.children, size = props.size; props.style; var type = props.type; props.onChange; __rest(props, ["className", "disabled", "children", "size", "style", "type", "onChange"]);
+    var className = props.className, disabled = props.disabled, children = props.children, size = props.size; props.style; var type = props.type, onChange = props.onChange; __rest(props, ["className", "disabled", "children", "size", "style", "type", "onChange"]);
     var _b = useState(props.defaultValue || props.value), value = _b[0], setValue = _b[1];
     var classes = cn('violetRadioGroup', className, (_a = {},
         _a['violetRadioGroup--${size}'] = size,
         _a['violetRadioGroup--disabled'] = disabled,
         _a));
     var handleClick = function (e) {
-        var value = e.target.value;
-        setValue(value);
+        var newValue = e.target.innerHTML;
+        setValue(newValue);
+        onChange && onChange(e);
     };
     var newChildren = React.Children.map(children, function (child) {
         if (child.type !== Radio) {
@@ -18258,156 +18283,6 @@ var RadioGroup = function (props) {
 };
 
 var index = { Radio: Radio, RadioGroup: RadioGroup };
-
-/** 定义全局的量 */
-/** 当没有provide，则用括号里的默认值 */
-var SelectContext = createContext({
-    selectedValues: [],
-});
-/**
- * 下拉选择器。
- * 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。
- * ### 引用方法
- *
- * ~~~js
- * import { Select } from 'violetUI'
- * // 然后可以使用 <Select> 和 <Select.Option>
- * ~~~
- */
-var Select = function (props) {
-    // 取出props
-    var defaultValue = props.defaultValue, placeholder = props.placeholder, disabled = props.disabled, multiple = props.multiple, name = props.name, onChange = props.onChange, onVisibleChange = props.onVisibleChange, children = props.children;
-    // 通过useRef定义个input变量，在input 元素上定义ref={input},这样通过input.current就可以获取到input Dom 元素
-    var input = useRef(null);
-    var containerRef = useRef(null);
-    var containerWidth = useRef(0);
-    // 控制 下拉框显示与否
-    var _a = useState(false), menuOpen = _a[0], setOpen = _a[1];
-    // 控制 input框的value
-    var _b = useState(typeof defaultValue === 'string' ? defaultValue : ''), value = _b[0], setValue = _b[1];
-    // 存储多选的已选值
-    var _c = useState(Array.isArray(defaultValue) ? defaultValue : []), selectedValues = _c[0], setSelectedValues = _c[1];
-    // 处理option的点击事件
-    var handleOptionClick = function (value, isSelected) {
-        // 非多选模式
-        if (!multiple) {
-            // 点击option后，下拉框隐藏
-            setOpen(false);
-            setValue(value);
-            if (onVisibleChange) {
-                onVisibleChange(false);
-            }
-        }
-        else {
-            setValue('');
-        }
-        // 多选模式
-        var updatedValues = [value];
-        if (multiple) {
-            // 若当前option已选中，则从selecedValues中去掉该option；否则，将该value添加到selectedValues中
-            updatedValues = isSelected
-                ? selectedValues.filter(function (item) { return item !== value; })
-                : __spreadArray(__spreadArray([], selectedValues, true), [value], false);
-            setSelectedValues(updatedValues);
-        }
-        if (onChange) {
-            onChange(value, updatedValues);
-        }
-    };
-    // 多选模式下，placeholder会一直显示，故做处理
-    useEffect(function () {
-        if (input.current) {
-            // input.current.focus()
-            if (multiple && selectedValues.length > 0) {
-                input.current.placeholder = '';
-            }
-            else if (placeholder) {
-                input.current.placeholder = placeholder;
-            }
-        }
-    }, [selectedValues, multiple, placeholder]);
-    // 将当前input框的宽保存在containerWidth
-    useEffect(function () {
-        if (containerRef.current) {
-            containerWidth.current =
-                containerRef.current.getBoundingClientRect().width;
-        }
-    });
-    // 鼠标点击select框外面时，关闭下拉框
-    useEffect(function () {
-        var ref = containerRef;
-        // 事件监听函数
-        // 使用的是原生的 doucment.addEventListener 的方法添加，那么它是一个原生的 DOM事件，它的事件对象是原生的事件对象(比如这里的 MouseEvent)
-        // React.MouseEvent （各种 react event 事件对象），都是 React 的事件，它并不是 DOM 原生的对象，和普通的 DOM 事件是不一样的
-        var listener = function (e) {
-            if (!ref.current || ref.current.contains(e.target)) {
-                return;
-            }
-            // 执行至此，表示鼠标点击select框外面
-            setOpen(false);
-            if (onVisibleChange && menuOpen) {
-                onVisibleChange(false);
-            }
-        };
-        document.addEventListener('click', listener);
-        // useEffect中的return，在下一次执行该useEffect时先执行return的函数
-        return function () {
-            document.removeEventListener('click', listener);
-        };
-    }, [containerRef]);
-    // 点击input框的处理函数
-    var handleClick = function (e) {
-        e.preventDefault();
-        // 当input框可用（!disabled），menuOpen变量取反
-        if (!disabled) {
-            setOpen(!menuOpen);
-            // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
-            if (onVisibleChange) {
-                onVisibleChange(!menuOpen);
-            }
-        }
-    };
-    // 传递给option组件的li元素的一些属性
-    var passedContext = {
-        onSelect: handleOptionClick,
-        selectedValues: selectedValues,
-        multiple: multiple,
-    };
-    // 生成下拉框各选项
-    var generateOptions = function () {
-        // React.Children.map(children,function(child, index){})
-        // 在Select组件中对其children（props取出来）进行遍历，并执行函数
-        // 在这里，即对select 中的每一个option进行处理，生成li元素
-        return React.Children.map(children, function (child, index) {
-            // child 是 option组件return的元素，即FunctionComponentElement
-            var childElement = child;
-            if (childElement.type.displayName === 'Option') {
-                // 克隆option组件生成的li元素，并添加第二个参数(做key用），增加props
-                return React.cloneElement(childElement, { index: "select-".concat(index) });
-            }
-            else {
-                console.error('Warning: Select has a child which is not a Option component');
-            }
-        });
-    };
-    // 类名拼接
-    var className = cn('violetSelect', {
-        'violetSelect--menuOpen': menuOpen,
-        'violetSelect--disabled': disabled,
-        'violetSelect--multiple': multiple,
-    });
-    return (
-    // input上的图标的动画是css写的
-    jsxs("div", __assign({ className: className, ref: containerRef }, { children: [jsx("div", __assign({ className: "violetSelect__input", onClick: handleClick }, { children: jsx(Input, { ref: input, placeholder: placeholder, value: value, disabled: disabled, name: name, readOnly: true, icon: "angle-down" }) })), jsx(SelectContext.Provider, __assign({ value: passedContext }, { children: jsx(Transition, __assign({ in: menuOpen, animation: "zoom-in-top", timeout: 300 }, { children: jsx("ul", __assign({ className: "violetSelect__dropdown" }, { children: generateOptions() })) })) })), multiple && (jsx("div", __assign({ className: "violetSelected__tags", style: { maxWidth: containerWidth.current - 32 } }, { children: selectedValues.map(function (item, index) {
-                    return (jsxs("span", __assign({ className: "violetSelected__tags__tag" }, { children: [item, jsx(Icon, { icon: "times", onClick: function () {
-                                    handleOptionClick(item, true);
-                                } })] }), "tag-".concat(index)));
-                }) })))] })));
-};
-Select.defaultProps = {
-    name: 'violetSelect',
-    placeholder: '请选择',
-};
 
 var Option = function (props) {
     var index = props.index, value = props.value, label = props.label, disabled = props.disabled, children = props.children;
@@ -18433,8 +18308,171 @@ var Option = function (props) {
 // 设置displayName,在调试中会看到，否则显示component
 Option.displayName = 'Option';
 
-var TransSelect = Select;
-TransSelect.Option = Option;
+/** 定义全局的量 */
+/** 当没有provide，则用括号里的默认值 */
+var SelectContext = createContext({
+    selectedValues: [],
+});
+/**
+ * 下拉选择器。
+ * 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。
+ */
+var Select = function (props) {
+    // 取出props
+    var defaultValue = props.defaultValue, placeholder = props.placeholder, disabled = props.disabled, name = props.name, onChange = props.onChange, onVisibleChange = props.onVisibleChange, options = props.options, size = props.size, showSearch = props.showSearch, filterOption = props.filterOption, onSearch = props.onSearch;
+    var multiple = props.multiple;
+    // 通过useRef定义个input变量，在input 元素上定义ref={input},这样通过input.current就可以获取到input Dom 元素
+    var input = useRef(null);
+    var containerRef = useRef(null);
+    var containerWidth = useRef(0);
+    // 控制 下拉框显示与否
+    var _a = useState(false), menuOpen = _a[0], setOpen = _a[1];
+    // 控制 input框的value
+    var _b = useState(typeof defaultValue === 'string' ? defaultValue : ''), value = _b[0], setValue = _b[1];
+    // 防抖
+    var debouncedValue = useDebounce(value, 500);
+    // 存储多选的已选值
+    var _c = useState(Array.isArray(defaultValue) ? defaultValue : []), selectedValues = _c[0], setSelectedValues = _c[1];
+    // 搜索功能下，再次点击input
+    var _d = useState(false), reClick = _d[0], setReClick = _d[1];
+    var selectOptions;
+    // 处理option的点击事件
+    var handleOptionClick = function (value, isSelected) {
+        // 非多选模式
+        if (!multiple) {
+            // 点击option后，下拉框隐藏
+            setOpen(false);
+            setValue(value);
+            onVisibleChange && onVisibleChange(false);
+        }
+        else {
+            setValue('');
+        }
+        // 多选模式
+        var updatedValues = [value];
+        if (multiple) {
+            // 若当前option已选中，则从selecedValues中去掉该option；否则，将该value添加到selectedValues中
+            updatedValues = isSelected
+                ? selectedValues.filter(function (item) { return item !== value; })
+                : __spreadArray(__spreadArray([], selectedValues, true), [value], false);
+            setSelectedValues(updatedValues);
+        }
+        onChange && onChange(value, updatedValues);
+    };
+    // 多选模式下，placeholder会一直显示，故做处理
+    useEffect(function () {
+        if (input.current) {
+            // input.current.focus()
+            if (multiple && selectedValues.length > 0) {
+                input.current.placeholder = '';
+            }
+            else if (placeholder) {
+                input.current.placeholder = placeholder;
+            }
+        }
+    }, [selectedValues, multiple, placeholder]);
+    // 将当前input框的宽保存在containerWidth
+    useEffect(function () {
+        if (containerRef.current) {
+            containerWidth.current =
+                containerRef.current.getBoundingClientRect().width;
+        }
+        // 接下来设置tag的line-height，使得其文字垂直居中
+        var tag = document.querySelector('.violetSelected__tags__tag');
+        var h = (tag === null || tag === void 0 ? void 0 : tag.clientHeight) - 4;
+        h && (tag.style.lineHeight = h + 'px');
+        // 搜索功能仅对单选框开放
+        showSearch && (multiple = false);
+    });
+    // 鼠标点击select框外面时，关闭下拉框
+    // useClickOutside里，使用的是原生的 doucment.addEventListener 的方法添加，那么它是一个原生的 DOM事件，它的事件对象是原生的事件对象(比如这里的 MouseEvent)
+    // 而React.MouseEvent （各种 react event 事件对象），都是 React 的事件，它并不是 DOM 原生的对象，和普通的 DOM 事件是不一样的
+    useClickOutside(containerRef, function () {
+        var _a, _b;
+        // 鼠标点击select框外面的处理函数
+        setOpen(false);
+        if (onVisibleChange && menuOpen) {
+            onVisibleChange(false);
+        }
+        if (showSearch && value !== defaultValue) {
+            setValue((_b = (_a = selectOptions[0]) === null || _a === void 0 ? void 0 : _a.value) !== null && _b !== void 0 ? _b : defaultValue);
+        }
+    });
+    // 不带搜索框时，点击input框的处理函数
+    var handleClick = function (e) {
+        e.preventDefault();
+        // 当input框可用（!disabled），menuOpen变量取反
+        if (!disabled) {
+            setOpen(!menuOpen);
+            // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
+            onVisibleChange && onVisibleChange(!menuOpen);
+        }
+    };
+    // 带搜索框时，点击input框的处理函数
+    var handleSearchClick = function (e) {
+        e.preventDefault();
+        // 当input框可用（!disabled）且menuOpen为关闭，让menuOpen打开
+        if (!disabled && !menuOpen) {
+            setOpen(true);
+            // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
+            onVisibleChange && onVisibleChange(true);
+        }
+        if (value !== defaultValue) {
+            setReClick(true);
+        }
+    };
+    // input框change的处理函数
+    var handleInputChange = function (e) {
+        var inputValue = e.target.value.trim();
+        setValue(inputValue);
+        onSearch && onSearch(inputValue);
+        setReClick(false);
+    };
+    // 传递给option组件的li元素的一些属性
+    var passedContext = {
+        onSelect: handleOptionClick,
+        selectedValues: selectedValues,
+        multiple: multiple,
+    };
+    // 生成下拉框各选项
+    var generateOptions = function () {
+        // 根据是否带搜索功能，得到不同的options
+        var reg = new RegExp('^' + debouncedValue);
+        selectOptions =
+            showSearch && filterOption && !reClick
+                ? options.filter(function (item) { var _a; return reg.test((_a = item === null || item === void 0 ? void 0 : item.label) !== null && _a !== void 0 ? _a : item.value); })
+                : options;
+        // 在Select组件中对options进行遍历，并执行函数
+        // 在这里，即对select 中的每一个option进行处理，生成li元素
+        if (selectOptions.length) {
+            return selectOptions.map(function (item, index) {
+                return jsx(Option, __assign({ index: "select-".concat(index) }, item), index);
+            });
+        }
+        else {
+            return jsx(Option, { disabled: true, value: '暂无数据' });
+        }
+    };
+    // 类名拼接
+    var className = cn('violetSelect', {
+        'violetSelect--menuOpen': menuOpen,
+        'violetSelect--disabled': disabled,
+        'violetSelect--multiple': multiple,
+    });
+    return (
+    // input上的图标的动画是css写的
+    jsxs("div", __assign({ className: className, ref: containerRef }, { children: [jsxs("div", __assign({ className: "violetSelect__input" }, { children: [!showSearch && (jsx(Input, { ref: input, placeholder: placeholder, value: value, disabled: disabled, name: name, readOnly: true, icon: "angle-down", size: size, onClick: handleClick })), showSearch && (jsx(Input, { ref: input, disabled: disabled, name: name, icon: "angle-down", size: size, value: value, onChange: handleInputChange, onClick: handleSearchClick, autoComplete: "off" }))] })), jsx(SelectContext.Provider, __assign({ value: passedContext }, { children: jsx(Transition, __assign({ in: menuOpen, animation: "zoom-in-top", timeout: 300 }, { children: jsx("ul", __assign({ className: "violetSelect__dropdown" }, { children: generateOptions() })) })) })), multiple && (jsx("div", __assign({ className: "violetSelected__tags", style: { maxWidth: containerWidth.current - 32 } }, { children: selectedValues.map(function (item, index) {
+                    return (jsxs("span", __assign({ className: "violetSelected__tags__tag" }, { children: [item, jsx(Icon, { icon: "times", onClick: function () {
+                                    handleOptionClick(item, true);
+                                } })] }), "tag-".concat(index)));
+                }) })))] })));
+};
+Select.defaultProps = {
+    name: 'violetSelect',
+    placeholder: '请选择',
+    filterOption: true,
+    defaultValue: '',
+};
 
 var Switch = function (props) {
     var _a;
@@ -18529,7 +18567,110 @@ var TabItem = function (_a) {
 var TransTabs = Tabs;
 TransTabs.Item = TabItem;
 
+/**
+ * > 多选框。
+ *
+ * ### 何时使用
+ * 在一组可选项中进行多项选择时使用多选框；
+ *
+ * 单独使用时可以表示两种状态之间的切换，一般用于状态标记。
+ */
+var CheckBox = function (props) {
+    var _a = props.type, type = _a === void 0 ? 'default' : _a, _b = props.disabled, disabled = _b === void 0 ? false : _b, _c = props.checked, checked = _c === void 0 ? false : _c, value = props.value, name = props.name, label = props.label, indeterminate = props.indeterminate;
+    var _d = useState(checked || false), checkBoxChecked = _d[0], setCheckBoxChecked = _d[1];
+    var _e = useState(false), isIndeterminate = _e[0], setIsIndeterminate = _e[1];
+    useEffect(function () {
+        setCheckBoxChecked(checked);
+    }, [checked]);
+    useEffect(function () {
+        setIsIndeterminate(indeterminate || false);
+    }, [indeterminate]);
+    function handleChange(evt) {
+        setCheckBoxChecked(evt.target.checked);
+        props.onChange && props.onChange(evt);
+    }
+    cn({
+        'violetCheckBox--disabled': disabled,
+        'violetCheckBox--indeterminate': isIndeterminate,
+    });
+    return (jsx("div", __assign({ className: [
+            'violetCheckBox',
+            cn({
+                'violetCheckBox--disabled': disabled
+            })
+        ].join(' ') }, { children: jsxs("label", { children: [jsx("input", { type: 'checkbox', checked: checkBoxChecked, name: name, disabled: disabled, onChange: handleChange, value: value || label, className: [
+                        "violetCheckBox".concat(type),
+                        cn({
+                            '--disabled': disabled,
+                            '--indeterminate': isIndeterminate
+                        })
+                    ].join(' ') }), jsx("span", { children: props.children ? props.children : label ? label : value })] }) })));
+};
+
+var Row = function (_a) {
+    var justify = _a.justify, align = _a.align, children = _a.children;
+    var _b = useState({}), tbalign = _b[0], setTbalign = _b[1];
+    var _c = useState({}), tbjustify = _c[0], setTbjustify = _c[1];
+    useEffect(function () {
+        pjustify();
+        palign();
+    }, []);
+    function pjustify() {
+        switch (justify) {
+            case 'start':
+                setTbjustify({
+                    justifyContent: 'flex-start'
+                });
+                break;
+            case 'center':
+                setTbjustify({
+                    justifyContent: 'center'
+                });
+                break;
+            case 'end':
+                setTbjustify({
+                    justifyContent: 'flex-end'
+                });
+                break;
+            case 'space-around':
+                setTbjustify({
+                    justifyContent: 'space-around'
+                });
+                break;
+            case 'space-between':
+                setTbjustify({
+                    justifyContent: 'space-between'
+                });
+                break;
+            default:
+                setTbjustify({});
+        }
+    }
+    function palign() {
+        switch (align) {
+            case 'top':
+                setTbalign({
+                    alignItems: 'flex-start'
+                });
+                break;
+            case 'middle':
+                setTbalign({
+                    alignItems: 'center'
+                });
+                break;
+            case 'bottom':
+                setTbalign({
+                    alignItems: 'flex-end'
+                });
+                break;
+            default:
+                setTbalign({});
+        }
+    }
+    return (jsx("div", __assign({ className: "violetRow", style: __assign(__assign({}, tbalign), tbjustify) }, { children: children })));
+};
+
 // 入口文件
 library.add(fas);
 
-export { Affix, AutoComplete, Button, Cascader, Form, Icon, Input, InputNumber, TransMenu as Menu, Progress, index as Radio, index as RadioGroup, TransSelect as Select, Switch as Switcher, TransTabs as Tabs, Transition };
+export { Affix, AutoComplete, Button, Cascader, CheckBox, Form, Icon, Input, InputNumber, TransMenu as Menu, Progress, index as Radio, index as RadioGroup, Row, Select, Switch as Switcher, TransTabs as Tabs, Transition };

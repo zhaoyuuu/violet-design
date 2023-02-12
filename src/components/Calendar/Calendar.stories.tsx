@@ -7,7 +7,7 @@ import 'dayjs/locale/zh-cn'
 import 'dayjs/locale/ja'
 import './custom.css'
 export default {
-  title: 'Calendar 日历',
+  title: '组件/数据展示/Calendar 日历',
   id: 'Calendar',
   component: CalendarSelectedController,
 } as ComponentMeta<typeof CalendarSelectedController>

@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
 import RangeDatePicker from '../RangeDatePicker/RangeDatePicker'
 export default {
-  title: 'RangeDatePicker 日期范围选择器',
+  title: '组件/数据录入/RangeDatePicker 日期范围选择器',
   id: 'RangeDatePicker',
   component: RangeDatePicker,
 } as ComponentMeta<typeof RangeDatePicker>
