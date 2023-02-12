@@ -74,7 +74,11 @@ export const Radio: React.FC<RadioProps> = props => {
   if ('type' in props && type == 'button') {
     return (
       <span className={classes}>
-        <div className="violetRadio__button">
+        <div
+          className="violetRadio__button"
+          onClick={handleClick}
+          onChange={handleClick}
+        >
           <input
             type={'radio'}
             disabled={disabled}
@@ -82,7 +86,6 @@ export const Radio: React.FC<RadioProps> = props => {
             key={key}
             checked={checked}
             style={style}
-            onChange={handleClick}
           />
           <label>{children}</label>
         </div>

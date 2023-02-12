@@ -46,7 +46,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = props => {
   })
 
   const handleClick = (e: any) => {
-    const newValue = e.target.value
+    const newValue = e.target.innerHTML
     setValue(newValue)
     onChange && onChange(e)
   }
