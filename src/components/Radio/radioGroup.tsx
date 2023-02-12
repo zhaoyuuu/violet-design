@@ -46,8 +46,9 @@ export const RadioGroup: React.FC<RadioGroupProps> = props => {
   })
 
   const handleClick = (e: any) => {
-    const value = e.target.value
-    setValue(value)
+    const newValue = e.target.value
+    setValue(newValue)
+    onChange && onChange(e)
   }
 
   const newChildren = React.Children.map(children, (child: any) => {

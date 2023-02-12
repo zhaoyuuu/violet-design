@@ -46,6 +46,7 @@ CIcon.storyName = '带图标的 Input'
 export const DSizeInput = () => (
   <>
     <Input defaultValue="large size input" size="lg" />
+    <Input placeholder="middle size input" size="md" />
     <Input placeholder="small size input" size="sm" />
   </>
 )

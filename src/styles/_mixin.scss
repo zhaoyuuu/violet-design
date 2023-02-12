@@ -85,3 +85,15 @@
   border-top-left-radius: $raduis;
   border-top-right-radius: $raduis;
 }
+
+// 下拉类 item的交互
+@mixin dropdownItemStyle {
+  transition: opacity 100ms ease-out;
+  &:hover {
+    background: $primary;
+    color: white;
+  }
+  &:active {
+    opacity: 0.5;
+  }
+}

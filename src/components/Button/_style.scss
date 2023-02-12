@@ -12,7 +12,12 @@
   border-radius: 5px;
   background-image: none;
   border: $btn-border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $border-radius);
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $btn-font-size,
+    $border-radius
+  );
   box-shadow: $btn-box-shadow;
   cursor: pointer;
   transition: $btn-transition;
@@ -28,27 +33,51 @@
 }
 
 .violetButton--lg {
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+  @include button-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    $btn-font-size-lg,
+    $btn-border-radius-lg
+  );
 }
 
 .violetButton--sm {
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $btn-border-radius-sm
+  );
 }
 
 .violetButton--primary {
-  @include button-style($primary, $primary, $white)
+  @include button-style($primary, $primary, $white);
 }
 
 .violetButton--danger {
-  @include button-style($danger, $danger, $white)
+  @include button-style($danger, $danger, $white);
 }
 
 .violetButton--default {
-  @include button-style($white, $gray-400, $body-color, $white, $primary, $primary);
+  @include button-style(
+    $white,
+    $gray-400,
+    $body-color,
+    $white,
+    $primary,
+    $primary
+  );
 }
 
-.violetButton--text{
-  @include button-style($white, $gray-400, $body-color, $white, $primary, $primary);
+.violetButton--text {
+  @include button-style(
+    $white,
+    button-style $gray-400,
+    $body-color,
+    $white,
+    $primary,
+    $primary
+  );
   background-color: $primary;
   opacity: 0.5;
   &:active,
@@ -61,7 +90,6 @@
   color: $btn-link-color;
   text-decoration: $link-decoration;
   box-shadow: none;
-
   &:active,
   &:active {
     opacity: 0.5;
@@ -71,15 +99,20 @@
     color: $link-hover-decoration;
     pointer-events: none;
   }
-
 }
 
-
 .violetButton--dash {
-  @include button-style($white, $gray-400, $body-color, $white, $primary, $primary);
+  @include button-style(
+    $white,
+    $gray-400,
+    $body-color,
+    $white,
+    $primary,
+    $primary
+  );
   border: dashed;
   border-width: 1.5px;
   &:active {
     color: $btn-link-hover-color;
-}
+  }
 }

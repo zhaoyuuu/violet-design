@@ -36,12 +36,7 @@
     background: $menu-backgroundColor;
 
     &__li {
-      // width: max-content;
-      padding: $menu-item-padding-y $menu-item-padding-x;
-      transition: $menu-item-transition;
-      &:active {
-        color: $menu-item-mouseDown-color;
-      }
+      border-radius: $border-radius;
     }
   }
 }
@@ -61,16 +56,6 @@
       padding: 0;
       color: #000;
       box-shadow: 0 0;
-
-      &__li {
-        // width: max-content;
-        border-left: 0;
-        padding: $menu-item-padding-y $menu-item-padding-x;
-        transition: $menu-item-transition;
-        &:active {
-          color: $menu-item-mouseDown-color;
-        }
-      }
     }
   }
 }

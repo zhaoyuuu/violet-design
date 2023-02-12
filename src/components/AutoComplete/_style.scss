@@ -3,6 +3,7 @@
 
   &__loading {
     text-align: center;
+    color: $primary;
   }
 
   &__dropdown {
@@ -22,14 +23,8 @@
       cursor: pointer;
       border-radius: $border-radius;
       color: $input-color;
-      transition: opacity 100ms ease-out;
-      &:hover {
-        background: $primary;
-        color: white;
-      }
-      &:active {
-        opacity: 0.5;
-      }
+      @include dropdownItemStyle;
+
       &--highlight {
         background: $cascader-optionItem-hover-color;
       }
