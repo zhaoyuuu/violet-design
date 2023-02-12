@@ -32,7 +32,15 @@ export type IFormRef = Omit<
 >
 export const FormContext = createContext<IFormContext>({} as IFormContext)
 
-/* eslint-disable react/display-name */
+// /* eslint-disable react/display-name */
+/**
+ * > 表单控件, 带数据与管理功能, 包含数据录入、校验等
+ *
+ * ### 何时使用
+ * - 用于创建一个实体或收集信息。
+ * - 需要对输入的数据类型进行校验时。
+ */
+
 export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
   const { name, children, initialValues, onFinish, onFinishFailed } = props
   const { form, fields, dispatch, ...restProps } = useStore(initialValues)
@@ -71,10 +79,10 @@ export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
           {childrenNode}
         </FormContext.Provider>
       </form>
-      <div>
+      {/* <div>
         <pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(fields)}</pre>
         <pre style={{ whiteSpace: 'pre-wrap' }}>{JSON.stringify(form)}</pre>
-      </div>
+      </div> */}
     </>
   )
 })
@@ -82,5 +90,7 @@ export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
 Form.defaultProps = {
   name: 'violet_form',
 }
+
+Form.displayName = 'Form'
 
 export default Form
