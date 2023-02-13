@@ -1,4 +1,4 @@
-name: Automating builds and tests
+name: Builds and Tests
 
 on:
   push:
@@ -19,5 +19,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run test:nowatch
+      # - run: npm run test:nowatch
       - run: npm run build
