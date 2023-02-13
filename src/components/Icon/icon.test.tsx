@@ -1,6 +1,11 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import Icon, { IconProps } from './icon'
+// 引入图标，组件库改步骤在index.tsx中整体引入
+// 为了测试需要，这里再引入一次
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
 const defaultProps: IconProps = {
   icon: 'check',
