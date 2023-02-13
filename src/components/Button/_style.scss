@@ -80,16 +80,16 @@
   );
   background-color: $primary;
   opacity: 0.5;
+  &:active,
+  &:active {
+    opacity: 0.5;
+  }
 }
 .violetButton--link {
   font-weight: $font-weight-normal;
   color: $btn-link-color;
   text-decoration: $link-decoration;
   box-shadow: none;
-  &:hover {
-    color: $btn-link-hover-color;
-    text-decoration: $link-hover-decoration;
-  }
   &:active,
   &:active {
     opacity: 0.5;
@@ -111,7 +111,8 @@
     $primary
   );
   border: dashed;
-  &:hover {
+  border-width: 1.5px;
+  &:active {
     color: $btn-link-hover-color;
   }
 }
