@@ -39,6 +39,10 @@
     $btn-font-size-lg,
     $btn-border-radius-lg
   );
+  &:active,
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 .violetButton--sm {
@@ -48,14 +52,26 @@
     $btn-font-size-sm,
     $btn-border-radius-sm
   );
+  &:active,
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 .violetButton--primary {
   @include button-style($primary, $primary, $white);
+  &:active,
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 .violetButton--danger {
   @include button-style($danger, $danger, $white);
+  &:active,
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 .violetButton--default {
@@ -67,6 +83,10 @@
     $primary,
     $primary
   );
+  &:active,
+  &:active {
+    opacity: 0.5;
+  }
 }
 
 .violetButton--text {
@@ -82,7 +102,7 @@
   opacity: 0.5;
   &:active,
   &:active {
-    opacity: 0.5;
+    opacity: 0.2;
   }
 }
 .violetButton--link {
