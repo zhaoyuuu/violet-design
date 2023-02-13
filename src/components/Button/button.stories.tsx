@@ -4,7 +4,7 @@ import Button from './button'
 import Icon from '../Icon'
 
 export default {
-  title: 'Button 按钮',
+  title: '组件/通用/Button 按钮',
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },

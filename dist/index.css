@@ -6,19 +6,23 @@
     * 1. Correct the line height in all browsers.
     * 2. Prevent adjustments of font size after orientation changes in iOS.
     */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  font-size: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  line-height: 1.5;
-}
-
 /* Sections
 
 /**
     * Remove the margin in all browsers.
     */
+body {
+  margin: 0;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 main {
   display: block;
 }
@@ -48,11 +52,6 @@ hr {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
 /* Text-level semantics
    ========================================================================== */
 /**
@@ -84,11 +83,12 @@ strong {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
+pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1em;
 }
 
 /**
@@ -854,7 +854,9 @@ template {
 .violetButton--text {
   color: #212529;
   background: #fff;
-  border-color: #ced4da;
+  border-color: button-style #ced4da;
+  background-color: #815c94;
+  opacity: 0.5;
 }
 .violetButton--text:hover {
   color: #815c94;
@@ -869,7 +871,7 @@ template {
 .violetButton--text:disabled, .violetButton--text.disabled {
   color: #212529;
   background: #fff;
-  border-color: #ced4da;
+  border-color: button-style #ced4da;
 }
 
 .violetButton--link {
@@ -882,13 +884,37 @@ template {
   color: #583f65;
   text-decoration: underline;
 }
-.violetButton--link:focus, .violetButton--link:focus {
-  text-decoration: underline;
-  box-shadow: none;
+.violetButton--link:active, .violetButton--link:active {
+  opacity: 0.5;
 }
 .violetButton--link:disabled, .violetButton--link:disabled {
   color: underline;
   pointer-events: none;
+}
+
+.violetButton--dash {
+  color: #212529;
+  background: #fff;
+  border-color: #ced4da;
+  border: dashed;
+}
+.violetButton--dash:hover {
+  color: #815c94;
+  background: #fff;
+  border-color: #815c94;
+}
+.violetButton--dash:focus, .violetButton--dash.focus {
+  color: #815c94;
+  background: #fff;
+  border-color: #815c94;
+}
+.violetButton--dash:disabled, .violetButton--dash.disabled {
+  color: #212529;
+  background: #fff;
+  border-color: #ced4da;
+}
+.violetButton--dash:hover {
+  color: #583f65;
 }
 
 .violetForm .violetRow {
@@ -1101,7 +1127,12 @@ template {
 .voiletInputNumberWrap__inputNumber::-webkit-inner-spin-button, .voiletInputNumberWrap__inputNumber::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
+.voiletInputNumberWrap__inputNumber:hover {
+  color: #815c94;
+  border-color: #815c94;
+}
 .voiletInputNumberWrap__inputNumber:focus {
+  color: #000;
   background-color: #fff;
   border-color: #bda7c8;
   box-shadow: 0 0 0 0.2rem rgba(129, 92, 148, 0.25);
@@ -1206,11 +1237,7 @@ template {
   background: #fff;
 }
 .violetMenu__subMenu__dropDownList__li {
-  padding: 0.5rem 1rem;
-  transition: all 100ms ease-out;
-}
-.violetMenu__subMenu__dropDownList__li:active {
-  color: rgba(129, 92, 148, 0.5);
+  border-radius: 0.25rem;
 }
 
 .violetMenu--vertical .violetMenu__subMenu {
@@ -1227,14 +1254,6 @@ template {
   padding: 0;
   color: #000;
   box-shadow: 0 0;
-}
-.violetMenu--vertical .violetMenu__subMenu__dropDownList__li {
-  border-left: 0;
-  padding: 0.5rem 1rem;
-  transition: all 100ms ease-out;
-}
-.violetMenu--vertical .violetMenu__subMenu__dropDownList__li:active {
-  color: rgba(129, 92, 148, 0.5);
 }
 
 .violetMenu {
@@ -1256,31 +1275,35 @@ template {
   border-left: 2px solid transparent;
   border-bottom: 0;
 }
-.violetMenu--vertical .violetMenu__menuItem--active {
-  color: #815c94;
-}
 .violetMenu--vertical .violetMenu__menuItem--activeAsfirstLevelItem {
   border-left: 2px solid #815c94;
 }
 .violetMenu__menuItem {
   padding: 0.5rem 1rem;
-  transition: all 100ms ease-out;
   border-bottom: 2px solid transparent;
-}
-.violetMenu__menuItem:active {
-  color: rgba(129, 92, 148, 0.5);
+  transition: opacity 100ms ease-out;
 }
 .violetMenu__menuItem:hover {
-  background: #e9ecef;
+  background: #815c94;
+  color: white;
+}
+.violetMenu__menuItem:active {
+  opacity: 0.5;
 }
 .violetMenu__menuItem--disabled {
   color: #6c757d;
   cursor: not-allowed;
 }
+.violetMenu__menuItem--disabled:hover {
+  color: #6c757d;
+  background: #fff;
+}
 .violetMenu__menuItem--disabled:active {
+  opacity: 1;
   color: #6c757d;
 }
 .violetMenu__menuItem--active {
+  font-weight: bold;
   color: #815c94;
 }
 .violetMenu__menuItem--activeAsfirstLevelItem {
@@ -1309,7 +1332,7 @@ template {
 .violetCascaderWrap__input::placeholder, .violetCascaderWrap__input::-webkit-input-placeholder {
   color: #6c757d;
 }
-.violetCascaderWrap__input:focus {
+.violetCascaderWrap__input--focus {
   background-color: #fff;
   border: 2px solid #bda7c8;
   color: transparent;
@@ -1317,6 +1340,7 @@ template {
   box-shadow: 0 0 0 0.2rem rgba(129, 92, 148, 0.25);
 }
 .violetCascaderWrap__input--disabled {
+  background-color: #e9ecef;
   cursor: not-allowed;
 }
 .violetCascaderWrap__input--error {
@@ -1375,13 +1399,19 @@ template {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   color: #495057;
+  transition: opacity 100ms ease-out;
 }
 .violetCascaderWrap__optionsWrap__list__item:hover {
-  background: #e9ecef;
+  background: #815c94;
+  color: white;
+}
+.violetCascaderWrap__optionsWrap__list__item:active {
+  opacity: 0.5;
 }
 .violetCascaderWrap__optionsWrap__list__item--selected {
   font-weight: 700;
-  background: #e9ecef;
+  background: #815c94;
+  color: white;
 }
 .violetCascaderWrap__optionsWrap__list__item__iconBox {
   position: absolute;
@@ -1460,7 +1490,8 @@ template {
   cursor: default;
 }
 .violetSelect__dropdown .violetSelect__item:hover {
-  background-color: rgba(129, 92, 148, 0.1);
+  background: #815c94;
+  color: white;
 }
 
 .violetSelected__tags {
@@ -1538,6 +1569,9 @@ template {
   z-index: 1;
 }
 
+.violetRadio {
+  transition: all 200ms ease-out;
+}
 .violetRadio--disabled {
   cursor: not-allowed;
   color: #6c757d;
@@ -1611,6 +1645,16 @@ template {
   border-radius: 50%;
   background: #b4b4b4;
 }
+.violetRadio__button:hover {
+  background: #815c94;
+  border-radius: 6px;
+}
+.violetRadio__button:hover > label {
+  color: #815c94;
+}
+.violetRadio__button:hover > input {
+  background: #815c94;
+}
 .violetRadio__button label {
   display: inline-block;
   min-width: 50px;
@@ -1621,7 +1665,7 @@ template {
   border-radius: 5px;
   padding-left: 25px;
   color: #fff;
-  background-color: #ced4da;
+  background-color: #dee2e6;
 }
 .violetRadio__button input[type=radio]:checked {
   opacity: 0;
@@ -1647,6 +1691,7 @@ template {
 }
 .violetAutoComplete__loading {
   text-align: center;
+  color: #815c94;
 }
 .violetAutoComplete__dropdown {
   padding: 0;
@@ -1753,4 +1798,576 @@ template {
 }
 .violetUpload__list__item:hover .fileActions {
   display: block;
+}
+
+.violetCheckBox {
+  display: inline-block;
+}
+.violetCheckBox label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.violetCheckBoxsuccess {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: baseline;
+  position: relative;
+  outline: none;
+  border: 1px solid #fff;
+  -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  background: #fff;
+  margin-right: 5px;
+}
+
+.violetCheckBoxsuccess:checked + span {
+  color: rgb(150, 188, 25);
+  cursor: pointer;
+}
+
+.violetCheckBoxsuccess::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  width: 75%;
+  height: 75%;
+  border: 1px;
+  color: transparent;
+  cursor: pointer;
+}
+
+.violetCheckBoxsuccess:checked::before {
+  content: "✓";
+  background-color: rgb(150, 188, 25);
+  border: 2px solid rgb(150, 188, 25);
+  position: absolute;
+  top: 2px;
+  left: 2.5px;
+  width: 70%;
+  height: 70%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.violetCheckBoxsuccess.--disabled:checked::before {
+  content: "✓";
+  position: absolute;
+  top: 2px;
+  left: 2.5px;
+  width: 70%;
+  cursor: pointer;
+}
+
+.violetCheckBoxsuccess.--disabled:before {
+  cursor: not-allowed;
+}
+
+.violetCheckBoxsuccess.--disabled + span {
+  cursor: not-allowed;
+  color: gray;
+}
+
+.violetCheckBoxprimary {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: baseline;
+  position: relative;
+  outline: none;
+  border: 1px solid #fff;
+  -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  background: #fff;
+  margin-right: 5px;
+}
+
+.violetCheckBoxprimary:checked + span {
+  color: #815c94;
+  cursor: pointer;
+}
+
+.violetCheckBoxprimary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  width: 75%;
+  height: 75%;
+  border: 1px;
+  color: transparent;
+  cursor: pointer;
+}
+
+.violetCheckBoxprimary:checked::before {
+  content: "✓";
+  background-color: #815c94;
+  border: 2px solid #815c94;
+  position: absolute;
+  top: 2px;
+  left: 2.5px;
+  width: 70%;
+  height: 70%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.violetCheckBoxprimary.--disabled:checked::before {
+  content: "✓";
+  position: absolute;
+  top: 2px;
+  left: 2.5px;
+  width: 70%;
+  cursor: pointer;
+}
+
+.violetCheckBoxprimary.--disabled:before {
+  cursor: not-allowed;
+}
+
+.violetCheckBoxprimary.--disabled + span {
+  cursor: not-allowed;
+  color: gray;
+}
+
+.violetCheckBoxdanger {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: baseline;
+  position: relative;
+  outline: none;
+  border: 1px solid #fff;
+  -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  background: #fff;
+  margin-right: 5px;
+}
+
+.violetCheckBoxdanger:checked + span {
+  color: #a8456b;
+  cursor: pointer;
+}
+
+.violetCheckBoxdanger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  width: 75%;
+  height: 75%;
+  border: 1px;
+  color: transparent;
+  cursor: pointer;
+}
+
+.violetCheckBoxdanger:checked::before {
+  content: "✓";
+  background-color: #a8456b;
+  border: 2px solid #a8456b;
+  position: absolute;
+  top: 2px;
+  left: 2.5px;
+  width: 70%;
+  height: 70%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.violetCheckBoxdanger.--disabled:checked::before {
+  content: "✓";
+  position: absolute;
+  top: 2px;
+  left: 2.5px;
+  width: 70%;
+  cursor: pointer;
+}
+
+.violetCheckBoxdanger.--disabled:before {
+  cursor: not-allowed;
+}
+
+.violetCheckBoxdanger.--disabled + span {
+  cursor: not-allowed;
+  color: gray;
+}
+
+.violetCheckBoxdefault {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: baseline;
+  position: relative;
+  outline: none;
+  border: 1px solid #fff;
+  -webkit-tab-highlight-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  background: #fff;
+  margin-right: 5px;
+}
+
+.violetCheckBoxdefault:checked + span {
+  color: #815c94;
+  cursor: pointer;
+}
+
+.violetCheckBoxdefault::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  width: 75%;
+  height: 75%;
+  border: 1px;
+  color: transparent;
+  cursor: pointer;
+}
+
+.violetCheckBoxdefault:checked::before {
+  content: "✓";
+  background-color: #815c94;
+  border: 2px solid #815c94;
+  position: absolute;
+  top: 2px;
+  left: 2.5px;
+  width: 70%;
+  height: 70%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.violetCheckBoxdefault.--disabled:checked::before {
+  content: "✓";
+  position: absolute;
+  top: 2px;
+  left: 2.5px;
+  width: 70%;
+  cursor: pointer;
+}
+
+.violetCheckBoxdefault.--disabled:before {
+  cursor: not-allowed;
+}
+
+.violetCheckBoxdefault.--disabled + span {
+  cursor: not-allowed;
+  color: gray;
+}
+
+.violetRow {
+  min-height: 36px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rc-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 80;
+}
+.rc-backdrop.invert {
+  background: rgba(1, 1, 1, 0.7);
+}
+
+.range-picker-input {
+  display: inline-flex;
+  border: 1px solid #e4e4e4;
+  width: 300px;
+}
+.range-picker-input * {
+  box-sizing: border-box;
+}
+.range-picker-input__icon {
+  display: inline-flex;
+  align-items: center;
+}
+.range-picker-input__start, .range-picker-input__end {
+  display: inline-flex;
+  flex: 1;
+}
+.range-picker-input__start .picker-input.range input, .range-picker-input__end .picker-input.range input {
+  width: 100%;
+  border: none;
+}
+
+.picker-input {
+  display: inline-block;
+  position: relative;
+}
+.picker-input__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+.picker-input__text {
+  padding: 10px;
+  border: 1px solid #e4e4e4;
+  outline: none;
+  font-size: 16.8px;
+}
+.picker-input__text:disabled {
+  background: #e4e4e4;
+}
+.picker-input__clear {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: pointer;
+}
+
+.picker {
+  display: inline-block;
+}
+.picker__container {
+  position: absolute;
+  z-index: 100;
+}
+.picker__container.portal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.picker__container__include-time {
+  border: 1px solid #e4e4e4;
+}
+.picker__container__include-time .calendar__item,
+.picker__container__include-time .time__container {
+  border: none;
+}
+.picker__container__tab {
+  margin: 10px 0;
+}
+.picker__container__tab button {
+  padding: 5px 10px;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #e4e4e4;
+}
+.picker__container__tab button.active {
+  color: #49599a;
+  border-bottom: 2px solid #49599a;
+}
+.picker__container__tab button:first-child {
+  border-right: none;
+}
+.picker__container__tab button svg {
+  margin-right: 5px;
+}
+
+.time__container {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #e4e4e4;
+  padding: 15px;
+  background: white;
+  font-family: "Lato";
+  font-size: 12px;
+}
+.time__container__div {
+  margin: 0 10px;
+}
+.time__container__type {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.time-input {
+  display: inline-block;
+  width: 40px;
+  overflow: hidden;
+}
+.time-input__up, .time-input__down {
+  border: 1px solid #e4e4e4;
+}
+.time-input__up button, .time-input__down button {
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+}
+.time-input__text {
+  width: 100%;
+  border-left: 1px solid #e4e4e4;
+  border-right: 1px solid #e4e4e4;
+  box-sizing: border-box;
+}
+.time-input__text input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  font-size: 15px;
+  padding: 5px;
+  text-align: center;
+  outline: none;
+}
+
+.calendar {
+  display: inline-block;
+  background: white;
+  font-size: 12px;
+}
+.calendar *,
+.calendar *:before,
+.calendar *:after {
+  box-sizing: border-box;
+}
+.calendar__container {
+  width: 270px;
+  font-family: "Roboto", sans-serif;
+  display: none;
+}
+.calendar__list {
+  display: table;
+}
+.calendar__item {
+  display: table-cell;
+  border: 1px solid #ececec;
+}
+.calendar__item:not(:first-child) {
+  border-left: none !important;
+}
+.calendar--show {
+  display: inline-block;
+}
+.calendar__head {
+  position: relative;
+  background: white;
+  padding: 10px 6px 2px 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.calendar__head--title {
+  font-size: 1.3em;
+  color: black;
+  text-align: center;
+  margin: 4px;
+}
+.calendar__head--title:hover {
+  color: #7986cb;
+  cursor: pointer;
+}
+.calendar__head--button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: 14;
+}
+.calendar__head--button svg {
+  fill: white;
+}
+.calendar__head--prev, .calendar__head--next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.calendar__head--prev {
+  left: 0;
+}
+.calendar__head--next {
+  right: 0;
+}
+.calendar__panel--show {
+  display: block !important;
+}
+.calendar__panel--today {
+  background: #aab6fe;
+  padding: 5px;
+  display: none;
+}
+.calendar__panel--today h2 {
+  margin: 0;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+}
+.calendar__body--table {
+  margin-top: 5px;
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+  border-spacing: none;
+  border-collapse: collapse;
+}
+.calendar__body--table th {
+  height: 30px;
+  vertical-align: middle;
+  color: #212121;
+}
+.calendar__day {
+  vertical-align: top;
+  padding-top: 5px;
+  height: 40px;
+  cursor: pointer;
+}
+.calendar__day:hover:not(.calendar__day--disabled) {
+  background: #aab6fe;
+  cursor: pointer;
+}
+.calendar__day--0 {
+  color: red;
+}
+.calendar__day--6 {
+  color: blue;
+}
+.calendar__day--today {
+  background: #dce1ff;
+  color: white;
+}
+.calendar__day--disabled {
+  color: #ddd;
+  cursor: initial;
+}
+.calendar__day--start, .calendar__day--end, .calendar__day--selected {
+  background: #7986cb;
+  color: #ffffff;
+}
+.calendar__day--start:hover, .calendar__day--end:hover, .calendar__day--selected:hover {
+  background: #7986cb;
+}
+.calendar__day--range {
+  background: #dce1ff;
+}
+.calendar__day--text {
+  display: block;
+  font-size: 10px;
+}
+.calendar__year, .calendar__month {
+  height: 55px;
+  vertical-align: middle;
+}
+.calendar__year--selected, .calendar__month--selected {
+  background: #7986cb;
+  color: #ffffff;
+}
+.calendar__year--selected:hover, .calendar__month--selected:hover {
+  background: #7986cb;
+}
+.calendar__year:hover, .calendar__month:hover {
+  background: #aab6fe;
+  cursor: pointer;
 }

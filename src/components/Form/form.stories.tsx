@@ -4,13 +4,12 @@ import Form, { IFormRef } from './form'
 import FormItem from './formItem'
 import Input from '../Input/input'
 import Button, { ButtonType } from '../Button/button'
-import exp from 'constants'
 import { CustomRule } from './useStore'
 // import Select from '../Select/select'
 import Select from '../Select/index'
 
 const meta: ComponentMeta<typeof Form> = {
-  title: 'Form 组件',
+  title: '组件/数据录入/Form 表单',
   id: 'Form',
   component: Form,
   subcomponents: { Item: FormItem },
@@ -71,7 +70,7 @@ export const ABasicForm = (args: any) => {
     </Form>
   )
 }
-ABasicForm.storyName = '登陆表单'
+ABasicForm.storyName = '基本的登陆表单'
 
 export const BasicForm = (args: any) => {
   const ref = useRef<IFormRef>()
@@ -136,7 +135,7 @@ export const BasicForm = (args: any) => {
     </Form>
   )
 }
-BasicForm.storyName = '基本的注册表单'
+BasicForm.storyName = '验证功能+重置按钮'
 
 export const BRegForm = (args: any) => {
   const initialValues = {
@@ -194,7 +193,7 @@ export const BRegForm = (args: any) => {
     </Form>
   )
 }
-BRegForm.storyName = '加入Select的注册表单'
+BRegForm.storyName = '加入Select选择框'
 
 // export const CFullForm = (args: any) => {
 //   const ref = useRef<IFormRef>()

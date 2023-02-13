@@ -5,7 +5,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 // 大标题
 const menuMeta: ComponentMeta<typeof Menu> = {
-  title: 'Menu 导航菜单',
+  title: '组件/导航/Menu 导航菜单',
   component: Menu,
 }
 

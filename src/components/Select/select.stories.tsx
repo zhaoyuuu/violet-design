@@ -5,7 +5,7 @@ import Select from './index'
 import RadioComponent from '../Radio'
 const { Radio, RadioGroup } = RadioComponent
 export default {
-  title: 'Select 选择器',
+  title: '组件/数据录入/Select 选择器',
   component: Select,
   id: 'Select',
   // 让整个story包在width:350px的div内
@@ -130,6 +130,34 @@ const options = [
   options={options}
   size={size}
 />`,
+    },
+  },
+}
+
+export const SearchSelect = (args: any) => (
+  <Select
+    {...args}
+    placeholder="请选择"
+    options={[
+      { value: 'a11' },
+      { value: 'b12' },
+      { value: 'c13' },
+      { value: 'd14' },
+    ]}
+    showSearch
+  />
+)
+SearchSelect.storyName = '可搜索的选择器'
+SearchSelect.parameters = {
+  docs: {
+    source: {
+      code: `
+<Select placeholder="请选择" options={[
+  { value: 'a11' },
+  { value: 'b12' },
+  { value: 'c13' },
+  { value: 'd14' }]} 
+  showSearch/>`,
     },
   },
 }

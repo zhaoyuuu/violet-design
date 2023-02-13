@@ -10,19 +10,24 @@
     * 2. Prevent adjustments of font size after orientation changes in iOS.
     */
 
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  font-size: $font-size-base;
-  font-family: $font-family-base;
-  line-height: $line-height-base;
-}
-
 /* Sections
 
 /**
     * Remove the margin in all browsers.
     */
+
+body {
+  margin: 0; // 1
+  font-family: $font-family-monospace;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  text-align: $body-text-align;
+  background-color: $body-bg; // 2
+  -webkit-text-size-adjust: 100%; // 3
+  -webkit-tap-highlight-color: rgba($black, 0); // 4
+}
 
 main {
   display: block;
@@ -57,10 +62,10 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
+// pre {
+//   font-family: monospace, monospace; /* 1 */
+//   font-size: 1em; /* 2 */
+// }
 
 /* Text-level semantics
    ========================================================================== */
@@ -98,11 +103,12 @@ strong {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
+pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
+  font-family: $font-family-monospace;
+  font-size: 1em; // Correct the odd `em` font sizing in all browsers.
 }
 
 /**

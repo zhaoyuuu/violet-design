@@ -22,7 +22,7 @@ interface BaseButtonProps {
   children?: ReactNode
   /**点击跳转的地址，指定此属性 button 的行为和 a 链接一致 */
   href?: string
-  /**点击按钮时的回调 */
+
   // onClick?: (
   //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   // ) => void | undefined
