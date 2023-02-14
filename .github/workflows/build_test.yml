@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 jobs:
-  run test and build:
+  run_test_and_run_build:
     runs-on: ubuntu-latest
 
     strategy:

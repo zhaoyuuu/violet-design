@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
 jobs:
-  release a new version:
+  release_a_new_version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
