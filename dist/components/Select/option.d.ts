@@ -8,6 +8,9 @@ export interface SelectOptionProps {
     /** 是否禁用该选项*/
     disabled?: boolean;
     children?: ReactNode;
+    onSelect?: (value: string, isSelected?: boolean) => void;
+    selectedValues: string[];
+    multiple: boolean | undefined;
 }
 export declare const Option: FC<SelectOptionProps>;
 export default Option;

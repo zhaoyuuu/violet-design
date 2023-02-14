@@ -1,4 +1,4 @@
-import React, { ReactNode, FC } from 'react';
+import { ReactNode, FC } from 'react';
 import { InputSize } from '../Input/input';
 import { SelectOptionProps } from './option';
 export interface SelectProps {
@@ -36,7 +36,6 @@ export interface IselectContext {
 }
 /** 定义全局的量 */
 /** 当没有provide，则用括号里的默认值 */
-export declare const SelectContext: React.Context<IselectContext>;
 /**
  * 下拉选择器。
  * 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。

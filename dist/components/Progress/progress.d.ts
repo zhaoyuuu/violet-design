@@ -25,5 +25,13 @@ export interface ProgressProps {
     className?: string;
     children?: ReactNode;
 }
+/**
+ * > 展示工作流的进度
+ *
+ * ### 何时使用
+ * 当需要较长时间完成一样任务时，你可以通过`progress`来记录当前的进度和状态
+ *
+ *
+ */
 export declare const Progress: React.FC<ProgressProps>;
 export default Progress;

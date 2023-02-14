@@ -54,9 +54,9 @@ export interface IselectContext {
 
 /** 定义全局的量 */
 /** 当没有provide，则用括号里的默认值 */
-export const SelectContext = createContext<IselectContext>({
-  selectedValues: [],
-})
+// export const SelectContext = createContext<IselectContext>({
+//   selectedValues: [],
+// })
 
 /**
  * 下拉选择器。
@@ -191,11 +191,11 @@ export const Select: FC<SelectProps> = props => {
     setReClick(false)
   }
   // 传递给option组件的li元素的一些属性
-  const passedContext: IselectContext = {
-    onSelect: handleOptionClick,
-    selectedValues: selectedValues,
-    multiple: multiple,
-  }
+  // const passedContext: IselectContext = {
+  //   onSelect: handleOptionClick,
+  //   selectedValues: selectedValues,
+  //   multiple: multiple,
+  // }
   // 生成下拉框各选项
   const generateOptions = () => {
     // 根据是否带搜索功能，得到不同的options
@@ -211,7 +211,15 @@ export const Select: FC<SelectProps> = props => {
         return <Option index={`select-${index}`} key={index} {...item}></Option>
       })
     } else {
-      return <Option disabled value={'暂无数据'}></Option>
+      return (
+        <Option
+          disabled
+          value={'暂无数据'}
+          onSelect={handleOptionClick}
+          selectedValues={selectedValues}
+          multiple={multiple}
+        ></Option>
+      )
     }
   }
   // 类名拼接
@@ -252,11 +260,11 @@ export const Select: FC<SelectProps> = props => {
           />
         )}
       </div>
-      <SelectContext.Provider value={passedContext}>
-        <Transition in={menuOpen} animation="zoom-in-top" timeout={300}>
-          <ul className="violetSelect__dropdown">{generateOptions()}</ul>
-        </Transition>
-      </SelectContext.Provider>
+      {/* <SelectContext.Provider value={passedContext}> */}
+      <Transition in={menuOpen} animation="zoom-in-top" timeout={300}>
+        <ul className="violetSelect__dropdown">{generateOptions()}</ul>
+      </Transition>
+      {/* </SelectContext.Provider> */}
       {multiple && (
         <div
           className="violetSelected__tags"

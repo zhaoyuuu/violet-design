@@ -781,11 +781,17 @@ template {
   font-size: 1.25rem;
   border-radius: 0.3rem;
 }
+.violetButton--lg:active, .violetButton--lg:active {
+  opacity: 0.5;
+}
 
 .violetButton--sm {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.2rem;
+}
+.violetButton--sm:active, .violetButton--sm:active {
+  opacity: 0.5;
 }
 
 .violetButton--primary {
@@ -793,20 +799,13 @@ template {
   background: #815c94;
   border-color: #815c94;
 }
-.violetButton--primary:hover {
-  color: #fff;
-  background: #9470a6;
-  border-color: #9a78ab;
-}
-.violetButton--primary:focus, .violetButton--primary.focus {
-  color: #fff;
-  background: #9470a6;
-  border-color: #9a78ab;
-}
 .violetButton--primary:disabled, .violetButton--primary.disabled {
   color: #fff;
   background: #815c94;
   border-color: #815c94;
+}
+.violetButton--primary:active, .violetButton--primary:active {
+  opacity: 0.5;
 }
 
 .violetButton--danger {
@@ -814,20 +813,13 @@ template {
   background: #a8456b;
   border-color: #a8456b;
 }
-.violetButton--danger:hover {
-  color: #fff;
-  background: #bb597e;
-  border-color: #be6285;
-}
-.violetButton--danger:focus, .violetButton--danger.focus {
-  color: #fff;
-  background: #bb597e;
-  border-color: #be6285;
-}
 .violetButton--danger:disabled, .violetButton--danger.disabled {
   color: #fff;
   background: #a8456b;
   border-color: #a8456b;
+}
+.violetButton--danger:active, .violetButton--danger:active {
+  opacity: 0.5;
 }
 
 .violetButton--default {
@@ -835,20 +827,13 @@ template {
   background: #fff;
   border-color: #ced4da;
 }
-.violetButton--default:hover {
-  color: #815c94;
-  background: #fff;
-  border-color: #815c94;
-}
-.violetButton--default:focus, .violetButton--default.focus {
-  color: #815c94;
-  background: #fff;
-  border-color: #815c94;
-}
 .violetButton--default:disabled, .violetButton--default.disabled {
   color: #212529;
   background: #fff;
   border-color: #ced4da;
+}
+.violetButton--default:active, .violetButton--default:active {
+  opacity: 0.5;
 }
 
 .violetButton--text {
@@ -858,20 +843,13 @@ template {
   background-color: #815c94;
   opacity: 0.5;
 }
-.violetButton--text:hover {
-  color: #815c94;
-  background: #fff;
-  border-color: #815c94;
-}
-.violetButton--text:focus, .violetButton--text.focus {
-  color: #815c94;
-  background: #fff;
-  border-color: #815c94;
-}
 .violetButton--text:disabled, .violetButton--text.disabled {
   color: #212529;
   background: #fff;
   border-color: button-style #ced4da;
+}
+.violetButton--text:active, .violetButton--text:active {
+  opacity: 0.2;
 }
 
 .violetButton--link {
@@ -879,10 +857,6 @@ template {
   color: #815c94;
   text-decoration: none;
   box-shadow: none;
-}
-.violetButton--link:hover {
-  color: #583f65;
-  text-decoration: underline;
 }
 .violetButton--link:active, .violetButton--link:active {
   opacity: 0.5;
@@ -897,23 +871,14 @@ template {
   background: #fff;
   border-color: #ced4da;
   border: dashed;
-}
-.violetButton--dash:hover {
-  color: #815c94;
-  background: #fff;
-  border-color: #815c94;
-}
-.violetButton--dash:focus, .violetButton--dash.focus {
-  color: #815c94;
-  background: #fff;
-  border-color: #815c94;
+  border-width: 1.5px;
 }
 .violetButton--dash:disabled, .violetButton--dash.disabled {
   color: #212529;
   background: #fff;
   border-color: #ced4da;
 }
-.violetButton--dash:hover {
+.violetButton--dash:active {
   color: #583f65;
 }
 

@@ -1,6 +1,6 @@
 import React, { ReactNode, FC, useContext } from 'react'
 import classNames from 'classnames'
-import { SelectContext } from './select'
+// import { SelectContext } from './select'
 import Icon from '../Icon'
 export interface SelectOptionProps {
   index?: string
@@ -11,12 +11,24 @@ export interface SelectOptionProps {
   /** 是否禁用该选项*/
   disabled?: boolean
   children?: ReactNode
+  onSelect?: (value: string, isSelected?: boolean) => void
+  selectedValues: string[]
+  multiple: boolean | undefined
 }
 
 export const Option: FC<SelectOptionProps> = props => {
-  const { index, value, label, disabled, children } = props
+  const {
+    index,
+    value,
+    label,
+    disabled,
+    children,
+    onSelect,
+    selectedValues,
+    multiple,
+  } = props
   // select组件通过provider传递来的
-  const { onSelect, selectedValues, multiple } = useContext(SelectContext)
+  // const {} = useContext(SelectContext)
   // 判断当前value是否已选中
   const isSelected = selectedValues.includes(value)
   // 每个option的点击处理函数

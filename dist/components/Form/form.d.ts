@@ -13,6 +13,9 @@ export type IFormContext = Pick<ReturnType<typeof useStore>, 'dispatch' | 'field
 export type IFormRef = Omit<ReturnType<typeof useStore>, 'fields' | 'dispatch' | 'form'>;
 export declare const FormContext: React.Context<IFormContext>;
 /**
+ * >高性能表单控件，自带数据域管理。包含数据录入、校验以及对应样式。
+// /* eslint-disable react/display-name */
+/**
  * > 表单控件, 带数据与管理功能, 包含数据录入、校验等
  *
  * ### 何时使用

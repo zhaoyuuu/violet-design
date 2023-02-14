@@ -99,7 +99,7 @@ $spacer: 1rem !default;
 $paragraph-margin-bottom: 1rem !default;
 
 // 字体其他部分 heading list hr 等等
-$headings-margin-bottom: $spacer / 2 !default;
+$headings-margin-bottom: calc($spacer / 2) !default;
 $headings-font-family: null !default;
 $headings-font-style: null !default;
 $headings-font-weight: 500 !default;
