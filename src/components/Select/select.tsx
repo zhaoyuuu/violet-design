@@ -190,12 +190,6 @@ export const Select: FC<SelectProps> = props => {
     onSearch && onSearch(inputValue)
     setReClick(false)
   }
-  // 传递给option组件的li元素的一些属性
-  const passedContext: IselectContext = {
-    onSelect: handleOptionClick,
-    selectedValues: selectedValues,
-    multiple: multiple,
-  }
   // 生成下拉框各选项
   const generateOptions = () => {
     // 根据是否带搜索功能，得到不同的options
@@ -208,7 +202,16 @@ export const Select: FC<SelectProps> = props => {
     // 在这里，即对select 中的每一个option进行处理，生成li元素
     if (selectOptions.length) {
       return selectOptions.map(function (item, index) {
-        return <Option index={`select-${index}`} key={index} {...item}></Option>
+        return (
+          <Option
+            index={`select-${index}`}
+            key={index}
+            {...item}
+            onSelect={handleOptionClick}
+            selectedValues={selectedValues}
+            multiple={multiple}
+          ></Option>
+        )
       })
     } else {
       return <Option disabled value={'暂无数据'}></Option>
@@ -252,11 +255,9 @@ export const Select: FC<SelectProps> = props => {
           />
         )}
       </div>
-      <SelectContext.Provider value={passedContext}>
-        <Transition in={menuOpen} animation="zoom-in-top" timeout={300}>
-          <ul className="violetSelect__dropdown">{generateOptions()}</ul>
-        </Transition>
-      </SelectContext.Provider>
+      <Transition in={menuOpen} animation="zoom-in-top" timeout={300}>
+        <ul className="violetSelect__dropdown">{generateOptions()}</ul>
+      </Transition>
       {multiple && (
         <div
           className="violetSelected__tags"
