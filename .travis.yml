@@ -6,12 +6,12 @@ cache:
     - node_modules
 env:
   - CI=true
-# script:
-#   - npm run build-storybook
-# deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   github_token: $github_token
-#   local_dir: storybook-static
-#   on:
-#     branch: develop
+script:
+  - npm run build-storybook
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $violet
+  local_dir: storybook-static
+  on:
+    branch: wzj
