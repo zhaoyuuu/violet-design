@@ -5,7 +5,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
 // 样式
 import './styles/index.scss'
-he
+console.log(12)
+error
 
 export { default as Affix } from './components/Affix'
 export { default as AutoComplete } from './components/AutoComplete'
