@@ -27,7 +27,7 @@ describe('test Tabs Component', () => {
   })
   it('should render the correct default Tabs', () => {
     const { queryByText, container } = wrapper
-    expect(container.querySelector('.violetTabs--nav')).toHaveClass(
+    expect(container.querySelector('.violetTabs__nav')).toHaveClass(
       'violetTabs__nav--line'
     )
     const activeElement = queryByText('tab2')

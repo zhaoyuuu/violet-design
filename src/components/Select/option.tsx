@@ -1,6 +1,5 @@
 import React, { ReactNode, FC, useContext } from 'react'
 import classNames from 'classnames'
-import { SelectContext } from './select'
 import Icon from '../Icon'
 export interface SelectOptionProps {
   index?: string
@@ -11,14 +10,24 @@ export interface SelectOptionProps {
   /** 是否禁用该选项*/
   disabled?: boolean
   children?: ReactNode
+  onSelect?: (value: string, isSelected?: boolean) => void
+  selectedValues?: string[]
+  multiple?: boolean
 }
 
 export const Option: FC<SelectOptionProps> = props => {
-  const { index, value, label, disabled, children } = props
-  // select组件通过provider传递来的
-  const { onSelect, selectedValues, multiple } = useContext(SelectContext)
+  const {
+    index,
+    value,
+    label,
+    disabled,
+    children,
+    onSelect,
+    selectedValues,
+    multiple,
+  } = props
   // 判断当前value是否已选中
-  const isSelected = selectedValues.includes(value)
+  const isSelected = selectedValues?.includes(value)
   // 每个option的点击处理函数
   const handleClick = (
     e: React.MouseEvent,
@@ -38,7 +47,7 @@ export const Option: FC<SelectOptionProps> = props => {
     <li
       key={index}
       className={className}
-      onClick={e => handleClick(e, value, isSelected)}
+      onClick={e => handleClick(e, value, isSelected || false)}
     >
       {children || (label ? label : value)}
       {multiple && isSelected && <Icon icon="check" />}
