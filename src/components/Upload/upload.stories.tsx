@@ -11,11 +11,6 @@ export default {
   id: 'Upload',
 } as ComponentMeta<typeof Upload>
 
-const defaultFileList: UploadFile[] = [
-  { uid: '111', size: 1234, name: 'hlo.md', status: 'uploading', percent: 30 },
-  { uid: '123', size: 1234, name: 'abc.md', status: 'success', percent: 30 },
-  { uid: '188', size: 1234, name: 'ggg.md', status: 'error', percent: 30 },
-]
 const checkFileSize = (file: File) => {
   if (Math.round(file.size / 1024) > 50) {
     alert('上传文件过大')
