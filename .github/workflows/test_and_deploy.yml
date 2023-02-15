@@ -1,11 +1,11 @@
-name: Builds and Tests
+name: Run Tests and Deploy
 
 on:
   push:
     branches: [master]
 
 jobs:
-  run_test_and_run_build:
+  run_tests:
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,4 +20,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run test:nowatch
-      - run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run deploy-storybook
