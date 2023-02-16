@@ -1,6 +1,6 @@
 import React from 'react'
 import RowContext from './RowContext'
-import './style.scss'
+import './_style.scss'
 
 export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number

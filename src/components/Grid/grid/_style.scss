@@ -9,6 +9,12 @@ $grid-columns: 24;
     flex: 0 0 percentage($number: $index / $grid-columns);
   }
 }
+
+@for $index from 1 to 24 {
+  .col-offset-#{$index} {
+    margin-left: percentage($number: $index / $grid-columns);
+  }
+}
 .col {
   box-sizing: border-box;
 }

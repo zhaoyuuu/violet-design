@@ -1,7 +1,7 @@
 import React, { useContext, CSSProperties } from 'react'
 import classNames from 'classnames'
 import RowContext from './RowContext'
-import './style.scss'
+import './_style.scss'
 
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   span: number
