@@ -51,7 +51,7 @@
 
 ### 使用 yarn 安装
 
-`yarn add violet-design`
+`$ yarn add violet-design`
 
 ### 浏览器引入
 
