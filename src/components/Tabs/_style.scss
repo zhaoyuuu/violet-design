@@ -16,7 +16,7 @@
     color: $nav-tabs-link-hover-color;
   }
   // Disabled state lightens text
-  &.--disabled {
+  &.disabled {
     color: $nav-link-disabled-color;
     pointer-events: none;
     cursor: default;
