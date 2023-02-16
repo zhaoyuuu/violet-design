@@ -33,7 +33,7 @@ const FormItem: FC<FormItemProps> = props => {
   >
   const { dispatch, fields, initialValues, validateField } =
     useContext(FormContext)
-  const rowClass = classNames('violetRow', {
+  const rowClass = classNames('violetFormRow', {
     '.violetRow--no__label': !label,
   })
 
