@@ -1,0 +1,16 @@
+.row {
+  text-align: center;
+  line-height: 40px;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+.row > div:nth-child(odd) {
+  background-color: #815c94;
+  color: white;
+}
+
+.row > div:nth-child(even) {
+  background-color: lighten(#815c94, 20%);
+  color: white;
+}
