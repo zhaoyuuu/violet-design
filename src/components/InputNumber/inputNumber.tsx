@@ -63,7 +63,7 @@ export const InputNumber: React.FC<IInputNumberProps> = ({
   const handleChange = () => {
     const value = inputEl?.value as string
     if (Number(value) > max || Number(value) < min) return
-    onChange(value)
+    onChange && onChange(value)
   }
 
   // 键盘事件
