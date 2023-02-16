@@ -4,7 +4,7 @@ import { TabItem } from './tabItem'
 describe('TabItem component', () => {
   it('should render children correctly', () => {
     const children = 'Hello World'
-    render(<TabItem>{children}</TabItem>)
+    render(<TabItem label="tab">{children}</TabItem>)
     const element = screen.getByText(children)
     expect(element).toBeInTheDocument()
   })
