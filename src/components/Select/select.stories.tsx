@@ -77,7 +77,8 @@ DisabledSelect.parameters = {
 export const SizeSelect = (args: any) => {
   const [size, setSize] = useState('md')
   const handleSizeChange = (e: any) => {
-    setSize(e.target.value)
+    const newSize = e.target.parentNode.children[0].value
+    setSize(newSize === size ? 'md' : newSize)
   }
 
   return (

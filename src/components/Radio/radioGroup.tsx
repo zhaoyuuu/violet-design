@@ -48,15 +48,15 @@ export const RadioGroup: React.FC<RadioGroupProps> = props => {
     ...restProps
   } = props
 
-  const [value, setValue] = useState(props.defaultValue || props.value)
+  const [value, setValue] = useState(props.value || props.defaultValue)
 
   const classes = classNames('violetRadioGroup', className, {
-    ['violetRadioGroup--${size}']: size,
+    [`violetRadioGroup--${size}`]: size,
     'violetRadioGroup--disabled': disabled,
   })
 
   const handleClick = (e: any) => {
-    const newValue = e.target.innerHTML
+    const newValue = e.target.parentNode.children[0].value
     setValue(newValue)
     onChange && onChange(e)
   }
