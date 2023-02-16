@@ -25,7 +25,7 @@ export interface IInputNumberProps {
   /** 当前值 */
   value?: string
   /** 变化回调 */
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
   /** 按下回车的回调 */
   onPressEnter?: () => void
 }
