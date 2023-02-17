@@ -1,12 +1,20 @@
-# <img src="https://raw.githubusercontent.com/zhaoyuuu/violetUI/a07bdb12ce19fcc8d8c5bc760434035981dd9633/assets/solid-readme-logo.svg?sanitize=true" width="240px">
+# <center> <img src="https://github.com/zhubeijia/source/blob/main/srclogo/violet-logo.svg?raw=true" width="220px" >
 
-[![Violet Design](https://img.shields.io/badge/Violet%20Design-v0.1.4-darkorchid.svg?style=flat-square)][def]
+<div align="center">
 
+[![version](https://img.shields.io/badge/version-v0.1.4-mediumpurple.svg)](https://github.com/zhaoyuuu/violet-design)
+[![lisence](https://img.shields.io/badge/lisence-MIT-slateblue.svg)](https://github.com/zhaoyuuu/violet-design)
+[![docs](https://img.shields.io/badge/docsby-storybook-purple.svg)](https://zhaoyuuu.github.io/violet-design)
+
+</div>
+
+<div>
 基于「 React 」框架的个性化 UI 组件库，主要用于企业级中后台系统。
+</div>
 
 ## 目录
 
-- [](#)
+- [ ](#-)
   - [目录](#目录)
   - [介绍](#介绍)
     - [特性](#特性)
@@ -39,7 +47,7 @@
 
 | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-edge.06c7aa18.svg?raw=true" width="20px">Edge | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-firefox.ffa00c88.svg?raw=true" width="20px">Firefox | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-chrome.99f0b30c.svg?raw=true" width="20px">Chrome | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-safari.1bf88a3e.svg?raw=true" width="20px">Safari | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-opera.de286680.svg?raw=true" width="20px">Opera |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Edge                                                         | ...                                                          | ...                                                          | ...                                                          | ...                                                          |
+| Edge                                                         | Last two versions                                                          | Last two versions                                                          | Last two versions                                                          | Last two versions                                                          |
 
 ## 安装
 
@@ -110,4 +118,3 @@ const App = () => (
 
 如果你希望参与贡献，欢迎 Pull Request ！
 
-[def]: https://github.com/RichardLitt/standard-readme
