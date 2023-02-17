@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="https://zhaoyuuu.github.io/violet-design">
-    <img width="200" src="https://github.com/zhubeijia/source/blob/main/srclogo/violet-logo.svg?raw=true">
+    <img width="320" src="https://github.com/zhubeijia/source/blob/main/srclogo/violet-logo.svg?raw=true">
   </a>
 </p>
 
