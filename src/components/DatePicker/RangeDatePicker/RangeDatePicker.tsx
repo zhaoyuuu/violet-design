@@ -14,7 +14,6 @@ import {
 import Picker, { PickerProps, PickerAction } from '../Picker'
 import RangePickerInput, { FieldType, InputProps } from './RangePickerInput'
 import Calendar, { Props as ICalendarProps } from '../../Calendar/Calendar'
-import Transition from '../../Transition'
 
 interface RangeDatePickerProps {
   /** 输入格式 (Day.js format) */
@@ -211,14 +210,8 @@ export class RangeDatePicker extends React.Component<Props, State> {
   }
 
   public renderRangePickerInput = () => {
-    const {
-      startPlaceholder,
-      endPlaceholder,
-      readOnly,
-      disabled,
-      clear,
-      onChange,
-    } = this.props
+    const { startPlaceholder, endPlaceholder, readOnly, disabled, clear } =
+      this.props
     const { startValue, endValue } = this.state
     return (
       <RangePickerInput
@@ -275,11 +268,7 @@ export class RangeDatePicker extends React.Component<Props, State> {
         disabled={disabled}
         renderTrigger={() => this.renderRangePickerInput()}
         renderContents={({ actions }) => {
-          return (
-            // <Transition in={dropdownShow} animation="zoom-in-top" timeout={300}>
-            this.renderCalendar(actions)
-            // </Transition>
-          )
+          return this.renderCalendar(actions)
         }}
       />
     )
