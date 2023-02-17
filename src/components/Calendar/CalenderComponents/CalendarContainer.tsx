@@ -5,7 +5,7 @@ import CalendarBody from './CalendarBody'
 import CalendarHead from './CalendarHead'
 import { Props as DayViewProps } from '../DayView'
 
-import { IDatePicker } from '../../../_utils/@types'
+import { IDatePicker } from '../../../_utils/types'
 import { DatePickerDefaults, ifExistCall } from '../../../_utils/DateUtil'
 
 export interface CalendarContainerProps {

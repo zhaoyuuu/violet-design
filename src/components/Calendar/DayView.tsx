@@ -13,7 +13,7 @@ import {
   DatePickerDefaults,
   isYearEqual,
 } from '../../_utils/DateUtil'
-import { IDatePicker } from '../../_utils/@types'
+import { IDatePicker } from '../../_utils/types'
 
 export interface Props {
   /** 要在日历中显示的选定日期 */

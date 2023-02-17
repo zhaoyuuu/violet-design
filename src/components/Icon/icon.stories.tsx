@@ -5,6 +5,7 @@ import Button from '../Button/button'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
+import './story.scss'
 
 export default {
   title: '组件/通用/Icon 图标',
@@ -42,12 +43,16 @@ CCustomIcons.storyName = '更多行为的 Icon'
 
 export const DAllIcons = () => (
   <>
-    {Object.entries(fas).map(([key, value]) => (
-      <div key={key}>
-        <Icon icon={value} theme="primary" />
-        <h3>{key}</h3>
-      </div>
-    ))}
+    <ul className="icons-list">
+      {Object.entries(fas).map(([key, value]) => (
+        <li key={key}>
+          <span className="icon icon-step-backward">
+            <Icon icon={value} theme="primary" />
+          </span>
+          <span className="icon-class">{key}</span>
+        </li>
+      ))}
+    </ul>
   </>
 )
 DAllIcons.storyName = '所有 Icon'
