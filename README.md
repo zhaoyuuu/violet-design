@@ -13,7 +13,7 @@
 
 </div>
 
-<div>
+<div align="center">
 基于「 React 」框架的个性化 UI 组件库，主要用于企业级中后台系统。
 </div>
 
