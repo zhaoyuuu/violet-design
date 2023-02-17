@@ -55,7 +55,7 @@ const Template: ComponentStory<typeof Cascader> = args => {
       {...args}
       value={value}
       onChange={onChange}
-      placeholder="请选择"
+      placeholder="try select"
       options={options}
     />
   )
@@ -74,10 +74,4 @@ export const ChangeonSelect = Template.bind({})
 ChangeonSelect.storyName = '选择即改变'
 ChangeonSelect.args = {
   changeOnSelect: true,
-}
-
-export const Status = Template.bind({})
-Status.storyName = '状态设置'
-Status.args = {
-  status: 'success',
 }
