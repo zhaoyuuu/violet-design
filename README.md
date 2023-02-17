@@ -1,4 +1,9 @@
-# <center> <img src="https://github.com/zhubeijia/source/blob/main/srclogo/violet-logo.svg?raw=true" width="220px" >
+
+<p align="center">
+  <a href="https://zhaoyuuu.github.io/violet-design">
+    <img width="200" src="https://github.com/zhubeijia/source/blob/main/srclogo/violet-logo.svg?raw=true">
+  </a>
+</p>
 
 <div align="center">
 
@@ -14,21 +19,20 @@
 
 ## 目录
 
-- [ ](#-)
-  - [目录](#目录)
-  - [介绍](#介绍)
-    - [特性](#特性)
-    - [兼容性](#兼容性)
-  - [安装](#安装)
-    - [使用npm安装](#使用npm安装)
-    - [使用 yarn 安装](#使用-yarn-安装)
-    - [浏览器引入](#浏览器引入)
-  - [示例](#示例)
-    - [按需加载](#按需加载)
-    - [TypeScript](#typescript)
-  - [组件](#组件)
-  - [链接](#链接)
-  - [开发人员](#开发人员)
+- [目录](#目录)
+- [介绍](#介绍)
+  - [特性](#特性)
+  - [兼容性](#兼容性)
+- [安装](#安装)
+  - [使用npm安装](#使用npm安装)
+  - [使用 yarn 安装](#使用-yarn-安装)
+  - [浏览器引入](#浏览器引入)
+- [示例](#示例)
+  - [按需加载](#按需加载)
+  - [TypeScript](#typescript)
+- [组件](#组件)
+- [链接](#链接)
+- [开发人员](#开发人员)
 
 ## 介绍
 
