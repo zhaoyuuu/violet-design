@@ -5,7 +5,7 @@ import Col from '../grid/col'
 import './grid.scss'
 
 export default {
-  title: '组件/布局/grid 栅格',
+  title: '组件/布局/Grid 栅格',
   id: 'grid',
   Row,
   Col,

@@ -2,6 +2,9 @@ import React from 'react'
 import { ComponentMeta } from '@storybook/react'
 import Icon from './icon'
 import Button from '../Button/button'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
 export default {
   title: '组件/通用/Icon 图标',
@@ -36,3 +39,15 @@ export const CCustomIcons = () => (
   </>
 )
 CCustomIcons.storyName = '更多行为的 Icon'
+
+export const DAllIcons = () => (
+  <>
+    {Object.entries(fas).map(([key, value]) => (
+      <div key={key}>
+        <Icon icon={value} theme="primary" />
+        <h3>{key}</h3>
+      </div>
+    ))}
+  </>
+)
+DAllIcons.storyName = '所有 Icon'
