@@ -1,6 +1,6 @@
 import React from 'react'
 import CX from 'classnames'
-import { IDatePicker } from '../../_utils/@types'
+import { IDatePicker } from '../../_utils/types'
 import { getDivPosition, getDomHeight } from '../../_utils/DateUtil'
 import Backdrop from './Backdrop'
 import Transition from '../Transition'

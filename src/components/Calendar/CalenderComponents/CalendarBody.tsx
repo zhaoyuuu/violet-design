@@ -1,6 +1,6 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import { IDatePicker } from '../../../_utils/@types'
+import { IDatePicker } from '../../../_utils/types'
 import {
   DatePickerDefaults,
   getMonthMatrix,

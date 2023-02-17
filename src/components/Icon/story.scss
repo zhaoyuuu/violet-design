@@ -1,0 +1,58 @@
+ul.icons-list {
+  margin: 10px 0;
+  overflow: hidden;
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+ul.icons-list li {
+  position: relative;
+  float: left;
+  width: 16.66%;
+  height: 100px;
+  margin: 3px 0;
+  padding: 10px 0 0;
+  overflow: hidden;
+  color: #555;
+  text-align: center;
+  list-style: none;
+  background-color: inherit;
+  border-radius: 4px;
+  -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+ul.icons-list li .icon-class {
+  font-size: 14px;
+  display: block;
+  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-transform: scale(0.83);
+  -moz-transform: scale(0.83);
+  -ms-transform: scale(0.83);
+  transform: scale(0.83);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul.icons-list li .icon {
+  margin: 12px 0 12px;
+  font-size: 36px;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}

@@ -1,4 +1,4 @@
-import { IDatePicker } from './@types'
+import { IDatePicker } from './types'
 import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
