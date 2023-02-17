@@ -3,6 +3,7 @@ import CX from 'classnames'
 import { IDatePicker } from '../../_utils/@types'
 import { getDivPosition, getDomHeight } from '../../_utils/DateUtil'
 import Backdrop from './Backdrop'
+import Transition from '../Transition'
 
 export interface PickerAction {
   show: () => void
@@ -101,7 +102,7 @@ class Picker extends React.Component<Props & PickerProps, State> {
         >
           {renderTrigger({ actions })}
         </div>
-        {show && (
+        {/* {show && (
           <div
             className={CX('picker__container', { portal, className })}
             role="dialog"
@@ -111,7 +112,18 @@ class Picker extends React.Component<Props & PickerProps, State> {
           >
             {renderContents({ actions })}
           </div>
-        )}
+        )} */}
+        <Transition in={show} animation="zoom-in-top" timeout={200}>
+          <div
+            className={CX('picker__container', { portal, className })}
+            role="dialog"
+            aria-modal="true"
+            style={position}
+            ref={this.contentsRef}
+          >
+            {renderContents({ actions })}
+          </div>
+        </Transition>
         <Backdrop show={show} invert={portal} onClick={this.hideContents} />
       </div>
     )
