@@ -89,22 +89,6 @@
   }
 }
 
-.violetButton--text {
-  @include button-style(
-    $white,
-    button-style $gray-400,
-    $body-color,
-    $white,
-    $primary,
-    $primary
-  );
-  background-color: $primary;
-  opacity: 0.5;
-  &:active,
-  &:active {
-    opacity: 0.2;
-  }
-}
 .violetButton--link {
   font-weight: $font-weight-normal;
   color: $btn-link-color;
@@ -133,6 +117,6 @@
   border: dashed;
   border-width: 1.5px;
   &:active {
-    color: $btn-link-hover-color;
+    opacity: 0.5;
   }
 }

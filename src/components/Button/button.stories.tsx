@@ -43,13 +43,7 @@ Link.args = {
   href: 'https://google.com',
 }
 Link.storyName = 'Link Button 链接按钮'
-//text Button
-export const Text = Template.bind({})
-Text.args = {
-  btnType: 'text',
-  children: 'Text Button',
-}
-Text.storyName = 'Text Button 文本按钮'
+
 //icon button
 export const IconButton = (args: any) => (
   <Button btnType="primary">

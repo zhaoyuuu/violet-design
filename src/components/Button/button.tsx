@@ -1,14 +1,8 @@
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
 
-export type ButtonSize = 'lg' | 'sm'
-export type ButtonType =
-  | 'primary'
-  | 'default'
-  | 'danger'
-  | 'link'
-  | 'text'
-  | 'dash'
+export type ButtonSize = 'lg' | 'sm' | 'mid'
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link' | 'dash'
 interface BaseButtonProps {
   /**添加自定义类名 */
   className?: string
@@ -45,7 +39,6 @@ export type ButtonProps = Partial<AnchorButtonProps>
  * - 主按钮：用于主行动点，一个操作区域只能有一个主按钮。
  * - 危险按钮：删除/移动/修改权限等危险操作，一般需要二次确认。
  * - 链接按钮：一般用于链接，即导航至某位置。
- * - 文本按钮：用于最次级的行动点。
  * - 图标按钮：可以通过Icon组件，为按钮提供各式各样的图标选择。
  * - 虚线按钮：常用于添加操作。
  * - 禁用按钮：行动点不可用的时候，一般需要文案解释。
@@ -72,7 +65,7 @@ export const Button = (props: ButtonProps) => {
   //violetButton,violetButton-lg,violetButton-primary,
   const cls = classNames('violetButton', className, {
     [`violetButton--${btnType}`]: btnType,
-    [`violetButton--${size}`]: size,
+    [`violetButton--${size}`]: size !== 'mid',
     'violetButton--disabled': btnType === 'link' && disabled,
   })
   if (btnType === 'link' && href) {
