@@ -8,6 +8,13 @@ export default {
   title: '组件/数据录入/RangeDatePicker 日期范围选择器',
   id: 'RangeDatePicker',
   component: RangeDatePicker,
+  decorators: [
+    Story => (
+      <div style={{ height: '350px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof RangeDatePicker>
 
 const defaultProps = {

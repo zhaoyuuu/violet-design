@@ -9,11 +9,19 @@ export default {
   title: '组件/数据录入/DatePicker 日期选择器',
   id: 'DatePicker',
   component: DatePicker,
+  decorators: [
+    Story => (
+      <div style={{ height: '350px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof DatePicker>
 
 const defaultProps = {
   onChange: action('onChange'),
   locale: 'zh-cn',
+  docsStyle: { height: '400px' },
 }
 
 const Template: ComponentStory<typeof DatePicker> = args => (
