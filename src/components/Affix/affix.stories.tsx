@@ -1,4 +1,3 @@
-import React from 'react'
 import Affix from './affix'
 import Button from '../Button/button'
 import Tabs from '../Tabs/tabs'
