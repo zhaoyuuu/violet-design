@@ -3,7 +3,7 @@ import React from 'react'
 import dayjs from 'dayjs'
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
-import RangeDatePicker from '../RangeDatePicker/RangeDatePicker'
+import RangeDatePicker from './RangeDatePicker'
 export default {
   title: '组件/数据录入/RangeDatePicker 日期范围选择器',
   id: 'RangeDatePicker',

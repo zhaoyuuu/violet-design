@@ -21,6 +21,9 @@ interface State {
 }
 
 type Props = CalendarProps & IProps
+/**
+ * 日历。目前支持年/月/日切换。
+ */
 export class CalendarSelectedController extends React.Component<Props, State> {
   public static defaultProps = {
     /** 默认不多选 */

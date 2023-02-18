@@ -3,7 +3,7 @@ import React from 'react'
 import dayjs from 'dayjs'
 import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
-import DatePicker from '../DatePicker'
+import DatePicker from './DatePicker'
 
 export default {
   title: '组件/数据录入/DatePicker 日期选择器',

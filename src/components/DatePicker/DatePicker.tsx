@@ -67,6 +67,10 @@ export type Props = DatePickerProps &
   CalendarProps &
   PickerProps
 
+/**
+ * 输入或选择日期/时间的控件。
+ */
+
 export class DatePicker extends React.Component<Props, State> {
   public static defaultProps = {
     includeTime: false,
