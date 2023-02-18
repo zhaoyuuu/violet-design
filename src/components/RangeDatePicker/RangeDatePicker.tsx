@@ -10,10 +10,10 @@ import {
   Merge,
   Omit,
   ifExistCall,
-} from '../../../_utils/DateUtil'
-import Picker, { PickerProps, PickerAction } from '../Picker'
+} from '../../_utils/DateUtil'
+import Picker, { PickerProps, PickerAction } from '../DatePicker/Picker'
 import RangePickerInput, { FieldType, InputProps } from './RangePickerInput'
-import Calendar, { Props as ICalendarProps } from '../../Calendar/Calendar'
+import Calendar, { Props as ICalendarProps } from '../Calendar/Calendar'
 
 interface RangeDatePickerProps {
   /** 输入格式 (Day.js format) */
@@ -54,6 +54,9 @@ export type Props = RangeDatePickerProps &
   CalendarProps &
   InputProps &
   PickerProps
+/**
+ * 输入或选择日期/时间范围的控件。
+ */
 
 export class RangeDatePicker extends React.Component<Props, State> {
   public static defaultProps = {
