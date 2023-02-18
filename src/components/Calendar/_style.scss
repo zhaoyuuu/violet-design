@@ -283,6 +283,7 @@
     vertical-align: top;
     padding-top: 5px;
     height: 40px;
+    transition: font-weight 200ms ease-out;
     &:hover:not(&--disabled) {
       background: $primary-color-light;
       cursor: pointer;
@@ -307,6 +308,7 @@
     &--selected {
       background: $primary-color;
       color: $primary-color-text;
+      font-weight: bold;
       &:hover {
         background: $primary-color;
       }
