@@ -6,13 +6,13 @@ $grid-columns: 24;
 
 @for $index from 1 to 24 {
   .col-#{$index} {
-    flex: 0 0 percentage($number: $index / $grid-columns);
+    flex: 0 0 percentage($number: calc($index / $grid-columns));
   }
 }
 
 @for $index from 1 to 24 {
   .col-offset-#{$index} {
-    margin-left: percentage($number: $index / $grid-columns);
+    margin-left: percentage($number: calc($index / $grid-columns));
   }
 }
 .col {
