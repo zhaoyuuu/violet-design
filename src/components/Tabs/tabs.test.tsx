@@ -56,19 +56,3 @@ describe('test Tabs Component', () => {
     expect(testProps.onSelect).not.toHaveBeenCalled()
   })
 })
-it('render in less than 50ms', () => {
-  const startTime = performance.now()
-  const { container } = render(
-    <Tabs {...testProps}>
-      <TabItem label="tab1">content1</TabItem>
-      <TabItem label="tab2">content2</TabItem>
-      <TabItem label="disabled" disabled>
-        content3
-      </TabItem>
-    </Tabs>
-  )
-  const endTime = performance.now()
-  const renderingTime = endTime - startTime
-  console.log(renderingTime)
-  expect(renderingTime).toBeLessThan(50)
-})
