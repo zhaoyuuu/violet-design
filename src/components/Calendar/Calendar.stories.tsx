@@ -25,9 +25,6 @@ export const DayView = () => (
   </>
 )
 DayView.storyName = 'DayView 日视图'
-DayView.args = {
-  view: 'day',
-}
 DayView.parameters = {
   docs: {
     description: {
@@ -200,11 +197,11 @@ export const customDayText = () => (
     </div>
   </>
 )
-customDayText.storyName = 'customDayText 自定义日期文字'
+customDayText.storyName = 'customDayText 定制日期单元格内容'
 customDayText.parameters = {
   docs: {
     description: {
-      story: `通过配置参数customDayText，实现自定义日期下方文字。customDayText类型为(date: dayjs.Dayjs) => string`,
+      story: `通过配置参数customDayText，实现自定义日期单元格内容。customDayText类型为(date: dayjs.Dayjs) => string`,
     },
   },
 }
@@ -224,11 +221,11 @@ export const customDayClass = () => (
     </div>
   </>
 )
-customDayClass.storyName = 'customDayClass 自定义日期样式'
+customDayClass.storyName = 'customDayClass 定制日期单元格样式'
 customDayClass.parameters = {
   docs: {
     description: {
-      story: `通过配置参数customDayClass，实现自定义日期样式。customDayClass类型为： (date: dayjs.Dayjs) => string | string[]`,
+      story: `通过配置参数customDayClass，实现自定义日期单元格样式。customDayClass类型为： (date: dayjs.Dayjs) => string | string[]`,
     },
   },
 }

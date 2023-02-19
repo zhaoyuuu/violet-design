@@ -116,8 +116,17 @@ export class CalendarContainer extends React.Component<Props, State> {
       const year = dayjs(base).year(parseInt(value, 10))
       ifExistCall(onChange, year, undefined, undefined)
     } else if (this.props.view === 'month') {
-      const month = dayjs(base).month(parseInt(value, 12))
-      ifExistCall(onChange, undefined, month, undefined)
+      if (viewMode === IDatePicker.ViewMode.YEAR) {
+        //用于修改组件的基准日期
+        //将字符串 value 解析为整数
+        setBase(dayjs(base).year(parseInt(value, 10)))
+        this.setState({
+          viewMode: IDatePicker.ViewMode.MONTH,
+        })
+      } else if (viewMode === IDatePicker.ViewMode.MONTH) {
+        const month = dayjs(base).month(parseInt(value, 10))
+        ifExistCall(onChange, undefined, month, undefined)
+      }
     } else {
       if (viewMode === IDatePicker.ViewMode.YEAR) {
         //用于修改组件的基准日期
