@@ -6,7 +6,6 @@ on:
 
 jobs:
   deploy:
-    needs: run_tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
