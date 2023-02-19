@@ -18,6 +18,12 @@
     "type": "git",
     "url": "https://github.com/zhaoyuuu/violet-design"
   },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "dist/index.css"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
