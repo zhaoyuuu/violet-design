@@ -11,7 +11,7 @@ export default {
   // 让整个story包在width:350px的div内
   decorators: [
     Story => (
-      <div style={{ width: '350px' }}>
+      <div style={{ width: '350px', height: '200px' }}>
         <Story />
       </div>
     ),
