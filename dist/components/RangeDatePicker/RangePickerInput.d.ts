@@ -1,6 +1,6 @@
 import React from 'react'
-import { Props as IPickerInputProps } from '../PickerInput'
-import { Merge, Omit } from '../../../_utils/DateUtil'
+import { Props as IPickerInputProps } from '../DatePicker/PickerInput'
+import { Merge, Omit } from '../../_utils/DateUtil'
 export declare enum FieldType {
   START = 0,
   END = 1,

@@ -1,9 +1,9 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import { Merge, Omit } from '../../../_utils/DateUtil'
-import { PickerProps, PickerAction } from '../Picker'
+import { Merge, Omit } from '../../_utils/DateUtil'
+import { PickerProps, PickerAction } from '../DatePicker/Picker'
 import { FieldType, InputProps } from './RangePickerInput'
-import { Props as ICalendarProps } from '../../Calendar/Calendar'
+import { Props as ICalendarProps } from '../Calendar/Calendar'
 interface RangeDatePickerProps {
   /** 输入格式 (Day.js format) */
   dateFormat: string
@@ -40,6 +40,9 @@ export type Props = RangeDatePickerProps &
   CalendarProps &
   InputProps &
   PickerProps
+/**
+ * 输入或选择日期/时间范围的控件。
+ */
 export declare class RangeDatePicker extends React.Component<Props, State> {
   static defaultProps: {
     dateFormat: string

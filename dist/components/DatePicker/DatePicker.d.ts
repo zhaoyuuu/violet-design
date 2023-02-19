@@ -49,6 +49,9 @@ export type Props = DatePickerProps &
   Omit<InputProps, 'onChange'> &
   CalendarProps &
   PickerProps
+/**
+ * 输入或选择日期/时间的控件。
+ */
 export declare class DatePicker extends React.Component<Props, State> {
   static defaultProps: {
     includeTime: boolean

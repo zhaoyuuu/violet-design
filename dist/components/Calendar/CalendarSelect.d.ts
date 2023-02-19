@@ -17,10 +17,13 @@ interface State {
   selected: dayjs.Dayjs[]
 }
 type Props = CalendarProps & IProps
-export declare class CalendarSelectedController extends React.Component<
-  Props,
-  State
-> {
+/**
+ * 日历。支持年/月/日切换。
+ *
+ * 支持国际化配置（支持多种语言）。
+ *
+ */
+export declare class CalendarSelect extends React.Component<Props, State> {
   static defaultProps: {
     /** 默认不多选 */
     multiple: boolean
@@ -38,4 +41,4 @@ export declare class CalendarSelectedController extends React.Component<
   handleClear: () => void
   render(): JSX.Element
 }
-export default CalendarSelectedController
+export default CalendarSelect

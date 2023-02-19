@@ -1211,6 +1211,9 @@ var TabValue;
     TabValue[TabValue["DATE"] = 0] = "DATE";
     TabValue[TabValue["TIME"] = 1] = "TIME";
 })(TabValue || (TabValue = {}));
+/**
+ * 输入或选择日期/时间的控件。
+ */
 var DatePicker = /** @class */ (function (_super) {
     __extends(DatePicker, _super);
     function DatePicker(props) {
@@ -1640,6 +1643,39 @@ Form.defaultProps = {
 };
 Form.displayName = 'Form';
 
+var RowContext = createContext({});
+
+function Row(props) {
+    var _a = props.gutter, gutter = _a === void 0 ? 0 : _a, children = props.children;
+    var rowContext = React.useMemo(function () { return ({ gutter: gutter }); }, [gutter]);
+    var rowStyle = {};
+    if (gutter && gutter > 0) {
+        rowStyle.marginLeft = gutter / -2;
+        rowStyle.marginRight = gutter / -2;
+    }
+    return (jsx(RowContext.Provider, __assign({ value: rowContext }, { children: jsx("div", __assign({ className: "row", style: __assign({}, rowStyle) }, { children: children })) })));
+}
+
+function Col(props) {
+    var _a;
+    var children = props.children, span = props.span, offset = props.offset;
+    var classObj = (_a = {},
+        _a["col-".concat(span)] = span !== void 0,
+        _a["col-offset-".concat(offset)] = offset !== void 0,
+        _a);
+    var classes = classNames('col', classObj);
+    var gutter = useContext(RowContext).gutter;
+    var styleObj = {};
+    if (gutter && gutter > 0) {
+        var horizontalGutter = gutter / 2;
+        styleObj.paddingLeft = horizontalGutter;
+        styleObj.paddingRight = horizontalGutter;
+    }
+    return (jsx("div", __assign({ className: classes, style: __assign({}, styleObj) }, { children: children })));
+}
+
+var index$1 = { Row: Row, Col: Col };
+
 /**
  * > 通过鼠标或键盘，输入范围内的数值。
  *
@@ -1957,69 +1993,6 @@ var RadioGroup = function (props) {
 };
 
 var index = { Radio: Radio, RadioGroup: RadioGroup };
-
-var Row = function (_a) {
-    var justify = _a.justify, align = _a.align, children = _a.children;
-    var _b = useState({}), tbalign = _b[0], setTbalign = _b[1];
-    var _c = useState({}), tbjustify = _c[0], setTbjustify = _c[1];
-    useEffect(function () {
-        pjustify();
-        palign();
-    }, []);
-    function pjustify() {
-        switch (justify) {
-            case 'start':
-                setTbjustify({
-                    justifyContent: 'flex-start'
-                });
-                break;
-            case 'center':
-                setTbjustify({
-                    justifyContent: 'center'
-                });
-                break;
-            case 'end':
-                setTbjustify({
-                    justifyContent: 'flex-end'
-                });
-                break;
-            case 'space-around':
-                setTbjustify({
-                    justifyContent: 'space-around'
-                });
-                break;
-            case 'space-between':
-                setTbjustify({
-                    justifyContent: 'space-between'
-                });
-                break;
-            default:
-                setTbjustify({});
-        }
-    }
-    function palign() {
-        switch (align) {
-            case 'top':
-                setTbalign({
-                    alignItems: 'flex-start'
-                });
-                break;
-            case 'middle':
-                setTbalign({
-                    alignItems: 'center'
-                });
-                break;
-            case 'bottom':
-                setTbalign({
-                    alignItems: 'flex-end'
-                });
-                break;
-            default:
-                setTbalign({});
-        }
-    }
-    return (jsx("div", __assign({ className: "violetRow", style: __assign(__assign({}, tbalign), tbjustify) }, { children: children })));
-};
 
 var Option = function (props) {
     var index = props.index, value = props.value, label = props.label, disabled = props.disabled, children = props.children, onSelect = props.onSelect, selectedValues = props.selectedValues, multiple = props.multiple;
@@ -2445,4 +2418,4 @@ var Upload = function (props) {
 // 入口文件
 library.add(fas);
 
-export { Affix, AutoComplete, Button, Calendar, Cascader, CheckBox, DatePicker, Form, Icon, Input, InputNumber, TransMenu as Menu, Progress, index as Radio, index as RadioGroup, Row, Select, Switch as Switcher, TransTabs as Tabs, Upload };
+export { Affix, AutoComplete, Button, Calendar, Cascader, CheckBox, DatePicker, Form, index$1 as Grid, Icon, Input, InputNumber, TransMenu as Menu, Progress, index as Radio, index as RadioGroup, Select, Switch as Switcher, TransTabs as Tabs, Upload };
