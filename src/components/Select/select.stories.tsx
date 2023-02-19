@@ -162,3 +162,17 @@ SearchSelect.parameters = {
     },
   },
 }
+
+export const GroupSelect = (args: any) => (
+  <Select
+    {...args}
+    placeholder="请选择"
+    showSearch
+    options={[
+      { label: '第一组', options: [{ value: 'a11' }, { value: 'a12' }] },
+      { label: '第二组', options: [{ value: 'b11' }, { value: 'b12' }] },
+      { label: '第三组', options: [{ value: 'c11' }, { value: 'c12' }] },
+    ]}
+  />
+)
+GroupSelect.storyName = '分组的选择器'

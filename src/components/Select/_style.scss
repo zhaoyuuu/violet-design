@@ -14,7 +14,6 @@
       border-color: $input-border-color;
       cursor: pointer;
       opacity: 1;
-
     }
     &:disabled {
       background-color: $input-disabled-bg;
@@ -24,18 +23,18 @@
     }
   }
   .icon-wrapper {
-    transition: transform .25s ease-in-out;
+    transition: transform 0.25s ease-in-out;
     transform: rotate(0deg) !important;
   }
 }
 .violetSelect.violetSelect--menuOpen {
   .icon-wrapper {
     transform: rotate(180deg) !important;
-  }  
+  }
 }
 
 .violetSelect__dropdown {
-  list-style:none;
+  list-style: none;
   padding-left: 0;
   margin-top: 0;
   white-space: nowrap;
@@ -47,8 +46,12 @@
   border: $menu-border-width solid $menu-border-color;
   box-shadow: $submenu-box-shadow;
   width: 100%;
+  .violetSelect__optGroup {
+    cursor: default;
+  }
   .violetSelect__item {
     padding: $menu-item-padding-y $menu-item-padding-x;
+    margin-left: 0;
     cursor: pointer;
     transition: $menu-transition;
     color: $body-color;
@@ -56,7 +59,7 @@
     align-items: center;
     justify-content: space-between;
     &.violetSelectItem--selected {
-      color: $menu-item-active-color ;
+      color: $menu-item-active-color;
       font-weight: $font-weight-bold;
     }
     &.violetSelectItem--disabled {
@@ -86,17 +89,17 @@
     height: 80%;
     padding: 2px 5px;
     box-sizing: border-box;
-    border: 1px solid rgba($primary, .2);
+    border: 1px solid rgba($primary, 0.2);
     margin-left: 6px;
     border-radius: 3px;
     color: $primary;
-    background-color: rgba($primary, .1);
+    background-color: rgba($primary, 0.1);
   }
   .violetIcon {
     margin-left: 3px;
     cursor: pointer;
     &:hover {
-      color: darken($primary, 10%)
+      color: darken($primary, 10%);
     }
   }
 }

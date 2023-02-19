@@ -14,6 +14,7 @@ import Option, { SelectOptionProps } from './option'
 import Icon from '../Icon'
 import useClickOutside from '../../hooks/useClickOutside'
 import useDebounce from '../../hooks/useDebounce'
+import Optgroup from './optGroup'
 
 export interface SelectProps {
   /** 指定默认选中的条目 */
@@ -32,7 +33,9 @@ export interface SelectProps {
   onVisibleChange?: (visible: boolean) => void
   children?: ReactNode
   /** 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能 */
-  options: SelectOptionProps[]
+  options:
+    | SelectOptionProps[]
+    | { label: string; options: SelectOptionProps[] }[]
   /** 选择框大小 */
   size?: InputSize
   /** 配置是否可搜索 */
@@ -94,15 +97,16 @@ export const Select: FC<SelectProps> = props => {
     typeof defaultValue === 'string' ? defaultValue : ''
   )
   // 防抖
-  const debouncedValue = useDebounce(value, 500)
+  const debouncedValue = useDebounce(value, 300)
   // 存储多选的已选值
   const [selectedValues, setSelectedValues] = useState<string[]>(
     Array.isArray(defaultValue) ? defaultValue : []
   )
   // 搜索功能下，再次点击input
   const [reClick, setReClick] = useState(false)
-  let selectOptions: SelectOptionProps[]
-
+  let selectOptions:
+    | SelectOptionProps[]
+    | { label: string; options: SelectOptionProps[] }[]
   // 处理option的点击事件
   const handleOptionClick = (value: string, isSelected?: boolean) => {
     // 非多选模式
@@ -161,7 +165,11 @@ export const Select: FC<SelectProps> = props => {
       onVisibleChange(false)
     }
     if (showSearch && value !== defaultValue) {
-      setValue(selectOptions[0]?.value ?? defaultValue)
+      if ('options' in selectOptions[0]) {
+        setValue(selectOptions[0].options[0]?.value ?? defaultValue)
+      } else {
+        setValue(selectOptions[0]?.value ?? defaultValue)
+      }
     }
   })
   // 不带搜索框时，点击input框的处理函数
@@ -198,25 +206,77 @@ export const Select: FC<SelectProps> = props => {
   const generateOptions = () => {
     // 根据是否带搜索功能，得到不同的options
     const reg = new RegExp('^' + debouncedValue)
-    selectOptions =
-      showSearch && filterOption && !reClick
-        ? options.filter(item => reg.test(item?.label ?? item.value))
-        : options
+    console.log(reg)
+
+    if (showSearch && filterOption && !reClick) {
+      // 执行搜索
+      if ('options' in options[0]) {
+        const assertOptions = options as {
+          label: string
+          options: SelectOptionProps[]
+        }[]
+        const optionArr: {
+          label: string
+          options: SelectOptionProps[]
+        }[] = []
+        assertOptions.filter(item => {
+          const array = item.options.filter(item =>
+            reg.test(item?.label ?? item.value)
+          )
+          return array.length == 0
+            ? false
+            : optionArr.push({ label: item.label, options: array })
+        })
+        selectOptions = optionArr
+      } else {
+        const assertOptions = options as SelectOptionProps[]
+        selectOptions = assertOptions.filter(item =>
+          reg.test(item?.label ?? item.value)
+        )
+      }
+    } else {
+      // 不执行搜索
+      selectOptions = options
+    }
+    console.log(options)
+
+    console.log(selectOptions)
+
     // 在Select组件中对options进行遍历，并执行函数
     // 在这里，即对select 中的每一个option进行处理，生成li元素
     if (selectOptions.length) {
-      return selectOptions.map(function (item, index) {
-        return (
-          <Option
-            index={`select-${index}`}
-            key={index}
-            {...item}
-            onSelect={handleOptionClick}
-            selectedValues={selectedValues}
-            multiple={multiple}
-          ></Option>
-        )
-      })
+      if ('options' in selectOptions[0]) {
+        selectOptions = selectOptions as {
+          label: string
+          options: SelectOptionProps[]
+        }[]
+        return selectOptions.map(function (item, index) {
+          return (
+            <Optgroup
+              key={`optGroup-${index}`}
+              label={item.label}
+              onSelect={handleOptionClick}
+              selectedValues={selectedValues}
+              multiple={multiple}
+              options={item.options}
+            ></Optgroup>
+          )
+        })
+      } else {
+        selectOptions = selectOptions as SelectOptionProps[]
+        return selectOptions.map(function (item, index) {
+          return (
+            <Option
+              index={`select-${index}`}
+              key={index}
+              {...item}
+              onSelect={handleOptionClick}
+              selectedValues={selectedValues}
+              multiple={multiple}
+            ></Option>
+          )
+        })
+      }
     } else {
       return <Option disabled value={'暂无数据'}></Option>
     }
@@ -260,7 +320,7 @@ export const Select: FC<SelectProps> = props => {
         )}
       </div>
       <Transition in={menuOpen} animation="zoom-in-top" timeout={300}>
-        <ul className="violetSelect__dropdown">{generateOptions()}</ul>
+        <dl className="violetSelect__dropdown">{generateOptions()}</dl>
       </Transition>
       {multiple && (
         <div

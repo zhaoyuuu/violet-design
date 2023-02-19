@@ -44,14 +44,14 @@ export const Option: FC<SelectOptionProps> = props => {
   })
   return (
     // 有children，则显示children；否则，有label，显示label，否则显示 value
-    <li
+    <dd
       key={index}
       className={className}
       onClick={e => handleClick(e, value, isSelected || false)}
     >
       {children || (label ? label : value)}
       {multiple && isSelected && <Icon icon="check" />}
-    </li>
+    </dd>
   )
 }
 
