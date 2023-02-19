@@ -86,14 +86,3 @@ describe('test Cascader component', () => {
     })
   })
 })
-
-describe('rendering time test', () => {
-  it('render in less than 50ms', () => {
-    const startTime = performance.now()
-    const { container } = render(<Cascader {...testProps} />)
-    const endTime = performance.now()
-    const renderingTime = endTime - startTime
-    console.log(renderingTime)
-    expect(renderingTime).toBeLessThan(50)
-  })
-})

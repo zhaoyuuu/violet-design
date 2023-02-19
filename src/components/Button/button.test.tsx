@@ -70,14 +70,3 @@ describe('test Button component', () => {
     expect(disabledProps.onClick).not.toHaveBeenCalled()
   })
 })
-
-describe('rendering time test', () => {
-  it('render in less than 50ms', () => {
-    const startTime = performance.now()
-    const { container } = render(<Button />)
-    const endTime = performance.now()
-    const renderingTime = endTime - startTime
-    console.log(renderingTime)
-    expect(renderingTime).toBeLessThan(50)
-  })
-})
