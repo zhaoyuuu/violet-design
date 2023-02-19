@@ -53,7 +53,7 @@ export const DSizeInput = () => (
 DSizeInput.storyName = '大小不同的 Input'
 export const EPandInput = () => (
   <>
-    <Input defaultValue="prepend text" prepend="https://" />
+    <Input defaultValue="bytedance.com" prepend="https://" />
     <Input defaultValue="bytedance" append=".com" />
   </>
 )
