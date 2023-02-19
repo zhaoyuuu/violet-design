@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
-
-import Select from './index'
+import jsonp from 'fetch-jsonp'
+import qs from 'qs'
+import Select, { SelectProps } from './select'
 import RadioComponent from '../Radio'
 const { Radio, RadioGroup } = RadioComponent
 export default {
@@ -176,3 +177,58 @@ export const GroupSelect = (args: any) => (
   />
 )
 GroupSelect.storyName = '分组的选择器'
+
+export const LongRangeSearchSelect = (args: any) => {
+  let timeout: ReturnType<typeof setTimeout> | null
+  let currentValue: string
+  const [data, setData] = useState<SelectProps['options']>([])
+
+  const fetch = (value: string, callback: Function) => {
+    if (timeout) {
+      clearTimeout(timeout)
+      timeout = null
+    }
+    currentValue = value
+
+    const fake = () => {
+      const str = qs.stringify({
+        code: 'utf-8',
+        q: value,
+      })
+      jsonp(`https://suggest.taobao.com/sug?${str}`)
+        .then((response: any) => response.json())
+        .then((d: any) => {
+          if (currentValue === value) {
+            const { result } = d
+            const data = result.map((item: any) => ({
+              value: item[0],
+              text: item[0],
+            }))
+            callback(data)
+          }
+        })
+    }
+
+    timeout = setTimeout(fake, 300)
+  }
+  const handleSearch = (newValue: string) => {
+    if (newValue) {
+      fetch(newValue, setData)
+    } else {
+      setData([])
+    }
+  }
+  return (
+    <Select
+      showSearch
+      placeholder="请选择"
+      filterOption={false}
+      onSearch={handleSearch}
+      options={(data || []).map((d: any) => ({
+        value: d.value,
+        label: d.label,
+      }))}
+    />
+  )
+}
+LongRangeSearchSelect.storyName = '远程搜索的选择器'
