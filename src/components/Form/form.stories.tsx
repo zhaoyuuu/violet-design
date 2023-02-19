@@ -80,7 +80,11 @@ export const BasicForm = (args: any) => {
     ref.current?.resetFields()
   }
   return (
-    <Form initialValues={{ username: '', agreement: false }} {...args}>
+    <Form
+      ref={ref}
+      initialValues={{ username: '', agreement: false }}
+      {...args}
+    >
       {({ isValid, isSubmitting }) => (
         <>
           <FormItem
@@ -118,9 +122,9 @@ export const BasicForm = (args: any) => {
           </div>
           <div className="violetForm--submit_area">
             <Button type="submit" btnType="primary" size="sm">
-              sign in {isSubmitting ? '验证中' : '验证完毕'}{' '}
-              {isValid ? '通过' : '没通过'}
+              登录
             </Button>
+            <div className="link-line"></div>
             <Button
               type="button"
               btnType="primary"
