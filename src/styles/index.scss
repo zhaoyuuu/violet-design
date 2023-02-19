@@ -7,9 +7,6 @@
 //mixin
 @import './mixin';
 
-// animation
-@import './animation';
-
 //switch
 @import '../components/Switcher/style';
 
@@ -61,4 +58,8 @@
 // calendar&datepicker
 @import '../components/Calendar/style';
 
+// grid
 @import '../components/Grid/grid/style';
+
+// transition
+@import '../components/Transition/style';
