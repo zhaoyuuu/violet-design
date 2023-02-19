@@ -33,7 +33,7 @@ export type ButtonProps = Partial<AnchorButtonProps>
  *
  * ### 何时使用
  * 标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
- * 在violetUI我们提供了7种按钮
+ * 在violet-design我们提供了7种按钮
  *
  * - 默认按钮：用于没有主次之分的一组行动点。
  * - 主按钮：用于主行动点，一个操作区域只能有一个主按钮。
@@ -41,12 +41,14 @@ export type ButtonProps = Partial<AnchorButtonProps>
  * - 链接按钮：一般用于链接，即导航至某位置。
  * - 图标按钮：可以通过Icon组件，为按钮提供各式各样的图标选择。
  * - 虚线按钮：常用于添加操作。
- * - 禁用按钮：行动点不可用的时候，一般需要文案解释。
  *
  *
  * 除了默认按钮尺寸，还提供了两种尺寸配合使用
  * - Large Button
  * - Samll Button
+ *
+ * 给所有按钮都提供了disabled属性，用于行动点不可用的时候，一般需要文案解释。
+ *
  */
 
 export const Button = (props: ButtonProps) => {
