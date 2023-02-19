@@ -6,11 +6,20 @@ library.add(fas)
 import { locale } from 'dayjs'
 
 export const parameters = {
+  docsMode: true,
+  showCanvas: false,
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
+    },
+  },
+  previewTabs: {
+    canvas: {
+      // 隐藏canvas tab
+      hidden: true,
+      disable: true,
     },
   },
   options: {
