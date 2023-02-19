@@ -68,3 +68,12 @@ describe('test InputNumber component', () => {
     expect(testProps.onPressEnter).toHaveBeenCalledTimes(1)
   })
 })
+
+it('render in less than 50ms', () => {
+  const startTime = performance.now()
+  const { container } = render(<InputNumber {...testProps} />)
+  const endTime = performance.now()
+  const renderingTime = endTime - startTime
+  console.log(renderingTime)
+  expect(renderingTime).toBeLessThan(50)
+})
