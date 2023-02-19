@@ -137,3 +137,17 @@ describe('test Select component', () => {
     expect(container.querySelectorAll('.violetSelect__item').length).toBe(3)
   })
 })
+
+it('render in less than 50ms', () => {
+  const startTime = performance.now()
+  const { container } = render(
+    <Select
+      {...searchProps}
+      options={[{ value: 'a11' }, { value: 'b12' }, { value: 'c13' }]}
+    />
+  )
+  const endTime = performance.now()
+  const renderingTime = endTime - startTime
+  console.log(renderingTime)
+  expect(renderingTime).toBeLessThan(50)
+})

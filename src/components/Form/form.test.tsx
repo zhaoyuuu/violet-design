@@ -135,3 +135,63 @@ describe('testing Form component', () => {
     })
   })
 })
+
+it('render in less than 50ms', () => {
+  const form = (
+    <Form {...testProps}>
+      <Item
+        label="Name"
+        name="name"
+        rules={[
+          { type: 'string', required: true, message: 'name error' },
+          { type: 'string', min: 3, message: 'less than 3' },
+        ]}
+      >
+        <Input />
+      </Item>
+      <Item
+        label="Password"
+        name="password"
+        rules={[
+          { type: 'string', required: true, message: 'password error' },
+          { type: 'string', min: 4, message: 'less then 4' },
+        ]}
+      >
+        <Input type="password" />
+      </Item>
+      <Item
+        label="Confirm"
+        name="confirmPwd"
+        rules={[
+          {
+            type: 'string',
+            required: true,
+            message: 'confirm password error',
+          },
+          { type: 'string', min: 4, message: 'less then 4' },
+          ({ getFieldValue }) => ({
+            asyncValidator(rule, value) {
+              return new Promise((resolve, reject) => {
+                if (value !== getFieldValue('password')) {
+                  reject('Do not match!')
+                }
+                resolve()
+              })
+            },
+          }),
+        ]}
+      >
+        <Input type="password" />
+      </Item>
+      <Button type="submit" btnType="primary">
+        Log in
+      </Button>
+    </Form>
+  )
+  const startTime = performance.now()
+  const { container } = render(form)
+  const endTime = performance.now()
+  const renderingTime = endTime - startTime
+  console.log(renderingTime)
+  expect(renderingTime).toBeLessThan(50)
+})
