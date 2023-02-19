@@ -24,98 +24,328 @@ const defaultProps = {
   docsStyle: { height: '400px' },
 }
 
-const Template: ComponentStory<typeof DatePicker> = args => (
-  <DatePicker {...defaultProps} {...args} />
+export const Default = () => (
+  <>
+    <DatePicker />
+  </>
 )
+Default.storyName = 'DatePicker 日期选择器'
 
-export const DefaultDatePicker = Template.bind({})
+export const DefaultDatePicker = () => (
+  <>
+    <DatePicker />
+  </>
+)
 DefaultDatePicker.storyName = 'defaultDatePicker 默认日期选择器'
-
-export const initialDatePicker = Template.bind({})
-initialDatePicker.storyName = 'initialDatePicker 日期默认为当前日期'
-initialDatePicker.args = {
-  initialDate: dayjs(),
+DefaultDatePicker.parameters = {
+  docs: {
+    description: {
+      story: `最简单的用法，在浮层中可以选择或者输入日期。`,
+    },
+  },
 }
 
-export const C: ComponentStory<typeof DatePicker> = args => (
+export const DayView = () => (
   <>
-    <DatePicker {...defaultProps} portal {...args} />
+    <DatePicker view="day" />
   </>
 )
-C.storyName = 'portalversion 遮罩层视图'
+DayView.storyName = 'DayPicker 日期选择器'
+DayView.parameters = {
+  docs: {
+    description: {
+      story: `配置参数view为day，显示日视图，点击title可选择年份、月份`,
+    },
+  },
+}
 
-export const D: ComponentStory<typeof DatePicker> = args => (
+export const MonthView = () => (
   <>
-    <DatePicker {...defaultProps} includeTime {...args} />
+    <DatePicker view="month" />
   </>
 )
-D.storyName = 'includeTime 包含时间选择器'
+MonthView.storyName = 'MonthPicker 月份选择器'
+MonthView.parameters = {
+  docs: {
+    description: {
+      story: `配置参数view为month，显示月视图,月份选择器`,
+    },
+  },
+}
 
-export const E: ComponentStory<typeof DatePicker> = args => (
+export const YearView = () => (
   <>
-    <DatePicker {...defaultProps} showTimeOnly {...args} />
+    <DatePicker view="year" />
   </>
 )
-E.storyName = 'showTimeOnly 时间选择器'
+YearView.storyName = 'YearPicker 年份选择器'
+YearView.parameters = {
+  docs: {
+    description: {
+      story: `配置参数view为year，显示年视图，年份选择器`,
+    },
+  },
+}
 
-export const F: ComponentStory<typeof DatePicker> = args => (
+export const internalization01 = () => (
   <>
-    <DatePicker
-      {...defaultProps}
-      dateFormat={text('dateformat', 'YYYY/MM/DD')}
-      {...args}
-    />
-  </>
-)
-F.storyName = 'dateFormat 自定义格式'
-
-export const G: ComponentStory<typeof DatePicker> = args => (
-  <>
-    <DatePicker {...defaultProps} showMonthCnt={2} {...args} />
-  </>
-)
-G.storyName = 'showMonthCnt 多月视图'
-
-export const I: ComponentStory<typeof DatePicker> = args => (
-  <>
-    <div style={{ paddingTop: '300px' }}>
-      <DatePicker {...defaultProps} direction={0} {...args} />
+    <div>
+      <div
+        style={{
+          display: 'inline-block',
+          marginRight: '20px',
+        }}
+      >
+        <span style={{ marginRight: '10px' }}>英文</span>
+        <DatePicker locale="en" />
+      </div>
+      <div
+        style={{
+          display: 'inline-block',
+          marginRight: '20px',
+        }}
+      >
+        <span style={{ marginRight: '10px' }}>中文</span>
+        <DatePicker locale="zh-cn" />
+      </div>
+      <div
+        style={{
+          display: 'inline-block',
+          marginRight: '20px',
+        }}
+      >
+        <span style={{ marginRight: '10px' }}>日文</span>
+        <DatePicker locale="ja" />
+      </div>
     </div>
   </>
 )
-I.storyName = 'onTop 日历视图显示在输入框上方'
+internalization01.storyName = 'internalization 国际化配置'
+internalization01.parameters = {
+  docs: {
+    description: {
+      story: `配置参数locale为dayjs中不同的语言环境，以实现国际化配置。
+      内置中文、英文、日文,设置locale参数为'zh-cn'、'en'、'ja'实现三种语言环境视图。若需要配置其他语言可引入dayjs中相关语言环境，如import 'dayjs/locale/yo'，并配置locale为yo。支持的语言列表见此：https://dayjs.gitee.io/docs/zh-CN/i18n/i18n`,
+    },
+  },
+}
 
-export const J: ComponentStory<typeof DatePicker> = args => (
+export const customDayText = () => (
   <>
-    <DatePicker {...defaultProps} {...args} placeholder="选择日期" />
+    <div>
+      <span style={{ marginRight: '10px' }}>自定义日期下方文字</span>
+      <DatePicker
+        customDayText={(date: dayjs.Dayjs) => {
+          // for test (year, month remove)
+          const classMap: { [key: string]: string } = {
+            '2-1': '除夕',
+            '2-2': '春节',
+          }
+          return classMap[dayjs(date).format('M-D')]
+        }}
+      />
+    </div>
   </>
 )
-J.storyName = 'placeholder 占位提示文字'
+customDayText.storyName = 'customDayText 定制日期单元格内容'
+customDayText.parameters = {
+  docs: {
+    description: {
+      story: `通过配置参数customDayText，实现自定义日期单元格内容。customDayText类型为(date: dayjs.Dayjs) => string`,
+    },
+  },
+}
 
-export const K: ComponentStory<typeof DatePicker> = args => (
+export const customDayClass = () => (
   <>
-    <DatePicker {...defaultProps} {...args} showDefaultIcon clear />
+    <div>
+      <span style={{ marginRight: '10px' }}>自定义日期样式</span>
+      <DatePicker
+        customDayClass={(date: dayjs.Dayjs) => {
+          const classMap: { [key: string]: string } = {
+            '2-21': 'custom-class',
+          }
+          return classMap[dayjs(date).format('M-D')]
+        }}
+      />
+    </div>
   </>
 )
-K.storyName = 'showDefaultIcon 显示默认图标'
+customDayClass.storyName = 'customDayClass 定制日期单元格样式'
+customDayClass.parameters = {
+  docs: {
+    description: {
+      story: `通过配置参数customDayClass，实现自定义日期单元格样式。customDayClass类型为： (date: dayjs.Dayjs) => string | string[]`,
+    },
+  },
+}
 
-export const L: ComponentStory<typeof DatePicker> = args => (
+export const dateFormat = () => (
   <>
-    <DatePicker {...defaultProps} readOnly {...args} />
+    <DatePicker dateFormat={text('dateformat', 'YYYY/MM/DD')} />
   </>
 )
-L.storyName = 'readOnly 仅可读'
+dateFormat.storyName = 'dateFormat 自定义格式'
+dateFormat.parameters = {
+  docs: {
+    description: {
+      story: `使用dateFormat属性，可以自定义日期显示格式。如： dateFormat={text('dateformat', 'YYYY/MM/DD')}`,
+    },
+  },
+}
 
-export const M: ComponentStory<typeof DatePicker> = args => (
+export const includeTime = () => (
   <>
-    <DatePicker {...defaultProps} disabled {...args} />
+    <DatePicker includeTime />
   </>
 )
-M.storyName = 'disabled 禁用'
+includeTime.storyName = 'includeTime 日期时间选择器'
+includeTime.parameters = {
+  docs: {
+    description: {
+      story: `添加includeTime参数。增加时间选择。`,
+    },
+  },
+}
 
-export const N: ComponentStory<typeof DatePicker> = args => (
+export const showTimeOnly = () => (
   <>
-    <DatePicker {...defaultProps} clear {...args} />
+    <DatePicker showTimeOnly />
   </>
 )
-N.storyName = 'clear 清除输入框'
+showTimeOnly.storyName = 'showTimeOnly 时间选择器'
+showTimeOnly.parameters = {
+  docs: {
+    description: {
+      story: `添加showTimeOnly参数。设置为时间选择器`,
+    },
+  },
+}
+
+export const initialDatePicker = () => (
+  <>
+    <DatePicker initialDate={dayjs()} />
+  </>
+)
+initialDatePicker.storyName = 'initialDatePicker 设置默认日期'
+initialDatePicker.parameters = {
+  docs: {
+    description: {
+      story: `设置initialDate参数，使输入框及日历默认选择当前日期。`,
+    },
+  },
+}
+
+export const portalversion = () => (
+  <>
+    <DatePicker portal />
+  </>
+)
+portalversion.storyName = 'portalversion 遮罩层视图'
+portalversion.parameters = {
+  docs: {
+    description: {
+      story: `添加portal参数。点击输入框，弹出浮层，显示遮罩层。`,
+    },
+  },
+}
+
+export const showMonthCnt = () => (
+  <>
+    <DatePicker showMonthCnt={2} />
+  </>
+)
+showMonthCnt.storyName = 'showMonthCnt 显示多个日历视图'
+showMonthCnt.parameters = {
+  docs: {
+    description: {
+      story: `通过配置参数showMonthCnt，可显示多个相连的日历视图`,
+    },
+  },
+}
+
+export const onTop = () => (
+  <>
+    <div style={{ paddingTop: '300px' }}>
+      <DatePicker direction={0} />
+    </div>
+  </>
+)
+onTop.storyName = 'onTop 日历视图显示在输入框上方'
+onTop.parameters = {
+  docs: {
+    description: {
+      story: `添加参数direction设置其值为0/1。控制日历显示再输入框上方/下方`,
+    },
+  },
+}
+
+export const placeholder = () => (
+  <>
+    <DatePicker placeholder="选择日期" />
+  </>
+)
+placeholder.storyName = 'placeholder 占位提示文字'
+placeholder.parameters = {
+  docs: {
+    description: {
+      story: `使用placeholder属性，自定义默认显示文字`,
+    },
+  },
+}
+
+export const showDefaultIcon = () => (
+  <>
+    <DatePicker showDefaultIcon />
+  </>
+)
+showDefaultIcon.storyName = 'showDefaultIcon 显示默认图标'
+showDefaultIcon.parameters = {
+  docs: {
+    description: {
+      story: `使用showDefaultIcon属性，显示默认input框icon`,
+    },
+  },
+}
+
+export const clear = () => (
+  <>
+    <DatePicker clear />
+  </>
+)
+clear.storyName = 'clear 清除输入框'
+clear.parameters = {
+  docs: {
+    description: {
+      story: `使用clear属性，显示一键清空输入框图标`,
+    },
+  },
+}
+
+export const readOnly = () => (
+  <>
+    <DatePicker show readOnly />
+  </>
+)
+readOnly.storyName = 'readOnly 仅可读'
+readOnly.parameters = {
+  docs: {
+    description: {
+      story: `使用readOnly属性，使组件仅可读`,
+    },
+  },
+}
+
+export const disabled = () => (
+  <>
+    <DatePicker disabled />
+  </>
+)
+disabled.storyName = 'disabled 禁用'
+disabled.parameters = {
+  docs: {
+    description: {
+      story: `使用disabled属性，禁用组件`,
+    },
+  },
+}

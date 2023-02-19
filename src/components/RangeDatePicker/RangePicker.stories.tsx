@@ -22,25 +22,38 @@ const defaultProps = {
   locale: 'zh-cn',
 }
 
-export const Adefault: ComponentStory<typeof RangeDatePicker> = args => (
+export const Default = () => (
   <>
-    <RangeDatePicker {...args} />
+    <RangeDatePicker />
   </>
 )
-Adefault.storyName = 'default 默认日期范围选择器'
+Default.storyName = 'default 默认日期范围选择器'
+Default.parameters = {
+  docs: {
+    description: {
+      story: `在浮层中可以选择或者输入日期范围。`,
+    },
+  },
+}
 
-export const B: ComponentStory<typeof RangeDatePicker> = args => (
+export const B = () => (
   <>
     <RangeDatePicker
       initialStartDate={dayjs().subtract(7, 'day')}
       initialEndDate={dayjs()}
-      {...args}
     />
   </>
 )
 B.storyName = 'initial Start & End Date 初始起始日期和结束日期'
+B.parameters = {
+  docs: {
+    description: {
+      story: `使用initialStartDate和initialEndDate属性设置默认起始日期和结束日期`,
+    },
+  },
+}
 
-export const C: ComponentStory<typeof RangeDatePicker> = args => (
+export const C = () => (
   <>
     <RangeDatePicker
       startText={text('startText', 'Start')}
@@ -49,8 +62,15 @@ export const C: ComponentStory<typeof RangeDatePicker> = args => (
   </>
 )
 C.storyName = 'startText & endText 自定义起始日期和结束日期文字'
+C.parameters = {
+  docs: {
+    description: {
+      story: `使用startText和endText属性设置起始日期和结束日期内容`,
+    },
+  },
+}
 
-export const D: ComponentStory<typeof RangeDatePicker> = args => (
+export const D = () => (
   <>
     <RangeDatePicker
       portal
@@ -60,63 +80,110 @@ export const D: ComponentStory<typeof RangeDatePicker> = args => (
   </>
 )
 D.storyName = 'portalversion 遮罩层视图'
+D.parameters = {
+  docs: {
+    description: {
+      story: `添加portal参数。点击输入框，弹出浮层，显示遮罩层`,
+    },
+  },
+}
 
-export const E: ComponentStory<typeof RangeDatePicker> = args => (
+export const E = () => (
   <>
     <div style={{ paddingTop: '300px' }}>
       <RangeDatePicker
         direction={0}
         startPlaceholder={text('startPlaceholder', 'Start Date')}
         endPlaceholder={text('endPlaceholder', 'End Date')}
-        {...args}
       />
     </div>
   </>
 )
 E.storyName = 'onTop 显示日历在输入框上方'
-
-export const F: ComponentStory<typeof RangeDatePicker> = args => (
+E.parameters = {
+  docs: {
+    description: {
+      story: `添加参数direction设置其值为0/1。控制日历显示再输入框上方/下方`,
+    },
+  },
+}
+export const showMonthCnt = () => (
   <>
-    <RangeDatePicker showMonthCnt={3} {...args} />
+    <RangeDatePicker showMonthCnt={3} />
   </>
 )
-F.storyName = '3 month 显示三个月日历视图'
-
-export const G: ComponentStory<typeof RangeDatePicker> = args => (
+showMonthCnt.storyName = 'showMonthCnt 显示多个日历视图'
+showMonthCnt.parameters = {
+  docs: {
+    description: {
+      story: `通过配置参数showMonthCnt，可显示多个相连的日历视图`,
+    },
+  },
+}
+export const dateFormat = () => (
   <>
     <RangeDatePicker dateFormat={text('dateformat', 'YYYY/MM/DD')} />
   </>
 )
-G.storyName = 'dateFormat 自定义格式'
+dateFormat.storyName = 'dateFormat 自定义格式'
+dateFormat.parameters = {
+  docs: {
+    description: {
+      story: `使用dateFormat属性，可以自定义日期显示格式。如： dateFormat={text('dateformat', 'YYYY/MM/DD')}`,
+    },
+  },
+}
 
-export const H: ComponentStory<typeof RangeDatePicker> = args => (
+export const readOnly = () => (
   <>
-    <RangeDatePicker readOnly {...args} />
+    <RangeDatePicker readOnly />
   </>
 )
-H.storyName = 'readonly 仅可读'
+readOnly.storyName = 'readonly 仅可读'
+readOnly.parameters = {
+  docs: {
+    description: {
+      story: `使用readOnly属性，使组件仅可读`,
+    },
+  },
+}
 
-export const I: ComponentStory<typeof RangeDatePicker> = args => (
+export const disabled = () => (
   <>
-    <RangeDatePicker disabled {...args} />
+    <RangeDatePicker disabled />
   </>
 )
-I.storyName = 'disabled 禁用'
-
-export const GJ: ComponentStory<typeof RangeDatePicker> = args => (
+disabled.storyName = 'disabled 禁用'
+disabled.parameters = {
+  docs: {
+    description: {
+      story: `使用disabled属性，禁用组件`,
+    },
+  },
+}
+export const clear = () => (
   <>
-    <RangeDatePicker clear {...args} />
+    <RangeDatePicker clear />
   </>
 )
-GJ.storyName = 'clear 显示清除按钮'
-
-export const o: ComponentStory<typeof RangeDatePicker> = args => (
+clear.storyName = 'clear 显示清除按钮'
+clear.parameters = {
+  docs: {
+    description: {
+      story: `使用clear属性，显示一键清空输入框图标`,
+    },
+  },
+}
+export const placeholder = () => (
   <>
-    <RangeDatePicker
-      startPlaceholder="Start Date"
-      endPlaceholder="End Date"
-      {...args}
-    />
+    <RangeDatePicker startPlaceholder="Start Date" endPlaceholder="End Date" />
   </>
 )
-o.storyName = 'placeholder 占位文字'
+placeholder.storyName = 'placeholder 占位文字'
+placeholder.parameters = {
+  docs: {
+    description: {
+      story: `使用placeholder属性，自定义默认显示文字`,
+    },
+  },
+}
