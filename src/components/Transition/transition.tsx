@@ -1,4 +1,3 @@
-import { boolean } from '@storybook/addon-knobs'
 import React, { ReactNode } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSTransitionProps } from 'react-transition-group/CSSTransition'
@@ -43,7 +42,9 @@ export type TransitionProps = CSSTransitionProps & {
 }
 /**
  * 过渡动画
- * 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。
+ *
+ * ###何时使用
+ * 当需要一些过渡动画效果时使用，如下拉菜单。
  */
 const Transition: React.FC<TransitionProps> = props => {
   const { children, classNames, animation, wrapper, ...restProps } = props

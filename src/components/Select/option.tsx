@@ -1,4 +1,4 @@
-import React, { ReactNode, FC, useContext } from 'react'
+import React, { ReactNode, FC } from 'react'
 import classNames from 'classnames'
 import Icon from '../Icon'
 export interface SelectOptionProps {
