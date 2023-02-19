@@ -57,7 +57,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "deploy-storybook": "storybook-to-ghpages",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook-docs": "start-storybook --docs --no-manager-cache"
   },
   "eslintConfig": {
     "extends": [
