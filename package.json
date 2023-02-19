@@ -1,6 +1,6 @@
 {
   "name": "violet-design",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "private": false,
   "main": "dist/index.es.js",
   "module": "dist/index.es.js",
@@ -18,6 +18,12 @@
     "type": "git",
     "url": "https://github.com/zhaoyuuu/violet-design"
   },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "dist/index.css"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",

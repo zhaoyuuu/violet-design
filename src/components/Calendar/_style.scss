@@ -13,6 +13,14 @@
 }
 
 .range-picker-input {
+  &:focus-within {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+    box-shadow: $input-focus-box-shadow;
+    // Avoid using mixin so we can pass custom focus shadow properly
+  }
   display: inline-flex;
   border: 1px solid $divider-color;
   width: 300px;
@@ -50,6 +58,14 @@
 }
 
 .picker-input {
+  &:focus-within {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+    box-shadow: $input-focus-box-shadow;
+    // Avoid using mixin so we can pass custom focus shadow properly
+  }
   display: inline-block;
   position: relative;
 
@@ -284,11 +300,29 @@
     padding-top: 5px;
     height: 40px;
     transition: font-weight 200ms ease-out;
-    &:hover:not(&--disabled) {
-      background: $primary-color-light;
-      cursor: pointer;
-    }
     cursor: pointer;
+    div {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      border-radius: 4px;
+    }
+    span {
+      display: inline-block;
+    }
+    &:hover:not(&--disabled) {
+      div {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        border-radius: 4px;
+        background: $primary-color-light;
+        color: white;
+        cursor: pointer;
+      }
+    }
     &--0 {
       color: red;
     }
@@ -296,8 +330,16 @@
       color: blue;
     }
     &--today {
-      background: lighten($primary-color-light, 10%);
-      color: white;
+      // background: lighten($primary-color-light, 10%);
+      color: black;
+      div {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        border-radius: 4px;
+        border: 1px solid lighten($primary-color-light, 05%);
+      }
     }
     &--disabled {
       color: #ddd;
@@ -306,15 +348,21 @@
     &--start,
     &--end,
     &--selected {
-      background: $primary-color;
-      color: $primary-color-text;
-      font-weight: bold;
-      &:hover {
+      div {
         background: $primary-color;
+        color: $primary-color-text;
+        font-weight: bold;
+      }
+      &:hover {
+        div {
+          background: $primary-color;
+        }
       }
     }
     &--range {
-      background: lighten($primary-color-light, 10%);
+      div {
+        background: lighten($primary-color-light, 10%);
+      }
     }
     &--text {
       display: block;
