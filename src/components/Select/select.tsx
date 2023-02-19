@@ -206,8 +206,6 @@ export const Select: FC<SelectProps> = props => {
   const generateOptions = () => {
     // 根据是否带搜索功能，得到不同的options
     const reg = new RegExp('^' + debouncedValue)
-    console.log(reg)
-
     if (showSearch && filterOption && !reClick) {
       // 执行搜索
       if ('options' in options[0]) {
@@ -238,10 +236,6 @@ export const Select: FC<SelectProps> = props => {
       // 不执行搜索
       selectOptions = options
     }
-    console.log(options)
-
-    console.log(selectOptions)
-
     // 在Select组件中对options进行遍历，并执行函数
     // 在这里，即对select 中的每一个option进行处理，生成li元素
     if (selectOptions.length) {
