@@ -1,6 +1,6 @@
 {
   "name": "violet-design",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": false,
   "main": "dist/index.es.js",
   "module": "dist/index.es.js",
