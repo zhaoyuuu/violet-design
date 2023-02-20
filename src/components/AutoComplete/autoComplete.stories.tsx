@@ -14,6 +14,13 @@ export default {
   title: '组件/数据录入/AutoComplete 自动完成',
   component: AutoComplete,
   id: 'AutoComplete',
+  decorators: [
+    Story => (
+      <div style={{ marginBottom: '200px' }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     docs: {
       source: {
