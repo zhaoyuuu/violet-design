@@ -41,7 +41,7 @@
   transition: all 100ms ease-out;
   &:hover {
     color: $btn-link-hover-color;
-    text-decoration: $link-hover-decoration;
+    text-decoration: none;
   }
   &:focus {
     color: $input-focus-color;
