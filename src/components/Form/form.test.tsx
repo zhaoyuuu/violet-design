@@ -8,7 +8,7 @@ import Button from '../Button/button'
 
 const testProps: FormProps = {
   name: 'test-form',
-  initialValues: { name: 'viking', password: '12345', confirmPwd: '23456' },
+  initialValues: { name: 'violet', password: '12345', confirmPwd: '23456' },
   onFinish: jest.fn(),
   onFinishFailed: jest.fn(),
 }
@@ -71,7 +71,7 @@ describe('testing Form component', () => {
       </Form>
     )
     const { getByDisplayValue, getByText } = screen
-    nameInput = getByDisplayValue('viking')
+    nameInput = getByDisplayValue('violet')
     pwdInput = getByDisplayValue('12345')
     conPwdInput = getByDisplayValue('23456')
     submitButton = getByText('Log in')
