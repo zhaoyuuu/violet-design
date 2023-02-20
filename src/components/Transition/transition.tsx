@@ -46,7 +46,7 @@ export type TransitionProps = CSSTransitionProps & {
  * ###何时使用
  * 当需要一些过渡动画效果时使用，如下拉菜单。
  */
-const Transition: React.FC<TransitionProps> = props => {
+export const Transition: React.FC<TransitionProps> = props => {
   const { children, classNames, animation, wrapper, ...restProps } = props
   return (
     <CSSTransition
