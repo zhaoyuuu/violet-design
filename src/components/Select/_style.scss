@@ -40,12 +40,12 @@
   margin-top: 0;
   white-space: nowrap;
   position: absolute;
-  background: $white;
   z-index: 100;
-  top: calc(100% + 8px);
+  top: $autoComplete-suggestions-top;
   left: 0;
-  border: $menu-border-width solid $menu-border-color;
-  box-shadow: $submenu-box-shadow;
+  box-shadow: $cascader-optionsBox-shadow;
+  border-radius: 0.35rem;
+  background: #fff;
   width: 100%;
   .violetSelect__optGroup {
     cursor: default;
@@ -54,23 +54,27 @@
     padding: $menu-item-padding-y $menu-item-padding-x;
     margin-left: 0;
     cursor: pointer;
-    transition: $menu-transition;
-    color: $body-color;
+    color: $input-color;
+    @include dropdownItemStyle;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: $border-radius;
     &.violetSelectItem--selected {
       color: $menu-item-active-color;
       font-weight: $font-weight-bold;
     }
     &.violetSelectItem--disabled {
       color: $menu-item-disabled-color;
-      pointer-events: none;
-      cursor: default;
-    }
-    &:hover {
-      background: $primary;
-      color: white;
+      cursor: $menu-item-disabled-cursor;
+      &:hover {
+        color: $menu-item-disabled-color;
+        background: #fff;
+      }
+      &:active {
+        opacity: 1;
+        color: $menu-item-disabled-color;
+      }
     }
   }
 }
