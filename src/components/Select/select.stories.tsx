@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { ComponentMeta } from '@storybook/react'
 import jsonp from 'fetch-jsonp'
 import qs from 'qs'
-import Select, { SelectProps } from './select'
+import Select from './select'
+import SelectProps from './selectProps'
 import {
   DefaultSelectCode,
   MultipleSelectCode,
@@ -95,7 +96,7 @@ export const SizeSelect = (args: any) => {
       </RadioGroup>
       <br />
       <br />
-      <Select {...args} placeholder="请选择" options={options} size={size} />
+      <Select {...args} placeholder="单选框" options={options} size={size} />
       <Select
         {...args}
         placeholder="多选框"
@@ -119,17 +120,31 @@ SizeSelect.parameters = {
 }
 
 export const SearchSelect = (args: any) => (
-  <Select
-    {...args}
-    placeholder="请选择"
-    options={[
-      { value: 'a11' },
-      { value: 'b12' },
-      { value: 'c13' },
-      { value: 'd14' },
-    ]}
-    showSearch
-  />
+  <>
+    <Select
+      {...args}
+      placeholder="单选框"
+      options={[
+        { value: 'a11' },
+        { value: 'b12' },
+        { value: 'c13' },
+        { value: 'd14' },
+      ]}
+      showSearch
+    />
+    <Select
+      {...args}
+      placeholder="多选框"
+      multiple
+      options={[
+        { value: 'a11' },
+        { value: 'b12' },
+        { value: 'c13' },
+        { value: 'd14' },
+      ]}
+      showSearch
+    />
+  </>
 )
 SearchSelect.storyName = '可搜索的选择器'
 SearchSelect.parameters = {
@@ -228,7 +243,7 @@ LongRangeSearchSelect.parameters = {
       code: LongRangeSearchSelectCode,
     },
     description: {
-      story: `通过设置showSearch参数，并传入对应的onSearch函数，实现选择器的远程搜索`,
+      story: `通过设置showSearch参数，并传入对应的onSearch函数，向后端发起请求获得数据，实现选择器的远程搜索`,
     },
   },
 }

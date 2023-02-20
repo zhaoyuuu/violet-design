@@ -1,80 +1,22 @@
 import classNames from 'classnames'
-import React, {
-  ReactNode,
-  FC,
-  createContext,
-  useState,
-  useRef,
-  useEffect,
-  ChangeEvent,
-} from 'react'
+import React, { FC, useState, useRef, useEffect, ChangeEvent } from 'react'
 import Transition from '../Transition/transition'
-import Input, { InputSize } from '../Input/input'
+import Input from '../Input/input'
 import Option, { SelectOptionProps } from './option'
 import Icon from '../Icon'
 import useClickOutside from '../../hooks/useClickOutside'
 import useDebounce from '../../hooks/useDebounce'
+import useNotFirstUpdate from '../../hooks/useNotFirstUpdate'
 import Optgroup from './optGroup'
-
-export interface SelectProps {
-  /** 指定默认选中的条目 */
-  defaultValue?: string | string[]
-  /** 指定当前选中的条目，多选时为一个数组 */
-  value?: string | string[]
-  /** 选择框默认文本 */
-  placeholder?: string
-  /** 是否禁用 */
-  disabled?: boolean
-  /** 是否支持多选*/
-  multiple?: boolean
-  /** select input 的 name 属性 */
-  name?: string
-  /** 选中值发生变化时触发 */
-  onChange?: (selectedValue: any, selectedValues?: string[]) => void
-  /** 下拉框出现/隐藏时触发 */
-  onVisibleChange?: (visible: boolean) => void
-  children?: ReactNode
-  /** 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能 */
-  options:
-    | SelectOptionProps[]
-    | { label: string; options: SelectOptionProps[] }[]
-  /** 选择框大小 */
-  size?: InputSize
-  /** 配置是否可搜索 */
-  showSearch?: boolean
-  /** 是否根据输入项进行筛选 */
-  filterOption?:
-    | boolean
-    | ((inputValue: string, options: SelectOptionProps[]) => boolean)
-  /** 文本框值变化时回调 */
-  onSearch?: (value: string) => void
-  style?: React.CSSProperties
-}
-
-/** 下拉框 */
-export interface IselectContext {
-  onSelect?: (value: string, isSelected?: boolean) => void
-  selectedValues: string[]
-  multiple?: boolean
-}
-
-/** 定义全局的量 */
-/** 当没有provide，则用括号里的默认值 */
-export const SelectContext = createContext<IselectContext>({
-  selectedValues: [],
-})
-
+import SelectProps from './selectProps'
 /**
  * 下拉选择器。
  *
  * ###何时使用
  * - 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器，或者需要一个更优雅的多选器时。
  * - 当选项少时（少于 5 项），建议直接将选项平铺，使用 Radio 是更好的选择。
- *
  */
-
 export const Select: FC<SelectProps> = props => {
-  // 取出props
   const {
     defaultValue,
     placeholder,
@@ -89,8 +31,8 @@ export const Select: FC<SelectProps> = props => {
     onSearch,
     value,
     style,
+    multiple,
   } = props
-  let { multiple } = props
   // 通过useRef定义个input变量，在input 元素上定义ref={input},这样通过input.current就可以获取到input Dom 元素
   const input = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLInputElement>(null)
@@ -158,25 +100,24 @@ export const Select: FC<SelectProps> = props => {
     ) as HTMLElement
     const h = tag?.clientHeight - 4
     h && (tag.style.lineHeight = h + 'px')
-    // 搜索功能仅对单选框开放
-    showSearch && (multiple = false)
-  })
-  const useValueUpdate = () => {
-    const firstTime = useRef(false)
-    useEffect(() => {
-      if (firstTime.current) {
-        setInputValue(value as string | string[])
-      } else {
-        firstTime.current = true
+    if (showSearch && multiple) {
+      // 改变光标位置
+      const tags = document.querySelectorAll(
+        '.violetSelected__tags__tag'
+      ) as NodeListOf<HTMLSpanElement>
+      let totalWidth = 4
+      for (let i = 0; i < tags.length; i++) {
+        totalWidth += tags[i].offsetWidth + 6
       }
-    }, [value])
-  }
-  useValueUpdate()
+      input.current && (input.current.style.paddingLeft = totalWidth + 'px')
+    }
+  })
+  // 第一遍渲染不更新(避免无value传过来的框显示异常)
+  useNotFirstUpdate(value, () => {
+    setInputValue(value as string | string[])
+  })
   // 鼠标点击select框外面时，关闭下拉框
-  // useClickOutside里，使用的是原生的 doucment.addEventListener 的方法添加，那么它是一个原生的 DOM事件，它的事件对象是原生的事件对象(比如这里的 MouseEvent)
-  // 而React.MouseEvent （各种 react event 事件对象），都是 React 的事件，它并不是 DOM 原生的对象，和普通的 DOM 事件是不一样的
   useClickOutside(containerRef, () => {
-    // 鼠标点击select框外面的处理函数
     setOpen(false)
     if (onVisibleChange && menuOpen) {
       onVisibleChange(false)
@@ -205,12 +146,9 @@ export const Select: FC<SelectProps> = props => {
       // 当input框可用（!disabled）且menuOpen为关闭，让menuOpen打开
       if (!disabled && !menuOpen) {
         setOpen(true)
-        // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
         onVisibleChange && onVisibleChange(true)
       }
-      if (inputValue !== defaultValue) {
-        setReClick(true)
-      }
+      inputValue !== defaultValue && setReClick(true)
     }
   }
   // input搜索框change的处理函数
@@ -254,8 +192,7 @@ export const Select: FC<SelectProps> = props => {
       // 不执行搜索
       selectOptions = options
     }
-    // 在Select组件中对options进行遍历，并执行函数
-    // 在这里，即对select 中的每一个option进行处理，生成li元素
+    // 在Select组件中对options进行遍历，并执行函数。在这里，即对select 中的每一个option进行处理，生成dt,dd元素
     if (selectOptions.length) {
       if ('options' in selectOptions[0]) {
         selectOptions = selectOptions as {
@@ -293,15 +230,12 @@ export const Select: FC<SelectProps> = props => {
       return <Option disabled value={'暂无数据'}></Option>
     }
   }
-  // 类名拼接
   const className = classNames('violetSelect', {
     'violetSelect--menuOpen': menuOpen,
     'violetSelect--disabled': disabled,
     'violetSelect--multiple': multiple,
   })
-
   return (
-    // input上的图标的动画是css写的
     <div className={className} ref={containerRef} style={style}>
       <div className="violetSelect__input" onClick={handleClick}>
         {!showSearch && (

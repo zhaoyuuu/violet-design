@@ -37,9 +37,8 @@ const options = [
 </RadioGroup>
 <br />
 <br />
-<Select {...args} placeholder="请选择" options={options} size={size} />
+<Select placeholder="单选框" options={options} size={size} />
 <Select
-  {...args}
   placeholder="多选框"
   multiple
   options={options}
@@ -47,12 +46,23 @@ const options = [
 />`
 
 export const SearchSelectCode = `
-<Select placeholder="请选择" options={[
+<Select placeholder="单选框" options={[
   { value: 'a11' },
   { value: 'b12' },
   { value: 'c13' },
   { value: 'd14' }]} 
-  showSearch/>`
+  showSearch/>
+<Select
+placeholder="多选框"
+multiple
+options={[
+  { value: 'a11' },
+  { value: 'b12' },
+  { value: 'c13' },
+  { value: 'd14' },
+]}
+showSearch
+/>`
 
 export const GroupSelectCode = `
 <Select
