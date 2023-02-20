@@ -6,8 +6,8 @@ library.add(fas)
 import { locale } from 'dayjs'
 
 export const parameters = {
-  docsMode: true,
-  showCanvas: false,
+  // docsMode: true,
+  // showCanvas: false,
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
@@ -15,13 +15,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  previewTabs: {
-    canvas: {
-      // 隐藏canvas tab
-      hidden: true,
-      disable: true,
-    },
-  },
+  // previewTabs: {
+  //   canvas: {
+  //     // 隐藏canvas tab
+  //     hidden: true,
+  //     disable: true,
+  //   },
+  // },
   options: {
     storySort: {
       order: [

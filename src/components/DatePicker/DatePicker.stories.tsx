@@ -1,8 +1,6 @@
 import { storiesOf, ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import dayjs from 'dayjs'
-import { action } from '@storybook/addon-actions'
-import { text } from '@storybook/addon-knobs'
 import DatePicker from './DatePicker'
 
 export default {
@@ -17,12 +15,6 @@ export default {
     ),
   ],
 } as ComponentMeta<typeof DatePicker>
-
-const defaultProps = {
-  onChange: action('onChange'),
-  locale: 'zh-cn',
-  docsStyle: { height: '400px' },
-}
 
 export const Default = () => (
   <>
@@ -87,6 +79,63 @@ YearView.parameters = {
   },
 }
 
+export const includeTime = () => (
+  <>
+    <DatePicker includeTime />
+  </>
+)
+includeTime.storyName = 'includeTime 日期时间选择器'
+includeTime.parameters = {
+  docs: {
+    description: {
+      story: `添加includeTime参数。增加时间选择。`,
+    },
+  },
+}
+
+export const showTimeOnly = () => (
+  <>
+    <DatePicker showTimeOnly />
+  </>
+)
+showTimeOnly.storyName = 'showTimeOnly 时间选择器'
+showTimeOnly.parameters = {
+  docs: {
+    description: {
+      story: `添加showTimeOnly参数。设置为时间选择器`,
+    },
+  },
+}
+
+export const disableDay = () => (
+  <>
+    <div>
+      <span style={{ marginRight: '10px' }}>禁用小于七号的日期</span>
+      <DatePicker
+        disableDay={(date: dayjs.Dayjs) => {
+          return dayjs(date).date() < 7
+        }}
+      />
+    </div>
+    <div style={{ marginTop: '10px' }}>
+      <span style={{ marginRight: '25px' }}>禁用二月二十一号</span>
+      <DatePicker
+        disableDay={(date: dayjs.Dayjs) => {
+          return dayjs(date).format('M-D') === '2-21'
+        }}
+      />
+    </div>
+  </>
+)
+disableDay.storyName = 'disableDay 禁用日期'
+disableDay.parameters = {
+  docs: {
+    description: {
+      story: `通过配置参数disableDay,实现指定日期禁用。 disableDay类型需为(date: dayjs.Dayjs) => void`,
+    },
+  },
+}
+
 export const internalization01 = () => (
   <>
     <div>
@@ -136,7 +185,6 @@ export const customDayText = () => (
       <span style={{ marginRight: '10px' }}>自定义日期下方文字</span>
       <DatePicker
         customDayText={(date: dayjs.Dayjs) => {
-          // for test (year, month remove)
           const classMap: { [key: string]: string } = {
             '2-1': '除夕',
             '2-2': '春节',
@@ -182,7 +230,7 @@ customDayClass.parameters = {
 
 export const dateFormat = () => (
   <>
-    <DatePicker dateFormat={text('dateformat', 'YYYY/MM/DD')} />
+    <DatePicker dateFormat="YYYY/MM/DD" />
   </>
 )
 dateFormat.storyName = 'dateFormat 自定义格式'
@@ -190,34 +238,6 @@ dateFormat.parameters = {
   docs: {
     description: {
       story: `使用dateFormat属性，可以自定义日期显示格式。如： dateFormat={text('dateformat', 'YYYY/MM/DD')}`,
-    },
-  },
-}
-
-export const includeTime = () => (
-  <>
-    <DatePicker includeTime />
-  </>
-)
-includeTime.storyName = 'includeTime 日期时间选择器'
-includeTime.parameters = {
-  docs: {
-    description: {
-      story: `添加includeTime参数。增加时间选择。`,
-    },
-  },
-}
-
-export const showTimeOnly = () => (
-  <>
-    <DatePicker showTimeOnly />
-  </>
-)
-showTimeOnly.storyName = 'showTimeOnly 时间选择器'
-showTimeOnly.parameters = {
-  docs: {
-    description: {
-      story: `添加showTimeOnly参数。设置为时间选择器`,
     },
   },
 }
@@ -324,7 +344,7 @@ clear.parameters = {
 
 export const readOnly = () => (
   <>
-    <DatePicker show readOnly />
+    <DatePicker readOnly initialDate={dayjs()} />
   </>
 )
 readOnly.storyName = 'readOnly 仅可读'
@@ -338,7 +358,7 @@ readOnly.parameters = {
 
 export const disabled = () => (
   <>
-    <DatePicker disabled />
+    <DatePicker disabled initialDate={dayjs()} />
   </>
 )
 disabled.storyName = 'disabled 禁用'
