@@ -64,7 +64,6 @@ const FormItem: FC<FormItemProps> = props => {
 
   const onValueUpdate = (e: any) => {
     const value = getValueFromEvent(e)
-    console.log('new value', value)
     dispatch({ type: 'updateValue', name, value })
   }
   const onValueValidate = async () => {
@@ -80,21 +79,21 @@ const FormItem: FC<FormItemProps> = props => {
   // 2 获取 children 数组的第一个元素
   const childList = React.Children.toArray(children)
   // 没有子组件
-  if (childList.length === 0) {
-    console.error(
-      'No child element found in Form.Item, please provide one form component'
-    )
-  }
-  // 子组件大于一个
-  if (childList.length > 1) {
-    console.warn(
-      'Only support one child element in Form.Item, others will be omitted'
-    )
-  }
-  // 不是 ReactElement 的子组件
-  if (!React.isValidElement(childList[0])) {
-    console.error('Child component is not a valid React Element')
-  }
+  // if (childList.length === 0) {
+  //   console.error(
+  //     'No child element found in Form.Item, please provide one form component'
+  //   )
+  // }
+  // // 子组件大于一个
+  // if (childList.length > 1) {
+  //   console.warn(
+  //     'Only support one child element in Form.Item, others will be omitted'
+  //   )
+  // }
+  // // 不是 ReactElement 的子组件
+  // if (!React.isValidElement(childList[0])) {
+  //   console.error('Child component is not a valid React Element')
+  // }
 
   const child = childList[0] as React.ReactElement
   // 3 cloneElement，混合这个child 以及 手动的属性列表

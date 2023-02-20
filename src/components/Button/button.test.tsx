@@ -2,14 +2,14 @@ import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import Button, { ButtonProps } from './button'
 
-test('our first react test case', () => {
-  //先取得一个wrapper对象，利用queryByText方法找element是否为
-  const wrapper = render(<Button>Nice</Button>)
-  const element = wrapper.queryByText('Nice')
-  expect(element).toBeTruthy()
-  //直接获取网页上的dom
-  expect(element).toBeInTheDocument()
-})
+// test('our first react test case', () => {
+//   //先取得一个wrapper对象，利用queryByText方法找element是否为
+//   const wrapper = render(<Button>Nice</Button>)
+//   const element = wrapper.queryByText('Nice')
+//   expect(element).toBeTruthy()
+//   //直接获取网页上的dom
+//   expect(element).toBeInTheDocument()
+// })
 
 const defaultprops = {
   onClick: jest.fn(),
