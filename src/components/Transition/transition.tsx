@@ -8,7 +8,7 @@ type AnimationName =
   | 'zoom-in-bottom'
   | 'zoom-in-right'
 
-export type TransitionProps = CSSTransitionProps & {
+export interface TransitionProps extends CSSTransitionProps {
   /** 设置组件的显示或隐藏状态(逻辑上的概念) */
   in: boolean
   /** 设置可以在初始化时隐藏组件 */
@@ -37,7 +37,9 @@ export type TransitionProps = CSSTransitionProps & {
   onExited?: () => void
   /** 展开的动画效果 */
   animation?: AnimationName
+  /** 避免自身动画消失，故嵌套一层节点 */
   wrapper?: boolean
+  /** 组件包含的子节点 */
   children?: ReactNode
 }
 /**
@@ -45,6 +47,25 @@ export type TransitionProps = CSSTransitionProps & {
  *
  * ###何时使用
  * 当需要一些过渡动画效果时使用，如下拉菜单。
+ *
+ * ###使用方法
+ * 给 Transition 组件设置 `className` 后（若无 `className` ,也可用 `animation` ），在相应的 css 文件中设置不同阶段的样式。阶段分为：
+ *
+ *     进入的三阶段：`className-enter`,  `className-enter-active`, `className-enter-done`
+ *
+ *     离开的三阶段：`className-exit`,  `className-exit-active`,  `className-exit-done`
+ *
+ * 本组件库提供一种下拉菜单的效果可供使用，分为四种:
+ *
+ *     1.从顶部滑出 `zoom-in-top`
+ *
+ *     2.从底部滑出 `zoom-in-bottom`
+ *
+ *     3.从左上角滑出 `zoom-in-left`
+ *
+ *     4.从右上角滑出 `zoom-in-right`
+ *
+ * 使用时将 `className` 或者 `animation` 设置为效果名即可。
  */
 export const Transition: React.FC<TransitionProps> = props => {
   const { children, classNames, animation, wrapper, ...restProps } = props
@@ -64,4 +85,5 @@ Transition.defaultProps = {
   appear: true,
   // mountOnEnter: true,
 }
+
 export default Transition

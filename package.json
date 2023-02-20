@@ -123,7 +123,7 @@
     "@types/qs": "^6.9.7",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
-    "@types/react-transition-group": "^4.4.5",
+    "@types/react-transition-group": "^4.2.3",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "babel-plugin-named-exports-order": "^0.0.2",
