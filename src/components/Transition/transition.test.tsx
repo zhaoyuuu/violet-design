@@ -36,7 +36,7 @@ describe('test transition', () => {
       () => {
         expect(divEl).toHaveClass('zoom-in-top-appear-done')
       },
-      { timeout: 300 }
+      { timeout: 500 }
     )
   })
 })

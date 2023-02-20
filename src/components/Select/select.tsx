@@ -181,7 +181,7 @@ export const Select: FC<SelectProps> = props => {
     if (onVisibleChange && menuOpen) {
       onVisibleChange(false)
     }
-    if (showSearch && inputValue !== (value || defaultValue)) {
+    if (showSearch && inputValue !== (value || defaultValue) && !reClick) {
       if ('options' in selectOptions[0]) {
         setInputValue(
           selectOptions[0].options[0]?.value ?? value ?? defaultValue
