@@ -6,7 +6,7 @@ module.exports = {
     '@storybook/addon-interactions',
     '@storybook/preset-create-react-app',
   ],
-  viewMode: 'docs',
+  // viewMode: 'docs',
   framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-webpack5',
