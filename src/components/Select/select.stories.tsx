@@ -3,6 +3,16 @@ import { ComponentMeta } from '@storybook/react'
 import jsonp from 'fetch-jsonp'
 import qs from 'qs'
 import Select, { SelectProps } from './select'
+import {
+  DefaultSelectCode,
+  MultipleSelectCode,
+  DisabledSelectCode,
+  SizeSelectCode,
+  SearchSelectCode,
+  GroupSelectCode,
+  LongRangeSearchSelectCode,
+  LinkageSelectCode,
+} from './selectStories.code'
 import RadioComponent from '../Radio'
 const { Radio, RadioGroup } = RadioComponent
 export default {
@@ -31,12 +41,10 @@ DefaultSelect.storyName = '默认的选择器'
 DefaultSelect.parameters = {
   docs: {
     source: {
-      code: `
-<Select placeholder="请选择" options={[
-  { value: 'nihao' },
-  { value: 'nihao2' },
-  { value: 'nihao3' },
-  { value: 'nihao4', disabled: true }]} />`,
+      code: DefaultSelectCode,
+    },
+    description: {
+      story: `点击选择器框，进行单选`,
     },
   },
 }
@@ -48,12 +56,10 @@ MultipleSelect.storyName = '支持多选的选择器'
 MultipleSelect.parameters = {
   docs: {
     source: {
-      code: `
-<Select placeholder="多选框" multiple options={[
-  { value: 'nihao' },
-  { value: 'nihao2' },
-  { value: 'nihao3' },
-  { value: 'nihao4', disabled: true }]} />`,
+      code: MultipleSelectCode,
+    },
+    description: {
+      story: `通过设置multiple参数，实现选择器的多选`,
     },
   },
 }
@@ -65,12 +71,10 @@ DisabledSelect.storyName = '被禁用的选择器'
 DisabledSelect.parameters = {
   docs: {
     source: {
-      code: `
-<Select placeholder="禁选框" disabled options={[
-  { value: 'nihao' },
-  { value: 'nihao2' },
-  { value: 'nihao3' },
-  { value: 'nihao4', disabled: true }]} />`,
+      code: DisabledSelectCode,
+    },
+    description: {
+      story: `通过设置disabled参数，实现选择器的禁用`,
     },
   },
 }
@@ -106,32 +110,10 @@ SizeSelect.storyName = '三种大小的选择器'
 SizeSelect.parameters = {
   docs: {
     source: {
-      code: `
-const [size, setSize] = useState('md')
-const handleSizeChange = (e: any) => {
-  setSize(e.target.value)
-}
-const options = [
-  { value: 'nihao' },
-  { value: 'nihao2' },
-  { value: 'nihao3' },
-  { value: 'nihao4', disabled: true },
-]
-<RadioGroup type={'button'} value={size} onChange={handleSizeChange}>
-  <Radio value={'lg'}>large</Radio>
-  <Radio value={'md'}>middle</Radio>
-  <Radio value={'sm'}>small</Radio>
-</RadioGroup>
-<br />
-<br />
-<Select {...args} placeholder="请选择" options={options} size={size} />
-<Select
-  {...args}
-  placeholder="多选框"
-  multiple
-  options={options}
-  size={size}
-/>`,
+      code: SizeSelectCode,
+    },
+    description: {
+      story: `引入radio组件，通过点击单选按钮，实现选择器的大小切换`,
     },
   },
 }
@@ -153,13 +135,10 @@ SearchSelect.storyName = '可搜索的选择器'
 SearchSelect.parameters = {
   docs: {
     source: {
-      code: `
-<Select placeholder="请选择" options={[
-  { value: 'a11' },
-  { value: 'b12' },
-  { value: 'c13' },
-  { value: 'd14' }]} 
-  showSearch/>`,
+      code: SearchSelectCode,
+    },
+    description: {
+      story: `通过设置showSearch参数，实现选择器的搜索`,
     },
   },
 }
@@ -177,6 +156,16 @@ export const GroupSelect = (args: any) => (
   />
 )
 GroupSelect.storyName = '分组的选择器'
+GroupSelect.parameters = {
+  docs: {
+    source: {
+      code: GroupSelectCode,
+    },
+    description: {
+      story: `通过传入{ label: string, options: { label: string, value: string }[] }[]形式的options参数，实现选择器的分组`,
+    },
+  },
+}
 
 export const LongRangeSearchSelect = (args: any) => {
   let timeout: ReturnType<typeof setTimeout> | null
@@ -232,3 +221,66 @@ export const LongRangeSearchSelect = (args: any) => {
   )
 }
 LongRangeSearchSelect.storyName = '远程搜索的选择器'
+
+LongRangeSearchSelect.parameters = {
+  docs: {
+    source: {
+      code: LongRangeSearchSelectCode,
+    },
+    description: {
+      story: `通过设置showSearch参数，并传入对应的onSearch函数，实现选择器的远程搜索`,
+    },
+  },
+}
+
+export const LinkageSelect = (args: any) => {
+  const provinceData = ['Zhejiang', 'Jiangsu']
+  const cityData = {
+    Zhejiang: ['Hangzhou', 'Ningbo', 'Wenzhou'],
+    Jiangsu: ['Nanjing', 'Suzhou', 'Zhenjiang'],
+  }
+  type CityName = keyof typeof cityData
+  const [cities, setCities] = useState(cityData[provinceData[0] as CityName])
+  const [secondCity, setSecondCity] = useState(
+    cityData[provinceData[0] as CityName][0]
+  )
+
+  const handleProvinceChange = (value: CityName) => {
+    setCities(cityData[value])
+    setSecondCity(cityData[value][0])
+  }
+
+  const onSecondCityChange = (value: CityName) => {
+    setSecondCity(value)
+  }
+  return (
+    <>
+      <Select
+        defaultValue={provinceData[0]}
+        onChange={handleProvinceChange}
+        style={{ width: 130, height: 40, display: 'inline-Block' }}
+        options={provinceData.map(province => ({
+          label: province,
+          value: province,
+        }))}
+      />
+      <Select
+        value={secondCity}
+        style={{ width: 130, height: 40, display: 'inline-Block' }}
+        onChange={onSecondCityChange}
+        options={cities.map(city => ({ label: city, value: city }))}
+      />
+    </>
+  )
+}
+LinkageSelect.storyName = '多级联动的选择器'
+LinkageSelect.parameters = {
+  docs: {
+    source: {
+      code: LinkageSelectCode,
+    },
+    description: {
+      story: `通过设置相应的onChange函数和value参数，实现选择器的联动`,
+    },
+  },
+}

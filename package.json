@@ -9,10 +9,14 @@
   "license": "MIT",
   "keywords": [
     "violet",
-    "Component",
-    "UI",
-    "React"
+    "component",
+    "react-components",
+    "react",
+    "ts",
+    "storybook",
+    "ui-library"
   ],
+  "description": "Violet-design is a high quality UI Toolkit built on React.",
   "homepage": "https://zhaoyuuu.github.io/violet-design/",
   "repository": {
     "type": "git",

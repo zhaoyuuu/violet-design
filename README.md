@@ -1,4 +1,3 @@
-
 <p align="center">
   <a href="https://zhaoyuuu.github.io/violet-design">
     <img width="320" src="https://github.com/zhubeijia/source/blob/main/srclogo/violet-logo.svg?raw=true">
@@ -7,9 +6,10 @@
 
 <div align="center">
 
-[![version](https://img.shields.io/badge/version-v0.1.4-mediumpurple.svg)](https://github.com/zhaoyuuu/violet-design)
-[![lisence](https://img.shields.io/badge/lisence-MIT-slateblue.svg)](https://github.com/zhaoyuuu/violet-design)
-[![docs](https://img.shields.io/badge/docsby-storybook-purple.svg)](https://zhaoyuuu.github.io/violet-design)
+![pipeline](https://img.shields.io/badge/pipeline-passing-%238990f9)
+![lisence](https://img.shields.io/badge/lisence-MIT-slateblue.svg)
+![docs](https://img.shields.io/badge/docsby-storybook-purple.svg)
+![test](https://img.shields.io/badge/test-passing-%238b6ccc)
 
 </div>
 
@@ -24,7 +24,7 @@
   - [特性](#特性)
   - [兼容性](#兼容性)
 - [安装](#安装)
-  - [使用npm安装](#使用npm安装)
+  - [使用 npm 安装](#使用npm安装)
   - [使用 yarn 安装](#使用-yarn-安装)
   - [浏览器引入](#浏览器引入)
 - [示例](#示例)
@@ -50,16 +50,16 @@
 ### 兼容性
 
 | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-edge.06c7aa18.svg?raw=true" width="20px">Edge | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-firefox.ffa00c88.svg?raw=true" width="20px">Firefox | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-chrome.99f0b30c.svg?raw=true" width="20px">Chrome | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-safari.1bf88a3e.svg?raw=true" width="20px">Safari | <img src="https://github.com/zhubeijia/source/blob/main/srclogo/icon-opera.de286680.svg?raw=true" width="20px">Opera |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Edge                                                         | Last two versions                                                          | Last two versions                                                          | Last two versions                                                          | Last two versions                                                          |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Edge                                                                                                               | Last two versions                                                                                                        | Last two versions                                                                                                      | Last two versions                                                                                                      | Last two versions                                                                                                    |
 
 ## 安装
 
-### 使用npm安装
+### 使用 npm 安装
 
 推荐使用 npm 来安装，享受生态圈和工具带来的便利，可以在开发环境轻松调试，也可以在生态环境打包部署使用。
 
-``` $ npm install violet-design ```
+`$ npm install violet-design`
 
 ### 使用 yarn 安装
 
@@ -69,19 +69,29 @@
 
 在浏览器中使用 `script` 和 `link` 标签直接引入文件，并使用全局变量 `VioletDesign`。
 
-__引入CSS：__
+**引入 CSS：**
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/violet-design/dist/index.css">
 ```
 
-__引入JS：__
+**引入 JS：**
 
 ```html
 <script src="https://unpkg.com/violet-design/dist/index.umd.js"></script>
 ```
 
 ## 示例
+
+### 1. 引入样式
+
+在`index.tsx(.jsx)`中：
+
+```js
+import 'violet-design/dist/index.css'
+```
+
+### 2. 使用组件
 
 ```js
 import React from 'react';
@@ -121,4 +131,3 @@ const App = () => (
 [@ZhaoYuhang](https://github.com/zhaoyuuu). [@LiWei](https://github.com/5liwei). [@WangZijun](https://github.com/violetwzj). [@YangJiawei](https://github.com/666laoyang). [@WanYuhui](https://github.com/wyuhuiNJU). [@ZhuBeijia](https://github.com/zhubeijia). [@ChenXinyi](https://github.com/quas-modo).
 
 如果你希望参与贡献，欢迎 Pull Request ！
-

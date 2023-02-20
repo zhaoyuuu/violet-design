@@ -33,9 +33,6 @@ export type IFormRef = Omit<
 export const FormContext = createContext<IFormContext>({} as IFormContext)
 
 /**
- * >高性能表单控件，自带数据域管理。包含数据录入、校验以及对应样式。
-// /* eslint-disable react/display-name */
-/**
  * > 表单控件, 带数据与管理功能, 包含数据录入、校验等
  *
  * ### 何时使用
@@ -43,6 +40,7 @@ export const FormContext = createContext<IFormContext>({} as IFormContext)
  * - 需要对输入的数据类型进行校验时。
  */
 
+/* eslint-disable react/display-name */
 export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
   const { name, children, initialValues, onFinish, onFinishFailed } = props
   const { form, fields, dispatch, ...restProps } = useStore(initialValues)
@@ -93,6 +91,6 @@ Form.defaultProps = {
   name: 'violet_form',
 }
 
-Form.displayName = 'Form'
+// Form.displayName = 'Form'
 
 export default Form

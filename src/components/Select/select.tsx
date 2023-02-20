@@ -19,6 +19,8 @@ import Optgroup from './optGroup'
 export interface SelectProps {
   /** 指定默认选中的条目 */
   defaultValue?: string | string[]
+  /** 指定当前选中的条目，多选时为一个数组 */
+  value?: string | string[]
   /** 选择框默认文本 */
   placeholder?: string
   /** 是否禁用 */
@@ -28,7 +30,7 @@ export interface SelectProps {
   /** select input 的 name 属性 */
   name?: string
   /** 选中值发生变化时触发 */
-  onChange?: (selectedValue: string, selectedValues: string[]) => void
+  onChange?: (selectedValue: any, selectedValues?: string[]) => void
   /** 下拉框出现/隐藏时触发 */
   onVisibleChange?: (visible: boolean) => void
   children?: ReactNode
@@ -46,6 +48,7 @@ export interface SelectProps {
     | ((inputValue: string, options: SelectOptionProps[]) => boolean)
   /** 文本框值变化时回调 */
   onSearch?: (value: string) => void
+  style?: React.CSSProperties
 }
 
 /** 下拉框 */
@@ -84,6 +87,8 @@ export const Select: FC<SelectProps> = props => {
     showSearch,
     filterOption,
     onSearch,
+    value,
+    style,
   } = props
   let { multiple } = props
   // 通过useRef定义个input变量，在input 元素上定义ref={input},这样通过input.current就可以获取到input Dom 元素
@@ -93,11 +98,11 @@ export const Select: FC<SelectProps> = props => {
   // 控制 下拉框显示与否
   const [menuOpen, setOpen] = useState(false)
   // 控制 input框的value
-  const [value, setValue] = useState(
-    typeof defaultValue === 'string' ? defaultValue : ''
+  const [inputValue, setInputValue] = useState(
+    value ? value : typeof defaultValue === 'string' ? defaultValue : ''
   )
   // 防抖
-  const debouncedValue = useDebounce(value, 300)
+  const debouncedValue = useDebounce(inputValue, 300)
   // 存储多选的已选值
   const [selectedValues, setSelectedValues] = useState<string[]>(
     Array.isArray(defaultValue) ? defaultValue : []
@@ -113,10 +118,11 @@ export const Select: FC<SelectProps> = props => {
     if (!multiple) {
       // 点击option后，下拉框隐藏
       setOpen(false)
-      setValue(value)
+      setInputValue(value)
       onVisibleChange && onVisibleChange(false)
+      onChange && onChange(value)
     } else {
-      setValue('')
+      setInputValue('')
     }
     // 多选模式
     let updatedValues = [value]
@@ -155,6 +161,17 @@ export const Select: FC<SelectProps> = props => {
     // 搜索功能仅对单选框开放
     showSearch && (multiple = false)
   })
+  const useValueUpdate = () => {
+    const firstTime = useRef(false)
+    useEffect(() => {
+      if (firstTime.current) {
+        setInputValue(value as string | string[])
+      } else {
+        firstTime.current = true
+      }
+    }, [value])
+  }
+  useValueUpdate()
   // 鼠标点击select框外面时，关闭下拉框
   // useClickOutside里，使用的是原生的 doucment.addEventListener 的方法添加，那么它是一个原生的 DOM事件，它的事件对象是原生的事件对象(比如这里的 MouseEvent)
   // 而React.MouseEvent （各种 react event 事件对象），都是 React 的事件，它并不是 DOM 原生的对象，和普通的 DOM 事件是不一样的
@@ -164,41 +181,42 @@ export const Select: FC<SelectProps> = props => {
     if (onVisibleChange && menuOpen) {
       onVisibleChange(false)
     }
-    if (showSearch && value !== defaultValue) {
+    if (showSearch && inputValue !== (value || defaultValue) && !reClick) {
       if ('options' in selectOptions[0]) {
-        setValue(selectOptions[0].options[0]?.value ?? defaultValue)
+        setInputValue(
+          selectOptions[0].options[0]?.value ?? value ?? defaultValue
+        )
       } else {
-        setValue(selectOptions[0]?.value ?? defaultValue)
+        setInputValue(selectOptions[0]?.value ?? value ?? defaultValue)
       }
     }
   })
-  // 不带搜索框时，点击input框的处理函数
+  // 点击input框的处理函数
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    // 当input框可用（!disabled），menuOpen变量取反
-    if (!disabled) {
-      setOpen(!menuOpen)
-      // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
-      onVisibleChange && onVisibleChange(!menuOpen)
+    if (!showSearch) {
+      // 当input框可用（!disabled），menuOpen变量取反
+      if (!disabled) {
+        setOpen(!menuOpen)
+        // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
+        onVisibleChange && onVisibleChange(!menuOpen)
+      }
+    } else {
+      // 当input框可用（!disabled）且menuOpen为关闭，让menuOpen打开
+      if (!disabled && !menuOpen) {
+        setOpen(true)
+        // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
+        onVisibleChange && onVisibleChange(true)
+      }
+      if (inputValue !== defaultValue) {
+        setReClick(true)
+      }
     }
   }
-  // 带搜索框时，点击input框的处理函数
-  const handleSearchClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    // 当input框可用（!disabled）且menuOpen为关闭，让menuOpen打开
-    if (!disabled && !menuOpen) {
-      setOpen(true)
-      // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
-      onVisibleChange && onVisibleChange(true)
-    }
-    if (value !== defaultValue) {
-      setReClick(true)
-    }
-  }
-  // input框change的处理函数
+  // input搜索框change的处理函数
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value.trim()
-    setValue(inputValue)
+    setInputValue(inputValue)
     onSearch && onSearch(inputValue)
     setReClick(false)
   }
@@ -284,19 +302,18 @@ export const Select: FC<SelectProps> = props => {
 
   return (
     // input上的图标的动画是css写的
-    <div className={className} ref={containerRef}>
-      <div className="violetSelect__input">
+    <div className={className} ref={containerRef} style={style}>
+      <div className="violetSelect__input" onClick={handleClick}>
         {!showSearch && (
           <Input
             ref={input}
             placeholder={placeholder}
-            value={value}
+            value={inputValue}
             disabled={disabled}
             name={name}
             readOnly
             icon="angle-down"
             size={size}
-            onClick={handleClick}
           />
         )}
         {showSearch && (
@@ -306,9 +323,8 @@ export const Select: FC<SelectProps> = props => {
             name={name}
             icon="angle-down"
             size={size}
-            value={value}
+            value={inputValue}
             onChange={handleInputChange}
-            onClick={handleSearchClick}
             autoComplete="off"
           />
         )}
