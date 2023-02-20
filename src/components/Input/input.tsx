@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import Icon from '../Icon'
 
-export type InputSize = 'sm' | 'md' | 'lg'
+export type InputSize = 'lg' | 'sm' | 'md'
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
   /**是否禁用 Input */
@@ -25,14 +25,13 @@ export interface InputProps
 }
 
 /**
- * > 通过鼠标或键盘输入内容，是最基础的表单域的包装。
+ * Input 输入框 通过鼠标或键盘输入内容，是最基础的表单域的包装。
  *
- * ### 何时使用
- * - 需要用户输入表单域内容时。
- * - 提供组合型输入框，带搜索的输入框，还可以进行大小选择。
+ * ~~~js
+ * // 这样引用
+ *
+ * 支持 HTMLInput 的所有基本属性
  */
-
-/* eslint-disable react/display-name */
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props
   const cnames = classNames('input-wrapper', {
@@ -71,6 +70,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   )
 })
 
-// Input.displayName = 'InputName'
+Input.displayName = 'Input'
 
 export default Input
