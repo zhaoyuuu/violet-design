@@ -1,6 +1,6 @@
 import { useState, useReducer } from 'react'
-import Schema, { RuleItem, ValidateError } from 'async-validator';
-import { getField } from '@storybook/store';
+import Schema, { RuleItem, ValidateError } from 'async-validator'
+import { getField } from '@storybook/store'
 import mapValues from 'lodash-es/mapValues'
 import each from 'lodash-es/each'
 
@@ -8,11 +8,11 @@ import each from 'lodash-es/each'
 export type CustomRuleFunc = (getFieldValue: any | string) => RuleItem
 export type CustomRule = RuleItem | CustomRuleFunc
 export interface FieldDetail {
-  name: string;
-  value: string;
-  rules: CustomRule[];
-  isValid: boolean;
-  errors: ValidateError[];
+  name: string
+  value: string
+  rules: CustomRule[]
+  isValid: boolean
+  errors: ValidateError[]
 }
 
 export interface FieldsState {
@@ -20,49 +20,46 @@ export interface FieldsState {
 }
 
 export interface ValidateErrorType extends Error {
-  errors: ValidateError[];
-  fields: Record<string, ValidateError[]>;
+  errors: ValidateError[]
+  fields: Record<string, ValidateError[]>
 }
 
-
 export interface FormState {
-  isValid: boolean;
-  isSubmitting: boolean;
+  isValid: boolean
+  isSubmitting: boolean
   errors: Record<string, ValidateError[]>
 }
 export interface FieldsAction {
-  type: 'addField' | 'updateValue' | 'updateValidateResult';
-  name: string;
-  value: any;
+  type: 'addField' | 'updateValue' | 'updateValidateResult'
+  name: string
+  value: any
 }
 function fieldsReducer(state: FieldsState, action: FieldsAction): FieldsState {
   switch (action.type) {
     case 'addField': {
       return {
         ...state,
-        [action.name]: { ...action.value }
+        [action.name]: { ...action.value },
       }
     }
 
-    case 'updateValue':{
+    case 'updateValue': {
       return {
         ...state,
-        [action.name]: { ...state[action.name], value: action.value }
+        [action.name]: { ...state[action.name], value: action.value },
       }
-
     }
-      
+
     case 'updateValidateResult': {
       const { isValid, errors } = action.value
       return {
         ...state,
-        [action.name]: { ...state[action.name], isValid, errors }
+        [action.name]: { ...state[action.name], isValid, errors },
       }
     }
-    default:{
-      return state;
+    default: {
+      return state
     }
-      
   }
 }
 // * react hooks
@@ -70,8 +67,12 @@ function fieldsReducer(state: FieldsState, action: FieldsAction): FieldsState {
 
 function useStore(initialValues?: Record<string, any>) {
   // form state
-  const [ form, setForm ] = useState<FormState>({ isValid: true, isSubmitting: false, errors: {}})
-  const [ fields, dispatch ] = useReducer(fieldsReducer, {})
+  const [form, setForm] = useState<FormState>({
+    isValid: true,
+    isSubmitting: false,
+    errors: {},
+  })
+  const [fields, dispatch] = useReducer(fieldsReducer, {})
   const getFieldValue = (key: string) => {
     return fields[key] && fields[key].value
   }
@@ -87,7 +88,7 @@ function useStore(initialValues?: Record<string, any>) {
     if (initialValues) {
       each(initialValues, (value, name) => {
         if (fields[name]) {
-          dispatch({ type: 'updateValue', name, value})
+          dispatch({ type: 'updateValue', name, value })
         }
       })
     }
@@ -106,10 +107,10 @@ function useStore(initialValues?: Record<string, any>) {
     const { value, rules } = fields[name]
     const afterRules = transfromRules(rules)
     const descriptor = {
-      [name]: afterRules
+      [name]: afterRules,
     }
     const valueMap = {
-      [name]: value
+      [name]: value,
     }
     const validator = new Schema(descriptor)
     let isValid = true
@@ -119,12 +120,13 @@ function useStore(initialValues?: Record<string, any>) {
     } catch (e) {
       isValid = false
       const err = e as any
-      console.log('e', err.errors)
-      console.log('fields', err.fields)
       errors = err.errors
     } finally {
-      console.log('errors', isValid)
-      dispatch({ type: 'updateValidateResult', name, value: { isValid, errors }})
+      dispatch({
+        type: 'updateValidateResult',
+        name,
+        value: { isValid, errors },
+      })
     }
   }
   const validateAllFields = async () => {
@@ -137,7 +139,7 @@ function useStore(initialValues?: Record<string, any>) {
     setForm({ ...form, isSubmitting: true })
     try {
       await validator.validate(valueMap)
-    } catch(e) {
+    } catch (e) {
       isValid = false
       const err = e as ValidateErrorType
       errors = err.fields
@@ -145,9 +147,17 @@ function useStore(initialValues?: Record<string, any>) {
         // errors 中有对应的 key
         if (errors[name]) {
           const itemErrors = errors[name]
-          dispatch({ type: 'updateValidateResult', name, value: { isValid: false, errors: itemErrors }})
+          dispatch({
+            type: 'updateValidateResult',
+            name,
+            value: { isValid: false, errors: itemErrors },
+          })
         } else if (value.rules.length > 0 && !errors[name]) {
-          dispatch({ type: 'updateValidateResult', name, value: { isValid: true, errors: [] }})
+          dispatch({
+            type: 'updateValidateResult',
+            name,
+            value: { isValid: true, errors: [] },
+          })
         }
         //  有对应的 rules，并且没有 errors
       })
@@ -156,7 +166,7 @@ function useStore(initialValues?: Record<string, any>) {
       return {
         isValid,
         errors,
-        values: valueMap
+        values: valueMap,
       }
     }
   }
