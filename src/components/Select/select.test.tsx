@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 import { config } from 'react-transition-group'
 import Select from './index'
@@ -122,7 +122,7 @@ describe('test Select component', () => {
         options={[{ value: 'a11' }, { value: 'b12' }, { value: 'c13' }]}
       />
     )
-    const { getByPlaceholderText, getByText, queryByText, container } = wrapper
+    const { getByPlaceholderText, getByText, container } = wrapper
     const inputEl = getByPlaceholderText('test') as HTMLInputElement
     // 在input中输入b
     fireEvent.click(inputEl)
@@ -135,5 +135,36 @@ describe('test Select component', () => {
     fireEvent.click(inputEl)
     // 输入框有值后，再次点击，options为最初options，不是selectOptions
     expect(container.querySelectorAll('.violetSelect__item').length).toBe(3)
+  })
+  it('group select', async () => {
+    const wrapper = render(
+      <Select
+        {...searchProps}
+        options={[
+          { label: '第一组', options: [{ value: 'a11' }, { value: 'a12' }] },
+          { label: '第二组', options: [{ value: 'b11' }, { value: 'b12' }] },
+          { label: '第三组', options: [{ value: 'c11' }, { value: 'c12' }] },
+        ]}
+      />
+    )
+    const { getByPlaceholderText, getByText, container } = wrapper
+    const inputEl = getByPlaceholderText('test') as HTMLInputElement
+    fireEvent.click(inputEl)
+    expect(container.querySelectorAll('.violetSelect__optGroup').length).toBe(3)
+    fireEvent.change(inputEl, { target: { value: 'b' } })
+    await waitFor(() => {
+      expect(container.querySelectorAll('.violetSelect__optGroup').length).toBe(
+        1
+      )
+      expect(container.querySelectorAll('.violetSelect__item').length).toBe(2)
+    })
+    fireEvent.change(inputEl, { target: { value: 'b12' } })
+    await waitFor(() => {
+      expect(container.querySelectorAll('.violetSelect__optGroup').length).toBe(
+        1
+      )
+      expect(container.querySelectorAll('.violetSelect__item').length).toBe(1)
+      expect(getByText('b12')).toBeInTheDocument()
+    })
   })
 })
