@@ -15,14 +15,23 @@ export const ADefault = () => (
 )
 export const BSwitchWithSize = () => (
   <>
-    <Switch size="small"> small switch </Switch>
+    <Switch size="small" style={{ marginRight: '20PX' }}>
+      {' '}
+      small switch{' '}
+    </Switch>
     <Switch size="medium"> medium switch </Switch>
   </>
 )
 export const CSwitchWithTheme = () => (
   <>
-    <Switch theme="primary"> primary switch </Switch>
-    <Switch theme="danger"> danger switch </Switch>
+    <Switch theme="primary" style={{ marginRight: '20PX' }}>
+      {' '}
+      primary switch{' '}
+    </Switch>
+    <Switch theme="danger" style={{ marginRight: '20PX' }}>
+      {' '}
+      danger switch{' '}
+    </Switch>
     <Switch theme="light"> light switch </Switch>
   </>
 )
