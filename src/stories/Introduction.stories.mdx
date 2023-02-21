@@ -5,6 +5,10 @@ import Logo from '../assets/solid-logo.svg';
 
 <style>
   {`
+    .topTitle {
+      display: inline-block;
+      cursor: pointer;
+    }
     .logo {
       height: 180px;
       display: flex;
@@ -23,12 +27,17 @@ import Logo from '../assets/solid-logo.svg';
   `}
 </style>
 
-# <img src={Logo} alt="logo" width='40px'/> Violet Design of React
+<a href='https://github.com/zhaoyuuu/violet-design' target="_blank">
+  <img src={Logo} alt="logo" width='40px'/>
+  <h1 className='topTitle'>Violet Design of React</h1>
+</a>
 
 基于「 React 」框架的个性化 UI 组件库，主要用于企业级中后台系统。
 
 <div className="logo" >
-  <img src={Logo} alt="logo" />
+  <a href='https://github.com/zhaoyuuu/violet-design' target="_blank">
+    <img src={Logo} alt="logo" />
+  </a>
   <div className="logo__and">+</div>
   <img src='https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg' />
 </div>
@@ -143,7 +152,8 @@ const App = () => (
 - 🪄 **数据录入型组件**：[AutoComplete 自动完成](?path=/docs/autocomplete--a-simple-complete)、[Cascader 级联选择](?path=/docs/组件-数据录入-cascader-级联选择--default)、[CheckBox 多选框](?path=/docs/组件-数据录入-checkbox-多选框--default)、[DatePicker 日期选择器](?path=/docs/datepicker--default-date-picker)、[RangeDatePicker 日期范围选择器](?path=/docs/rangedatepicker--adefault)、[Form 表单](?path=/docs/form--a-basic-form)、[Input 输入框](?path=/docs/input--a-default)、[InputNumber 数字输入框](?path=/docs/组件-数据录入-inputnumber-数字输入框--default-input-number)、[RadioGroup 单选按钮组](?path=/docs/组件-数据录入-radiogroup-单选按钮组--default-radio)、[Select 选择器](?path=/docs/select--default-select)、[Switch 开关](?path=/docs/switch--a-default)、[Upload 上传](?path=/docs/upload--simple-upload)
 - 📆 **数据展示型组件**：[Calendar 日历](?path=/docs/calendar--year-view)、[Tabs 标签页](?path=/docs/tabs--a-default-tabs)
 - 📈 **反馈型组件**：[Progress 进度条](?path=/docs/组件-反馈-progress-进度条--default)
-- 📌 **其他组件**：[Affix 图钉](?path=/docs/组件-其他-affix-固钉--affix-button)
+- 🧱 **布局组件**：[Grid 栅格](?path=/docs/grid--default)
+- 📌 **其他组件**：[Affix 图钉](?path=/docs/组件-其他-affix-固钉--affix-button)、[Transition 过渡](?path=/docs/transition--menu-transition)
   <br/>
 
 # 🔗 链接

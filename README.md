@@ -119,7 +119,8 @@ const App = () => (
 - 🪄 数据录入型组件：AutoComplete 自动完成、Cascader 级联选择、CheckBox 多选框、DatePicker 日期选择器、RangeDatePicker 日期范围选择器、Form 表单、Input 输入框、InputNumber 数字输入框、RadioGroup 单选按钮组、Select 选择器、Switch 开关、Upload 上传
 - 📆 数据展示型组件：Calendar 日历、Tabs 标签页
 - 📈 反馈型组件：Progress 进度条
-- 📌 其他组件：Affix 图钉、Transition 过渡、Row 行布局
+- 🧱 布局组件：Grid 栅格
+- 📌 其他组件：Affix 图钉、Transition 过渡
 
 ## 链接
 
