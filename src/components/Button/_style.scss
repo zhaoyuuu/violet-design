@@ -98,9 +98,13 @@
   &:active {
     opacity: 0.5;
   }
-  &:disabled,
-  &:disabled {
-    color: $link-hover-decoration;
+}
+
+.violetButton--disabled{
+  cursor: not-allowed;
+  opacity: $btn-disabled-opacity;
+  box-shadow: none;
+  > * {
     pointer-events: none;
   }
 }
