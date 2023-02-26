@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { MouseEvent, ReactNode } from 'react'
 import classNames from 'classnames'
 
 export type ButtonSize = 'lg' | 'sm' | 'mid'
@@ -16,17 +16,13 @@ interface BaseButtonProps {
   children?: ReactNode
   /**点击跳转的地址，指定此属性 button 的行为和 a 链接一致 */
   href?: string
-
-  // onClick?: (
-  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  // ) => void | undefined
 }
 
 type NativeButtonProps = BaseButtonProps &
   React.ButtonHTMLAttributes<HTMLElement>
 type AnchorButtonProps = BaseButtonProps &
   React.ButtonHTMLAttributes<HTMLElement>
-export type ButtonProps = Partial<AnchorButtonProps>
+export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>
 
 /**
  * >按钮用于开始一个即时操作。
@@ -55,39 +51,25 @@ export const Button = (props: ButtonProps) => {
   const { btnType, className, disabled, size, children, href, ...restProps } =
     props
 
-  // const debounceClick = () => {
-  //   console.log('enter handler')
-  //   console.log([props.onClick], '--onclick')
-  //   if (!props.onClick) return
-  //   return _.throttle(props.onClick, 2000)
-  // }
-
-  // const debouncedClick = debounceClick()
-
-  //violetButton,violetButton-lg,violetButton-primary,
   const cls = classNames('violetButton', className, {
     [`violetButton--${btnType}`]: btnType,
     [`violetButton--${size}`]: size !== 'mid',
-    'violetButton--disabled': btnType === 'link' && disabled,
+    'violetButton--disabled': disabled,
   })
+
   if (btnType === 'link' && href) {
     return (
-      <a className={cls} href={href} {...restProps}>
+      <a
+        className={cls}
+        href={!disabled ? href : 'javascript:void(0)'}
+        {...restProps}
+      >
         {children}
       </a>
     )
   } else {
     return (
-      <button
-        className={cls}
-        disabled={disabled}
-        {...restProps}
-        // onClick={e => {
-        //   if (debouncedClick) {
-        //     debouncedClick(e)
-        //   }
-        //}}
-      >
+      <button className={cls} disabled={disabled} {...restProps}>
         {children}
       </button>
     )

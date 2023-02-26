@@ -1,5 +1,3 @@
-@import '../../styles/variables';
-@import '../../styles/mixin';
 .violetButton {
   position: relative;
   display: inline-block;
@@ -21,106 +19,63 @@
   box-shadow: $btn-box-shadow;
   cursor: pointer;
   transition: $btn-transition;
-  &.disabled,
-  &[disabled] {
+  &:active {
+    opacity: 0.5;
+  }
+
+  &--disabled {
     cursor: not-allowed;
     opacity: $btn-disabled-opacity;
     box-shadow: none;
-    > * {
-      pointer-events: none;
-    }
   }
-}
-
-.violetButton--lg {
-  @include button-size(
-    $btn-padding-y-lg,
-    $btn-padding-x-lg,
-    $btn-font-size-lg,
-    $btn-border-radius-lg
-  );
-  &:active,
-  &:active {
-    opacity: 0.5;
+  &--lg {
+    @include button-size(
+      $btn-padding-y-lg,
+      $btn-padding-x-lg,
+      $btn-font-size-lg,
+      $btn-border-radius-lg
+    );
   }
-}
-
-.violetButton--sm {
-  @include button-size(
-    $btn-padding-y-sm,
-    $btn-padding-x-sm,
-    $btn-font-size-sm,
-    $btn-border-radius-sm
-  );
-  &:active,
-  &:active {
-    opacity: 0.5;
+  &--sm {
+    @include button-size(
+      $btn-padding-y-sm,
+      $btn-padding-x-sm,
+      $btn-font-size-sm,
+      $btn-border-radius-sm
+    );
   }
-}
-
-.violetButton--primary {
-  @include button-style($primary, $primary, $white);
-  &:active,
-  &:active {
-    opacity: 0.5;
+  &--primary {
+    @include button-style($primary, $primary, $white);
   }
-}
-
-.violetButton--danger {
-  @include button-style($danger, $danger, $white);
-  &:active,
-  &:active {
-    opacity: 0.5;
+  &--danger {
+    @include button-style($danger, $danger, $white);
   }
-}
-
-.violetButton--default {
-  @include button-style(
-    $white,
-    $gray-400,
-    $body-color,
-    $white,
-    $primary,
-    $primary
-  );
-  &:active,
-  &:active {
-    opacity: 0.5;
+  &--default {
+    @include button-style(
+      $white,
+      $gray-400,
+      $body-color,
+      $white,
+      $primary,
+      $primary
+    );
   }
-}
-
-.violetButton--link {
-  font-weight: $font-weight-normal;
-  color: $btn-link-color;
-  text-decoration: $link-decoration;
-  box-shadow: none;
-  &:active,
-  &:active {
-    opacity: 0.5;
+  &--link {
+    font-weight: $font-weight-normal;
+    color: $btn-link-color;
+    text-decoration: $link-decoration;
+    box-shadow: none;
   }
-}
-
-.violetButton--disabled{
-  cursor: not-allowed;
-  opacity: $btn-disabled-opacity;
-  box-shadow: none;
-  > * {
-    pointer-events: none;
-  }
-}
-
-.violetButton--dash {
-  @include button-style(
-    $white,
-    $gray-400,
-    $body-color,
-    $white,
-    $primary,
-    $primary
-  );
-  border: dashed;
-  border-width: 1.5px;
-  &:active {
-    opacity: 0.5;
+  &--dash {
+    @include button-style(
+      $white,
+      $gray-400,
+      $body-color,
+      $white,
+      $primary,
+      $primary
+    );
+    border: dashed;
+    border-width: 1.5px;
   }
 }
