@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Button from './button'
 import Icon from '../Icon'
@@ -11,16 +11,18 @@ export default {
   },
 } as ComponentMeta<typeof Button>
 
-//default button
+// template
 const Template: ComponentStory<typeof Button> = args => (
-  <Button {...args}></Button>
+  <Button onClick={() => alert('click')} {...args}></Button>
 )
+
+//default button
 export const Default = Template.bind({})
 Default.args = {
   children: 'Default Button',
-  onClick: () => console.log(123),
 }
 Default.storyName = 'Defalut Button 默认按钮'
+
 //primary Button
 export const Primary = Template.bind({})
 Primary.args = {
@@ -28,6 +30,7 @@ Primary.args = {
   children: 'Primary Button',
 }
 Primary.storyName = 'Primary Button 主按钮'
+
 //danger Button
 export const Danger = Template.bind({})
 Danger.args = {
@@ -35,6 +38,7 @@ Danger.args = {
   children: 'Danger Button',
 }
 Danger.storyName = 'Danger Button 危险按钮'
+
 //link Button
 export const Link = Template.bind({})
 Link.args = {
@@ -46,18 +50,18 @@ Link.storyName = 'Link Button 链接按钮'
 
 //icon button
 export const IconButton = (args: any) => (
-  <Button btnType="primary">
+  <Button onClick={() => alert('click')} btnType="primary" {...args}>
     <Icon icon="upload" /> Icon Button
   </Button>
 )
 IconButton.storyName = 'Icon Button 图标按钮'
 
-//export const
-//icon button
-
-export const DashButton = (args: any) => (
-  <Button btnType="dash">Dashed Button</Button>
-)
+//dash button
+export const DashButton = Template.bind({})
+DashButton.args = {
+  btnType: 'dash',
+  children: 'Dashed Button',
+}
 DashButton.storyName = 'Dash Button 虚线按钮'
 
 //Large Button
@@ -67,6 +71,7 @@ Large.args = {
   children: 'Large Button',
 }
 Large.storyName = 'Large Button 大按钮'
+
 //small Button
 export const Small = Template.bind({})
 Small.args = {
