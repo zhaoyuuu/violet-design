@@ -125,10 +125,10 @@ export const SearchSelect = (args: any) => (
       {...args}
       placeholder="单选框"
       options={[
-        { value: 'a11' },
-        { value: 'b12' },
-        { value: 'c13' },
-        { value: 'd14' },
+        { value: '南京' },
+        { value: '武汉' },
+        { value: '长春' },
+        { value: '长沙' },
       ]}
       showSearch
     />
@@ -137,10 +137,10 @@ export const SearchSelect = (args: any) => (
       placeholder="多选框"
       multiple
       options={[
-        { value: 'a11' },
-        { value: 'b12' },
-        { value: 'c13' },
-        { value: 'd14' },
+        { value: '南京' },
+        { value: '武汉' },
+        { value: '长春' },
+        { value: '长沙' },
       ]}
       showSearch
     />

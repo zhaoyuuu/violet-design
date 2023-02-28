@@ -5,7 +5,6 @@ import Input from '../Input/input'
 import Option, { SelectOptionProps } from './option'
 import Icon from '../Icon'
 import useClickOutside from '../../hooks/useClickOutside'
-import useDebounce from '../../hooks/useDebounce'
 import useNotFirstUpdate from '../../hooks/useNotFirstUpdate'
 import Optgroup from './optGroup'
 import SelectProps from './selectProps'
@@ -33,32 +32,26 @@ export const Select: FC<SelectProps> = props => {
     style,
     multiple,
   } = props
-  // 通过useRef定义个input变量，在input 元素上定义ref={input},这样通过input.current就可以获取到input Dom 元素
   const input = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLInputElement>(null)
   const containerWidth = useRef(0)
-  // 控制 下拉框显示与否
   const [menuOpen, setOpen] = useState(false)
-  // 控制 input框的value
   const [inputValue, setInputValue] = useState(
     value ? value : typeof defaultValue === 'string' ? defaultValue : ''
   )
-  // 防抖
-  const debouncedValue = useDebounce(inputValue, 300)
-  // 存储多选的已选值
   const [selectedValues, setSelectedValues] = useState<string[]>(
     Array.isArray(defaultValue) ? defaultValue : []
   )
-  // 搜索功能下，再次点击input
   const [reClick, setReClick] = useState(false)
   let selectOptions:
     | SelectOptionProps[]
     | { label: string; options: SelectOptionProps[] }[]
-  // 处理option的点击事件
+  // hasCompositon判断是否在composition阶段，afterDebounce判断是否是composition后的防抖值
+  const hasCompositon = useRef(false)
+  const [afterDebounce, setAfterDebounce] = useState(true)
+  const [debouncedValue, setDebouncedValue] = useState(inputValue)
   const handleOptionClick = (value: string, isSelected?: boolean) => {
-    // 非多选模式
     if (!multiple) {
-      // 点击option后，下拉框隐藏
       setOpen(false)
       setInputValue(value)
       onVisibleChange && onVisibleChange(false)
@@ -66,10 +59,8 @@ export const Select: FC<SelectProps> = props => {
     } else {
       setInputValue('')
     }
-    // 多选模式
     let updatedValues = [value]
     if (multiple) {
-      // 若当前option已选中，则从selecedValues中去掉该option；否则，将该value添加到selectedValues中
       updatedValues = isSelected
         ? selectedValues.filter(item => item !== value)
         : [...selectedValues, value]
@@ -80,7 +71,6 @@ export const Select: FC<SelectProps> = props => {
   // 多选模式下，placeholder会一直显示，故做处理
   useEffect(() => {
     if (input.current) {
-      // input.current.focus()
       if (multiple && selectedValues.length > 0) {
         input.current.placeholder = ''
       } else if (placeholder) {
@@ -123,27 +113,21 @@ export const Select: FC<SelectProps> = props => {
       onVisibleChange(false)
     }
     if (showSearch && inputValue !== (value || defaultValue) && !reClick) {
-      if ('options' in selectOptions[0]) {
-        setInputValue(
-          selectOptions[0].options[0]?.value ?? value ?? defaultValue
-        )
-      } else {
-        setInputValue(selectOptions[0]?.value ?? value ?? defaultValue)
-      }
+      setInputValue(
+        'options' in selectOptions[0]
+          ? selectOptions[0].options[0]?.value ?? value ?? defaultValue
+          : selectOptions[0]?.value ?? value ?? defaultValue
+      )
     }
   })
-  // 点击input框的处理函数
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault()
     if (!showSearch) {
-      // 当input框可用（!disabled），menuOpen变量取反
       if (!disabled) {
         setOpen(!menuOpen)
-        // 当存在onVisibleChange，则执行(参数为当前menuOpen状态，由于useState缘故，此时menuOpen仍然为 没有执行setOpen(!menuOpen)的状态，故这里要取反)
         onVisibleChange && onVisibleChange(!menuOpen)
       }
     } else {
-      // 当input框可用（!disabled）且menuOpen为关闭，让menuOpen打开
       if (!disabled && !menuOpen) {
         setOpen(true)
         onVisibleChange && onVisibleChange(true)
@@ -151,83 +135,98 @@ export const Select: FC<SelectProps> = props => {
       inputValue !== defaultValue && setReClick(true)
     }
   }
-  // input搜索框change的处理函数
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value.trim()
     setInputValue(inputValue)
     onSearch && onSearch(inputValue)
     setReClick(false)
   }
-  // 生成下拉框各选项
+  input.current &&
+    input.current.addEventListener('compositionstart', (e: any) => {
+      hasCompositon.current = true
+      setAfterDebounce(false)
+    })
+  input.current &&
+    input.current.addEventListener('compositionend', (e: any) => {
+      hasCompositon.current = false
+    })
+  // 防抖 + composition优化
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(inputValue)
+      if (!hasCompositon.current) setAfterDebounce(true)
+    }, 300)
+    return () => {
+      clearTimeout(handler)
+    }
+  }, [inputValue])
   const generateOptions = () => {
-    // 根据是否带搜索功能，得到不同的options
-    const reg = new RegExp('^' + debouncedValue)
-    if (showSearch && filterOption && !reClick) {
-      // 执行搜索
-      if ('options' in options[0]) {
-        const assertOptions = options as {
-          label: string
-          options: SelectOptionProps[]
-        }[]
-        const optionArr: {
-          label: string
-          options: SelectOptionProps[]
-        }[] = []
-        assertOptions.filter(item => {
-          const array = item.options.filter(item =>
+    if (!hasCompositon.current && afterDebounce) {
+      const reg = new RegExp('^' + debouncedValue)
+      if (showSearch && filterOption && !reClick) {
+        if ('options' in options[0]) {
+          const assertOptions = options as {
+            label: string
+            options: SelectOptionProps[]
+          }[]
+          const optionArr: {
+            label: string
+            options: SelectOptionProps[]
+          }[] = []
+          assertOptions.filter(item => {
+            const array = item.options.filter(item =>
+              reg.test(item?.label ?? item.value)
+            )
+            return array.length == 0
+              ? false
+              : optionArr.push({ label: item.label, options: array })
+          })
+          selectOptions = optionArr
+        } else {
+          const assertOptions = options as SelectOptionProps[]
+          selectOptions = assertOptions.filter(item =>
             reg.test(item?.label ?? item.value)
           )
-          return array.length == 0
-            ? false
-            : optionArr.push({ label: item.label, options: array })
-        })
-        selectOptions = optionArr
+        }
       } else {
-        const assertOptions = options as SelectOptionProps[]
-        selectOptions = assertOptions.filter(item =>
-          reg.test(item?.label ?? item.value)
-        )
+        selectOptions = options
       }
-    } else {
-      // 不执行搜索
-      selectOptions = options
-    }
-    // 在Select组件中对options进行遍历，并执行函数。在这里，即对select 中的每一个option进行处理，生成dt,dd元素
-    if (selectOptions.length) {
-      if ('options' in selectOptions[0]) {
-        selectOptions = selectOptions as {
-          label: string
-          options: SelectOptionProps[]
-        }[]
-        return selectOptions.map(function (item, index) {
-          return (
-            <Optgroup
-              key={`optGroup-${index}`}
-              label={item.label}
-              onSelect={handleOptionClick}
-              selectedValues={selectedValues}
-              multiple={multiple}
-              options={item.options}
-            ></Optgroup>
-          )
-        })
+      if (selectOptions.length) {
+        if ('options' in selectOptions[0]) {
+          selectOptions = selectOptions as {
+            label: string
+            options: SelectOptionProps[]
+          }[]
+          return selectOptions.map(function (item, index) {
+            return (
+              <Optgroup
+                key={`optGroup-${index}`}
+                label={item.label}
+                onSelect={handleOptionClick}
+                selectedValues={selectedValues}
+                multiple={multiple}
+                options={item.options}
+              ></Optgroup>
+            )
+          })
+        } else {
+          selectOptions = selectOptions as SelectOptionProps[]
+          return selectOptions.map(function (item, index) {
+            return (
+              <Option
+                index={`select-${index}`}
+                key={index}
+                {...item}
+                onSelect={handleOptionClick}
+                selectedValues={selectedValues}
+                multiple={multiple}
+              ></Option>
+            )
+          })
+        }
       } else {
-        selectOptions = selectOptions as SelectOptionProps[]
-        return selectOptions.map(function (item, index) {
-          return (
-            <Option
-              index={`select-${index}`}
-              key={index}
-              {...item}
-              onSelect={handleOptionClick}
-              selectedValues={selectedValues}
-              multiple={multiple}
-            ></Option>
-          )
-        })
+        return <Option disabled value={'暂无数据'}></Option>
       }
-    } else {
-      return <Option disabled value={'暂无数据'}></Option>
     }
   }
   const className = classNames('violetSelect', {
