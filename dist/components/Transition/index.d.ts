@@ -1,2 +1,2 @@
-import Transition from './transition';
-export default Transition;
+import Transition from './transition'
+export default Transition

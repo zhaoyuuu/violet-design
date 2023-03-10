@@ -1,2 +1,2 @@
-import Upload from './upload';
-export default Upload;
+import Upload from './upload'
+export default Upload

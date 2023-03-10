@@ -1,25 +1,25 @@
-import React, { ReactNode } from 'react';
-type selectCallback = (selectIndex: string) => void;
-type Mode = 'vertical' | 'horizontal';
+import React, { ReactNode } from 'react'
+type selectCallback = (selectIndex: string) => void
+type Mode = 'vertical' | 'horizontal'
 export interface IMenuProps {
-    /** 添加自定义类名 */
-    className?: string;
-    /** 设置点击触发的回调函数 */
-    onSelect?: selectCallback;
-    /** 自定义样式 */
-    style?: React.CSSProperties;
-    /** 设置默认高亮选项 */
-    defaultIndex?: string;
-    /** 横向 or 纵向 */
-    mode?: Mode;
-    children?: ReactNode;
+  /** 添加自定义类名 */
+  className?: string
+  /** 设置点击触发的回调函数 */
+  onSelect?: selectCallback
+  /** 自定义样式 */
+  style?: React.CSSProperties
+  /** 设置默认高亮选项 */
+  defaultIndex?: string
+  /** 横向 or 纵向 */
+  mode?: Mode
+  children?: ReactNode
 }
 export interface IMenuContext {
-    index: string;
-    onSelect?: selectCallback;
-    mode: Mode;
+  index: string
+  onSelect?: selectCallback
+  mode: Mode
 }
-export declare const MenuContext: React.Context<IMenuContext>;
+export declare const MenuContext: React.Context<IMenuContext>
 /**
  * > 为页面和功能提供导航的菜单列表。
  *
@@ -31,5 +31,5 @@ export declare const MenuContext: React.Context<IMenuContext>;
  * ### 开发者注意事项
  * Menu组件的使用，需搭配 `Menu.Item`/`Menu.SubMenu` 作为子组件来进行开发
  */
-export declare const Menu: React.FC<IMenuProps>;
-export default Menu;
+export declare const Menu: React.FC<IMenuProps>
+export default Menu
