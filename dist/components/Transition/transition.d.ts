@@ -1,43 +1,49 @@
-import React, { ReactNode } from 'react';
-import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
-type AnimationName = 'zoom-in-top' | 'zoom-in-left' | 'zoom-in-bottom' | 'zoom-in-right';
+import React, { ReactNode } from 'react'
+import { CSSTransitionProps } from 'react-transition-group/CSSTransition'
+type AnimationName =
+  | 'zoom-in-top'
+  | 'zoom-in-left'
+  | 'zoom-in-bottom'
+  | 'zoom-in-right'
 export interface TransitionProps extends CSSTransitionProps {
-    /** 设置组件的显示或隐藏状态(逻辑上的概念) */
-    in: boolean;
-    /** 设置可以在初始化时隐藏组件 */
-    mountOnEnter?: boolean;
-    /** 设置当组件处于 exited 状态时卸载组件 */
-    unmountOnExit?: boolean;
-    /** 设置初始进入时拥有过渡效果 */
-    appear?: boolean;
-    /** 设置入场时是否有过渡效果 */
-    enter?: boolean;
-    /** 设置出场时是否有过渡效果 */
-    exit?: boolean;
-    /** 过渡持续时间 */
-    timeout: number | {
-        enter?: number;
-        exit?: number;
-        appear?: number;
-    };
-    /** 在 entering 状态之前调用 */
-    onEnter?: () => void;
-    /** 在 entering 状态之后调用 */
-    onEntering?: () => void;
-    /** 在 entered 状态之后调用 */
-    onEntered?: () => void;
-    /** 在 exiting 状态之前调用 */
-    onExit?: () => void;
-    /** 在 exiting 状态之后调用 */
-    onExiting?: () => void;
-    /** 在 exited 状态之后调用 */
-    onExited?: () => void;
-    /** 展开的动画效果 */
-    animation?: AnimationName;
-    /** 避免自身动画消失，故嵌套一层节点 */
-    wrapper?: boolean;
-    /** 组件包含的子节点 */
-    children?: ReactNode;
+  /** 设置组件的显示或隐藏状态(逻辑上的概念) */
+  in: boolean
+  /** 设置可以在初始化时隐藏组件 */
+  mountOnEnter?: boolean
+  /** 设置当组件处于 exited 状态时卸载组件 */
+  unmountOnExit?: boolean
+  /** 设置初始进入时拥有过渡效果 */
+  appear?: boolean
+  /** 设置入场时是否有过渡效果 */
+  enter?: boolean
+  /** 设置出场时是否有过渡效果 */
+  exit?: boolean
+  /** 过渡持续时间 */
+  timeout:
+    | number
+    | {
+        enter?: number
+        exit?: number
+        appear?: number
+      }
+  /** 在 entering 状态之前调用 */
+  onEnter?: () => void
+  /** 在 entering 状态之后调用 */
+  onEntering?: () => void
+  /** 在 entered 状态之后调用 */
+  onEntered?: () => void
+  /** 在 exiting 状态之前调用 */
+  onExit?: () => void
+  /** 在 exiting 状态之后调用 */
+  onExiting?: () => void
+  /** 在 exited 状态之后调用 */
+  onExited?: () => void
+  /** 展开的动画效果 */
+  animation?: AnimationName
+  /** 避免自身动画消失，故嵌套一层节点 */
+  wrapper?: boolean
+  /** 组件包含的子节点 */
+  children?: ReactNode
 }
 /**
  * 过渡动画
@@ -64,5 +70,5 @@ export interface TransitionProps extends CSSTransitionProps {
  *
  * 使用时将 `className` 或者 `animation` 设置为效果名即可。
  */
-export declare const Transition: React.FC<TransitionProps>;
-export default Transition;
+export declare const Transition: React.FC<TransitionProps>
+export default Transition

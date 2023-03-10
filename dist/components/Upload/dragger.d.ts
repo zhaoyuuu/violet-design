@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 interface DraggerProps {
-    onFile: (files: FileList) => void;
-    children?: React.ReactNode;
+  onFile: (files: FileList) => void
+  children?: React.ReactNode
 }
-export declare const Dragger: FC<DraggerProps>;
-export default Dragger;
+export declare const Dragger: FC<DraggerProps>
+export default Dragger

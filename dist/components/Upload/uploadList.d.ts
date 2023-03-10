@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import { UploadFile } from './upload';
+import { FC } from 'react'
+import { UploadFile } from './upload'
 interface UploadListProps {
-    fileList: UploadFile[];
-    onRemove: (file: UploadFile) => void;
+  fileList: UploadFile[]
+  onRemove: (file: UploadFile) => void
 }
-export declare const UploadList: FC<UploadListProps>;
-export default UploadList;
+export declare const UploadList: FC<UploadListProps>
+export default UploadList

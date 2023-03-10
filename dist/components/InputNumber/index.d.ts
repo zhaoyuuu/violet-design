@@ -1,2 +1,2 @@
-import InputNumber from './inputNumber';
-export default InputNumber;
+import InputNumber from './inputNumber'
+export default InputNumber
