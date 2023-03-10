@@ -1,6 +1,6 @@
 {
   "name": "violet-design",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": false,
   "main": "dist/index.es.js",
   "module": "dist/index.es.js",
@@ -59,6 +59,7 @@
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "node-sass ./src/styles/index.scss ./build/index.css",
     "build-es": "rollup --config rollup/rollup.esm.config.js",
+    "build-cjs": "rollup --config rollup/rollup.cjs.config.js",
     "build-umd": "rollup --config rollup/rollup.umd.config.js",
     "test": "react-scripts test",
     "test:nowatch": "cross-env CI=true react-scripts test",
