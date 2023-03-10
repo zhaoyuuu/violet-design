@@ -51,6 +51,12 @@ export type Props = DatePickerProps &
   PickerProps
 /**
  * 输入或选择日期/时间的控件。
+ * - 支持日期、时间、日期时间选择
+ * - 支持用户手动输入日期&时间，并完成数值校验
+ * - 支持设定不可选日期
+ * - 支持设定日期展示格式
+ * - 支持国际化
+ * - 支持定制日期单元格样式及日期单元格内容
  */
 export declare class DatePicker extends React.Component<Props, State> {
   static defaultProps: {

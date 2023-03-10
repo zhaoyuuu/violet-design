@@ -1,2 +1,2 @@
-import Progress from './progress'
-export default Progress
+import Progress from './progress';
+export default Progress;
