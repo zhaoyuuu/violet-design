@@ -1,4 +1,4 @@
-name: Run Tests and Deploy
+name: Auto Deploy
 
 on:
   push:
